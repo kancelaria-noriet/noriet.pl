@@ -56,9 +56,9 @@
   </div>
 </section>
 
-<section class="band" aria-label="Pozostałe specjalizacje i konsultacje">
+<section class="section-rule" aria-label="Pozostałe specjalizacje i konsultacje">
   <div class="wrap teaser">
-    <div>
+    <div class="teaser-box">
       <h3 class="rail-card__title">Pozostałe specjalizacje</h3>
       {% include "generated/home-specjalizacje.html" %}
     </div>
@@ -72,7 +72,7 @@
   </div>
 </section>
 
-<section class="offer" aria-labelledby="offer-title">
+<section class="offer band" aria-labelledby="offer-title">
   <div class="wrap">
     <div class="section-head">
       <h2 id="offer-title">Oferta</h2>
@@ -82,27 +82,28 @@
   </div>
 </section>
 
-<section class="areas" aria-labelledby="team-title">
+<section class="areas section-rule" aria-labelledby="team-title">
   <div class="wrap">
     <div class="section-head">
       <h2 id="team-title">Zespół</h2>
       <a class="more" href="/zespol/">Poznaj wszystkich prawników →</a>
     </div>
-    <div class="card-grid">
+    <ul class="team-strip">
       {% for person in collections.team | limit(4) %}
-      <article class="team-card">
+      <li>
         <a href="{{ person.url }}">
           {% if person.data.photo %}<img src="{{ person.data.photo }}" alt="{{ person.data.h1 }}"{% if person.data.photoW %} width="{{ person.data.photoW }}" height="{{ person.data.photoH }}"{% endif %} loading="lazy">{% endif %}
-          <h3>{{ person.data.h1 }}</h3>
-          <p class="lawyer-card__role">{{ person.data.rola }}</p>
+          <span class="team-strip__name">{{ person.data.h1 }}</span>
+          <span class="lawyer-card__role">{{ person.data.rola }}</span>
+          {% if person.data.specjalizacja %}<span class="lawyer-card__spec">{{ person.data.specjalizacja }}</span>{% endif %}
         </a>
-      </article>
+      </li>
       {% endfor %}
-    </div>
+    </ul>
   </div>
 </section>
 
-<section aria-label="Adwokat Warszawa — o kancelarii">
+<section class="band" aria-label="Adwokat Warszawa — o kancelarii">
   <div class="wrap rail-layout">
     <div class="prose">
       {% include "generated/home-sections.html" %}
@@ -124,7 +125,7 @@
   </div>
 </section>
 
-<section class="band form-section" aria-label="Kontakt">
+<section class="form-section" aria-label="Kontakt">
   <div class="wrap">
     <h2>Kontakt</h2>
     <p class="section-lead">Napisz do nas. Powierz swoją sprawę ekspertom.</p>
