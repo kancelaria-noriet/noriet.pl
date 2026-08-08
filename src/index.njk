@@ -49,7 +49,7 @@
       <article class="card">
         <h3>{{ area.title }}</h3>
         <p>{{ area.blurb }}</p>
-        {% if area.url %}<p><a class="card__more" href="{{ area.url }}">Zobacz ofertę →</a></p>{% endif %}
+        {% if area.url %}<p class="card__foot"><a class="card__more" href="{{ area.url }}">Zobacz ofertę →</a></p>{% endif %}
       </article>
       {% endfor %}
     </div>
