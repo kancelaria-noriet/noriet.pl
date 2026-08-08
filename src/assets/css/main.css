@@ -87,10 +87,13 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
 .btn {
   display: inline-block;
   padding: var(--s3) var(--s5);
+  border: 0;
   border-radius: var(--radius);
   font-weight: 600;
   text-decoration: none;
+  cursor: pointer;
 }
+.btn:disabled { opacity: .6; cursor: not-allowed; }
 .btn { font-size: var(--t-base); }
 /* doubled class outranks contextual "a" colour rules (.site-nav__list a, .list-card a) */
 .btn--call, .btn.btn--call { background: var(--btn-bg); color: var(--btn-fg); font-weight: 700; }
