@@ -1,0 +1,11 @@
+---json
+{
+  "permalink": "/_headers",
+  "eleventyExcludeFromCollections": true
+}
+---
+{% if buildEnv != "production" -%}
+# Preview builds must never be indexed (meta noindex is also set per page).
+/*
+  X-Robots-Tag: noindex
+{%- endif %}
