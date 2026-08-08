@@ -2,7 +2,5 @@ node_modules/
 _site/
 .serve.log
 
-# QA artifacts: regenerable screenshots + deck exports (see qa/*.md docs)
-qa/shots/
-qa/decks/
-qa/index.html
+# QA artifacts live outside the repo (../qa); guard against re-creation here
+qa/

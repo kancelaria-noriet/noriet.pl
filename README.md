@@ -39,8 +39,10 @@ tools/migrate.py         service pages; tools/migrate_all.py — everything else
                          run with ../export/.venv/bin/python
 tools/shot.mjs           screenshot any URL at deck widths (fonts/overflow/h1 report)
 tools/ref-sections.mjs   clip screenshots around text landmarks (deck references)
-tools/gallery.mjs        QA contact sheet → /qa/ (dev-only; stripped at launch)
-qa/decks/                local renders of the approved design decks (references)
+tools/gallery.mjs        QA contact sheet → /qa/ (dev-only; not in the repo)
+../qa/                   QA artifacts (screenshots, deck renders, comparison
+                         report) — OUTSIDE the repo, wormhole-only; the /qa/
+                         passthrough is a no-op when ../qa is absent
 ```
 
 ## Rules that bind this code (CODING-STANDARDS.md)
@@ -71,4 +73,4 @@ all need lawyer-written copy, not migration.
 JSON-LD, Umami, sitemap/robots at launch prep, redirect map (Phase 3),
 the six D13 pages + privacy copy (lawyers), form backend + Turnstile (arrives
 with Cloudflare). Visual pass done 2026-08-07 — verify at /qa/ (gallery of all
-templates, desktop + mobile).
+templates, desktop + mobile; served from ../qa on the dev box only).

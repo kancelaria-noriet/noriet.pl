@@ -1,5 +1,0 @@
-body{font-family:system-ui;margin:2rem;background:#f5f7f9}
-h2 small{color:#5d6f86;font-weight:400}
-.pair{display:flex;gap:1rem;align-items:flex-start}
-.pair img{max-width:68%;border:1px solid #dde3ea;border-radius:6px}
-.pair a:last-child img{max-width:28%}

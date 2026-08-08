@@ -1,7 +1,12 @@
+import { existsSync } from "node:fs";
+
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
-  // Dev-only QA gallery — stripped before launch (PLAN.md Phase 4).
-  eleventyConfig.addPassthroughCopy({ "qa": "qa" });
+  // Dev-only QA gallery. Lives OUTSIDE the repo (../qa on wormhole), so this
+  // is a no-op on any checkout without it (e.g. CI/Cloudflare builds).
+  if (existsSync("../qa")) {
+    eleventyConfig.addPassthroughCopy({ "../qa": "qa" });
+  }
 
   // Migrated bodies are pre-rendered HTML fragments; they must not be parsed
   // as templates (legal copy may contain brace sequences).
