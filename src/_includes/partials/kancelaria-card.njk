@@ -1,0 +1,14 @@
+<aside class="rail-card" aria-label="Dane kancelarii">
+  <h2 class="rail-card__title">Kancelaria</h2>
+  <address>
+    <strong>{{ site.name }}</strong><br>
+    {{ site.address.street }}<br>
+    {{ site.address.postalCode }} {{ site.address.city }}
+  </address>
+  <dl class="kv">
+    <dt>tel.</dt><dd><a href="{{ site.phoneHref }}">{{ site.phone }}</a></dd>
+    <dt>e-mail</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd>
+  </dl>
+  <p>Spotkania w kancelarii na Pradze-Południe lub online. Sprawy prowadzimy
+  w całej Polsce.</p>
+</aside>

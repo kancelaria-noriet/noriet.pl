@@ -1,0 +1,51 @@
+---json
+{
+  "layout": "layouts/base.njk",
+  "title": "Zespół",
+  "titleTag": "Zespół | Noriet",
+  "description": "Adwokaci i radcowie prawni Kancelarii Noriet w Warszawie — dziewięcioro prawników z weryfikowalnymi uprawnieniami.",
+  "permalink": "/zespol/",
+  "h1": "Nasz zespół"
+}
+---
+<div class="wrap">
+  {% include "partials/breadcrumb.njk" %}
+</div>
+<header class="service-hero">
+  <div class="wrap">
+    <p class="kicker">Adwokaci, radcowie prawni, aplikanci, mediatorzy</p>
+    <h1>Nasz zespół</h1>
+    <div class="service-hero__lead prose">
+      {% include "generated/zespol-intro.html" %}
+    </div>
+  </div>
+</header>
+<div class="wrap">
+  <div class="card-grid" role="list">
+    {% for person in collections.team %}
+    {% set bits = person.data.kontakt | contactBits %}
+    <article class="team-card team-card--detail" role="listitem">
+      {% if person.data.photo %}
+      <a href="{{ person.url }}"><img src="{{ person.data.photo }}" alt="{{ person.data.h1 }}"{% if person.data.photoW %} width="{{ person.data.photoW }}" height="{{ person.data.photoH }}"{% endif %} loading="lazy"></a>
+      {% endif %}
+      <h2><a href="{{ person.url }}">{{ person.data.h1 }}</a></h2>
+      <p class="lawyer-card__role">{{ person.data.rola }}</p>
+      {% if person.data.specjalizacja %}<p class="lawyer-card__spec">{{ person.data.specjalizacja }}</p>{% endif %}
+      <dl>
+        {% if bits.tel %}<dt>tel.</dt><dd><a href="{{ bits.telHref }}">{{ bits.tel }}</a></dd>{% endif %}
+        {% if bits.email %}<dt>e-mail</dt><dd><a href="mailto:{{ bits.email }}">{{ bits.email }}</a></dd>{% endif %}
+      </dl>
+    </article>
+    {% endfor %}
+  </div>
+</div>
+<section class="cta-band cta-band--home" aria-label="Pomoc w wyborze prawnika">
+  <div class="wrap">
+    <h2>Nie wiesz, do kogo się zwrócić?</h2>
+    <p>Zadzwoń — dobierzemy prawnika do rodzaju sprawy i umówimy termin konsultacji.</p>
+    <p class="cta-band__actions">
+      <a class="btn btn--call" href="{{ site.phoneHref }}">{{ site.phone }}</a>
+      <a class="btn btn--ghost" href="/konsultacje/">Konsultacje</a>
+    </p>
+  </div>
+</section>

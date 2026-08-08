@@ -1,0 +1,14 @@
+{
+  "name": "noriet-lp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "noriet.pl static rebuild (Eleventy)",
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve --port 8085"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6",
+    "@playwright/mcp": "^0.0.78"
+  }
+}

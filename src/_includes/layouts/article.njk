@@ -1,0 +1,56 @@
+---
+layout: layouts/base.njk
+crumbParent:
+  label: Blog
+  url: /blog/
+---
+<div class="wrap">
+  {% include "partials/breadcrumb.njk" %}
+  <div class="rail-layout">
+    <article class="service">
+      <header class="service__header">
+        {% set kicker = (h1 or title) | series %}
+        {% if kicker %}<p class="kicker">{{ kicker }}</p>{% endif %}
+        <h1>{{ h1 or title }}</h1>
+        {% if displayDate %}
+        <p class="article-meta">
+          <time datetime="{{ isoDate }}">{{ displayDate }}</time>
+          · {{ content | readingTime }}
+        </p>
+        {% endif %}
+      </header>
+      {% set split = content | summarySplit %}
+      {% if split.summary %}
+      <aside class="summary-box" aria-label="W skrócie">
+        <p class="rail-card__title">W skrócie</p>
+        {{ split.summary | safe }}
+      </aside>
+      {% endif %}
+      <div class="prose">
+        {{ split.rest | safe }}
+      </div>
+      <aside class="cta-card" aria-label="Kontakt w sprawie">
+        <h2>Masz podobną sprawę?</h2>
+        <p>Omówimy Twoją sytuację i realne terminy podczas konsultacji.</p>
+        <p class="cta-band__actions">
+          <a class="btn btn--call" href="{{ site.phoneHref }}">{{ site.phone }}</a>
+          <a class="btn btn--ghost" href="/konsultacje/">Konsultacje</a>
+        </p>
+      </aside>
+    </article>
+    <aside class="rail">
+      <div class="rail-card">
+        <h2 class="rail-card__title">Ostatnie artykuły</h2>
+        <ul class="rail-list">
+          {% for post in collections.post | reverse | excludeUrl(page.url) | limit(3) %}
+          <li>
+            <a href="{{ post.url }}">{{ post.data.h1 or post.data.title }}</a>
+            <span class="rail-list__meta">{{ post.data.displayDate }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        <p><a class="more" href="/blog/">Wszystkie artykuły →</a></p>
+      </div>
+    </aside>
+  </div>
+</div>

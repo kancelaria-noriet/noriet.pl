@@ -1,0 +1,62 @@
+---json
+{
+  "layout": "layouts/base.njk",
+  "title": "Blog",
+  "titleTag": "Blog | Noriet",
+  "description": "Artykuły prawników Kancelarii Noriet: prawo rodzinne, rozwody, spadki, prawo gospodarcze.",
+  "pagination": {
+    "data": "collections.post",
+    "size": 10,
+    "reverse": true
+  },
+  "permalink": "/blog/{% if pagination.pageNumber > 0 %}strona/{{ pagination.pageNumber + 1 }}/{% endif %}",
+  "eleventyComputed": {
+    "h1": "Artykuły"
+  }
+}
+---
+<div class="wrap">
+  {% include "partials/breadcrumb.njk" %}
+</div>
+<header class="service-hero">
+  <div class="wrap">
+    <p class="kicker">Blog kancelarii</p>
+    <h1>Artykuły</h1>
+    <p class="service-hero__lead">Zapraszamy do zapoznania się z artykułami
+    blogowymi tworzonymi przez naszych specjalistów. Dowiedz się o aspektach
+    prawniczych od doświadczonych prawników.</p>
+  </div>
+</header>
+<div class="wrap rail-layout">
+  <div>
+    <h2 class="sr-only">Lista artykułów</h2>
+    <ul class="post-list">
+      {% for post in pagination.items %}
+      <li>
+        {% if post.data.displayDate %}<time datetime="{{ post.data.isoDate }}">{{ post.data.displayDate }}</time>{% endif %}
+        <h2><a href="{{ post.url }}">{{ post.data.h1 or post.data.title }}</a></h2>
+        {% if post.data.excerpt %}<p>{{ post.data.excerpt }}</p>{% endif %}
+        <p><a class="more" href="{{ post.url }}">czytaj więcej →</a></p>
+      </li>
+      {% endfor %}
+    </ul>
+    <nav aria-label="Paginacja" class="pagination-row">
+      <ul class="pagination">
+        {% for p in pagination.hrefs | pageWindow(page.url) %}
+        <li>{% if p.gap %}<span class="pagination__gap">…</span>{% elif p.current %}<span aria-current="page">{{ p.label }}</span>{% else %}<a href="{{ p.href }}">{{ p.label }}</a>{% endif %}</li>
+        {% endfor %}
+      </ul>
+      {% if pagination.href.next %}
+      <a class="btn btn--ghost" href="{{ pagination.href.next }}">Następna strona →</a>
+      {% endif %}
+    </nav>
+  </div>
+  <aside class="rail">
+    <div class="consult-card">
+      <h2 class="upsell-card__title">Masz sprawę, nie pytanie?</h2>
+      <p>Artykuł nie zastąpi porady. Umów konsultację z adwokatem lub radcą
+      prawnym.</p>
+      <p><a class="btn btn--call btn--block" href="/konsultacje/">Konsultacje i ceny</a></p>
+    </div>
+  </aside>
+</div>

@@ -1,0 +1,65 @@
+---
+layout: layouts/base.njk
+crumbParent:
+  label: Zespół
+  url: /zespol/
+---
+<div class="wrap">
+  {% include "partials/breadcrumb.njk" %}
+</div>
+{% set bits = kontakt | contactBits %}
+<header class="bio-hero">
+  <div class="wrap bio-hero__grid">
+    <div>
+      {% if photo %}<img src="{{ photo }}" alt="{{ h1 or title }}"{% if photoW %} width="{{ photoW }}" height="{{ photoH }}"{% endif %}>{% endif %}
+    </div>
+    <div>
+      <p class="kicker">Zespół</p>
+      <h1>{{ h1 or title }}</h1>
+      {% if rola %}<p class="bio-hero__role">{{ rola }}</p>{% endif %}
+      {% if specjalizacja %}<p class="bio-hero__spec">{{ specjalizacja }}</p>{% endif %}
+      {% if bits.tel or bits.email %}
+      <p class="bio-hero__contacts">
+        {% if bits.tel %}<a href="{{ bits.telHref }}"><span>tel.</span>{{ bits.tel }}</a>{% endif %}
+        {% if bits.email %}<a href="mailto:{{ bits.email }}"><span>e-mail</span>{{ bits.email }}</a>{% endif %}
+      </p>
+      {% endif %}
+      <p class="hero__actions">
+        {% if bits.tel %}<a class="btn btn--call" href="{{ bits.telHref }}">Zadzwoń bezpośrednio</a>{% endif %}
+        <a class="btn btn--ghost" href="/konsultacje/">Umów konsultację</a>
+      </p>
+    </div>
+  </div>
+</header>
+<div class="wrap rail-layout">
+  <article>
+    <h2>Wykształcenie i doświadczenie</h2>
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+    {% if specjalizacja %}
+    <h2>Specjalizacja</h2>
+    <ul class="chips">
+      {% for s in specjalizacja | splitList %}
+      <li>{{ s }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </article>
+  <aside class="rail">
+    <div class="rail-card">
+      <h2 class="rail-card__title">Pozostali prawnicy</h2>
+      <ul class="rail-list">
+        {% for person in collections.team %}
+        {% if person.url != page.url %}
+        <li>
+          <a href="{{ person.url }}">{{ person.data.h1 }}</a>
+          <span class="rail-list__meta">{{ person.data.rola }}</span>
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+      <p><a class="more" href="/zespol/">Cały zespół →</a></p>
+    </div>
+  </aside>
+</div>

@@ -1,0 +1,35 @@
+<footer class="site-footer">
+  <div class="wrap site-footer__cols">
+    <div class="footer-col footer-col--firm">
+      <address>
+        {{ site.name }}<br>
+        {{ site.address.street }}<br>
+        {{ site.address.postalCode }} {{ site.address.city }}
+      </address>
+      <a href="{{ site.phoneHref }}">{{ site.phone }}</a><br>
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+      <p class="footer-col__note">Adwokaci – Izba Adwokacka w Warszawie.
+      Radcowie prawni – Okręgowa Izba Radców Prawnych.</p>
+    </div>
+    {% for col in nav.footer %}
+    <nav class="footer-col" aria-label="{{ col.title }}">
+      <h2 class="footer-col__title">{{ col.title }}</h2>
+      <ul>
+        {% for item in col.items %}
+        <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    {% endfor %}
+  </div>
+  <div class="wrap site-footer__bottom">
+    <p class="site-footer__registry">© {% year %} {{ site.name }} ·
+      KRS {{ site.registry.krs }} · NIP {{ site.registry.nip }} ·
+      REGON {{ site.registry.regon }}</p>
+    <ul class="site-footer__legal">
+      {% for item in nav.bottomBar %}
+      <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+</footer>

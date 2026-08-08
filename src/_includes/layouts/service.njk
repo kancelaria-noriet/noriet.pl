@@ -1,0 +1,113 @@
+---
+layout: layouts/base.njk
+crumbParent:
+  label: Oferta
+  url: /oferta/
+---
+{% set slug = page.fileSlug %}
+{% set meta = serviceMeta.bySlug[slug] %}
+<div class="crumb-band">
+  <div class="wrap">
+    {% include "partials/breadcrumb.njk" %}
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="service-hero">
+    {% if meta %}<p class="kicker">{{ meta.kicker }}</p>{% endif %}
+    <h1>{{ h1 or title }}</h1>
+    {% if description %}<p class="service-hero__lead">{{ description }}</p>{% endif %}
+    <ul class="chips" aria-label="Kancelaria">
+      <li>Adwokaci i radcowie prawni</li>
+      <li>Izba Adwokacka w Warszawie · OIRP</li>
+      <li>Dwoje mediatorów certyfikowanych</li>
+    </ul>
+    <p class="hero__actions">
+      <a class="btn btn--call" href="{{ site.phoneHref }}">Zadzwoń: {{ site.phone }}</a>
+      <a class="btn btn--ghost" href="/kontakt/">Opisz sprawę</a>
+    </p>
+  </header>
+
+  {% set tocItems = content | toc %}
+  <div class="service-layout">
+    <article class="service">
+      <div class="prose">
+        {{ content | safe }}
+      </div>
+      {% if meta %}
+      {% set relatedCol = null %}
+      {% for col in nav.offerGrid %}{% if col.title == meta.column %}{% set relatedCol = col %}{% endif %}{% endfor %}
+      {% if relatedCol %}
+      <nav class="related" aria-label="Powiązane obszary praktyki">
+        <h2>Powiązane obszary praktyki</h2>
+        <ul>
+          {% for item in relatedCol.items %}
+          {% if item.url != page.url %}<li><a href="{{ item.url }}">{{ item.label }}</a></li>{% endif %}
+          {% endfor %}
+        </ul>
+      </nav>
+      {% endif %}
+      {% endif %}
+    </article>
+
+    <aside class="rail">
+      {% if tocItems.length > 1 %}
+      <nav class="rail-card toc-card" aria-label="Spis treści">
+        <h2 class="rail-card__title">Na tej stronie</h2>
+        <ol>
+          {% for item in tocItems %}
+          <li><a href="#{{ item.id }}">{{ item.text }}</a></li>
+          {% endfor %}
+        </ol>
+      </nav>
+      {% endif %}
+
+      {% if meta %}
+      {% set lawyer = null %}
+      {% for person in collections.team %}
+      {% if not lawyer and meta.lawyerMatch in (person.data.specjalizacja | lower) %}{% set lawyer = person %}{% endif %}
+      {% endfor %}
+      {% if lawyer %}
+      <div class="rail-card lawyer-card">
+        <h2 class="rail-card__title">Prowadzi te sprawy</h2>
+        <div class="lawyer-card__row">
+          {% if lawyer.data.photo %}<img src="{{ lawyer.data.photo }}" alt="{{ lawyer.data.h1 }}"{% if lawyer.data.photoW %} width="{{ lawyer.data.photoW }}" height="{{ lawyer.data.photoH }}"{% endif %} loading="lazy">{% endif %}
+          <div>
+            <p class="lawyer-card__name">{{ lawyer.data.h1 }}</p>
+            <p class="lawyer-card__role">{{ lawyer.data.rola }}</p>
+            <p class="lawyer-card__spec">{{ lawyer.data.specjalizacja }}</p>
+          </div>
+        </div>
+        <p><a href="{{ lawyer.url }}">Pełny profil i doświadczenie →</a></p>
+      </div>
+      {% endif %}
+      {% endif %}
+
+      {% set upsell = null %}
+      {% for k in collections.konsultacja %}
+      {% if not upsell and k.data.h1 == serviceMeta.upsellTitle %}{% set upsell = k %}{% endif %}
+      {% endfor %}
+      {% if upsell %}
+      <div class="rail-card upsell-card">
+        <h2 class="upsell-card__title">{{ upsell.data.h1 }}</h2>
+        {% if upsell.data.subtitle %}<p class="product__subtitle">{{ upsell.data.subtitle }}</p>{% endif %}
+        <p class="upsell-card__price">{{ upsell.data.price }}</p>
+        <p><a class="btn btn--call btn--block" href="{{ upsell.url }}">Kup usługę</a></p>
+        <p><a href="/konsultacje/">Wszystkie konsultacje i ceny →</a></p>
+      </div>
+      {% endif %}
+    </aside>
+  </div>
+</div>
+
+<section class="band form-section" aria-labelledby="sprawa-title">
+  <div class="wrap">
+    <h2 id="sprawa-title">Opisz swoją sprawę</h2>
+    <p>Odpowiadamy w ciągu jednego dnia roboczego. Jeśli sprawa jest pilna —
+    zadzwoń pod <a href="{{ site.phoneHref }}">{{ site.phone }}</a>.</p>
+    <div class="rail-layout">
+      {% include "partials/form-contact.njk" %}
+      {% include "partials/kancelaria-card.njk" %}
+    </div>
+  </div>
+</section>

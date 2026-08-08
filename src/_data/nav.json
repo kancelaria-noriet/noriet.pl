@@ -1,0 +1,106 @@
+{
+  "header": [
+    { "label": "Oferta", "url": "/oferta/" },
+    { "label": "Konsultacje", "url": "/konsultacje/" },
+    { "label": "Zespół", "url": "/zespol/" },
+    { "label": "Blog", "url": "/blog/" },
+    { "label": "Kontakt", "url": "/kontakt/" }
+  ],
+  "areas": [
+    {
+      "title": "Obsługa prawna biznesu",
+      "blurb": "Kontrakty, prawo korporacyjne, windykacja należności, spory sądowe i pozasądowe, prawo pracy, RODO, sprawy urzędowe",
+      "url": "/dla-firm/"
+    },
+    {
+      "title": "Prawo Rodzinne",
+      "blurb": "Rozwód, separacja, podział majątku, ograniczenie i pozbawienie władzy rodzicielskiej, zabezpieczenia, mediacje",
+      "url": "/prawo-rodzinne-warszawa/"
+    },
+    {
+      "title": "Spadki i Sukcesja",
+      "blurb": "Nieruchomości, dziedziczenie, testamenty, stwierdzenie nabycia spadku, podział majątku, darowizny, odrzucenie spadku",
+      "url": "/prawo-spadkowe-warszawa/"
+    },
+    {
+      "title": "Ubezpieczenia społeczne",
+      "blurb": "Prawo pracy, zwolnienia, urlop macierzyński i wychowawczy, umowy, odszkodowania, zasiłki, odwołania od decyzji ZUS",
+      "url": null
+    }
+  ],
+  "offerGrid": [
+    {
+      "title": "Biznes",
+      "items": [
+        { "label": "Bieżąca obsługa prawna w abonamencie", "url": "/konsultacje/stala-obsluga-prawna-przedsiebiorcy/" },
+        { "label": "Pozew o zapłatę z faktury", "url": "/pozew-o-zaplate/" },
+        { "label": "Pozew w EPU", "url": "/pozew-w-epu/" },
+        { "label": "Spory sądowe", "url": "/spory-sadowe/" },
+        { "label": "Mediacje", "url": "/mediacje/" }
+      ]
+    },
+    {
+      "title": "Rozwód i separacja",
+      "items": [
+        { "label": "Sprawy rozwodowe", "url": "/sprawy-rozwodowe-warszawa/" },
+        { "label": "Rozwód bez orzekania o winie", "url": "/rozwod-bez-orzekania-o-winie/" },
+        { "label": "Rozwód z orzeczeniem o winie", "url": "/rozwod-z-orzeczeniem-o-winie/" },
+        { "label": "Separacja", "url": "/separacja/" }
+      ]
+    },
+    {
+      "title": "Rodzina i dzieci",
+      "items": [
+        { "label": "Prawo rodzinne", "url": "/prawo-rodzinne-warszawa/" },
+        { "label": "Alimenty", "url": "/alimenty/" },
+        { "label": "Pozbawienie władzy rodzicielskiej", "url": "/pozbawienie-wladzy-rodzicielskiej-warszawa/" }
+      ]
+    },
+    {
+      "title": "Majątek, spadki i sąd",
+      "items": [
+        { "label": "Podział majątku", "url": "/podzial-majatku-w-warszawie/" },
+        { "label": "Podział majątku po rozwodzie", "url": "/podzial-majatku-po-rozwodzie/" },
+        { "label": "Małżeńskie ustroje majątkowe", "url": "/malzenskie-ustroje-majatkowe/" },
+        { "label": "Prawo spadkowe", "url": "/prawo-spadkowe-warszawa/" },
+        { "label": "Adwokat w sprawie sądowej", "url": "/adwokat-w-sprawie-sadowej/" }
+      ]
+    }
+  ],
+  "footer": [
+    {
+      "title": "Rozwód i separacja",
+      "items": [
+        { "label": "Sprawy rozwodowe", "url": "/sprawy-rozwodowe-warszawa/" },
+        { "label": "Rozwód bez orzekania o winie", "url": "/rozwod-bez-orzekania-o-winie/" },
+        { "label": "Rozwód z orzeczeniem o winie", "url": "/rozwod-z-orzeczeniem-o-winie/" },
+        { "label": "Separacja", "url": "/separacja/" }
+      ]
+    },
+    {
+      "title": "Majątek i rodzina",
+      "items": [
+        { "label": "Nieruchomości", "url": "/nieruchomosci/" },
+        { "label": "Spadki", "url": "/prawo-spadkowe-warszawa/" },
+        { "label": "Podział majątku", "url": "/podzial-majatku-w-warszawie/" },
+        { "label": "Podział majątku po rozwodzie", "url": "/podzial-majatku-po-rozwodzie/" },
+        { "label": "Małżeńskie ustroje majątkowe", "url": "/malzenskie-ustroje-majatkowe/" },
+        { "label": "Alimenty", "url": "/alimenty/" },
+        { "label": "Prawo rodzinne", "url": "/prawo-rodzinne-warszawa/" },
+        { "label": "Pozbawienie władzy rodzicielskiej", "url": "/pozbawienie-wladzy-rodzicielskiej-warszawa/" }
+      ]
+    },
+    {
+      "title": "Kancelaria",
+      "items": [
+        { "label": "Adwokat w sprawie sądowej", "url": "/adwokat-w-sprawie-sadowej/" },
+        { "label": "Zespół", "url": "/zespol/" },
+        { "label": "Publikacje", "url": "/publikacje/" },
+        { "label": "Akcjonariusze", "url": "/akcjonariusze/" }
+      ]
+    }
+  ],
+  "bottomBar": [
+    { "label": "Polityka prywatności", "url": "/polityka-prywatnosci/" }
+  ]
+}

@@ -1,0 +1,33 @@
+---json
+{
+  "layout": "layouts/base.njk",
+  "title": "Publikacje",
+  "titleTag": "Publikacje | Noriet",
+  "description": "Publikacje i case studies prawników Kancelarii Noriet.",
+  "permalink": "/publikacje/",
+  "h1": "Publikacje i case studies"
+}
+---
+<div class="wrap">
+  {% include "partials/breadcrumb.njk" %}
+</div>
+<header class="service-hero">
+  <div class="wrap">
+    <p class="kicker">Publikacje i case studies</p>
+    <h1>Publikacje i case studies</h1>
+    <p class="service-hero__lead">Komentarze, opinie i opisy prowadzonych
+    spraw autorstwa prawników kancelarii.</p>
+  </div>
+</header>
+<div class="wrap">
+  <div class="list-grid">
+    {% for c in collections.casestudy %}
+    <article class="list-card">
+      <h2><a href="{{ c.url }}">{{ c.data.h1 or c.data.title }}</a></h2>
+      {% if c.data.wydawnictwo or c.data.isbn %}
+      <p class="list-card__meta">{{ c.data.wydawnictwo }}{% if c.data.isbn %} · ISBN {{ c.data.isbn }}{% endif %}</p>
+      {% endif %}
+    </article>
+    {% endfor %}
+  </div>
+</div>

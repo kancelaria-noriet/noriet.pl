@@ -1,0 +1,55 @@
+---json
+{
+  "layout": "layouts/base.njk",
+  "title": "Konsultacje",
+  "titleTag": "Konsultacje | Noriet",
+  "description": "Konsultacje prawne online i w kancelarii w Warszawie — stałe ceny, płatność online.",
+  "permalink": "/konsultacje/",
+  "h1": "Konsultacje"
+}
+---
+<div class="wrap">
+  {% include "partials/breadcrumb.njk" %}
+</div>
+<header class="service-hero">
+  <div class="wrap">
+    <p class="kicker">Płatność online · termin potwierdzamy mailem</p>
+    <h1>Konsultacje</h1>
+    <p class="service-hero__lead">Wybierz formę i zakres rozmowy z adwokatem
+    lub radcą prawnym. Po opłaceniu skontaktujemy się, aby ustalić termin.</p>
+  </div>
+</header>
+{% for group in konsultacjeGroups.groups %}
+<section {% if group.band %}class="band"{% endif %} aria-labelledby="kg-{{ loop.index }}">
+  <div class="wrap">
+    <h2 id="kg-{{ loop.index }}">{{ group.title }}</h2>
+    <div class="price-grid">
+      {% for slug in group.slugs %}
+      {% for k in collections.konsultacja %}
+      {% if k.fileSlug == slug %}
+      <article class="list-card price-card">
+        <h3>{{ k.data.h1 or k.data.title }}</h3>
+        {% if k.data.subtitle %}<p class="price-card__sub">{{ k.data.subtitle }}</p>{% endif %}
+        {% if k.data.price %}<p class="price-card__price">{{ k.data.price }}</p>{% endif %}
+        {% if k.data.paymentLink %}
+        <a class="btn btn--call btn--block" href="{{ k.data.paymentLink }}" rel="nofollow">Kup usługę</a>
+        {% endif %}
+        <p class="price-card__link"><a href="{{ k.url }}">szczegóły</a></p>
+      </article>
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endfor %}
+<section class="cta-band cta-band--home" aria-label="Pomoc w wyborze">
+  <div class="wrap">
+    <h2>Nie wiesz, którą konsultację wybrać?</h2>
+    <p>Zadzwoń — pomożemy dobrać zakres do sprawy, zanim za cokolwiek zapłacisz.</p>
+    <p class="cta-band__actions">
+      <a class="btn btn--call" href="{{ site.phoneHref }}">{{ site.phone }}</a>
+      <a class="btn btn--ghost" href="/kontakt/">Napisz do nas</a>
+    </p>
+  </div>
+</section>

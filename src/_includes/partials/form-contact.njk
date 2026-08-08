@@ -1,0 +1,29 @@
+<form class="form-grid" method="post" action="/api/kontakt">
+  <div>
+    <label for="f-name">Imię i nazwisko</label>
+    <input id="f-name" name="name" type="text" autocomplete="name" required>
+  </div>
+  <div>
+    <label for="f-email">E-mail</label>
+    <input id="f-email" name="email" type="email" autocomplete="email" required>
+  </div>
+  <div>
+    <label for="f-phone">Numer telefonu</label>
+    <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+  </div>
+  <div>
+    <label for="f-msg">Wiadomość</label>
+    <textarea id="f-msg" name="message" rows="6" required></textarea>
+  </div>
+  <p class="form-note">Formularz zostanie aktywowany wraz z wdrożeniem na
+  Cloudflare (Functions + Turnstile). Do tego czasu prosimy o kontakt
+  telefoniczny lub e-mail.</p>
+  <div><button class="btn btn--call" type="submit" disabled>Wyślij wiadomość</button></div>
+  <p class="form-smallprint">Wysyłając formularz wyraża Pan/Pani zgodę na
+  przetwarzanie swoich danych osobowych przez {{ site.name }}, z siedzibą przy
+  {{ site.address.street }}, {{ site.address.postalCode }} {{ site.address.city }}
+  w zakresie niezbędnym do realizacji niniejszego zapytania oraz wyraża
+  Pan/Pani zgodę na otrzymywanie informacji, stanowiącej odpowiedź na
+  niniejsze zapytanie za pomocą środków komunikacji elektronicznej
+  (art. 6 ust. 1 lit. b RODO).</p>
+</form>

@@ -1,0 +1,27 @@
+{
+  "name": "Kancelaria Prawna Noriet – Zagajewska i Wspólnicy S.K.A.",
+  "shortName": "Noriet",
+  "url": "https://noriet.pl",
+  "lang": "pl",
+  "phone": "+48 22 870 68 40",
+  "phoneHref": "tel:+48228706840",
+  "phoneNote": "PLACEHOLDER until D3 — the old header used 68 40, but the old kontakt page lists 65 47 / 66 46 + mobile; standardise before launch",
+  "email": "kancelaria@noriet.pl",
+  "address": {
+    "street": "ul. Grochowska 217/15",
+    "postalCode": "04-077",
+    "city": "Warszawa"
+  },
+  "kontaktPhones": [
+    { "label": "+48 22 870 65 47", "href": "tel:+48228706547" },
+    { "label": "+48 22 870 66 46", "href": "tel:+48228706646" },
+    { "label": "+48 600 484 320", "href": "tel:+48600484320" }
+  ],
+  "registry": { "krs": "0000344890", "nip": "1132785145", "regon": "142186428" },
+  "trust": [
+    { "value": "9", "label": "prawników w zespole" },
+    { "value": "2", "label": "mediatorów certyfikowanych od 2017 r." },
+    { "value": "", "label": "Izba Adwokacka w Warszawie" },
+    { "value": "", "label": "Okręgowa Izba Radców Prawnych" }
+  ]
+}

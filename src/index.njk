@@ -1,0 +1,136 @@
+---json
+{
+  "layout": "layouts/base.njk",
+  "eleventyComputed": {
+    "titleTag": "{{ home.titleTag }}",
+    "description": "{{ home.description }}"
+  }
+}
+---
+<section class="hero hero--split hero--light">
+  <div class="wrap hero__grid">
+    <div class="hero__main">
+      <p class="kicker">Kancelaria radcowska i adwokacka · Warszawa</p>
+      <h1>Kancelaria Prawna Noriet</h1>
+      <p class="hero__lead">{{ home.description }}</p>
+      <p class="hero__actions">
+        <a class="btn btn--call" href="{{ site.phoneHref }}">Zadzwoń: {{ site.phone }}</a>
+        <a class="btn btn--ghost" href="/konsultacje/">Umów konsultację</a>
+      </p>
+    </div>
+    <aside class="hero__card" aria-label="Dane kancelarii">
+      <h2 class="hero__card-title">Kancelaria</h2>
+      <address>
+        {{ site.address.street }}<br>
+        {{ site.address.postalCode }} {{ site.address.city }}
+      </address>
+      <dl class="hero__card-list">
+        <dt>tel.</dt><dd><a href="{{ site.phoneHref }}">{{ site.phone }}</a></dd>
+        <dt>e-mail</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<section class="trust" aria-label="Kancelaria w liczbach">
+  <div class="wrap trust__row">
+    <h2 class="sr-only">Kwalifikacje zespołu</h2>
+    {% for t in site.trust %}
+    <p class="trust__item">{% if t.value %}<strong>{{ t.value }}</strong> {% endif %}{{ t.label }}</p>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="areas" aria-labelledby="areas-title">
+  <div class="wrap">
+    <h2 id="areas-title">Kancelaria prawna — profesjonalna obsługa prawna w&nbsp;głównych obszarach praktyki</h2>
+    <div class="card-grid card-grid--areas">
+      {% for area in nav.areas %}
+      <article class="card">
+        <h3>{{ area.title }}</h3>
+        <p>{{ area.blurb }}</p>
+        {% if area.url %}<p><a class="card__more" href="{{ area.url }}">Zobacz ofertę →</a></p>{% endif %}
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-label="Pozostałe specjalizacje i konsultacje">
+  <div class="wrap teaser">
+    <div>
+      <h3>Pozostałe specjalizacje</h3>
+      {% include "generated/home-specjalizacje.html" %}
+    </div>
+    <div class="consult-card">
+      <h3>Konsultacje</h3>
+      <p>Potrzebujesz wsparcia? Umów się na konsultację prawną z jednym
+      z naszych adwokatów lub radców prawnych. Pomożemy rozwiązać
+      Twój problem!</p>
+      <p><a class="btn btn--call" href="/konsultacje/">Zobacz konsultacje i ceny</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="offer" aria-labelledby="offer-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="offer-title">Oferta</h2>
+      <a class="more" href="/oferta/">Wszystkie usługi →</a>
+    </div>
+    {% include "partials/offer-grid.njk" %}
+  </div>
+</section>
+
+<section class="areas" aria-labelledby="team-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="team-title">Zespół</h2>
+      <a class="more" href="/zespol/">Poznaj wszystkich prawników →</a>
+    </div>
+    <div class="card-grid">
+      {% for person in collections.team | limit(4) %}
+      <article class="team-card">
+        <a href="{{ person.url }}">
+          {% if person.data.photo %}<img src="{{ person.data.photo }}" alt="{{ person.data.h1 }}"{% if person.data.photoW %} width="{{ person.data.photoW }}" height="{{ person.data.photoH }}"{% endif %} loading="lazy">{% endif %}
+          <h3>{{ person.data.h1 }}</h3>
+          <p>{{ person.data.rola }}</p>
+        </a>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section aria-label="Adwokat Warszawa — o kancelarii">
+  <div class="wrap rail-layout">
+    <div class="prose">
+      {% include "generated/home-sections.html" %}
+    </div>
+    <aside class="rail">
+      <div class="rail-card">
+        <h2 class="rail-card__title">Noriet radzi</h2>
+        <ul class="rail-list">
+          {% for post in collections.post | reverse | limit(3) %}
+          <li>
+            <a href="{{ post.url }}">{{ post.data.h1 or post.data.title }}</a>
+            <span class="rail-list__meta">{{ post.data.displayDate }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        <p><a class="more" href="/blog/">Wszystkie artykuły →</a></p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="band form-section" aria-label="Kontakt">
+  <div class="wrap">
+    <h2>Kontakt</h2>
+    <p>Napisz do nas. Powierz swoją sprawę ekspertom.</p>
+    <div class="rail-layout">
+      {% include "partials/form-contact.njk" %}
+      {% include "partials/kancelaria-card.njk" %}
+    </div>
+  </div>
+</section>

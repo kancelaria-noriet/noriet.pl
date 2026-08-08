@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+crumbParent:
+  label: Konsultacje
+  url: /konsultacje/
+---
+<div class="wrap">
+  {% include "partials/breadcrumb.njk" %}
+  <article class="service">
+    <header class="service__header">
+      <h1>{{ h1 or title }}</h1>
+      {% if subtitle %}<p class="product__subtitle">{{ subtitle }}</p>{% endif %}
+      {% if price %}<p class="product__price">{{ price }}</p>{% endif %}
+    </header>
+    <div class="prose">
+      {{ content | safe }}
+    </div>
+    <p class="cta-band__actions">
+      {% if paymentLink %}<a class="btn btn--call" href="{{ paymentLink }}" rel="nofollow">{{ paymentLabel or "Kup usługę" }}</a>{% endif %}
+      <a class="btn btn--ghost" href="{{ site.phoneHref }}">Zadzwoń: {{ site.phone }}</a>
+    </p>
+  </article>
+</div>

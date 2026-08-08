@@ -1,0 +1,36 @@
+{
+  "note": "Display grouping for /konsultacje/ per the design deck; slugs reference src/content/konsultacje/. 'Usługi dla firm' is not in the deck (it only showed apex products) — the biznes products live here until the /dla-firm/ hub ships (PLAN Phase 3).",
+  "groups": [
+    {
+      "title": "Konsultacje prawne",
+      "band": false,
+      "slugs": [
+        "konsultacja-2",
+        "rozszerzona-porada-prawna",
+        "kpo",
+        "konsultacja-rozszerzona-spotkanie",
+        "konsultacja-kredytowa-online",
+        "konsultacja-kredytowa-spotkanie"
+      ]
+    },
+    {
+      "title": "Prowadzenie sprawy rozwodowej",
+      "band": true,
+      "slugs": [
+        "rozwod-bez-orzekania-o-winie-i-bez-dzieci-online",
+        "rozwod-bez-orzekania-o-winie-zgodny-co-do-sytuacji-maloletnich-dzieci",
+        "rozwod-zza-granicy"
+      ]
+    },
+    {
+      "title": "Usługi dla firm",
+      "band": false,
+      "slugs": [
+        "stala-obsluga-prawna-przedsiebiorcy",
+        "audyt-prawny-sklepu-internetowego",
+        "audyt-rodo",
+        "audyt-zgodnosci-z-prawem-pracy"
+      ]
+    }
+  ]
+}

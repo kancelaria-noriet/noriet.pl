@@ -1,0 +1,87 @@
+---json
+{
+  "layout": "layouts/base.njk",
+  "title": "Kontakt",
+  "titleTag": "Kontakt - Kancelaria Prawna Noriet - Zagajewska i Wspólnicy S.K.A.",
+  "description": "Kontakt z Kancelarią Prawną Noriet w Warszawie — telefon, e-mail, adres.",
+  "permalink": "/kontakt/",
+  "h1": "Kontakt"
+}
+---
+<div class="wrap">
+  {% include "partials/breadcrumb.njk" %}
+</div>
+<header class="service-hero">
+  <div class="wrap">
+    <h1>Kontakt - Kancelaria Prawna Noriet - Zagajewska i Wspólnicy S.K.A.</h1>
+    <p class="service-hero__lead">Skontaktuj się z nami! Wspólnie znajdziemy
+    rozwiązanie Twojego problemu prawnego.</p>
+    <p class="hero__actions">
+      <a class="btn btn--call" href="{{ site.phoneHref }}">Zadzwoń: {{ site.phone }}</a>
+      <a class="btn btn--ghost" href="mailto:{{ site.email }}">{{ site.email }}</a>
+    </p>
+  </div>
+</header>
+<div class="wrap info-cols">
+  <div class="info-col">
+    <h2 class="rail-card__title">Adres</h2>
+    <address>
+      {{ site.name }}<br>
+      {{ site.address.street }}<br>
+      {{ site.address.postalCode }} {{ site.address.city }}<br>
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+    </address>
+  </div>
+  <div class="info-col">
+    <h2 class="rail-card__title">Telefon</h2>
+    <ul>
+      {% for p in site.kontaktPhones %}
+      <li><a href="{{ p.href }}">{{ p.label }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="info-col">
+    <h2 class="rail-card__title">Dane rejestrowe</h2>
+    <dl>
+      <dt>KRS</dt><dd>{{ site.registry.krs }}</dd>
+      <dt>NIP</dt><dd>{{ site.registry.nip }}</dd>
+      <dt>REGON</dt><dd>{{ site.registry.regon }}</dd>
+    </dl>
+  </div>
+  <div class="info-col">
+    <h2 class="rail-card__title">Spotkania</h2>
+    <p>Spotkania w kancelarii na Pradze-Południe lub online. Sprawy
+    prowadzimy w całej Polsce.</p>
+  </div>
+</div>
+<section class="band" aria-labelledby="pomagamy-title">
+  <div class="wrap">
+    <h2 id="pomagamy-title">W czym pomagamy</h2>
+    <div class="card-grid card-grid--three">
+      {% for area in nav.areas %}
+      {% if area.title != "Obsługa prawna biznesu" %}
+      <article class="card">
+        <h3>{{ area.title }}</h3>
+        <p>{{ area.blurb }}</p>
+      </article>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<section class="form-section" aria-labelledby="form-title">
+  <div class="wrap rail-layout">
+    <div>
+      <h2 id="form-title">Zapraszamy do współpracy!</h2>
+      {% include "partials/form-contact.njk" %}
+    </div>
+    <aside class="rail">
+      <div class="rail-card">
+        <h2 class="rail-card__title">Dojazd</h2>
+        <p>{{ site.address.street }}, Praga-Południe. Dojazd tramwajem
+        i autobusem do Ronda Wiatraczna.</p>
+        <p><a class="more" href="https://www.google.com/maps/search/?api=1&query=Kancelaria+Prawna+Noriet+Grochowska+217%2F15+Warszawa" rel="noopener">Pokaż na mapie →</a></p>
+      </div>
+    </aside>
+  </div>
+</section>

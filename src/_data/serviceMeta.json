@@ -1,0 +1,18 @@
+{
+  "_comment": "Per-service rail data. kicker/related derive from nav.json offer columns; lawyerMatch is a lowercase substring matched against team specjalizacja (data-driven, no invented assignments — a service shows a lawyer card only when a real specialization matches).",
+  "bySlug": {
+    "sprawy-rozwodowe-warszawa":                    { "kicker": "Sprawy rozwodowe",                "column": "Rozwód i separacja",     "lawyerMatch": "rodzinne" },
+    "rozwod-bez-orzekania-o-winie":                 { "kicker": "Rozwód bez orzekania o winie",    "column": "Rozwód i separacja",     "lawyerMatch": "rodzinne" },
+    "rozwod-z-orzeczeniem-o-winie":                 { "kicker": "Rozwód z orzeczeniem o winie",    "column": "Rozwód i separacja",     "lawyerMatch": "rodzinne" },
+    "separacja":                                    { "kicker": "Separacja",                       "column": "Rozwód i separacja",     "lawyerMatch": "rodzinne" },
+    "prawo-rodzinne-warszawa":                      { "kicker": "Prawo rodzinne",                  "column": "Rodzina i dzieci",       "lawyerMatch": "rodzinne" },
+    "alimenty":                                     { "kicker": "Alimenty",                        "column": "Rodzina i dzieci",       "lawyerMatch": "rodzinne" },
+    "pozbawienie-wladzy-rodzicielskiej-warszawa":   { "kicker": "Pozbawienie władzy rodzicielskiej", "column": "Rodzina i dzieci",     "lawyerMatch": "rodzinne" },
+    "podzial-majatku-w-warszawie":                  { "kicker": "Podział majątku",                 "column": "Majątek, spadki i sąd",  "lawyerMatch": "rodzinne" },
+    "podzial-majatku-po-rozwodzie":                 { "kicker": "Podział majątku po rozwodzie",    "column": "Majątek, spadki i sąd",  "lawyerMatch": "rodzinne" },
+    "malzenskie-ustroje-majatkowe":                 { "kicker": "Małżeńskie ustroje majątkowe",    "column": "Majątek, spadki i sąd",  "lawyerMatch": "rodzinne" },
+    "prawo-spadkowe-warszawa":                      { "kicker": "Prawo spadkowe",                  "column": "Majątek, spadki i sąd",  "lawyerMatch": "spadkowe" },
+    "adwokat-w-sprawie-sadowej":                    { "kicker": "Adwokat w sprawie sądowej",       "column": "Majątek, spadki i sąd",  "lawyerMatch": "spory sądowe" }
+  },
+  "upsellTitle": "Konsultacja podstawowa ONLINE"
+}

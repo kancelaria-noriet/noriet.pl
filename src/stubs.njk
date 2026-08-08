@@ -1,0 +1,16 @@
+---json
+{
+  "layout": "layouts/stub.njk",
+  "pagination": {
+    "data": "stubs",
+    "size": 1,
+    "alias": "stub"
+  },
+  "permalink": "{{ stub.url }}",
+  "eleventyComputed": {
+    "title": "{{ stub.title }}",
+    "h1": "{{ stub.title }}",
+    "stubNote": "{{ stub.note }}"
+  }
+}
+---

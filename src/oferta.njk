@@ -1,0 +1,49 @@
+---json
+{
+  "layout": "layouts/base.njk",
+  "title": "Oferta",
+  "titleTag": "Oferta | Noriet",
+  "description": "Zakres usług Kancelarii Prawnej Noriet: prawo rodzinne i rozwody, spadki, obsługa prawna biznesu.",
+  "permalink": "/oferta/",
+  "h1": "Oferta",
+  "practiceLinks": {
+    "rodzina": "/prawo-rodzinne-warszawa/",
+    "spadki": "/prawo-spadkowe-warszawa/"
+  }
+}
+---
+<div class="wrap">
+  {% include "partials/breadcrumb.njk" %}
+</div>
+<header class="service-hero">
+  <div class="wrap">
+    <p class="kicker">Zakres praktyki</p>
+    <h1>Oferta</h1>
+    <p class="service-hero__lead">Pięć obszarów, w których prowadzimy sprawy
+    na co dzień. Każdą sprawę prowadzi wyznaczony adwokat lub radca prawny
+    — od pierwszej rozmowy do prawomocnego zakończenia.</p>
+    <p class="hero__actions">
+      <a class="btn btn--call" href="{{ site.phoneHref }}">Zadzwoń: {{ site.phone }}</a>
+      <a class="btn btn--ghost" href="/konsultacje/">Umów konsultację</a>
+    </p>
+  </div>
+</header>
+<div class="wrap">
+  {% set intro %}{% include "generated/oferta-intro.html" %}{% endset %}
+  {% for sec in intro | h2Sections %}
+  <section class="practice-row" aria-labelledby="{{ sec.id }}">
+    <div>
+      <h2 id="{{ sec.id }}">{{ sec.heading }}</h2>
+      {% if sec.sub %}<p class="practice-row__sub">{{ sec.sub }}</p>{% endif %}
+      {% if practiceLinks[sec.id] %}<p><a class="more" href="{{ practiceLinks[sec.id] }}">Zobacz szczegóły →</a></p>{% endif %}
+    </div>
+    <div class="practice-row__body">{{ sec.body | safe }}</div>
+  </section>
+  {% endfor %}
+</div>
+<section class="band" aria-labelledby="all-services">
+  <div class="wrap">
+    <h2 id="all-services">Wszystkie usługi</h2>
+    {% include "partials/offer-grid.njk" %}
+  </div>
+</section>

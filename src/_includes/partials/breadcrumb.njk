@@ -1,0 +1,7 @@
+<nav class="breadcrumb" aria-label="Ścieżka nawigacji">
+  <ol>
+    <li><a href="/">Strona główna</a></li>
+    {% if crumbParent %}<li><a href="{{ crumbParent.url }}">{{ crumbParent.label }}</a></li>{% endif %}
+    <li aria-current="page">{{ h1 or title }}</li>
+  </ol>
+</nav>
