@@ -393,8 +393,10 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
 .crumb-band .breadcrumb { margin-block: 0; padding-block: var(--s3); }
 
 .service-hero { padding-block: var(--s7); border-bottom: 1px solid var(--line); }
-/* index-page heroes are centered 52rem blocks in the deck */
-.service-hero--center .wrap { max-width: 52rem; }
+/* index-page heroes: page container aligns with everything else;
+   the text block is measure-capped at 52rem, left-aligned. (The decks
+   centre a 52rem box — a double max-width bug in one style attribute.) */
+.service-hero--center .wrap > * { max-width: 52rem; }
 .service-hero__lead { font-size: var(--t-md); color: var(--ink-2); max-width: 58ch; }
 .chips { list-style: none; display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); margin: var(--s4) 0 0; padding: 0; }
 .chips li { font-size: var(--t-sm); color: var(--ink-2); }
