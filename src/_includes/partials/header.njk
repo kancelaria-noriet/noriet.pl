@@ -1,12 +1,8 @@
 {% include "partials/topbar.njk" %}
 <header class="site-header">
   <div class="wrap site-header__row">
-    <a class="brand" href="/" aria-label="{{ site.shortName }} — strona główna">
-      <img class="brand__mark" src="/assets/img/noriet-mark.png" alt="" width="40" height="40">
-      <span class="brand__text">
-        <span class="brand__word">Noriet</span>
-        <span class="brand__sub">Kancelaria Prawna</span>
-      </span>
+    <a class="brand" href="/" aria-label="{{ site.shortName }} — Kancelaria Prawna — strona główna">
+      {% include "partials/logo.njk" %}
     </a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
       <span class="nav-toggle__bar" aria-hidden="true"></span>
