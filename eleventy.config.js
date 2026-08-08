@@ -108,7 +108,9 @@ export default function (eleventyConfig) {
         id: m[1],
         heading: m[2].replace(/<[^>]+>/g, "").trim(),
         sub,
-        body: rest.trim(),
+        // strip old-theme wrapper divs — splitting on <h2 leaves them
+        // unbalanced, which breaks the practice-row grid
+        body: rest.replace(/<\/?div[^>]*>/g, "").trim(),
       });
     }
     return out;
