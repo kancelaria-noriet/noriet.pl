@@ -171,6 +171,8 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
 .hero__lead { color: var(--on-dark-2); font-size: var(--t-md); max-width: 52ch; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: var(--s3); margin-top: var(--s5); }
 .hero .btn--ghost { border-color: var(--navy-2); color: var(--on-dark); }
+.hero .btn--ghost:hover, .hero--light .btn--ghost:hover,
+.service-hero .btn--ghost:hover { border-color: var(--brand); color: var(--brand-ink); }
 
 /* ---------- cards / grids ---------- */
 .card-grid { display: grid; gap: var(--s4); grid-template-columns: 1fr; }
@@ -499,6 +501,7 @@ html { scroll-behavior: smooth; }
 .cta-card h2 { color: #fff; font-size: var(--t-lg); letter-spacing: normal; margin: 0 0 var(--s2); }
 .cta-card p { font-size: var(--t-sm); }
 .cta-card .btn--ghost { border-color: var(--navy-2); color: #fff; }
+.cta-card .btn--ghost:hover { border-color: #fff; background: rgba(255, 255, 255, .08); color: #fff; }
 
 /* consultation price cards */
 .price-card { display: flex; flex-direction: column; }
