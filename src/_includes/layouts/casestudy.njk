@@ -35,8 +35,8 @@ crumbParent:
     <aside class="rail">
       {% if dodatkowePola and dodatkowePola.length %}
       <div class="rail-card">
-        <h2 class="rail-card__title">Dane publikacji</h2>
-        <dl class="kv">
+        <h2 class="rail-card__heading">Dane publikacji</h2>
+        <dl class="kv kv--caps">
           {% for pole in dodatkowePola %}
           <dt>{{ pole.tytul }}</dt><dd>{{ pole.tresc | safe }}</dd>
           {% endfor %}

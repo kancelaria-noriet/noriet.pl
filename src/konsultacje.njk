@@ -30,7 +30,7 @@
       <article class="list-card price-card">
         <h3>{{ k.data.h1 or k.data.title }}</h3>
         {% if k.data.subtitle %}<p class="price-card__sub">{{ k.data.subtitle }}</p>{% endif %}
-        {% if k.data.price %}<p class="price-card__price">{{ k.data.price }}</p>{% endif %}
+        {% if k.data.price %}{% set pp = k.data.price | priceParts %}<p class="price-card__price">{{ pp.num }}{% if pp.unit %} <small>{{ pp.unit }}</small>{% endif %}</p>{% endif %}
         {% if k.data.paymentLink %}
         <a class="btn btn--call btn--block" href="{{ k.data.paymentLink }}" rel="nofollow">Kup usługę</a>
         {% endif %}

@@ -59,7 +59,7 @@
 <section class="band" aria-label="Pozostałe specjalizacje i konsultacje">
   <div class="wrap teaser">
     <div>
-      <h3>Pozostałe specjalizacje</h3>
+      <h3 class="rail-card__title">Pozostałe specjalizacje</h3>
       {% include "generated/home-specjalizacje.html" %}
     </div>
     <div class="consult-card">
@@ -94,7 +94,7 @@
         <a href="{{ person.url }}">
           {% if person.data.photo %}<img src="{{ person.data.photo }}" alt="{{ person.data.h1 }}"{% if person.data.photoW %} width="{{ person.data.photoW }}" height="{{ person.data.photoH }}"{% endif %} loading="lazy">{% endif %}
           <h3>{{ person.data.h1 }}</h3>
-          <p>{{ person.data.rola }}</p>
+          <p class="lawyer-card__role">{{ person.data.rola }}</p>
         </a>
       </article>
       {% endfor %}
@@ -127,7 +127,7 @@
 <section class="band form-section" aria-label="Kontakt">
   <div class="wrap">
     <h2>Kontakt</h2>
-    <p>Napisz do nas. Powierz swoją sprawę ekspertom.</p>
+    <p class="section-lead">Napisz do nas. Powierz swoją sprawę ekspertom.</p>
     <div class="rail-layout">
       {% include "partials/form-contact.njk" %}
       {% include "partials/kancelaria-card.njk" %}

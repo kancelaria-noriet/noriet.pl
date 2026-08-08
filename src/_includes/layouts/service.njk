@@ -78,7 +78,7 @@ crumbParent:
             <p class="lawyer-card__spec">{{ lawyer.data.specjalizacja }}</p>
           </div>
         </div>
-        <p><a href="{{ lawyer.url }}">Pełny profil i doświadczenie →</a></p>
+        <p><a class="more" href="{{ lawyer.url }}">Pełny profil i doświadczenie →</a></p>
       </div>
       {% endif %}
       {% endif %}
@@ -91,9 +91,10 @@ crumbParent:
       <div class="rail-card upsell-card">
         <h2 class="upsell-card__title">{{ upsell.data.h1 }}</h2>
         {% if upsell.data.subtitle %}<p class="product__subtitle">{{ upsell.data.subtitle }}</p>{% endif %}
-        <p class="upsell-card__price">{{ upsell.data.price }}</p>
+        {% set pp = upsell.data.price | priceParts %}
+        <p class="upsell-card__price">{{ pp.num }}{% if pp.unit %} <small>{{ pp.unit }}</small>{% endif %}</p>
         <p><a class="btn btn--call btn--block" href="{{ upsell.url }}">Kup usługę</a></p>
-        <p><a href="/konsultacje/">Wszystkie konsultacje i ceny →</a></p>
+        <p><a class="more" href="/konsultacje/">Wszystkie konsultacje i ceny →</a></p>
       </div>
       {% endif %}
     </aside>
@@ -103,8 +104,8 @@ crumbParent:
 <section class="band form-section" aria-labelledby="sprawa-title">
   <div class="wrap">
     <h2 id="sprawa-title">Opisz swoją sprawę</h2>
-    <p>Odpowiadamy w ciągu jednego dnia roboczego. Jeśli sprawa jest pilna —
-    zadzwoń pod <a href="{{ site.phoneHref }}">{{ site.phone }}</a>.</p>
+    <p class="section-lead">Odpowiadamy w ciągu jednego dnia roboczego. Jeśli
+    sprawa jest pilna — zadzwoń pod <a href="{{ site.phoneHref }}">{{ site.phone }}</a>.</p>
     <div class="rail-layout">
       {% include "partials/form-contact.njk" %}
       {% include "partials/kancelaria-card.njk" %}

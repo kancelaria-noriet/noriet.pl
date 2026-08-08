@@ -55,6 +55,12 @@ export default function (eleventyConfig) {
     return SERIES.includes(p) ? p : "";
   });
 
+  // "400 zł" / "738 PLN brutto" → number + unit (deck sets the unit small).
+  eleventyConfig.addFilter("priceParts", (s) => {
+    const m = String(s || "").match(/^([\d\s.,]+)\s*(.*)$/);
+    return m ? { num: m[1].trim(), unit: m[2] } : { num: s, unit: "" };
+  });
+
   eleventyConfig.addFilter("splitList", (s) =>
     (s || "").split(",").map((x) => x.trim()).filter(Boolean));
 
