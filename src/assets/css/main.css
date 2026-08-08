@@ -203,8 +203,7 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
 .offer-col h3 {
   font-family: var(--sans); font-size: var(--t-xs); font-weight: 700;
   letter-spacing: .14em; text-transform: uppercase;
-  margin-top: 0; padding-bottom: var(--s2);
-  border-bottom: 2px solid var(--brand-line);
+  margin-top: 0; margin-bottom: var(--s3);
 }
 .offer-col h3::before {
   content: ""; display: inline-block; width: 8px; height: 8px;
