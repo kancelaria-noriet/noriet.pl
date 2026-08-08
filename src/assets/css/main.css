@@ -310,7 +310,7 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
 
 /* ---------- trust strip ---------- */
 .trust { background: var(--navy-2); color: var(--on-dark-2); }
-.trust__row { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s7); padding-block: var(--s4); }
+.trust__row { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s2) var(--s7); padding-block: var(--s4); }
 .trust__item { margin: 0; font-size: var(--t-sm); }
 .trust__item strong { font-family: var(--serif); font-size: var(--t-xl); font-weight: 600; line-height: 1; color: var(--on-dark); margin-right: var(--s2); }
 
