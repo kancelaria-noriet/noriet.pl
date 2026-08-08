@@ -8,10 +8,12 @@
   "h1": "Konsultacje"
 }
 ---
-<div class="wrap">
-  {% include "partials/breadcrumb.njk" %}
+<div class="crumb-band">
+  <div class="wrap">
+    {% include "partials/breadcrumb.njk" %}
+  </div>
 </div>
-<header class="service-hero">
+<header class="service-hero service-hero--center">
   <div class="wrap">
     <p class="kicker">Płatność online · termin potwierdzamy mailem</p>
     <h1>Konsultacje</h1>
@@ -45,8 +47,10 @@
 {% endfor %}
 <section class="cta-band cta-band--home" aria-label="Pomoc w wyborze">
   <div class="wrap">
-    <h2>Nie wiesz, którą konsultację wybrać?</h2>
-    <p>Zadzwoń — pomożemy dobrać zakres do sprawy, zanim za cokolwiek zapłacisz.</p>
+    <div>
+      <h2>Nie wiesz, którą konsultację wybrać?</h2>
+      <p>Zadzwoń — pomożemy dobrać zakres do sprawy, zanim za cokolwiek zapłacisz.</p>
+    </div>
     <p class="cta-band__actions">
       <a class="btn btn--call" href="{{ site.phoneHref }}">{{ site.phone }}</a>
       <a class="btn btn--ghost" href="/kontakt/">Napisz do nas</a>

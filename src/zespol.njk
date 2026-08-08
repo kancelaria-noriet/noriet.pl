@@ -8,10 +8,12 @@
   "h1": "Nasz zespół"
 }
 ---
-<div class="wrap">
-  {% include "partials/breadcrumb.njk" %}
+<div class="crumb-band">
+  <div class="wrap">
+    {% include "partials/breadcrumb.njk" %}
+  </div>
 </div>
-<header class="service-hero">
+<header class="service-hero service-hero--center">
   <div class="wrap">
     <p class="kicker">Adwokaci, radcowie prawni, aplikanci, mediatorzy</p>
     <h1>Nasz zespół</h1>
@@ -41,8 +43,10 @@
 </div>
 <section class="cta-band cta-band--home" aria-label="Pomoc w wyborze prawnika">
   <div class="wrap">
-    <h2>Nie wiesz, do kogo się zwrócić?</h2>
-    <p>Zadzwoń — dobierzemy prawnika do rodzaju sprawy i umówimy termin konsultacji.</p>
+    <div>
+      <h2>Nie wiesz, do kogo się zwrócić?</h2>
+      <p>Zadzwoń — dobierzemy prawnika do rodzaju sprawy i umówimy termin konsultacji.</p>
+    </div>
     <p class="cta-band__actions">
       <a class="btn btn--call" href="{{ site.phoneHref }}">{{ site.phone }}</a>
       <a class="btn btn--ghost" href="/konsultacje/">Konsultacje</a>

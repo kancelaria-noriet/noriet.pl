@@ -8,10 +8,12 @@
   "h1": "Kontakt"
 }
 ---
-<div class="wrap">
-  {% include "partials/breadcrumb.njk" %}
+<div class="crumb-band">
+  <div class="wrap">
+    {% include "partials/breadcrumb.njk" %}
+  </div>
 </div>
-<header class="service-hero">
+<header class="service-hero service-hero--center">
   <div class="wrap">
     <h1>Kontakt - Kancelaria Prawna Noriet - Zagajewska i Wspólnicy S.K.A.</h1>
     <p class="service-hero__lead">Skontaktuj się z nami! Wspólnie znajdziemy
@@ -76,7 +78,7 @@
       {% include "partials/form-contact.njk" %}
     </div>
     <aside class="rail">
-      <div class="rail-card">
+      <div class="rail-card rail-card--tint">
         <h2 class="rail-card__title">Dojazd</h2>
         <p>{{ site.address.street }}, Praga-Południe. Dojazd tramwajem
         i autobusem do Ronda Wiatraczna.</p>

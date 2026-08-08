@@ -23,6 +23,7 @@
     </nav>
     {% endfor %}
   </div>
+  <div class="site-footer__bottombar">
   <div class="wrap site-footer__bottom">
     <p class="site-footer__registry">© {% year %} {{ site.name }} ·
       KRS {{ site.registry.krs }} · NIP {{ site.registry.nip }} ·
@@ -32,5 +33,6 @@
       <li><a href="{{ item.url }}">{{ item.label }}</a></li>
       {% endfor %}
     </ul>
+  </div>
   </div>
 </footer>

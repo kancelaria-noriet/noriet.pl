@@ -4,8 +4,10 @@ crumbParent:
   label: Zespół
   url: /zespol/
 ---
-<div class="wrap">
-  {% include "partials/breadcrumb.njk" %}
+<div class="crumb-band">
+  <div class="wrap">
+    {% include "partials/breadcrumb.njk" %}
+  </div>
 </div>
 {% set bits = kontakt | contactBits %}
 <header class="bio-hero">
