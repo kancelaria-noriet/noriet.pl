@@ -168,8 +168,12 @@ def main():
                 for junk in desc.select(".date, .readMore, .clear"):
                     junk.decompose()
                 excerpt = desc.get_text(" ", strip=True)
-                excerpt = re.sub(r"\s*czytaj więcej\s*$", "", excerpt)
+                excerpt = excerpt.replace("czytaj więcej", " ")
+                excerpt = re.sub(r"\[(\.\.\.|…)\]", " ", excerpt)
+                excerpt = re.sub(r"\s+", " ", excerpt).strip()
                 excerpt = re.sub(r"\s*\d{1,2}\s+\w+,\s*\d{4}\s*$", "", excerpt)
+                if len(excerpt) > 180:
+                    excerpt = excerpt[:180].rsplit(" ", 1)[0].rstrip(" ,;:.") + "…"
             related.append({
                 "url": href,
                 "title": (h3 or a).get_text(" ", strip=True),
