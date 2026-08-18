@@ -134,10 +134,28 @@ def main():
             print(f"MISSING source for {slug}", file=sys.stderr)
             continue
         soup = BeautifulSoup(rf.read_bytes(), "lxml")
-        container = soup.select_one("div.textTeamContainer")
+        # The old theme's broken markup nests the CTA block, the "Sprawdź
+        # również" related posts and the whole FOOTER inside
+        # div.textTeamContainer. Only its first child (div.textTeam) is the
+        # actual page body — everything after it is boilerplate.
+        container = soup.select_one("div.textTeamContainer > div.textTeam") \
+            or soup.select_one("div.textTeamContainer")
         if container is None:
             print(f"MISSING container for {slug}", file=sys.stderr)
             continue
+        # Flatten the FAQ accordion (wnt-faq-*) into headings + answer copy,
+        # styled like every other body section.
+        for item in container.select(".wnt-faq-item"):
+            q = item.select_one(".wnt-faq-question")
+            a = item.select_one(".wnt-faq-answer-container")
+            if q is not None:
+                h3 = soup.new_tag("h3")
+                h3.string = q.get_text(" ", strip=True).strip(" +−–-")
+                item.insert_before(h3)
+            if a is not None:
+                for child in list(a.children):
+                    item.insert_before(child)
+            item.decompose()
         h1 = (json.loads(iv["h1"]) if iv["h1"].startswith("[")
               else [iv["h1"]]) if iv.get("h1") else []
         fm = {
