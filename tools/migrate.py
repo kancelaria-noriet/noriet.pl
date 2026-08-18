@@ -159,13 +159,22 @@ def main():
                 continue
             seen_rel.add(href)
             h3 = it.find("h3")
-            desc = it.select_one(".desc")
             date = it.select_one(".date")
+            date_txt = date.get_text(" ", strip=True) if date else ""
+            desc = it.select_one(".desc")
+            excerpt = ""
+            if desc is not None:
+                # the date and read-more link sit INSIDE .desc on some pages
+                for junk in desc.select(".date, .readMore, .clear"):
+                    junk.decompose()
+                excerpt = desc.get_text(" ", strip=True)
+                excerpt = re.sub(r"\s*czytaj więcej\s*$", "", excerpt)
+                excerpt = re.sub(r"\s*\d{1,2}\s+\w+,\s*\d{4}\s*$", "", excerpt)
             related.append({
                 "url": href,
                 "title": (h3 or a).get_text(" ", strip=True),
-                "excerpt": desc.get_text(" ", strip=True) if desc else "",
-                "date": date.get_text(" ", strip=True) if date else "",
+                "excerpt": excerpt,
+                "date": date_txt,
             })
         container = outer.select_one("div.textTeam") or outer
         # Flatten the FAQ accordion (wnt-faq-*) into h2 + answer copy,
