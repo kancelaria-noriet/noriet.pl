@@ -22,7 +22,7 @@
   </div>
 </header>
 {% for group in konsultacjeGroups.groups %}
-<section {% if group.band %}class="band"{% endif %} aria-labelledby="kg-{{ loop.index }}">
+<section class="price-section{% if group.band %} band{% endif %}" aria-labelledby="kg-{{ loop.index }}">
   <div class="wrap">
     <h2 id="kg-{{ loop.index }}">{{ group.title }}</h2>
     <div class="price-grid">
