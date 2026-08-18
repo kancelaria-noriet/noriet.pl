@@ -138,20 +138,30 @@ def main():
         # również" related posts and the whole FOOTER inside
         # div.textTeamContainer. Only its first child (div.textTeam) is the
         # actual page body — everything after it is boilerplate.
-        container = soup.select_one("div.textTeamContainer > div.textTeam") \
-            or soup.select_one("div.textTeamContainer")
-        if container is None:
+        outer = soup.select_one("div.textTeamContainer")
+        if outer is None:
             print(f"MISSING container for {slug}", file=sys.stderr)
             continue
-        # Flatten the FAQ accordion (wnt-faq-*) into headings + answer copy,
+        # The old "Sprawdź również" block: curated internal links (posts and
+        # services). Preserve them as front matter; the template renders them.
+        related = []
+        for a in outer.select(".gt_singleBlogItem a[href]"):
+            href = a["href"]
+            for host in ("https://noriet.pl", "http://noriet.pl"):
+                if href.startswith(host):
+                    href = href[len(host):]
+            if href.startswith("/") and href not in related:
+                related.append(href)
+        container = outer.select_one("div.textTeam") or outer
+        # Flatten the FAQ accordion (wnt-faq-*) into h2 + answer copy,
         # styled like every other body section.
         for item in container.select(".wnt-faq-item"):
             q = item.select_one(".wnt-faq-question")
             a = item.select_one(".wnt-faq-answer-container")
             if q is not None:
-                h3 = soup.new_tag("h3")
-                h3.string = q.get_text(" ", strip=True).strip(" +−–-")
-                item.insert_before(h3)
+                h2 = soup.new_tag("h2")
+                h2.string = q.get_text(" ", strip=True).strip(" +−–-")
+                item.insert_before(h2)
             if a is not None:
                 for child in list(a.children):
                     item.insert_before(child)
@@ -164,6 +174,7 @@ def main():
             "titleTag": iv["title"],
             "description": iv["meta_description"],
             "h1": (h1[0] if h1 else iv["title"]),
+            "relatedPosts": related,
             "migratedFrom": url,
             "migratedAt": "2026-08-07",
         }

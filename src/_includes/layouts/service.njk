@@ -101,6 +101,24 @@ crumbParent:
   </div>
 </div>
 
+{% if relatedPosts and relatedPosts.length %}
+<section class="band" aria-labelledby="sprawdz-title">
+  <div class="wrap">
+    <h2 id="sprawdz-title">Sprawdź również</h2>
+    <div class="list-grid">
+      {% for rel in collections.all | byUrls(relatedPosts) | excludeUrl(page.url) %}
+      <article class="list-card">
+        <h3><a href="{{ rel.url }}">{{ rel.data.h1 or rel.data.title }}</a></h3>
+        {% if rel.data.displayDate %}<time datetime="{{ rel.data.isoDate }}">{{ rel.data.displayDate }}</time>{% endif %}
+        {% if rel.data.excerpt %}<p>{{ rel.data.excerpt }}</p>{% endif %}
+        <p><a class="more" href="{{ rel.url }}">czytaj więcej →</a></p>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
 <section class="form-section form-section--rule" aria-labelledby="sprawa-title">
   <div class="wrap">
     <h2 id="sprawa-title">Opisz swoją sprawę</h2>

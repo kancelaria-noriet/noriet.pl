@@ -42,6 +42,10 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("excludeUrl", (arr, url) =>
     (arr || []).filter((p) => p.url !== url));
 
+  // Resolve a front-matter URL list to pages, preserving order.
+  eleventyConfig.addFilter("byUrls", (arr, urls) =>
+    (urls || []).map((u) => (arr || []).find((p) => p.url === u)).filter(Boolean));
+
   eleventyConfig.addFilter("readingTime", (content) => {
     const words = String(content || "").replace(/<[^>]+>/g, " ").split(/\s+/).filter(Boolean).length;
     return `ok. ${Math.max(1, Math.round(words / 220))} min czytania`;
