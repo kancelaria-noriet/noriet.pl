@@ -106,13 +106,15 @@ crumbParent:
   <div class="wrap">
     <h2 id="sprawdz-title">Sprawdź również</h2>
     <div class="list-grid">
-      {% for rel in collections.all | byUrls(relatedPosts) | excludeUrl(page.url) %}
+      {% for rel in relatedPosts %}
+      {% if rel.url != page.url %}
       <article class="list-card">
-        <h3><a href="{{ rel.url }}">{{ rel.data.h1 or rel.data.title }}</a></h3>
-        {% if rel.data.displayDate %}<time datetime="{{ rel.data.isoDate }}">{{ rel.data.displayDate }}</time>{% endif %}
-        {% if rel.data.excerpt %}<p>{{ rel.data.excerpt }}</p>{% endif %}
+        <h3><a href="{{ rel.url }}">{{ rel.title }}</a></h3>
+        {% if rel.date %}<time>{{ rel.date }}</time>{% endif %}
+        {% if rel.excerpt %}<p>{{ rel.excerpt }}</p>{% endif %}
         <p><a class="more" href="{{ rel.url }}">czytaj więcej →</a></p>
       </article>
+      {% endif %}
       {% endfor %}
     </div>
   </div>

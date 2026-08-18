@@ -143,15 +143,30 @@ def main():
             print(f"MISSING container for {slug}", file=sys.stderr)
             continue
         # The old "Sprawdź również" block: curated internal links (posts and
-        # services). Preserve them as front matter; the template renders them.
-        related = []
-        for a in outer.select(".gt_singleBlogItem a[href]"):
+        # services). Preserve each item's own title/excerpt/date from the
+        # widget — the targets include service pages with no excerpt of
+        # their own.
+        related, seen_rel = [], set()
+        for it in outer.select(".gt_singleBlogItem"):
+            a = it.find("a", href=True)
+            if a is None:
+                continue
             href = a["href"]
             for host in ("https://noriet.pl", "http://noriet.pl"):
                 if href.startswith(host):
                     href = href[len(host):]
-            if href.startswith("/") and href not in related:
-                related.append(href)
+            if not href.startswith("/") or href in seen_rel:
+                continue
+            seen_rel.add(href)
+            h3 = it.find("h3")
+            desc = it.select_one(".desc")
+            date = it.select_one(".date")
+            related.append({
+                "url": href,
+                "title": (h3 or a).get_text(" ", strip=True),
+                "excerpt": desc.get_text(" ", strip=True) if desc else "",
+                "date": date.get_text(" ", strip=True) if date else "",
+            })
         container = outer.select_one("div.textTeam") or outer
         # Flatten the FAQ accordion (wnt-faq-*) into h2 + answer copy,
         # styled like every other body section.
