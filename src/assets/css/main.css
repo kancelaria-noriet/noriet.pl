@@ -252,7 +252,7 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
 .cta-band h2 { margin-top: 0; }
 .cta-band p { color: var(--ink-2); }
 .cta-band__actions { display: flex; flex-wrap: wrap; gap: var(--s3); }
-.cta-band--home { max-width: none; background: var(--paper-2); border: 0; border-radius: 0; margin-block: 0; padding-block: var(--s7); }
+.cta-band--home { max-width: none; background: var(--paper-2); border: 0; border-top: 1px solid var(--line); border-radius: 0; margin-block: 0; padding-block: var(--s7); }
 .cta-band--home .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--s5); }
 .cta-band--home h2 { margin: 0 0 var(--s2); }
 .cta-band--home p { margin: 0; }
@@ -558,9 +558,9 @@ html { scroll-behavior: smooth; }
 .team-strip .lawyer-card__spec { margin: var(--s1) 0 0; line-height: 1.5; }
 
 /* zespół index: detailed cards */
+.team-index { padding-block: var(--s6) var(--s8); }
 .team-card--detail { text-align: left; }
 .team-card--detail img { width: 100%; object-fit: cover; }
-.team-card--detail .lawyer-card__spec { padding-bottom: var(--s3); border-bottom: 1px solid var(--line); }
 .team-card--detail dl { display: grid; grid-template-columns: auto 1fr; gap: var(--s1) var(--s3); margin: var(--s3) 0 0; padding-top: var(--s3); border-top: 1px solid var(--line); font-size: var(--t-sm); }
 .team-card--detail dt { color: var(--ink-3); white-space: nowrap; }
 .team-card--detail dd { overflow-wrap: anywhere; }
