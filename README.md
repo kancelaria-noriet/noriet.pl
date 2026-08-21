@@ -78,12 +78,18 @@ node tools/favicons.mjs          # writes src/static/, asserts the safe zone
 node tools/favicons-review.mjs   # writes ../qa/favicons.html — look at it
 ```
 
-Two versions of the mark are in use. Tab icons (`favicon.svg`, `favicon.ico`,
-the Safari mask) carry a simplified glyph — the two outer bars plus the
-diagonal — because the four thin bars of the full mark merge into a smudge at
-16 px. App icons carry the full five-part mark on the navy tile, because iOS
-paints transparency black. `tools/favicons.mjs` fails if a maskable icon
-leaves the 80% safe circle.
+Every icon carries the full five-part mark. Tab icons (`favicon.svg`,
+`favicon.ico`, the Safari mask) use a copy snapped to a 16-unit grid: the mark
+was drawn on a grid, so scaling it to a 16-unit box puts every bar edge within
+0.16 px of a whole pixel, and rounding those x-coordinates gives bars of
+exactly 2 px with 2 px gaps — 4 px at 32, 6 px at 48. Without that snap the
+bars fall on fractional boundaries, each spreads over three columns of partial
+alpha, and at 16 px the four bars merge into a smudge. Only the diagonal
+antialiases, which is correct.
+
+App icons carry the unsnapped mark on the navy tile, because iOS paints
+transparency black and cyan on navy measures 5.1:1 against 3.3:1 on white.
+`tools/favicons.mjs` fails if a maskable icon leaves the 80% safe circle.
 
 ## State (2026-08-07): content-complete skeleton
 
