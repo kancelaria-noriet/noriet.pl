@@ -19,7 +19,7 @@ themselves. Override binding with `NORIET_HOST`/`NORIET_PORT`. Set
 
 ```
 eleventy.config.js       input src/, output _site/; .html content not template-parsed
-src/_data/site.json      NAP (phone = PLACEHOLDER until D3), base URL
+src/_data/site.json      NAP (canonical phone, settled by D3), base URL
 src/_data/nav.json       crew-approved taxonomy (header, 4 area cards,
                          oferta grid, footer columns, bottom bar)
 src/_data/stubs.json     not-yet-migrated URLs rendered as marked stubs (noindex)
@@ -35,8 +35,13 @@ src/content/             ALL migrated content (GENERATED — see below):
                          obligacje.html (noindex archive), akcjonariusze.html
 src/assets/uploads/      images referenced by migrated content (GENERATED)
 src/assets/fonts/        self-hosted Petrona + Source Sans 3 (latin + latin-ext)
+src/static/              favicons + web manifest (GENERATED), copied to the
+                         site root — browsers and iOS probe /favicon.ico and
+                         /apple-touch-icon.png directly
 tools/migrate.py         service pages; tools/migrate_all.py — everything else;
                          run with ../export/.venv/bin/python
+tools/favicons.mjs       build the icon set from the logo partial into src/static/
+tools/favicons-review.mjs  visual review sheet for the icons → ../qa/favicons.html
 tools/shot.mjs           screenshot any URL at deck widths (fonts/overflow/h1 report)
 tools/ref-sections.mjs   clip screenshots around text landmarks (deck references)
 tools/gallery.mjs        QA contact sheet → /qa/ (dev-only; not in the repo)
@@ -60,6 +65,25 @@ Files under `src/content/` and `src/assets/uploads/` are **generated** by
 `tools/migrate.py` from the capture in `../export/` — edit the migrator, not
 the output (content freeze until cutover; see `../PLAN.md`). Everything else
 is authored by hand.
+
+`src/static/` is **generated** by `tools/favicons.mjs` from the mark in
+`src/_includes/partials/logo.njk`, so the icons cannot drift from the header
+logo. The files stay committed, because the Cloudflare build has no browser
+and cannot regenerate them. Regenerate after any logo change:
+
+```sh
+eval "$($HOME/.local/share/fnm/fnm env)"
+export PLAYWRIGHT_BROWSERS_PATH=/opt/ms-playwright   # shared browsers
+node tools/favicons.mjs          # writes src/static/, asserts the safe zone
+node tools/favicons-review.mjs   # writes ../qa/favicons.html — look at it
+```
+
+Two versions of the mark are in use. Tab icons (`favicon.svg`, `favicon.ico`,
+the Safari mask) carry a simplified glyph — the two outer bars plus the
+diagonal — because the four thin bars of the full mark merge into a smudge at
+16 px. App icons carry the full five-part mark on the navy tile, because iOS
+paints transparency black. `tools/favicons.mjs` fails if a maskable icon
+leaves the 80% safe circle.
 
 ## State (2026-08-07): content-complete skeleton
 
