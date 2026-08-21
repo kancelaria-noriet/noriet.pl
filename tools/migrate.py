@@ -91,6 +91,10 @@ def localise_upload(src_url, copied):
 def clean_fragment(container, copied):
     for tag in container(["script", "style", "iframe", "noscript", "form"]):
         tag.decompose()
+    # The old theme has unbalanced markup, so the page footer parses as a child
+    # of the content container. Drop it before anything else reads the fragment.
+    for chrome in container.select("div.footer, div.footerContainer"):
+        chrome.decompose()
     h1 = container.find("h1")
     if h1:
         h1.decompose()

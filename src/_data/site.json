@@ -3,9 +3,9 @@
   "shortName": "Noriet",
   "url": "https://noriet.pl",
   "lang": "pl",
-  "phone": "+48 22 870 68 40",
-  "phoneHref": "tel:+48228706840",
-  "phoneNote": "PLACEHOLDER until D3 — the old header used 68 40, but the old kontakt page lists 65 47 / 66 46 + mobile; standardise before launch",
+  "phone": "+48 22 870 66 46",
+  "phoneHref": "tel:+48228706646",
+  "phoneNote": "Canonical number, settled by D3 on 2026-08-21. It is the only firm number on the site, in JSON-LD, in GBP and in every citation. Keep 22 870 68 40 answered — it stays on the old indexed pages and in old citations — but never publish it again.",
   "email": "kancelaria@noriet.pl",
   "address": {
     "street": "ul. Grochowska 217/15",
@@ -13,9 +13,7 @@
     "city": "Warszawa"
   },
   "kontaktPhones": [
-    { "label": "+48 22 870 65 47", "href": "tel:+48228706547" },
-    { "label": "+48 22 870 66 46", "href": "tel:+48228706646" },
-    { "label": "+48 600 484 320", "href": "tel:+48600484320" }
+    { "label": "+48 22 870 66 46", "href": "tel:+48228706646" }
   ],
   "registry": { "krs": "0000344890", "nip": "1132785145", "regon": "142186428" },
   "trust": [
