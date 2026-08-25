@@ -1,0 +1,19 @@
+{# Blog taxonomy rail card. Set `activeCat` before the include to mark the
+   current category; the count comes from the live collection, never from a
+   number stored in the data file. #}
+<div class="rail-card">
+  <h2 class="rail-card__title">Kategorie</h2>
+  <ul class="cat-list">
+    {% for cat in postCategories.categories %}
+    <li>
+      {% if cat.slug == activeCat %}
+      <span class="cat-list__current" aria-current="true">{{ cat.label }}</span>
+      {% else %}
+      <a href="/blog/kategoria/{{ cat.slug }}/">{{ cat.label }}</a>
+      {% endif %}
+      <span class="cat-list__count">{{ collections.post | inCategory(postCategories.bySlug, cat.slug) | length }}</span>
+    </li>
+    {% endfor %}
+  </ul>
+  <p><a class="more" href="/blog/wszystkie-artykuly/">Spis wszystkich {{ collections.post | length }} artykułów →</a></p>
+</div>

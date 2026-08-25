@@ -1,0 +1,293 @@
+{
+  "_comment": "Blog taxonomy. HAND-MAINTAINED: tools/migrate_all.py regenerates src/content/posts/ but never touches this file. `categories` is display order (it mirrors the offer taxonomy in nav.json, not post counts). `bySlug` maps a post fileSlug to exactly one category slug — every post has one, no post has two. Add a new post's slug here or it will only be reachable through pagination.",
+  "categories": [
+    {
+      "slug": "rozwod-i-separacja",
+      "label": "Rozwód i separacja",
+      "kicker": "Kategoria",
+      "titleTag": "Rozwód i separacja - artykuły | Noriet",
+      "description": "Pozew rozwodowy, rozwód bez orzekania o winie, rozprawa online i rozwód bez zgody małżonka. Artykuły adwokatów Kancelarii Noriet.",
+      "intro": [
+        "Te artykuły prowadzą przez sprawę rozwodową w kolejności, w jakiej przechodzi przez nią klient. Wyjaśniamy, jak napisać i złożyć pozew, ile trwa rozwód bez orzekania o winie i o co pyta sędzia na rozprawie.",
+        "Opisujemy również, jak uzyskać rozwód, gdy druga strona nie wyraża na niego zgody, oraz jak wygląda rozprawa rozwodowa prowadzona zdalnie. Będziemy tu opisywać separację, winę w rozkładzie pożycia oraz rozwód z elementem zagranicznym."
+      ],
+      "service": {
+        "label": "Sprawy rozwodowe",
+        "url": "/sprawy-rozwodowe-warszawa/"
+      }
+    },
+    {
+      "slug": "alimenty-i-dzieci",
+      "label": "Alimenty, władza rodzicielska i dzieci",
+      "kicker": "Kategoria",
+      "titleTag": "Alimenty i władza rodzicielska | Noriet",
+      "description": "Wysokość alimentów, egzekucja od niesolidnego dłużnika, ograniczenie i pozbawienie władzy rodzicielskiej, wyjazd z dzieckiem za granicę.",
+      "intro": [
+        "W sprawach rodzinnych sąd kieruje się dobrem dziecka i to ono przesądza o wyniku. Ta zasada tłumaczy większość rozstrzygnięć opisanych w tej kategorii: wysokość alimentów, zakres władzy rodzicielskiej oraz to, kiedy sąd wysłucha samego małoletniego.",
+        "Odpowiadamy na pytania, które wracają w każdej sprawie. Ile wynoszą alimenty w podobnych sytuacjach i jak wyegzekwować je od rodzica, który nie płaci. Czy do wyjazdu z dzieckiem za granicę potrzebna jest zgoda drugiego rodzica i czym różni się ograniczenie władzy rodzicielskiej od jej pozbawienia. Dopiszemy tu teksty o kontaktach z dzieckiem i o opiece naprzemiennej."
+      ],
+      "service": {
+        "label": "Alimenty",
+        "url": "/alimenty/"
+      }
+    },
+    {
+      "slug": "podzial-majatku",
+      "label": "Podział majątku i majątek małżonków",
+      "kicker": "Kategoria",
+      "titleTag": "Podział majątku małżonków | Noriet",
+      "description": "Podział majątku wspólnego po rozwodzie krok po kroku, wspólne konto bankowe, udział w spółce nabyty za wspólne pieniądze.",
+      "intro": [
+        "Wyrok rozwodowy kończy małżeństwo i na tym się zatrzymuje. Majątek wspólny dzieli osobna umowa u notariusza albo osobna sprawa sądowa, i o tej drugiej drodze piszemy tutaj.",
+        "Artykuły tłumaczą, co wchodzi do majątku wspólnego, jak wycenić i podzielić poszczególne składniki oraz co zrobić ze wspólnym kontem bankowym w trakcie rozwodu. Omawiamy też sytuację, w której jeden z małżonków nabywa udział w spółce z o.o. za wspólne pieniądze. Uzupełnimy tę kategorię o intercyzę, rozliczenie nakładów z majątku osobistego oraz podział nieruchomości obciążonej kredytem."
+      ],
+      "service": {
+        "label": "Podział majątku",
+        "url": "/podzial-majatku-w-warszawie/"
+      }
+    },
+    {
+      "slug": "odszkodowania",
+      "label": "Odszkodowania i zadośćuczynienie",
+      "kicker": "Kategoria",
+      "titleTag": "Odszkodowania i zadośćuczynienie | Noriet",
+      "description": "Zadośćuczynienie po wypadku, odpowiedzialność za upadek na chodniku i wypadek w sklepie, kwoty zasądzone w naszych sprawach.",
+      "intro": [
+        "Prowadzimy sprawy o zadośćuczynienie i odszkodowanie za szkody na osobie. Artykuły w tej kategorii pokazują, kto odpowiada za wypadek i ile sąd zasądza w praktyce. Omawiamy potrącenie pieszego, upadek na nieodśnieżonym chodniku oraz wypadki na wycieczce szkolnej, na stoku i w sklepie.",
+        "Przytaczamy też wyroki, które uzyskaliśmy dla klientów, razem z kwotami i z argumentacją, która przeważyła. Kolejne teksty będą dotyczyć błędów medycznych, odpowiedzialności organizatorów wypoczynku oraz roszczeń osób najbliższych po śmierci poszkodowanego."
+      ],
+      "service": {
+        "label": "Adwokat w sprawie sądowej",
+        "url": "/adwokat-w-sprawie-sadowej/"
+      }
+    },
+    {
+      "slug": "auto-zastepcze",
+      "label": "Auto zastępcze i szkoda komunikacyjna",
+      "kicker": "Kategoria",
+      "titleTag": "Auto zastępcze i szkoda komunikacyjna | Noriet",
+      "description": "Zwrot kosztów najmu auta zastępczego z OC sprawcy: okres najmu, stawki, szkoda całkowita, części zamienne i orzecznictwo Sądu Najwyższego.",
+      "intro": [
+        "Ubezpieczyciel prawie zawsze znajdzie powód, żeby obciąć zwrot kosztów najmu auta zastępczego. Te artykuły omawiają każdy z tych powodów po kolei: zawyżoną stawkę najmu, zbyt długi okres najmu, ofertę najmu od towarzystwa, pojazd uznany za jezdny oraz brak zgłoszenia szkody policji.",
+        "Piszemy z pozycji pełnomocnika poszkodowanego i opieramy się na orzecznictwie Sądu Najwyższego, które w tych sporach rozstrzyga najwięcej. Kategoria obejmuje też pozostałe skutki kolizji: amortyzację części, zamienniki zamiast części oryginalnych, cesję wierzytelności oraz utratę prawa jazdy."
+      ],
+      "service": {
+        "label": "Adwokat w sprawie sądowej",
+        "url": "/adwokat-w-sprawie-sadowej/"
+      }
+    },
+    {
+      "slug": "kredyty-frankowe",
+      "label": "Kredyty frankowe i hipoteczne",
+      "kicker": "Kategoria",
+      "titleTag": "Kredyty frankowe i hipoteczne | Noriet",
+      "description": "Nieważność umowy frankowej, klauzule abuzywne, wyroki TSUE, ugoda z bankiem i przygotowanie sprawy frankowej. Artykuły Kancelarii Noriet.",
+      "intro": [
+        "Prowadzimy sprawy przeciwko bankom o nieważność umów kredytu waloryzowanego do franka. Artykuły w tej kategorii przeprowadzają kredytobiorcę przez całą decyzję: jak sprawdzić, czy umowa zawiera klauzule niedozwolone, jakie dokumenty zebrać przed pozwem i kiedy ugoda z bankiem daje więcej niż wyrok.",
+        "Omawiamy konkretne wzorce umów, w tym kredyt Fortis Banku z 2006 roku z kwotą wyrażoną w CHF, oraz kolejne wyroki TSUE, które przesuwają linię orzeczniczą. Kategoria obejmie też kredyty złotowe oparte o WIBOR i sytuację kredytobiorcy, który przestaje spłacać ratę."
+      ],
+      "service": null
+    },
+    {
+      "slug": "nieruchomosci",
+      "label": "Nieruchomości, najem i współwłasność",
+      "kicker": "Kategoria",
+      "titleTag": "Nieruchomości, najem i współwłasność | Noriet",
+      "description": "Wady mieszkania od dewelopera, księga wieczysta i hipoteka, zniesienie współwłasności, spór ze wspólnotą mieszkaniową i najem lokalu.",
+      "intro": [
+        "Większość ryzyk przy zakupie nieruchomości daje się wychwycić przed podpisaniem umowy. Artykuły w tej kategorii pokazują, czego szukać w księdze wieczystej, co zrobić z wadami lokalu kupionego od dewelopera i jak zabezpieczyć zakup działki objętej ustawą o obrocie ziemią rolną.",
+        "Druga część tekstów dotyczy sytuacji, w których nieruchomość ma więcej niż jednego właściciela albo lokatora: zniesienia współwłasności, rozliczenia nakładów, sporu ze wspólnotą mieszkaniową oraz najmu. Kategoria będzie rosła razem z naszą praktyką w sprawach o eksmisję i o roszczenia przeciwko deweloperom."
+      ],
+      "service": {
+        "label": "Nieruchomości",
+        "url": "/nieruchomosci/"
+      }
+    },
+    {
+      "slug": "postepowanie-sadowe",
+      "label": "Sąd i procedura cywilna",
+      "kicker": "Kategoria",
+      "titleTag": "Sąd i procedura cywilna - artykuły | Noriet",
+      "description": "Reforma Kodeksu postępowania cywilnego, doręczenia komornicze, rozprawy zdalne i wymogi formalne pozwu. Obserwacje z sal sądowych.",
+      "intro": [
+        "O tym, kiedy zapadnie wyrok i czy w ogóle zapadnie, decyduje procedura. Ta kategoria zbiera nasze obserwacje z sal sądowych: co zmieniła reforma Kodeksu postępowania cywilnego z 2019 roku, jak działa doręczenie przez komornika i dlaczego zażalenie potrafi okazać się niedopuszczalne.",
+        "Opisujemy również rozprawy zdalne, które weszły do sądów razem z pandemią i już w nich zostały. Nowe teksty piszemy przy każdej nowelizacji procedury oraz wtedy, gdy w prowadzonej sprawie napotykamy przepis działający inaczej, niż zakładał ustawodawca."
+      ],
+      "service": {
+        "label": "Adwokat w sprawie sądowej",
+        "url": "/adwokat-w-sprawie-sadowej/"
+      }
+    },
+    {
+      "slug": "obligacje",
+      "label": "Obligacje i administrator zabezpieczeń",
+      "kicker": "Kategoria",
+      "titleTag": "Obligacje i administrator zabezpieczeń | Noriet",
+      "description": "Obowiązki administratora hipoteki i zastawu, samodzielne dochodzenie roszczeń przez obligatariusza, emisja obligacji i ryzyko inwestycji.",
+      "intro": [
+        "Kancelaria pełni funkcję administratora hipoteki i administratora zastawu, a także reprezentuje obligatariuszy, którym emitent nie wykupił obligacji. Artykuły w tej kategorii opisują tę pracę od środka: kto odpowiada za co przy emisji, czego obligatariusz może żądać od administratora zabezpieczeń i co zrobić, gdy administrator nie robi nic.",
+        "Opisujemy też własne sprawy sądowe, w tym drogę od referendarza do Sądu Najwyższego w sporze o samodzielne dochodzenie roszczeń z hipoteki. Dodajemy nowe teksty, gdy zmienia się ustawa o obligacjach, gdy zapada istotne orzeczenie albo gdy w prowadzonej sprawie pojawia się problem, którego nie opisuje żaden komentarz."
+      ],
+      "service": {
+        "label": "Obligacje",
+        "url": "/obligacje/"
+      }
+    },
+    {
+      "slug": "firma-i-przedsiebiorca",
+      "label": "Firma i przedsiębiorca",
+      "kicker": "Kategoria",
+      "titleTag": "Firma i przedsiębiorca - artykuły | Noriet",
+      "description": "Koszty działalności, RODO, wzorce umowne i UOKiK, windykacja należności od kontrahenta oraz zabezpieczenie roszczeń w transakcjach handlowych.",
+      "intro": [
+        "Obsługujemy firmy na bieżąco, więc te artykuły odpowiadają na pytania, które klienci zadają nam przez telefon. Co wolno zaliczyć do kosztów działalności, jak przygotować dokumenty na zwyczajne zgromadzenie, ile realnie grozi za naruszenie RODO i jak odzyskać pieniądze od kontrahenta, który przestał płacić.",
+        "Piszemy również o zmianach, które dotykają przedsiębiorców z dnia na dzień: o kontroli wzorców umownych przez Prezesa UOKiK i o kolejnych wersjach tarczy antykryzysowej. W przyszłości rozwiniemy tę kategorię o umowy handlowe, spory w branży IT oraz odpowiedzialność członków zarządu."
+      ],
+      "service": {
+        "label": "Obsługa firm",
+        "url": "/dla-biznesu-obsluga-firm/"
+      }
+    }
+  ],
+  "bySlug": {
+    "370-2": "odszkodowania",
+    "aborcja-po-orzeczeniu-trybunalu-konstytucyjnego": "postepowanie-sadowe",
+    "administrator-zabezpieczen-czego-moge-od-niego-oczekiwac": "obligacje",
+    "administrowanie-zabezpieczeniami-roszczen-z-obligacji-czyli-jak-trwoga-to-tylko-toga": "obligacje",
+    "agent-emisji-czy-sprosta-swojej-misji": "obligacje",
+    "alimenty-od-babci-czyli-numer-na-wnuczka-w-majestacie-kodeksu-rodzinnego": "alimenty-i-dzieci",
+    "auto-zastepcze-auta-zastepcze-i-dinozaury": "auto-zastepcze",
+    "auto-zastepcze-czesci-oryginalne-czy-zamienniki": "auto-zastepcze",
+    "auto-zastepcze-czy-musimy-skorzystac-z-oferty-auta-zastepczego-sugerowanej-przez-towarzystwo-ubezpieczen": "auto-zastepcze",
+    "auto-zastepcze-koniecznosc-zgloszenia-szkody-policji": "auto-zastepcze",
+    "auto-zastepcze-nasze-sukcesy-11-000-zl": "auto-zastepcze",
+    "auto-zastepcze-nasze-sukcesy-3-400-zl": "auto-zastepcze",
+    "auto-zastepcze-odchylenie-materialow-lakierniczych": "auto-zastepcze",
+    "auto-zastepcze-oferta-auta-zastepczego-od-towarzystwa-ubezpieczen-uchwala-sadu-najwyzszego-z-dnia-24-sierpnia-2017-roku": "auto-zastepcze",
+    "auto-zastepcze-okres-najmu-przy-szkodzie-calkowitej": "auto-zastepcze",
+    "auto-zastepcze-pojazd-jezdny-czy-niejezdny": "auto-zastepcze",
+    "auto-zastepcze-stawki-czynszu-najmu-zawyzone-srednie-rynkowe": "auto-zastepcze",
+    "auto-zastepcze-uzasadniony-okres-najmu-auta-zastepczego-w-swietle-naprawy-gotowkowej": "auto-zastepcze",
+    "auto-zastepcze-za-jaki-okres-najmu-odpowiada-sprawca": "auto-zastepcze",
+    "auto-zastepcze-zakaz-cesji-wierzytelnosci-z-czynow-niedozwolonych": "auto-zastepcze",
+    "auto-zastepcze-zasadnosc-najmu-do-dnia-wyplaty-odszkodowania-za-szkode-calkowita": "auto-zastepcze",
+    "biale_szalenstwo": "odszkodowania",
+    "brak-danych-pozwanego-co-dalej": "postepowanie-sadowe",
+    "brak-dzialania-administratora-to-sytuacja-chora-jednak-jest-szansa-na-skutecznego-doktora": "obligacje",
+    "budowa-czy-zakup-domu-na-terenach-podmiejskich-mozliwosc-uzyskania-finansowania-w-kontekscie-ustawy-o-obrocie-ziemia-rolna": "nieruchomosci",
+    "bylo-elektronicznie-a-bedzie-papierystycznie-czyli-nie-dla-sadow-era-ubera": "postepowanie-sadowe",
+    "choroba-chorsza-niz-chora-czyli-rozwazan-na-temat-instytucji-administratora-zabezpieczen-ciag-dalszy": "obligacje",
+    "ciekawy-wyrok-dlaczego-w-sadzie-nie": "postepowanie-sadowe",
+    "ciekawy-wyrok-gdy-choroba-nie-pozwala-stawic-sie-na-rozprawie-a-ty-jestes-za-granica": "postepowanie-sadowe",
+    "ciekawy-wyrok-okolicznosci-zdarzenia-wcale-nie-inne-niz-deklarowano": "odszkodowania",
+    "ciekawy-wyrok-sprzedaz-uszkodzonego-auta-w-toku-sporu-o-koszty-jego-naprawy": "odszkodowania",
+    "ciekawy-wyrok-upadek-na-oblodzonym-chodniku": "odszkodowania",
+    "ciekawy-wyrok-wnuk-wnukowi-nie-rowny-oraz-zadoscuczynienie-dla-ziecia-po-smierci-tesciowej": "odszkodowania",
+    "ciekawy-wyrok-wypadek-podczas-robienia-zakupow-spozywczych": "odszkodowania",
+    "ciekawy-wyrok-wypadek-podczas-wycieczki-szkolnej-118-000-zl": "odszkodowania",
+    "ciekawy-wyrok-zadoscuczynienie-za-smierc-psa": "odszkodowania",
+    "co-to-jest-umowa-frankowa-i-jakie-sa-jej-ryzyka": "kredyty-frankowe",
+    "cudze-uchwalicie-swego-nie-znacie": "firma-i-przedsiebiorca",
+    "czy-potrzebna-jest-zgoda-ojca-dziecka-na-wyjazd-matki-z-dzieckiem-za-granice": "alimenty-i-dzieci",
+    "czy-powinnismy-poruszac-sie-uszkodzonym-pojazdem": "auto-zastepcze",
+    "czy-warto-powierzyc-sprawe-prawna-profesjonaliscie-zalety-i-wady-takiego-podejscia": "firma-i-przedsiebiorca",
+    "czy-wszystkie-umowy-frankowe-sa-niewazne": "kredyty-frankowe",
+    "dobra-osobiste-naruszenie-miru-domowego-bez-faktycznego-wejscia-do-mieszkania": "nieruchomosci",
+    "dobra-zmiana-w-sadownictwie-czyli-troche-po-amerykansku-i-troche-drozej": "postepowanie-sadowe",
+    "dowod-osobisty-oddac-czy-nie-oddac-oto-jest-pytanie": "firma-i-przedsiebiorca",
+    "drogi-starcze-czy-pamietasz-jeszcze-postepowanie-gospodarcze": "postepowanie-sadowe",
+    "gdy-do-zera-sie-zmniejsza-naklady-milosci-do-utrzymania-stanu-wspolwlasnosci": "nieruchomosci",
+    "goraczka-przedswiatecznych-zakupow-i-zwrot-towaru": "firma-i-przedsiebiorca",
+    "hipoteka-zwykla": "nieruchomosci",
+    "i-slubuje-ci-milosc-wiernosc-i-uczciwosc-az-do-rozwodu-czyli-malzenstwo-emitenta-z-administratorem-zabezpieczen-obligacji": "obligacje",
+    "jak-madrze-nieruchomosci-wynajmowac-i-sie-nie-przejmowac": "nieruchomosci",
+    "jak-walczyc-z-niesolidnym-dluznikiem-praktyczne-porady-dla-wierzycieli": "firma-i-przedsiebiorca",
+    "jak-wypelnic-wniosek-o-rozwod": "rozwod-i-separacja",
+    "jakie-korzysci-przynosi-ugoda-pozasadowa-w-sporach-frankowych": "kredyty-frankowe",
+    "jakie-kroki-podjac-aby-uzyskac-alimenty-od-niesolidnego-dluznika": "alimenty-i-dzieci",
+    "jakie-sa-konsekwencje-braku-dzialania-administratora-hipoteki": "obligacje",
+    "koniec-zabawy-czas-na-videorozprawy": "postepowanie-sadowe",
+    "koszty-dzialalnosci-gospodarczej": "firma-i-przedsiebiorca",
+    "kredyt-hipoteczny-a-co-jezeli-przestane-go-splacac": "kredyty-frankowe",
+    "kto-umie-podatki-ten-piekny-i-gladki": "firma-i-przedsiebiorca",
+    "mediacje-zamiast-sadu-500plus": "alimenty-i-dzieci",
+    "mieszkanie-od-dewelopera-ryzyka-zwiazane-z-zakupem": "nieruchomosci",
+    "nabycie-przez-malzonka-udzialu-w-spolce-z-o-o": "podzial-majatku",
+    "nasze-sukcesy-wypadek-motocyklowy-76-000-zl": "odszkodowania",
+    "nasze-sukcesy-wypadek-samochodowy-83-000-zl": "odszkodowania",
+    "nie-bo-covid-czyli-jak-koronawirus-paralizujac-sluzbe-zdrowia-paralizuje-sadownictwo": "postepowanie-sadowe",
+    "nie-takie-rodo-puodo-straszne-jak-je-maluja": "firma-i-przedsiebiorca",
+    "niedopuszczalne-zazalenie-czyli-ustawodawcy-niedopatrzenie": "postepowanie-sadowe",
+    "nieudane-wakacje-z-powodu-opoznionego-lotu": "odszkodowania",
+    "noriet-it-teoretycznie-nie-sadzimy-dwa-razy-o-to-samo-czyli-proces-w-branzy-it": "firma-i-przedsiebiorca",
+    "noriet-radzi-czy-moja-umowa-frankowa-jest-niewazna-casus-fortis-bank-2006-i-kwota-kredytu-teoretycznie-wyrazona-w-chf": "kredyty-frankowe",
+    "noriet-radzi-czy-pozwanie-lekarza-jest-proste": "odszkodowania",
+    "noriet-radzi-dobrymi-checiami-pieklo-jest-wybrukowane-czyli-nakaz-natychmiastowego-opuszczenia-mieszkania": "nieruchomosci",
+    "noriet-radzi-jak-przygotowac-sie-do-sprawy-frankowej": "kredyty-frankowe",
+    "noriet-radzi-pozywac-czy-nie-pozywac-czy-ostatni-wyrok-tsue-dotyczacy-kredytow-frankowych-potwierdza-ze-najwyzszy-czas-dzialac": "kredyty-frankowe",
+    "noriet-reaguje-co-nowego-w-procedurze-cywilnej-ustawodawca-nam-szykuje": "postepowanie-sadowe",
+    "noriet-reaguje-otwieramy-sie-na-gruncie-wyroku-wojewodzkiego-sadu-administracyjnego-w-opolu": "postepowanie-sadowe",
+    "noriet-rodzinnie-ile-wynosza-srednie-alimenty": "alimenty-i-dzieci",
+    "noriet-rodzinnie-rozprawa-rozwodowa-w-wersji-on-line": "rozwod-i-separacja",
+    "noriet-rodzinnie-rozwod-bez-zgody-wspolmalzonka": "rozwod-i-separacja",
+    "noriet-z-sadu-czasem-lepsza-ugoda-niz-pozew-od-powoda-czyli-jak-nasz-klient-wygral-w-sadzie-15-razy-wiecej-niz-zadal": "odszkodowania",
+    "noriet-z-sadu-panie-listonoszu-ja-dzisiaj-nie-odbieram": "postepowanie-sadowe",
+    "noriet-z-sadu-ponad-400-000-zl-zadoscuczynienia-omowienie-naszej-sprawy": "odszkodowania",
+    "obligacje-co-moglo-pojsc-nie-tak": "obligacje",
+    "obligacje-czy-administrator-zabezpieczen-moze-dzialac-na-rzecz-jednego-obligatariusza": "obligacje",
+    "obligacje-czy-obligatariusz-moze-dzialac-samodzielnie": "obligacje",
+    "obligacje-emisja-obligacji-podzial-rol": "obligacje",
+    "obligacje-hipoteka-niejedno-ma-imie": "obligacje",
+    "obligacje-obligatariusz-samodzielny-czyli-skok-na-hipoteke-z-pominieciem-administratora": "obligacje",
+    "obligacje-obligatariusz-samodzielny-idzie-do-komornika-pomijajac-administratora": "obligacje",
+    "obligacje-obowiazki-administratora-zabezpieczen-po-uplywie-terminu-na-wykup-obligacji": "obligacje",
+    "obligacje-prawa-odmety-czyli-niby-hipoteka-a-jednak-alimenty": "obligacje",
+    "obligacje-przed-nabyciem-zapoznaj-sie-z-trescia-ulotki-dolaczonej-do-opakowania-badz-skonsultuj-sie": "obligacje",
+    "obligacje-rozwod-emitenta-obligacji-z-administratorem-zabezpieczen": "obligacje",
+    "obligacje-ryzyk-fizyk-czyli-jakie-ryzyko-niesie-za-soba-inwestowanie-w-obligacje": "obligacje",
+    "obligacje-uczciwa-wspolpraca-obligatariusze-sie-bogaca": "obligacje",
+    "obligacje-zabezpieczenie-wierzytelnosci-siodemkami-czyli-tytul-tytulowi-tylem": "obligacje",
+    "obligacje-zastaw-sie-a-postaw-sie-administratorowi-czyli-obowiazki-administrators-zastawu": "obligacje",
+    "obligatariuszka-zosia-samosia-nowy-rozdzial-w-samodzielnym-dochodzeniu-roszczen-z-hipoteki": "obligacje",
+    "od-referendarza-do-sadu-najwyzszego-ciag-dalszy-historii-naszych-obligatariuszy": "obligacje",
+    "odpowiedzialnosc-cywilna-za-wypadki-komunikacyjne-kiedy-mozna-dochodzic-odszkodowania": "odszkodowania",
+    "pandemia-pandemia-i-po-pandemii-praca-administratora-zabezpieczen-oraz-kancelarii-w-czasach-covid19": "obligacje",
+    "pandemia-w-prawie-adwokaci-i-social-media": "postepowanie-sadowe",
+    "podzial-majatku-po-rozwodzie-jak-to-wyglada": "podzial-majatku",
+    "podzial-majatku-wspolnego-a-rozwod-krok-po-kroku-przez-proces-podzialu-majatku-po-rozwodzie": "podzial-majatku",
+    "podzial-majatku-wspolnego-wszystko-na-ten-temat": "podzial-majatku",
+    "pojazd-w-ruchu-czy-na-postoju": "auto-zastepcze",
+    "pozbawienie-i-ograniczenie-wladzy-rodzicielskiej-co-to-oznacza-w-praktyce": "alimenty-i-dzieci",
+    "pozyczki-z-administratorem-hipoteki-czy-bez-administratora": "obligacje",
+    "pozywamy-wspolnote-mieszkaniowa-problem-adresu": "nieruchomosci",
+    "prawa-rodzicow-w-przypadku-pozbawienia-lub-ograniczenia-wladzy-rodzicielskiej": "alimenty-i-dzieci",
+    "prezes-uokik-u-wyreczy-sady-w-kontroli-wzorcow-umownych": "firma-i-przedsiebiorca",
+    "puk-puk-kto-tam-ojciec-dziecka-przeciez-nie-hipopotam": "alimenty-i-dzieci",
+    "pytania-na-rozprawie-rozwodowej": "rozwod-i-separacja",
+    "rozprawy-po-covi-nowemu": "postepowanie-sadowe",
+    "rozprawy-zdalne-coraz-bardziej-popularne": "postepowanie-sadowe",
+    "rozwod-a-wspolne-konto-bankowe-jak-postepowac-w-przypadku-rozwodu-gdy-ma-sie-wspolne-konto-z-malzonkiem": "podzial-majatku",
+    "rozwod-bez-orzekania-o-winie-ile-trwa-wszystko-co-musisz-wiedziec": "rozwod-i-separacja",
+    "rozwod-wszystko-co-musisz-wiedziec-na-ten-temat": "rozwod-i-separacja",
+    "sadownictwo-wychodzi-z-lodowki-czyli-prawo-do-sadu-w-czasach-zarazy-i-nowe-rozdanie-spotkan-w-naszej-kancelarii": "postepowanie-sadowe",
+    "sars-cov-2-streszczenie-tarczy-antykryzysowej-albo-wrocimy-na-tarczy-albo-ta-pomoc-wystarczy": "firma-i-przedsiebiorca",
+    "spadajace-szyby-czyli-artykulu-czterysta-trzydziesci-cztery-szklane-odpowiedzialnosci-bariery": "odszkodowania",
+    "streszczenie-tarczy-antykryzysowej-aktualizacja-po-poprawkach": "firma-i-przedsiebiorca",
+    "transakcje-handlowe-i-ich-wplyw-na-zabezpieczenie-sadowe": "firma-i-przedsiebiorca",
+    "ubezpieczyciel-i-oddzial-a-odpowiedzialnosc-za-szkode": "auto-zastepcze",
+    "unikniecie-odpowiedzialnosci-poprzez-powierzenie-sprawy-profesjonaliscie-czy-zawsze-dziala-i-czym-nie-jest-to-powierzenie": "odszkodowania",
+    "utrata-prawa-jazdy-czy-musisz-robic-prawo-jazdy-na-nowo": "auto-zastepcze",
+    "utrata-prawa-jazdy-czy-na-pewno-3-lata": "auto-zastepcze",
+    "wady-mieszkania-kupionego-od-dewelopera-jakie-przysluguja-nam-prawa": "nieruchomosci",
+    "wymogi-formalne-pozwu-data-wymagalnosci-roszczenia": "postepowanie-sadowe",
+    "wypadki-na-koloniach-a-odpowiedzialnosc-organizatora": "odszkodowania",
+    "wyrok-sadu-okregowego-odszkodowanie-i-zadoscuczynienie-wypadek-na-motocyklu": "odszkodowania",
+    "wyrok-zasadzajacy-zadoscuczynienie-i-odszkodowanie-wypadek-samochodowy": "odszkodowania",
+    "wysluchanie-maloletniego-gdzie-dwoch-sie-bije-tam-dziecko-korzysta-z-art-216-kpc": "alimenty-i-dzieci",
+    "zakup-mieszkania-z-hipoteka-zabezpieczajaca-roszczenia-z-obligacji-wykup-obligacji-a-dalej": "obligacje",
+    "zastaw-sie-na-ziemniakach-irga-czyli-kilka-slow-o-zastawie-rejestrowym-na-czesci-zbioru-praw-o-zmiennym-skladzie-stanowiacym-calosc-gospodarcza": "obligacje",
+    "zerowy-procent-uszczerbku-a-zadoscuczynienie": "odszkodowania",
+    "zniesienie-wspolwlasnosci-nieruchomosci-zabudowanej": "nieruchomosci",
+    "zwrot-kosztow-leczenia-prywatnego-w-swietle-orzecznictwa-sadu-najwyzszego": "odszkodowania"
+  }
+}

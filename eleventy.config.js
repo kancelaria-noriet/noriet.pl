@@ -43,6 +43,15 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
 
+  // Blog taxonomy (src/_data/postCategories.json). The map is keyed by post
+  // fileSlug, so these filters take it as an argument rather than reaching for
+  // global data, which a filter cannot see.
+  eleventyConfig.addFilter("inCategory", (posts, map, slug) =>
+    (posts || []).filter((p) => (map || {})[p.fileSlug] === slug));
+
+  eleventyConfig.addFilter("categoryOf", (cats, map, fileSlug) =>
+    (cats || []).find((c) => c.slug === (map || {})[fileSlug]) || null);
+
   eleventyConfig.addFilter("excludeUrl", (arr, url) =>
     (arr || []).filter((p) => p.url !== url));
 

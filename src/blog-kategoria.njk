@@ -1,0 +1,57 @@
+---json
+{
+  "layout": "layouts/base.njk",
+  "pagination": { "data": "postCategories.categories", "size": 1, "alias": "cat" },
+  "permalink": "/blog/kategoria/{{ cat.slug }}/",
+  "crumbParent": { "label": "Blog", "url": "/blog/" },
+  "eleventyComputed": {
+    "title": "{{ cat.label }}",
+    "h1": "{{ cat.label }}",
+    "titleTag": "{{ cat.titleTag }}",
+    "description": "{{ cat.description }}"
+  }
+}
+---
+{% set posts = collections.post | inCategory(postCategories.bySlug, cat.slug) | reverse %}
+<div class="crumb-band">
+  <div class="wrap">
+    {% include "partials/breadcrumb.njk" %}
+  </div>
+</div>
+<header class="service-hero service-hero--center">
+  <div class="wrap">
+    <p class="kicker">{{ cat.kicker }}</p>
+    <h1>{{ cat.label }}</h1>
+    <div class="service-hero__lead prose">
+      {% for para in cat.intro %}<p>{{ para }}</p>{% endfor %}
+    </div>
+  </div>
+</header>
+<div class="wrap rail-layout">
+  <div>
+    <h2 class="sr-only">Artykuły w kategorii {{ cat.label }}</h2>
+    <p class="list-count">{{ posts | length }} artykułów, od najnowszego</p>
+    <ul class="post-list">
+      {% for post in posts %}
+      <li>
+        {% if post.data.displayDate %}<time datetime="{{ post.data.isoDate }}">{{ post.data.displayDate }}</time>{% endif %}
+        <h2><a href="{{ post.url }}">{{ post.data.h1 or post.data.title }}</a></h2>
+        {% if post.data.excerpt %}<p>{{ post.data.excerpt }}</p>{% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <aside class="rail">
+    {% set activeCat = cat.slug %}
+    {% include "partials/blog-categories.njk" %}
+    <div class="rail-card rail-card--tint">
+      <h2 class="rail-card__title">Masz taką sprawę?</h2>
+      <p>Artykuł nie zastąpi porady. Omówimy Twoją sytuację i realne terminy
+      podczas konsultacji.</p>
+      <p><a class="btn btn--call btn--block" href="/konsultacje/">Konsultacje i ceny</a></p>
+      {% if cat.service %}
+      <p class="rail-card__note"><a class="more" href="{{ cat.service.url }}">{{ cat.service.label }} →</a></p>
+      {% endif %}
+    </div>
+  </aside>
+</div>

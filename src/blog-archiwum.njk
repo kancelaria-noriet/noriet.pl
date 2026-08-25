@@ -1,0 +1,54 @@
+---json
+{
+  "layout": "layouts/base.njk",
+  "title": "Wszystkie artykuły",
+  "h1": "Wszystkie artykuły",
+  "titleTag": "Spis wszystkich artykułów bloga | Noriet",
+  "description": "Pełny spis artykułów bloga Kancelarii Noriet, pogrupowany w dziesięć kategorii tematycznych. Tytuł i data publikacji każdego tekstu.",
+  "permalink": "/blog/wszystkie-artykuly/",
+  "crumbParent": { "label": "Blog", "url": "/blog/" }
+}
+---
+<div class="crumb-band">
+  <div class="wrap">
+    {% include "partials/breadcrumb.njk" %}
+  </div>
+</div>
+<header class="service-hero service-hero--center">
+  <div class="wrap">
+    <p class="kicker">Blog kancelarii</p>
+    <h1>Wszystkie artykuły</h1>
+    <div class="service-hero__lead prose">
+      <p>Każdy artykuł bloga na jednej stronie, w dziesięciu kategoriach
+      tematycznych. Bez podziału na strony, więc wyszukiwarka przeglądarki
+      (Ctrl+F) obejmie cały spis naraz.</p>
+    </div>
+  </div>
+</header>
+<div class="wrap">
+  <nav class="archive-jump" aria-label="Kategorie">
+    <ul>
+      {% for cat in postCategories.categories %}
+      <li><a href="#{{ cat.slug }}">{{ cat.label }}
+        <span class="cat-list__count">{{ collections.post | inCategory(postCategories.bySlug, cat.slug) | length }}</span></a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+  {% for cat in postCategories.categories %}
+  {% set posts = collections.post | inCategory(postCategories.bySlug, cat.slug) | reverse %}
+  <section class="archive-group">
+    <div class="section-head">
+      <h2 id="{{ cat.slug }}">{{ cat.label }}</h2>
+      <a class="more" href="/blog/kategoria/{{ cat.slug }}/">Opis kategorii →</a>
+    </div>
+    <ul class="archive-list">
+      {% for post in posts %}
+      <li>
+        <a href="{{ post.url }}">{{ post.data.h1 or post.data.title }}</a>
+        <time datetime="{{ post.data.isoDate }}">{{ post.data.displayDate }}</time>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endfor %}
+</div>

@@ -9,6 +9,7 @@ crumbParent:
     {% include "partials/breadcrumb.njk" %}
   </div>
 </div>
+{% set cat = postCategories.categories | categoryOf(postCategories.bySlug, page.fileSlug) %}
 <div class="wrap">
   <div class="rail-layout">
     <article class="service">
@@ -20,6 +21,7 @@ crumbParent:
         <p class="article-meta">
           <time datetime="{{ isoDate }}">{{ displayDate }}</time>
           · {{ content | readingTime }}
+          {% if cat %}· <a href="/blog/kategoria/{{ cat.slug }}/">{{ cat.label }}</a>{% endif %}
         </p>
         {% endif %}
       </header>
@@ -43,6 +45,23 @@ crumbParent:
       </aside>
     </article>
     <aside class="rail">
+      {% if cat %}
+      {# Siblings first: a reader who got here from a search is far likelier to
+         want the next article on the same topic than the newest one overall. #}
+      <div class="rail-card">
+        <h2 class="rail-card__title">Więcej w kategorii</h2>
+        <p class="rail-card__lead">{{ cat.label }}</p>
+        <ul class="rail-list">
+          {% for post in collections.post | inCategory(postCategories.bySlug, cat.slug) | reverse | excludeUrl(page.url) | limit(4) %}
+          <li>
+            <a href="{{ post.url }}">{{ post.data.h1 or post.data.title }}</a>
+            <span class="rail-list__meta">{{ post.data.displayDate }}</span>
+          </li>
+          {% endfor %}
+        </ul>
+        <p><a class="more" href="/blog/kategoria/{{ cat.slug }}/">Cała kategoria →</a></p>
+      </div>
+      {% endif %}
       <div class="rail-card">
         <h2 class="rail-card__title">Ostatnie artykuły</h2>
         <ul class="rail-list">
@@ -53,7 +72,7 @@ crumbParent:
           </li>
           {% endfor %}
         </ul>
-        <p><a class="more" href="/blog/">Wszystkie artykuły →</a></p>
+        <p><a class="more" href="/blog/wszystkie-artykuly/">Spis wszystkich artykułów →</a></p>
       </div>
     </aside>
   </div>

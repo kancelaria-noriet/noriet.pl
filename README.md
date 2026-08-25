@@ -25,8 +25,14 @@ src/_data/nav.json       crew-approved taxonomy (header, 4 area cards,
 src/_data/stubs.json     not-yet-migrated URLs rendered as marked stubs (noindex)
 src/_data/publications.json  the five publications shown on /publikacje/
                          (GENERATED — migrate_all.py, then covers.mjs)
+src/_data/postCategories.json  blog taxonomy: ten categories with intro copy,
+                         plus a post-slug -> category map (HAND-MAINTAINED;
+                         the migrator never touches it)
 src/_includes/           base layout, header/footer/breadcrumb partials,
-                         service + stub layouts
+                         service + stub layouts, blog-categories rail card
+src/blog.njk             /blog/ + /blog/strona/N/ (10 per page)
+src/blog-kategoria.njk   /blog/kategoria/<slug>/ — one page per category
+src/blog-archiwum.njk    /blog/wszystkie-artykuly/ — all 139, unpaginated
 src/assets/css/main.css  the only stylesheet — tokens extracted from the
                          approved design decks; mobile-first
 src/assets/js/nav.js     the only script — menu toggle, progressive enhancement
@@ -82,6 +88,33 @@ the migrator, or the covers disappear from the page:
 ../export/.venv/bin/python tools/migrate_all.py
 eval "$($HOME/.local/share/fnm/fnm env)"
 node tools/covers.mjs            # 566 kB of 2016 PNGs -> 74 kB of WebP
+```
+
+### Blog taxonomy
+
+`src/_data/postCategories.json` is the exception in the other direction: it
+describes generated content but is **hand-maintained**. `migrate_all.py`
+rewrites `src/content/posts/` and never reads or writes this file.
+
+It holds two things. `categories` lists the ten categories in display order,
+each with its intro copy, meta tags and the service page it points at. Display
+order mirrors the offer taxonomy in `nav.json`, not the post counts. `bySlug`
+maps a post `fileSlug` to exactly one category slug.
+
+**When you add a post, add its slug to `bySlug`.** An unmapped post still
+builds and still appears in `/blog/` pagination, but it drops out of its
+category page, out of `/blog/wszystkie-artykuly/`, and out of the sibling list
+in its own rail. Nothing errors, so check the counts after a migration:
+
+```sh
+python3 - <<'EOF'
+import json, glob, os, collections
+d = json.load(open("src/_data/postCategories.json"))
+posts = {os.path.basename(f)[:-5] for f in glob.glob("src/content/posts/*.html")}
+print("unmapped:", sorted(posts - set(d["bySlug"])))
+print("stale:", sorted(set(d["bySlug"]) - posts))
+print(collections.Counter(d["bySlug"].values()))
+EOF
 ```
 
 `src/static/` is **generated** by `tools/favicons.mjs` from the mark in
