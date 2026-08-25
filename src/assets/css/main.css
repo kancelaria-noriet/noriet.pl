@@ -355,21 +355,15 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
    One row per publication: cover, description, publisher data. The covers are
    2016 uploads capped at 270 px wide (tools/covers.mjs), so the cover column
    stays narrow enough for them to render at roughly 2x. They sit in a padded
-   frame, because five covers with five different edge colours need one shared
-   edge to line up against.
+   square frame, because five covers with five different edge colours need one
+   shared edge to line up against.
    Narrow screens stack the frame above the text — a side-by-side thumbnail
    squeezes the description into about 40 characters a line. */
-/* the shared hero rule caps the block at 52rem, about 95 characters a line.
-   This intro is a full paragraph, so hold it to the reading measure. */
-.service-hero--center .wrap > .pub-intro { max-width: var(--measure); }
 .pub-list { list-style: none; margin: 0 0 var(--s8); padding: 0; display: grid; gap: var(--s6); }
 .pub { display: grid; gap: var(--s4); padding-bottom: var(--s6); border-bottom: 1px solid var(--line); }
 .pub:last-child { padding-bottom: 0; border-bottom: 0; }
-.pub__frame {
-  width: 144px; padding: var(--s3); background: var(--paper-2);
-  border: 1px solid var(--line); border-radius: var(--radius-lg); box-shadow: var(--shadow);
-}
-.pub__cover { display: block; width: 100%; height: auto; border-radius: 2px; }
+.pub__frame { width: 144px; padding: var(--s3); border: 1px solid var(--line); }
+.pub__cover { display: block; width: 100%; height: auto; }
 .pub__title { font-size: var(--t-md); letter-spacing: normal; margin: 0 0 var(--s3); }
 .pub__desc p { margin: 0 0 var(--s3); }
 .pub__desc p:last-child { margin-bottom: 0; }

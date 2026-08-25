@@ -403,8 +403,6 @@ def migrate_intros(src):
     GENINC.mkdir(parents=True, exist_ok=True)
     for url, sel, out in (
         ("https://noriet.pl/zespol/", "div.textTeamContainer", "zespol-intro.html"),
-        ("https://noriet.pl/publikacje/", "div.caseStudyContent div.gt_inner",
-         "publikacje-intro.html"),
     ):
         soup = src.soup(url)
         c = soup.select_one(sel) if soup else None
