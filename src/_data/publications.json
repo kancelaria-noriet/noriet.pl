@@ -1,0 +1,118 @@
+[
+  {
+    "slug": "nadzor",
+    "title": "Ustawa o nadzorze",
+    "date": "2016-07-08",
+    "body": "<div>\n<p>Komentarz do Ustawy o nadzorze uzupełniającym nad instytucjami kredytowymi, zakładami ubezpieczeń, zakładami reasekuracji i firmami inwestycyjnymi wchodzącymi w skład konglomeratu finansowego – autor adw. Aleksandra Zagajewska Publikacja dedykowana m.in. usługodawcom i usługobiorcom usług finansowych,  a także osobom sprawującym nadzór nad podmiotami działającymi na rynku finansowym oraz osobom wykonującym zawody prawnicze.</p>\n</div>",
+    "pola": [
+      {
+        "tytul": "Wydawnictwo",
+        "tresc": "Lexis Nexis"
+      },
+      {
+        "tytul": "ISBN",
+        "tresc": "978-83-278-0696-3"
+      },
+      {
+        "tytul": "Data wydania",
+        "tresc": "sierpień 2014"
+      }
+    ],
+    "coverSource": "2016/07/book1.png",
+    "cover": "/assets/img/publikacje/nadzor.webp",
+    "coverW": 270,
+    "coverH": 380
+  },
+  {
+    "slug": "obrot",
+    "title": "Ustawa o obrocie",
+    "date": "2016-07-08",
+    "body": "<div>\n<p>Komentarz do Ustawy o obrocie instrumentami finansowymi –  autor adw. Aleksandra Zagajewska. Publikacja dedykowana m.in. inwestorom i przedsiębiorcom, a także księgowym, doradcom, analitykom i prawnikom. Zawiera porady dotyczące aspektów takich jak: tajemnica zawodowa, informacje poufne oraz przygotowanie prospektu emisyjnego.</p>\n</div>",
+    "pola": [
+      {
+        "tytul": "Wydawnictwo",
+        "tresc": "Lexis Nexis"
+      },
+      {
+        "tytul": "ISBN",
+        "tresc": "978-837-806-569-2, 978-837-806-570-8"
+      },
+      {
+        "tytul": "Data wydania",
+        "tresc": "2013"
+      }
+    ],
+    "coverSource": "2016/07/book2.png",
+    "cover": "/assets/img/publikacje/obrot.webp",
+    "coverW": 270,
+    "coverH": 381
+  },
+  {
+    "slug": "gu",
+    "title": "Gazeta Ubezpieczeniowa",
+    "date": "2016-07-08",
+    "body": "<div>\n<p>„Walka o przetrwanie” – autor adw. Aleksandra Zagajewska</p>\n\n<p>Publikacja dedykowana m.in. adwokatom i prawnikom zajmującym się prawem ubezpieczeniowym, a także właścicielom wypożyczalni i warsztatów samochodowych oraz biurom odszkodowań.</p>\n</div>",
+    "pola": [
+      {
+        "tytul": "Wydawnictwo",
+        "tresc": "Gazeta Ubezpieczeniowa"
+      },
+      {
+        "tytul": "Data wydania",
+        "tresc": "grudzień 2013"
+      }
+    ],
+    "coverSource": "2016/07/book3.png",
+    "cover": "/assets/img/publikacje/gu.webp",
+    "coverW": 270,
+    "coverH": 410
+  },
+  {
+    "slug": "mu",
+    "title": "Monitor Ubezpieczeniowy",
+    "date": "2016-07-08",
+    "body": "<div>\n<p>Monitor ubezpieczeniowy – materiały edukacyjno – informacyjne Rzecznika Finansowego</p>\n</div>",
+    "pola": [
+      {
+        "tytul": "Wydawnictwo",
+        "tresc": "Rzecznik finansowy"
+      },
+      {
+        "tytul": "Numer",
+        "tresc": "63"
+      },
+      {
+        "tytul": "Data wydania",
+        "tresc": "grudzień 2015"
+      }
+    ],
+    "coverSource": "2016/07/book4.png",
+    "cover": "/assets/img/publikacje/mu.webp",
+    "coverW": 270,
+    "coverH": 372
+  },
+  {
+    "slug": "likwidacja-szkod-z-ubezpieczen-komunikacyjnych-podstawowe-problemy",
+    "title": "Likwidacja szkód z ubezpieczeń komunikacyjnych - podstawowe problemy",
+    "date": "2016-07-26",
+    "body": "<div>\n<p>Likwidacja szkód z ubezpieczeń komunikacyjnych – podstawowe problemy. Poradnik klienta usług finansowych.</p>\n</div>",
+    "pola": [
+      {
+        "tytul": "Wydawnictwo",
+        "tresc": "Komisja Nadzoru Finansowego"
+      },
+      {
+        "tytul": "ISBN",
+        "tresc": "978-83-63380-30-4"
+      },
+      {
+        "tytul": "Data wydania",
+        "tresc": "2015"
+      }
+    ],
+    "coverSource": "2016/07/okladka_Likwidacja_szkod_tcm75-42986.jpg",
+    "cover": "/assets/img/publikacje/likwidacja-szkod-z-ubezpieczen-komunikacyjnych-podstawowe-problemy.webp",
+    "coverW": 140,
+    "coverH": 198
+  }
+]

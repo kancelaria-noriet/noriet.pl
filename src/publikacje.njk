@@ -2,10 +2,10 @@
 {
   "layout": "layouts/base.njk",
   "title": "Publikacje",
-  "titleTag": "Publikacje | Noriet",
-  "description": "Publikacje i case studies prawników Kancelarii Noriet.",
+  "titleTag": "Publikacje i komentarze prawne | Noriet",
+  "description": "Komentarze do ustawy o nadzorze uzupełniającym i o obrocie instrumentami finansowymi oraz publikacje branżowe prawników Kancelarii Noriet.",
   "permalink": "/publikacje/",
-  "h1": "Publikacje i case studies"
+  "h1": "Publikacje"
 }
 ---
 <div class="crumb-band">
@@ -15,21 +15,45 @@
 </div>
 <header class="service-hero service-hero--center">
   <div class="wrap">
-    <p class="kicker">Publikacje i case studies</p>
-    <h1>Publikacje i case studies</h1>
-    <p class="service-hero__lead">Komentarze, opinie i opisy prowadzonych
-    spraw autorstwa prawników kancelarii.</p>
+    <p class="kicker">Kancelaria</p>
+    <h1>Publikacje</h1>
   </div>
 </header>
 <div class="wrap">
-  <div class="list-grid">
-    {% for c in collections.casestudy %}
-    <article class="list-card">
-      <h2><a href="{{ c.url }}">{{ c.data.h1 or c.data.title }}</a></h2>
-      {% if c.data.wydawnictwo or c.data.isbn %}
-      <p class="list-card__meta">{{ c.data.wydawnictwo }}{% if c.data.isbn %} · ISBN {{ c.data.isbn }}{% endif %}</p>
-      {% endif %}
-    </article>
-    {% endfor %}
+  <div class="prose pub-intro">
+    {% include "generated/publikacje-intro.html" %}
   </div>
+  <ul class="pub-list">
+    {% for pub in publications %}
+    <li class="pub">
+      {% if pub.cover %}
+      <img class="pub__cover" src="{{ pub.cover }}" width="{{ pub.coverW }}" height="{{ pub.coverH }}" alt="Okładka publikacji: {{ pub.title }}" loading="lazy" decoding="async">
+      {% endif %}
+      <div class="pub__body">
+        <h2 class="pub__title">{{ pub.title }}</h2>
+        <div class="prose pub__desc">{{ pub.body | safe }}</div>
+        {% if pub.pola.length %}
+        <dl class="kv kv--caps pub__meta">
+          {% for pole in pub.pola %}
+          <dt>{{ pole.tytul }}</dt><dd>{{ pole.tresc | safe }}</dd>
+          {% endfor %}
+        </dl>
+        {% endif %}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
 </div>
+<section class="cta-band cta-band--home" aria-label="Kontakt z kancelarią">
+  <div class="wrap">
+    <div>
+      <h2>Potrzebujesz opinii prawnej na piśmie?</h2>
+      <p>Przygotowujemy opinie i komentarze na zlecenie. Zadzwoń albo napisz,
+      opiszemy zakres i termin.</p>
+    </div>
+    <p class="cta-band__actions">
+      <a class="btn btn--call" href="{{ site.phoneHref }}">{{ site.phone }}</a>
+      <a class="btn btn--ghost" href="/kontakt/">Napisz do nas</a>
+    </p>
+  </div>
+</section>

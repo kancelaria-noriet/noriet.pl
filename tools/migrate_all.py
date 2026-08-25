@@ -25,6 +25,7 @@ from sqldump import read_table  # noqa: E402
 CONTENT = BASE / "src" / "content"
 GENINC = BASE / "src" / "_includes" / "generated"
 UPLOADS_OUT = BASE / "src" / "assets" / "uploads"
+DATA = BASE / "src" / "_data"
 
 CONTROL = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
 KEEP_ATTRS = {"href", "src", "alt", "width", "height", "colspan", "rowspan", "id",
@@ -334,19 +335,37 @@ def migrate_consultations(src):
     print(f"consultations: {total}")
 
 
+# Owner call 2026-08-25: a bondholder notice, published by mistake as a
+# publication. Its content is contained in /obligacje/ (the consolidated
+# bond archive), so the URL retires with the other /casestudies/ pages.
+SKIP_CASESTUDIES = {"komunikat-dla-obligatariuszy-prima-park-s-a-seria-u"}
+
+
 def migrate_casestudies(src, posts, meta):
-    n = 0
+    """The five publications, as one ordered data file for /publikacje/.
+
+    The old site rendered every publication inline on /publikacje/ and also
+    gave each one an auto-generated `/casestudies/<slug>/` page that nothing
+    linked to. The rebuild keeps the single page and retires the subpages
+    (301 to /publikacje/ in the redirect map), so this writes data, not pages.
+    """
+    items = []
     for pid, p in posts.items():
         if p["post_type"] != "casestudies" or p["post_status"] != "publish":
             continue
         slug = p["post_name"]
+        if slug in SKIP_CASESTUDIES:
+            continue
         url = f"https://noriet.pl/casestudies/{slug}/"
-        soup, iv = src.soup(url), src.inv.get(url)
+        soup = src.soup(url)
         mm = meta.get(pid, {})
         body = ""
         if soup is not None:
             c = soup.select_one("div.singleBlogContent")
             if c is not None:
+                for para in c.find_all("p"):
+                    if not para.get_text(strip=True) and not para.find("img"):
+                        para.decompose()
                 body = clean_fragment(c, EXPORT / "files/noriet/uploads", "noriet",
                                       drop_leading_date=True)
         pola = []
@@ -357,29 +376,35 @@ def migrate_casestudies(src, posts, meta):
             if t or tr:
                 tr = re.sub(r'\s(style|class|id)="[^"]*"', "", tr or "")
                 pola.append({"tytul": t or "", "tresc": CONTROL.sub(" ", tr)})
-        fm = {
-            "layout": "layouts/casestudy.njk",
-            "tags": ["casestudy"],
-            "permalink": f"/casestudies/{slug}/",
-            "titleTag": (iv["title"] if iv else f"{p['post_title']} | Noriet"),
-            "description": (iv["meta_description"] if iv else ""),
-            "h1": p["post_title"],
-            "isbn": mm.get("isbn", ""),
-            "wydawnictwo": mm.get("wydawnictwo", ""),
-            "dataWydania": mm.get("data_wydania", ""),
-            "pubLink": mm.get("link", "") or mm.get("link_case_study", ""),
-            "dodatkowePola": pola,
-            "migratedFrom": url,
-        }
-        write_page(CONTENT / "casestudies" / f"{slug}.html", fm, body)
-        n += 1
-    print(f"casestudies: {n}")
+        cover = ""
+        thumb = mm.get("_thumbnail_id")
+        if thumb:
+            cover = meta.get(thumb, {}).get("_wp_attached_file", "") or ""
+        items.append({
+            "_order": p["post_date"],
+            "slug": slug,
+            "title": p["post_title"],
+            "date": p["post_date"][:10],
+            "body": body,
+            "pola": pola,
+            # Relative to ../export/files/noriet/uploads/. tools/covers.mjs reads
+            # this, writes the optimised WebP and fills cover/coverW/coverH in.
+            "coverSource": cover,
+        })
+    # The old theme listed the publications oldest first; keep that order.
+    items.sort(key=lambda it: it.pop("_order"))
+    DATA.mkdir(parents=True, exist_ok=True)
+    (DATA / "publications.json").write_text(
+        json.dumps(items, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"publications: {len(items)}")
 
 
 def migrate_intros(src):
     GENINC.mkdir(parents=True, exist_ok=True)
     for url, sel, out in (
         ("https://noriet.pl/zespol/", "div.textTeamContainer", "zespol-intro.html"),
+        ("https://noriet.pl/publikacje/", "div.caseStudyContent div.gt_inner",
+         "publikacje-intro.html"),
     ):
         soup = src.soup(url)
         c = soup.select_one(sel) if soup else None
