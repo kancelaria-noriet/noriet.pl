@@ -1,0 +1,37 @@
+---json
+{
+  "layout": "layouts/base.njk",
+  "permalink": "/404.html",
+  "eleventyExcludeFromCollections": true,
+  "robots": "noindex, follow",
+  "title": "Nie znaleziono strony",
+  "titleTag": "Nie znaleziono strony (404) | Noriet",
+  "description": "Ta strona nie istnieje lub zmieniła adres."
+}
+---
+<header class="service-hero service-hero--center">
+  <div class="wrap">
+    <p class="kicker">Błąd 404</p>
+    <h1>Nie znaleźliśmy tej strony</h1>
+    <p class="service-hero__lead">Strona zmieniła adres albo już nie istnieje.
+    Poniżej są miejsca, od których najlepiej zacząć.</p>
+    <p class="hero__actions">
+      <a class="btn btn--call" href="/">Strona główna</a>
+      <a class="btn btn--ghost" href="/kontakt/">Kontakt</a>
+    </p>
+  </div>
+</header>
+
+<section class="band" aria-labelledby="gdzie-dalej">
+  <div class="wrap">
+    <h2 id="gdzie-dalej">Gdzie dalej</h2>
+    <ul class="chips">
+      {% for item in nav.header %}
+      <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+      {% endfor %}
+    </ul>
+    <p class="section-lead error-help">Szukasz konkretnej sprawy? Zadzwoń pod
+    <a href="{{ site.phoneHref }}">{{ site.phone }}</a> — powiemy, gdzie
+    znaleźć to, czego potrzebujesz.</p>
+  </div>
+</section>

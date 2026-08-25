@@ -699,3 +699,6 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 }
 .partners img { display: block; width: auto; height: auto; max-width: 10rem; max-height: 2.5rem; }
 .partners a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* 404 page */
+.error-help { margin-top: var(--s6); }
