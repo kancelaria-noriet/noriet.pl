@@ -1,5 +1,5 @@
 {
-  "note": "Display grouping for /konsultacje/ per the design deck; slugs reference src/content/konsultacje/. 'Usługi dla firm' is not in the deck (it only showed apex products) — the biznes products live here until the /dla-firm/ hub ships (PLAN Phase 3).",
+  "note": "Display grouping for /konsultacje/ per the design deck; slugs reference src/content/konsultacje/. 'Usługi dla firm' is not in the deck (it only showed apex products) — the biznes products live here until the /dla-biznesu-obsluga-firm/ hub ships (PLAN Phase 3).",
   "groups": [
     {
       "title": "Konsultacje prawne",
