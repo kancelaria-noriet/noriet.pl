@@ -664,3 +664,38 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
   html:not([data-theme="light"]) .theme-toggle .icon-sun { display: block; }
   html:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
 }
+
+/* B2B landing page (/dla-biznesu-obsluga-firm/) */
+/* .card-grid goes to 4 columns at 64rem; this page shows a pair. */
+@media (min-width: 64rem) { .card-grid--pair { grid-template-columns: repeat(2, 1fr); } }
+.card-grid--pair .card h2 { font-size: var(--t-lg); letter-spacing: normal; margin: 0; }
+.trigger-note { margin-top: var(--s6); max-width: 60ch; }
+
+/* doubled class outranks .card p (0,1,1), like .price-card__price does */
+.product-card .badge {
+  align-self: start; margin: 0;
+  background: var(--brand-wash); color: var(--brand-ink);
+  border: 1px solid var(--brand-line); border-radius: 999px;
+  padding: var(--s1) var(--s3);
+  font-size: var(--t-xs); font-weight: 600;
+}
+.product-card { max-width: 40rem; gap: var(--s4); }
+.product-card h2 { margin: 0; }
+.product-card .chips { margin-top: 0; }
+.product-card .product-card__points li { font-size: var(--t-base); }
+.product-card .product-card__price {
+  font-family: var(--serif); font-size: var(--t-2xl); font-weight: 600;
+  font-variant-numeric: tabular-nums; line-height: 1; color: var(--ink);
+  margin: 0; padding-top: var(--s4); border-top: 1px solid var(--line);
+}
+.product-card .product-card__price small {
+  font-family: var(--sans); font-size: var(--t-base); font-weight: 400; color: var(--ink-2);
+}
+
+/* client logos — sized by height so mixed aspect ratios sit on one line */
+.partners {
+  list-style: none; margin: var(--s5) 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--s5) var(--s7);
+}
+.partners img { display: block; width: auto; height: auto; max-width: 10rem; max-height: 2.5rem; }
+.partners a { display: inline-flex; align-items: center; min-height: 44px; }
