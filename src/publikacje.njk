@@ -17,17 +17,19 @@
   <div class="wrap">
     <p class="kicker">Kancelaria</p>
     <h1>Publikacje</h1>
+    <div class="service-hero__lead prose pub-intro">
+      {% include "generated/publikacje-intro.html" %}
+    </div>
   </div>
 </header>
 <div class="wrap">
-  <div class="prose pub-intro">
-    {% include "generated/publikacje-intro.html" %}
-  </div>
   <ul class="pub-list">
     {% for pub in publications %}
     <li class="pub">
       {% if pub.cover %}
-      <img class="pub__cover" src="{{ pub.cover }}" width="{{ pub.coverW }}" height="{{ pub.coverH }}" alt="Okładka publikacji: {{ pub.title }}" loading="lazy" decoding="async">
+      <div class="pub__frame">
+        <img class="pub__cover" src="{{ pub.cover }}" width="{{ pub.coverW }}" height="{{ pub.coverH }}" alt="Okładka publikacji: {{ pub.title }}" loading="lazy" decoding="async">
+      </div>
       {% endif %}
       <div class="pub__body">
         <h2 class="pub__title">{{ pub.title }}</h2>
