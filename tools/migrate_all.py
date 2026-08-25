@@ -220,6 +220,22 @@ def migrate_posts(src, posts, meta):
     print(f"posts: {n}")
 
 
+# The old WordPress "specjalizacja" field predates the mediation practice, so it
+# names nobody as a mediator. The firm's certified mediators are recorded here
+# and appended on migration, which keeps src/content/team/ generated while
+# letting the site show who actually runs mediations (owner call 2026-08-25).
+SPEC_EXTRA = {
+    "kinga-opala-mach": "mediacje",
+}
+
+
+def with_spec_extra(slug, spec):
+    extra = SPEC_EXTRA.get(slug)
+    if not extra or extra.lower() in spec.lower():
+        return spec
+    return f"{spec}, {extra}" if spec else extra
+
+
 def migrate_team(src, posts, meta):
     n = 0
     for pid, p in posts.items():
@@ -254,7 +270,7 @@ def migrate_team(src, posts, meta):
             "description": (iv["meta_description"] if iv else ""),
             "h1": p["post_title"],
             "rola": mm.get("rola", ""),
-            "specjalizacja": strip_html(mm.get("specjalizacja", "")),
+            "specjalizacja": with_spec_extra(slug, strip_html(mm.get("specjalizacja", ""))),
             "kontakt": kontakt_html,
             "photo": photo,
             "photoW": photo_w,
