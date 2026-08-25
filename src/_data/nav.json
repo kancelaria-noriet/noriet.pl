@@ -32,7 +32,8 @@
     {
       "title": "Biznes",
       "items": [
-        { "label": "Bieżąca obsługa prawna w abonamencie", "url": "/konsultacje/stala-obsluga-prawna-przedsiebiorcy/" },
+        { "label": "Bieżąca obsługa prawna w abonamencie", "url": "/dla-biznesu-obsluga-firm/",
+          "note": "TEMPORARY (2026-08-21, owner call): points at the B2B hub instead of the Stripe product page /konsultacje/stala-obsluga-prawna-przedsiebiorcy/. Revisit when the hub carries real copy and D8 settles the abonament scope." },
         { "label": "Pozew o zapłatę z faktury", "url": "/pozew-o-zaplate/" },
         { "label": "Pozew w EPU", "url": "/pozew-w-epu/" },
         { "label": "Spory sądowe", "url": "/spory-sadowe/" },
