@@ -470,7 +470,6 @@ def migrate_obligacje(src):
         "titleTag": iv["title"],
         "description": iv["meta_description"],
         "h1": iv["h1"] or "Obligacje",
-        "crumbParent": None,
         "migratedFrom": url,
         "note": "Consolidated bond archive (DECISIONS.md) — kept, noindex, out of the sitemap",
     }
@@ -503,7 +502,6 @@ def migrate_akcjonariusze(src):
         "titleTag": "Ogłoszenia dla akcjonariuszy | Noriet",
         "description": "Ogłoszenia Kancelarii Prawnej Noriet – Zagajewska i Wspólnicy S.K.A. wymagane przepisami Kodeksu spółek handlowych.",
         "h1": "Ogłoszenia dla akcjonariuszy",
-        "crumbParent": None,
         "note": "Statutory S.K.A. announcements page; content = financing_messages from the capture",
     }
     write_page(CONTENT / "akcjonariusze.html", fm, "\n".join(parts))

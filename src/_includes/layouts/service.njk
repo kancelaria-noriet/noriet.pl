@@ -1,11 +1,14 @@
 ---
 layout: layouts/base.njk
-crumbParent:
-  label: Oferta
-  url: /oferta/
 ---
 {% set slug = page.fileSlug %}
 {% set meta = serviceMeta.bySlug[slug] %}
+{# The breadcrumb parent follows the offer taxonomy, so derive it from
+   serviceMeta rather than defaulting it in the front matter. /akcjonariusze/
+   and /obligacje/ borrow this layout but are not services, and a null in
+   their own front matter cannot switch a layout default off: Eleventy's
+   merge treats a falsy page value as absent and the layout wins. #}
+{% set crumbParent = { label: "Oferta", url: "/oferta/" } if meta else null %}
 <div class="crumb-band">
   <div class="wrap">
     {% include "partials/breadcrumb.njk" %}
