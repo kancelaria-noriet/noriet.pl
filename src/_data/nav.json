@@ -8,24 +8,24 @@
   ],
   "areas": [
     {
-      "title": "Obsługa prawna biznesu",
+      "title": "Obsługa prawna biznesu",
       "blurb": "Kontrakty, prawo korporacyjne, windykacja należności, spory sądowe i pozasądowe, prawo pracy, RODO, sprawy urzędowe",
       "url": "/dla-biznesu-obsluga-firm/"
     },
     {
-      "title": "Prawo Rodzinne",
+      "title": "Prawo rodzinne",
       "blurb": "Rozwód, separacja, podział majątku, ograniczenie i pozbawienie władzy rodzicielskiej, zabezpieczenia, mediacje",
       "url": "/prawo-rodzinne-warszawa/"
     },
     {
-      "title": "Spadki i Sukcesja",
+      "title": "Spadki i sukcesja",
       "blurb": "Nieruchomości, dziedziczenie, testamenty, stwierdzenie nabycia spadku, podział majątku, darowizny, odrzucenie spadku",
       "url": "/prawo-spadkowe-warszawa/"
     },
     {
-      "title": "Ubezpieczenia społeczne",
+      "title": "Prawa pracownika",
       "blurb": "Prawo pracy, zwolnienia, urlop macierzyński i wychowawczy, umowy, odszkodowania, zasiłki, odwołania od decyzji ZUS",
-      "url": null
+      "url": "/prawa-pracownika/"
     }
   ],
   "offerGrid": [
