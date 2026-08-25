@@ -23,7 +23,7 @@
       "light": { "file": "blockydevs.png", "w": 500, "h": 200 },
       "dark":  { "file": "blockydevs-dark.png", "w": 500, "h": 200 } },
     { "name": "Entropia Dev", "slug": "entropia", "url": "https://entropiadev.com/",
-      "wordmark": true }
+      "wordmark": { "lead": "Entropia", "accent": "Dev" } }
   ]
 }
 ---
@@ -98,7 +98,8 @@
       <li class="partner partner--{{ p.slug }}">
         <a href="{{ p.url }}" rel="nofollow noopener">
           {%- if p.wordmark %}
-          <span class="partner__wordmark">{{ p.name }}</span>
+          <span class="partner__wordmark">{{ p.wordmark.lead }}
+            <span class="partner__wordmark-accent">{{ p.wordmark.accent }}</span></span>
           {%- else %}
           <img class="partner__logo partner__logo--light"
                src="/assets/img/partners/{{ p.light.file }}" alt="{{ p.name }}"

@@ -724,6 +724,9 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
   font-weight: 600; font-size: 1.3rem; letter-spacing: -.01em;
   color: var(--ink); white-space: nowrap;
 }
+/* "Dev" is a fixed brand accent on entropiadev.com — the same blue on their
+   light header and their dark footer, so it does not follow our theme. */
+.partner__wordmark-accent { color: #1E55F0; }
 .partners a:hover .partner__wordmark { color: var(--brand-ink); }
 
 /* 404 page */
