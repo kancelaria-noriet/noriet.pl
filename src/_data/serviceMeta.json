@@ -12,6 +12,7 @@
     "podzial-majatku-po-rozwodzie":                 { "kicker": "Podział majątku po rozwodzie",    "column": "Majątek, spadki i sąd",  "lawyerMatch": "rodzinne" },
     "malzenskie-ustroje-majatkowe":                 { "kicker": "Małżeńskie ustroje majątkowe",    "column": "Majątek, spadki i sąd",  "lawyerMatch": "rodzinne" },
     "prawo-spadkowe-warszawa":                      { "kicker": "Prawo spadkowe",                  "column": "Majątek, spadki i sąd",  "lawyerMatch": "spadkowe" },
+    "spory-sadowe":                                 { "kicker": "Spory korporacyjne",          "column": "Biznes",                 "lawyerMatch": "spory sądowe" },
     "mediacje-i-arbitraz":                          { "kicker": "Mediacje i arbitraż",          "column": "Biznes",                 "lawyerMatch": "mediacje" },
     "pozew-o-zaplate":                              { "kicker": "Pozew o zapłatę",              "column": "Biznes",                 "lawyerMatch": "spory sądowe" },
     "pozew-w-epu":                                  { "kicker": "Pozew w EPU",                  "column": "Biznes",                 "lawyerMatch": "gospodarcze" },
