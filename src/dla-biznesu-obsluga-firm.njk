@@ -7,9 +7,23 @@
   "permalink": "/dla-biznesu-obsluga-firm/",
   "crumbParent": { "label": "Oferta", "url": "/oferta/" },
   "partners": [
-    { "name": "SMEO", "url": "https://smeo.pl/", "file": "smeo.png", "w": 160, "h": 27 },
-    { "name": "Soldent", "url": "https://www.soldent.pl/", "file": "soldent.png", "w": 200, "h": 56 },
-    { "name": "Linktis", "url": "https://www.linktis.com/", "file": "linktis.png", "w": 200, "h": 77 }
+    { "name": "SMEO", "slug": "smeo", "url": "https://smeo.pl/",
+      "light": { "file": "smeo.svg", "w": 191, "h": 33 },
+      "dark":  { "file": "smeo-dark.svg", "w": 191, "h": 33 } },
+    { "name": "Soldent", "slug": "soldent", "url": "https://www.soldent.pl/",
+      "light": { "file": "soldent.png", "w": 156, "h": 27 },
+      "dark":  { "file": "soldent-dark.png", "w": 188, "h": 32 } },
+    { "name": "Linktis", "slug": "linktis", "url": "https://www.linktis.com/",
+      "light": { "file": "linktis.png", "w": 480, "h": 136 },
+      "dark":  { "file": "linktis-dark.png", "w": 480, "h": 136 } },
+    { "name": "Silk Software House", "slug": "silk", "url": "https://silksoftwarehouse.com/en",
+      "light": { "file": "silk-software-house.png", "w": 259, "h": 281 },
+      "dark":  { "file": "silk-software-house-dark.png", "w": 259, "h": 281 } },
+    { "name": "BlockyDevs", "slug": "blockydevs", "url": "https://www.blockydevs.com/",
+      "light": { "file": "blockydevs.png", "w": 500, "h": 200 },
+      "dark":  { "file": "blockydevs-dark.png", "w": 500, "h": 200 } },
+    { "name": "Entropia Dev", "slug": "entropia", "url": "https://entropiadev.com/",
+      "wordmark": true }
   ]
 }
 ---
@@ -81,10 +95,18 @@
     <h2 id="zaufali">Zaufali nam</h2>
     <ul class="partners">
       {% for p in partners %}
-      <li>
+      <li class="partner partner--{{ p.slug }}">
         <a href="{{ p.url }}" rel="nofollow noopener">
-          <img src="/assets/img/partners/{{ p.file }}" alt="{{ p.name }}"
-               width="{{ p.w }}" height="{{ p.h }}" loading="lazy">
+          {%- if p.wordmark %}
+          <span class="partner__wordmark">{{ p.name }}</span>
+          {%- else %}
+          <img class="partner__logo partner__logo--light"
+               src="/assets/img/partners/{{ p.light.file }}" alt="{{ p.name }}"
+               width="{{ p.light.w }}" height="{{ p.light.h }}" loading="lazy">
+          <img class="partner__logo partner__logo--dark"
+               src="/assets/img/partners/{{ p.dark.file }}" alt="{{ p.name }}"
+               width="{{ p.dark.w }}" height="{{ p.dark.h }}" loading="lazy">
+          {%- endif %}
         </a>
       </li>
       {% endfor %}

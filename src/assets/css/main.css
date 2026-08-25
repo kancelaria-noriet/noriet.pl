@@ -697,8 +697,34 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
   list-style: none; margin: var(--s5) 0 0; padding: 0;
   display: flex; flex-wrap: wrap; align-items: center; gap: var(--s5) var(--s7);
 }
-.partners img { display: block; width: auto; height: auto; max-width: 10rem; max-height: 2.5rem; }
-.partners a { display: inline-flex; align-items: center; min-height: 44px; }
+.partners a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: none; }
+.partner__logo { display: block; width: auto; height: auto; max-width: 9rem; max-height: 2.25rem; }
+
+/* Light/dark logo pairs. Same selector shape as the theme tokens above, so the
+   swap follows both the system preference and the manual toggle. The hidden
+   image is display:none, so screen readers announce the alt text only once. */
+.partner__logo--dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .partner__logo--light { display: none; }
+  :root:not([data-theme="light"]) .partner__logo--dark { display: block; }
+}
+:root[data-theme="dark"] .partner__logo--light { display: none; }
+:root[data-theme="dark"] .partner__logo--dark { display: block; }
+
+/* Optical balance: a tall emblem and a long wordmark need different caps to
+   read at the same visual weight as the rest of the row. */
+.partner--silk .partner__logo { max-height: 2.75rem; }
+.partner--soldent .partner__logo { max-height: 1.75rem; }
+.partner--smeo .partner__logo { max-height: 2rem; }
+
+/* Entropia Dev has no logo file — set their name in their own wordmark face
+   (Space Grotesk 600). Colour follows the theme, so it needs no dark variant. */
+.partner__wordmark {
+  font-family: 'Space Grotesk', var(--sans);
+  font-weight: 600; font-size: 1.3rem; letter-spacing: -.01em;
+  color: var(--ink); white-space: nowrap;
+}
+.partners a:hover .partner__wordmark { color: var(--brand-ink); }
 
 /* 404 page */
 .error-help { margin-top: var(--s6); }
