@@ -37,7 +37,7 @@
         { "label": "Pozew o zapłatę z faktury", "url": "/pozew-o-zaplate/" },
         { "label": "Pozew w EPU", "url": "/pozew-w-epu/" },
         { "label": "Spory sądowe", "url": "/spory-sadowe/" },
-        { "label": "Mediacje", "url": "/mediacje/" }
+        { "label": "Mediacje i arbitraż", "url": "/mediacje-i-arbitraz/" }
       ]
     },
     {
