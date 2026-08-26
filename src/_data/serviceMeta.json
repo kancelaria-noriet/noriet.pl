@@ -1,23 +1,96 @@
 {
-  "_comment": "Per-service rail data. kicker/related derive from nav.json offer columns; lawyerMatch is a lowercase substring matched against team specjalizacja (data-driven, no invented assignments — a service shows a lawyer card only when a real specialization matches).",
+  "_comment": "Per-service rail data. `category` is the slug of the owning category in nav.json — one service, one category, no exceptions. A page whose url equals its category's url is that category's hub, and the layout detects that rather than storing a flag. lawyerMatch is a lowercase substring matched against team specjalizacja (data-driven, no invented assignments — a service shows a lawyer card only when a real specialization matches).",
   "bySlug": {
-    "sprawy-rozwodowe-warszawa":                    { "kicker": "Sprawy rozwodowe",                "column": "Rozwód i separacja",     "lawyerMatch": "rodzinne" },
-    "rozwod-bez-orzekania-o-winie":                 { "kicker": "Rozwód bez orzekania o winie",    "column": "Rozwód i separacja",     "lawyerMatch": "rodzinne" },
-    "rozwod-z-orzeczeniem-o-winie":                 { "kicker": "Rozwód z orzeczeniem o winie",    "column": "Rozwód i separacja",     "lawyerMatch": "rodzinne" },
-    "separacja":                                    { "kicker": "Separacja",                       "column": "Rozwód i separacja",     "lawyerMatch": "rodzinne" },
-    "prawo-rodzinne-warszawa":                      { "kicker": "Prawo rodzinne",                  "column": "Rodzina i dzieci",       "lawyerMatch": "rodzinne" },
-    "alimenty":                                     { "kicker": "Alimenty",                        "column": "Rodzina i dzieci",       "lawyerMatch": "rodzinne" },
-    "pozbawienie-wladzy-rodzicielskiej-warszawa":   { "kicker": "Pozbawienie władzy rodzicielskiej", "column": "Rodzina i dzieci",     "lawyerMatch": "rodzinne" },
-    "podzial-majatku-w-warszawie":                  { "kicker": "Podział majątku",                 "column": "Majątek, spadki i sąd",  "lawyerMatch": "rodzinne" },
-    "podzial-majatku-po-rozwodzie":                 { "kicker": "Podział majątku po rozwodzie",    "column": "Majątek, spadki i sąd",  "lawyerMatch": "rodzinne" },
-    "malzenskie-ustroje-majatkowe":                 { "kicker": "Małżeńskie ustroje majątkowe",    "column": "Majątek, spadki i sąd",  "lawyerMatch": "rodzinne" },
-    "prawo-spadkowe-warszawa":                      { "kicker": "Prawo spadkowe",                  "column": "Majątek, spadki i sąd",  "lawyerMatch": "spadkowe" },
-    "prawa-pracownika":                             { "kicker": "Prawa pracownika",            "column": null,                     "lawyerMatch": "prawo pracy" },
-    "spory-sadowe":                                 { "kicker": "Spory korporacyjne",          "column": "Biznes",                 "lawyerMatch": "spory sądowe" },
-    "mediacje-i-arbitraz":                          { "kicker": "Mediacje i arbitraż",          "column": "Biznes",                 "lawyerMatch": "mediacje" },
-    "pozew-o-zaplate":                              { "kicker": "Pozew o zapłatę",              "column": "Biznes",                 "lawyerMatch": "spory sądowe" },
-    "pozew-w-epu":                                  { "kicker": "Pozew w EPU",                  "column": "Biznes",                 "lawyerMatch": "gospodarcze" },
-    "adwokat-w-sprawie-sadowej":                    { "kicker": "Adwokat w sprawie sądowej",       "column": "Majątek, spadki i sąd",  "lawyerMatch": "spory sądowe" }
+    "sprawy-rozwodowe-warszawa": {
+      "kicker": "Sprawy rozwodowe",
+      "category": "prawo-rodzinne",
+      "lawyerMatch": "rodzinne"
+    },
+    "rozwod-bez-orzekania-o-winie": {
+      "kicker": "Rozwód bez orzekania o winie",
+      "category": "prawo-rodzinne",
+      "lawyerMatch": "rodzinne"
+    },
+    "rozwod-z-orzeczeniem-o-winie": {
+      "kicker": "Rozwód z orzeczeniem o winie",
+      "category": "prawo-rodzinne",
+      "lawyerMatch": "rodzinne"
+    },
+    "separacja": {
+      "kicker": "Separacja",
+      "category": "prawo-rodzinne",
+      "lawyerMatch": "rodzinne"
+    },
+    "prawo-rodzinne-warszawa": {
+      "kicker": "Prawo rodzinne",
+      "category": "prawo-rodzinne",
+      "lawyerMatch": "rodzinne"
+    },
+    "alimenty": {
+      "kicker": "Alimenty",
+      "category": "prawo-rodzinne",
+      "lawyerMatch": "rodzinne"
+    },
+    "pozbawienie-wladzy-rodzicielskiej-warszawa": {
+      "kicker": "Pozbawienie władzy rodzicielskiej",
+      "category": "prawo-rodzinne",
+      "lawyerMatch": "rodzinne"
+    },
+    "podzial-majatku-w-warszawie": {
+      "kicker": "Podział majątku",
+      "category": "majatek-i-spadki",
+      "lawyerMatch": "rodzinne"
+    },
+    "podzial-majatku-po-rozwodzie": {
+      "kicker": "Podział majątku po rozwodzie",
+      "category": "majatek-i-spadki",
+      "lawyerMatch": "rodzinne"
+    },
+    "malzenskie-ustroje-majatkowe": {
+      "kicker": "Małżeńskie ustroje majątkowe",
+      "category": "majatek-i-spadki",
+      "lawyerMatch": "rodzinne"
+    },
+    "prawo-spadkowe-warszawa": {
+      "kicker": "Prawo spadkowe",
+      "category": "majatek-i-spadki",
+      "lawyerMatch": "spadkowe"
+    },
+    "prawa-pracownika": {
+      "kicker": "Prawa pracownika",
+      "category": "prawa-pracownika",
+      "lawyerMatch": "prawo pracy"
+    },
+    "spory-sadowe": {
+      "kicker": "Spory korporacyjne",
+      "category": "obsluga-firm",
+      "lawyerMatch": "spory sądowe"
+    },
+    "mediacje-i-arbitraz": {
+      "kicker": "Mediacje i arbitraż",
+      "category": "obsluga-firm",
+      "lawyerMatch": "mediacje"
+    },
+    "pozew-o-zaplate": {
+      "kicker": "Pozew o zapłatę",
+      "category": "obsluga-firm",
+      "lawyerMatch": "spory sądowe"
+    },
+    "pozew-w-epu": {
+      "kicker": "Pozew w EPU",
+      "category": "obsluga-firm",
+      "lawyerMatch": "gospodarcze"
+    },
+    "adwokat-w-sprawie-sadowej": {
+      "kicker": "Adwokat w sprawie sądowej",
+      "category": "obsluga-firm",
+      "lawyerMatch": "spory sądowe"
+    },
+    "dla-biznesu-obsluga-firm": {
+      "kicker": "Obsługa firm",
+      "category": "obsluga-firm",
+      "lawyerMatch": "prawo gospodarcze"
+    }
   },
   "upsellTitle": "Konsultacja podstawowa ONLINE"
 }

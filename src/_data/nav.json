@@ -1,107 +1,206 @@
 {
+  "_comment": "Site navigation. `categories` is THE service taxonomy: the homepage section, /oferta/, /kontakt/ and every hub page render from it, so a service moves in one place only. Each category's `url` is its hub page, and that hub never repeats itself inside its own `services` list. `serviceMeta.json` keys each service to a category by slug. `footer` is a separate, older grouping and is deliberately left alone for now.",
   "header": [
-    { "label": "Oferta", "url": "/oferta/" },
-    { "label": "Konsultacje", "url": "/konsultacje/" },
-    { "label": "Zespół", "url": "/zespol/" },
-    { "label": "Blog", "url": "/blog/" },
-    { "label": "Kontakt", "url": "/kontakt/" }
-  ],
-  "areas": [
     {
-      "title": "Obsługa prawna biznesu",
-      "blurb": "Kontrakty, prawo korporacyjne, windykacja należności, spory sądowe i pozasądowe, prawo pracy, RODO, sprawy urzędowe",
-      "url": "/dla-biznesu-obsluga-firm/"
+      "label": "Oferta",
+      "url": "/oferta/"
     },
     {
-      "title": "Prawo rodzinne",
-      "blurb": "Rozwód, separacja, podział majątku, ograniczenie i pozbawienie władzy rodzicielskiej, zabezpieczenia, mediacje",
-      "url": "/prawo-rodzinne-warszawa/"
+      "label": "Konsultacje",
+      "url": "/konsultacje/"
     },
     {
-      "title": "Spadki i sukcesja",
-      "blurb": "Nieruchomości, dziedziczenie, testamenty, stwierdzenie nabycia spadku, podział majątku, darowizny, odrzucenie spadku",
-      "url": "/prawo-spadkowe-warszawa/"
+      "label": "Zespół",
+      "url": "/zespol/"
     },
     {
-      "title": "Prawa pracownika",
-      "blurb": "Prawo pracy, zwolnienia, urlop macierzyński i wychowawczy, umowy, odszkodowania, zasiłki, odwołania od decyzji ZUS",
-      "url": "/prawa-pracownika/"
+      "label": "Blog",
+      "url": "/blog/"
+    },
+    {
+      "label": "Kontakt",
+      "url": "/kontakt/"
     }
   ],
-  "offerGrid": [
+  "categories": [
     {
-      "title": "Biznes",
-      "items": [
-        { "label": "Bieżąca obsługa prawna w abonamencie", "url": "/dla-biznesu-obsluga-firm/",
-          "note": "TEMPORARY (2026-08-21, owner call): points at the B2B hub instead of the Stripe product page /konsultacje/stala-obsluga-prawna-przedsiebiorcy/. Revisit when the hub carries real copy and D8 settles the abonament scope." },
-        { "label": "Pozew o zapłatę z faktury", "url": "/pozew-o-zaplate/" },
-        { "label": "Pozew w EPU", "url": "/pozew-w-epu/" },
-        { "label": "Spory sądowe", "url": "/spory-sadowe/" },
-        { "label": "Mediacje i arbitraż", "url": "/mediacje-i-arbitraz/" }
+      "slug": "obsluga-firm",
+      "label": "Obsługa firm",
+      "url": "/dla-biznesu-obsluga-firm/",
+      "summary": "Prowadzimy bieżącą obsługę prawną firm i jednoosobowych działalności: umowy, sprawy pracownicze, RODO i pisma do urzędów. Odzyskujemy nieopłacone faktury, w e-sądzie i w zwykłym trybie. Gdy spór trafi do sądu, prowadzimy go do końca. Jeśli da się go zakończyć ugodą lub mediacją, proponujemy to najpierw.",
+      "services": [
+        {
+          "label": "Bieżąca obsługa prawna w abonamencie",
+          "url": "/dla-biznesu-obsluga-firm/abonament/"
+        },
+        {
+          "label": "Pozew o zapłatę z faktury",
+          "url": "/pozew-o-zaplate/"
+        },
+        {
+          "label": "Pozew w EPU",
+          "url": "/pozew-w-epu/"
+        },
+        {
+          "label": "Spory sądowe",
+          "url": "/spory-sadowe/"
+        },
+        {
+          "label": "Mediacje i arbitraż",
+          "url": "/mediacje-i-arbitraz/"
+        },
+        {
+          "label": "Adwokat w sprawie sądowej",
+          "url": "/adwokat-w-sprawie-sadowej/"
+        }
       ]
     },
     {
-      "title": "Rozwód i separacja",
-      "items": [
-        { "label": "Sprawy rozwodowe", "url": "/sprawy-rozwodowe-warszawa/" },
-        { "label": "Rozwód bez orzekania o winie", "url": "/rozwod-bez-orzekania-o-winie/" },
-        { "label": "Rozwód z orzeczeniem o winie", "url": "/rozwod-z-orzeczeniem-o-winie/" },
-        { "label": "Separacja", "url": "/separacja/" }
+      "slug": "prawo-rodzinne",
+      "label": "Prawo rodzinne",
+      "url": "/prawo-rodzinne-warszawa/",
+      "summary": "Prowadzimy rozwody, separacje i sprawy o alimenty. Zajmujemy się władzą rodzicielską, kontaktami z dzieckiem i zabezpieczeniem na czas procesu. Dwoje naszych prawników to certyfikowani mediatorzy, więc ugodę proponujemy zawsze, gdy jest realna. Sprawę prowadzi jeden adwokat lub radca prawny, od pierwszej rozmowy do wyroku.",
+      "services": [
+        {
+          "label": "Sprawy rozwodowe",
+          "url": "/sprawy-rozwodowe-warszawa/"
+        },
+        {
+          "label": "Rozwód bez orzekania o winie",
+          "url": "/rozwod-bez-orzekania-o-winie/"
+        },
+        {
+          "label": "Rozwód z orzeczeniem o winie",
+          "url": "/rozwod-z-orzeczeniem-o-winie/"
+        },
+        {
+          "label": "Separacja",
+          "url": "/separacja/"
+        },
+        {
+          "label": "Alimenty",
+          "url": "/alimenty/"
+        },
+        {
+          "label": "Pozbawienie władzy rodzicielskiej",
+          "url": "/pozbawienie-wladzy-rodzicielskiej-warszawa/"
+        }
       ]
     },
     {
-      "title": "Rodzina i dzieci",
-      "items": [
-        { "label": "Prawo rodzinne", "url": "/prawo-rodzinne-warszawa/" },
-        { "label": "Alimenty", "url": "/alimenty/" },
-        { "label": "Pozbawienie władzy rodzicielskiej", "url": "/pozbawienie-wladzy-rodzicielskiej-warszawa/" }
+      "slug": "majatek-i-spadki",
+      "label": "Majątek i spadki",
+      "url": "/prawo-spadkowe-warszawa/",
+      "summary": "Przeprowadzamy stwierdzenie nabycia spadku, dział spadku i sprawy o zachowek. Sporządzamy i podważamy testamenty oraz rozliczamy darowizny. Dzielimy majątek wspólny małżonków, w czasie rozwodu i po nim. Doradzamy też przy rozdzielności majątkowej.",
+      "services": [
+        {
+          "label": "Podział majątku",
+          "url": "/podzial-majatku-w-warszawie/"
+        },
+        {
+          "label": "Podział majątku po rozwodzie",
+          "url": "/podzial-majatku-po-rozwodzie/"
+        },
+        {
+          "label": "Małżeńskie ustroje majątkowe",
+          "url": "/malzenskie-ustroje-majatkowe/"
+        }
       ]
     },
     {
-      "title": "Majątek, spadki i sąd",
-      "items": [
-        { "label": "Podział majątku", "url": "/podzial-majatku-w-warszawie/" },
-        { "label": "Podział majątku po rozwodzie", "url": "/podzial-majatku-po-rozwodzie/" },
-        { "label": "Małżeńskie ustroje majątkowe", "url": "/malzenskie-ustroje-majatkowe/" },
-        { "label": "Prawo spadkowe", "url": "/prawo-spadkowe-warszawa/" },
-        { "label": "Adwokat w sprawie sądowej", "url": "/adwokat-w-sprawie-sadowej/" }
-      ]
+      "slug": "prawa-pracownika",
+      "label": "Prawa pracownika",
+      "url": "/prawa-pracownika/",
+      "summary": "Reprezentujemy pracowników w sporach z pracodawcą i z ZUS. Podważamy wypowiedzenia i dochodzimy odszkodowań. Odwołujemy się od decyzji ZUS w sprawach zasiłków i składek. Terminy są krótkie: 21 dni do sądu pracy, miesiąc na odwołanie od decyzji ZUS.",
+      "services": [],
+      "note": "Reprezentujemy pracowników w sporach z pracodawcą i z ZUS. Osobne strony poszczególnych usług powstają."
     }
   ],
   "footer": [
     {
       "title": "Rozwód i separacja",
       "items": [
-        { "label": "Sprawy rozwodowe", "url": "/sprawy-rozwodowe-warszawa/" },
-        { "label": "Rozwód bez orzekania o winie", "url": "/rozwod-bez-orzekania-o-winie/" },
-        { "label": "Rozwód z orzeczeniem o winie", "url": "/rozwod-z-orzeczeniem-o-winie/" },
-        { "label": "Separacja", "url": "/separacja/" }
+        {
+          "label": "Sprawy rozwodowe",
+          "url": "/sprawy-rozwodowe-warszawa/"
+        },
+        {
+          "label": "Rozwód bez orzekania o winie",
+          "url": "/rozwod-bez-orzekania-o-winie/"
+        },
+        {
+          "label": "Rozwód z orzeczeniem o winie",
+          "url": "/rozwod-z-orzeczeniem-o-winie/"
+        },
+        {
+          "label": "Separacja",
+          "url": "/separacja/"
+        }
       ]
     },
     {
       "title": "Majątek i rodzina",
       "items": [
-        { "label": "Nieruchomości", "url": "/nieruchomosci/" },
-        { "label": "Spadki", "url": "/prawo-spadkowe-warszawa/" },
-        { "label": "Podział majątku", "url": "/podzial-majatku-w-warszawie/" },
-        { "label": "Podział majątku po rozwodzie", "url": "/podzial-majatku-po-rozwodzie/" },
-        { "label": "Małżeńskie ustroje majątkowe", "url": "/malzenskie-ustroje-majatkowe/" },
-        { "label": "Alimenty", "url": "/alimenty/" },
-        { "label": "Prawo rodzinne", "url": "/prawo-rodzinne-warszawa/" },
-        { "label": "Pozbawienie władzy rodzicielskiej", "url": "/pozbawienie-wladzy-rodzicielskiej-warszawa/" }
+        {
+          "label": "Nieruchomości",
+          "url": "/nieruchomosci/"
+        },
+        {
+          "label": "Spadki",
+          "url": "/prawo-spadkowe-warszawa/"
+        },
+        {
+          "label": "Podział majątku",
+          "url": "/podzial-majatku-w-warszawie/"
+        },
+        {
+          "label": "Podział majątku po rozwodzie",
+          "url": "/podzial-majatku-po-rozwodzie/"
+        },
+        {
+          "label": "Małżeńskie ustroje majątkowe",
+          "url": "/malzenskie-ustroje-majatkowe/"
+        },
+        {
+          "label": "Alimenty",
+          "url": "/alimenty/"
+        },
+        {
+          "label": "Prawo rodzinne",
+          "url": "/prawo-rodzinne-warszawa/"
+        },
+        {
+          "label": "Pozbawienie władzy rodzicielskiej",
+          "url": "/pozbawienie-wladzy-rodzicielskiej-warszawa/"
+        }
       ]
     },
     {
       "title": "Kancelaria",
       "items": [
-        { "label": "Adwokat w sprawie sądowej", "url": "/adwokat-w-sprawie-sadowej/" },
-        { "label": "Zespół", "url": "/zespol/" },
-        { "label": "Publikacje", "url": "/publikacje/" },
-        { "label": "Akcjonariusze", "url": "/akcjonariusze/" }
+        {
+          "label": "Adwokat w sprawie sądowej",
+          "url": "/adwokat-w-sprawie-sadowej/"
+        },
+        {
+          "label": "Zespół",
+          "url": "/zespol/"
+        },
+        {
+          "label": "Publikacje",
+          "url": "/publikacje/"
+        },
+        {
+          "label": "Akcjonariusze",
+          "url": "/akcjonariusze/"
+        }
       ]
     }
   ],
   "bottomBar": [
-    { "label": "Polityka prywatności", "url": "/polityka-prywatnosci/" }
+    {
+      "label": "Polityka prywatności",
+      "url": "/polityka-prywatnosci/"
+    }
   ]
 }

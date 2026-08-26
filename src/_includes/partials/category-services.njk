@@ -1,0 +1,13 @@
+{# Hub page service list. Set `cat` before including. It goes directly under the
+   hero, so the spokes are the first thing a reader and a crawler meet after the
+   intro. The partial adds no .wrap of its own — the caller places it. #}
+{% if cat.services.length %}
+<nav class="hub-services" aria-labelledby="hub-services-title">
+  <h2 class="hub-services__title" id="hub-services-title">Usługi w tej kategorii</h2>
+  <ul class="hub-services__list">
+    {% for s in cat.services %}
+    <li><a href="{{ s.url }}">{{ s.label }}</a></li>
+    {% endfor %}
+  </ul>
+</nav>
+{% endif %}

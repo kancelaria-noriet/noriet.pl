@@ -20,8 +20,12 @@ themselves. Override binding with `NORIET_HOST`/`NORIET_PORT`. Set
 ```
 eleventy.config.js       input src/, output _site/; .html content not template-parsed
 src/_data/site.json      NAP (canonical phone, settled by D3), base URL
-src/_data/nav.json       crew-approved taxonomy (header, 4 area cards,
-                         oferta grid, footer columns, bottom bar)
+src/_data/nav.json       header, the service taxonomy (`categories`), footer
+                         columns, bottom bar. `categories` is the single source
+                         for the homepage, /oferta/, /kontakt/ and every hub
+                         page — see "Service taxonomy" below
+src/_data/serviceMeta.json  per-service rail data; `category` keys each service
+                         to its owning category in nav.json
 src/_data/stubs.json     not-yet-migrated URLs rendered as marked stubs (noindex)
 src/_data/publications.json  the five publications shown on /publikacje/
                          (GENERATED — migrate_all.py, then covers.mjs)
@@ -29,7 +33,12 @@ src/_data/postCategories.json  blog taxonomy: ten categories with intro copy,
                          plus a post-slug -> category map (HAND-MAINTAINED;
                          the migrator never touches it)
 src/_includes/           base layout, header/footer/breadcrumb partials,
-                         service + stub layouts, blog-categories rail card
+                         service + stub layouts, blog-categories rail card,
+                         category-grid + category-services partials
+src/oferta.njk           /oferta/ — every category, description + full list
+src/dla-biznesu-obsluga-firm.njk  the Obsługa firm hub (authored, not migrated)
+src/dla-biznesu-abonament.njk     /dla-biznesu-obsluga-firm/abonament/ — the
+                         subscription product page, with its own sales design
 src/blog.njk             /blog/ + /blog/strona/N/ (10 per page)
 src/blog-kategoria.njk   /blog/kategoria/<slug>/ — one page per category
 src/blog-archiwum.njk    /blog/wszystkie-artykuly/ — all 139, unpaginated
@@ -89,6 +98,48 @@ the migrator, or the covers disappear from the page:
 eval "$($HOME/.local/share/fnm/fnm env)"
 node tools/covers.mjs            # 566 kB of 2016 PNGs -> 74 kB of WebP
 ```
+
+### Service taxonomy
+
+`src/_data/nav.json` -> `categories` is the **only** place a service belongs to
+a category. Four surfaces render from that one array, so they cannot drift:
+
+| surface | what it renders |
+|---|---|
+| homepage `Oferta` section | `partials/category-grid.njk` — linked title + full list |
+| `/kontakt/` | the same partial, so the two are identical by construction |
+| `/oferta/` | every category, `summary` + full list |
+| each hub page | `partials/category-services.njk`, under the hero |
+
+A category's `url` is its hub page. A hub never lists itself among its own
+`services`. `layouts/service.njk` decides which block a page gets by comparing
+`page.url` to the category `url`: the hub shows the whole category, every other
+page shows its siblings and a link back up. `serviceMeta.json` keys each
+service to a category by slug.
+
+Adding a service takes two edits: an entry in the right `categories[].services`
+and, if the page uses `layouts/service.njk`, a `bySlug` entry in
+`serviceMeta.json`. Check both with:
+
+```sh
+python3 - <<'EOF'
+import json, io, os
+nav = json.load(io.open("src/_data/nav.json", encoding="utf-8"))
+meta = json.load(io.open("src/_data/serviceMeta.json", encoding="utf-8"))["bySlug"]
+cats = {c["slug"] for c in nav["categories"]}
+for c in nav["categories"]:
+    for s in c["services"]:
+        if not os.path.isfile("_site" + s["url"] + "index.html"):
+            print("MISSING PAGE ", s["url"])
+        if s["url"] == c["url"]:
+            print("HUB LISTS ITSELF", c["slug"])
+for slug, m in meta.items():
+    if m["category"] not in cats:
+        print("BAD CATEGORY  ", slug, m["category"])
+EOF
+```
+
+Both lists must come back empty. Run it after `./build.sh`.
 
 ### Blog taxonomy
 

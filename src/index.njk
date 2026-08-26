@@ -11,8 +11,9 @@
   <div class="wrap hero__grid">
     <div class="hero__main">
       <p class="kicker">Kancelaria radcowska i adwokacka · Warszawa</p>
-      <h1>Kancelaria Prawna Noriet</h1>
-      <p class="hero__lead">{{ home.description }}</p>
+      <h1 class="hero__brand">Kancelaria Prawna Noriet</h1>
+      <h2 class="hero__claim">Mądrze rozwiązujemy spory</h2>
+      <p class="hero__lead">Pomagamy firmom i klientom indywidualnym osiągnąć to, na czym naprawdę im zależy – nie mnożyć pisma, koszty i lata procesu. Jeśli można znaleźć dobre rozwiązanie pozasądowe, znajdziemy je i dowieziemy. Kiedy jednak trzeba walczyć – zrobimy to skutecznie.</p>
       <p class="hero__actions">
         <a class="btn btn--call" href="{{ site.phoneHref }}">Zadzwoń: {{ site.phone }}</a>
         <a class="btn btn--ghost" href="/konsultacje/">Umów konsultację</a>
@@ -41,44 +42,25 @@
   </div>
 </section>
 
-<section class="areas" aria-labelledby="areas-title">
-  <div class="wrap">
-    <h2 id="areas-title">Kancelaria prawna — profesjonalna obsługa prawna w&nbsp;głównych obszarach praktyki</h2>
-    <div class="card-grid card-grid--areas">
-      {% for area in nav.areas %}
-      <article class="card">
-        <h3>{{ area.title }}</h3>
-        <p>{{ area.blurb }}</p>
-        {% if area.url %}<p class="card__foot"><a class="card__more" href="{{ area.url }}">Zobacz ofertę →</a></p>{% endif %}
-      </article>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<section class="section-rule" aria-label="Pozostałe specjalizacje i konsultacje">
-  <div class="wrap teaser">
-    <div class="teaser-box">
-      <h3 class="rail-card__title">Pozostałe specjalizacje</h3>
-      {% include "generated/home-specjalizacje.html" %}
-    </div>
-    <div class="consult-card">
-      <h3>Konsultacje</h3>
-      <p>Potrzebujesz wsparcia? Umów się na konsultację prawną z jednym
-      z naszych adwokatów lub radców prawnych. Pomożemy rozwiązać
-      Twój problem!</p>
-      <p><a class="btn btn--call btn--block" href="/konsultacje/">Zobacz konsultacje i ceny</a></p>
-    </div>
-  </div>
-</section>
-
-<section class="offer band" aria-labelledby="offer-title">
+<section class="offer" aria-labelledby="offer-title">
   <div class="wrap">
     <div class="section-head">
       <h2 id="offer-title">Oferta</h2>
       <a class="more" href="/oferta/">Wszystkie usługi →</a>
     </div>
-    {% include "partials/offer-grid.njk" %}
+    {% include "partials/category-grid.njk" %}
+  </div>
+</section>
+
+<section class="section-rule" aria-label="Konsultacje">
+  <div class="wrap teaser teaser--solo">
+    <div class="consult-card">
+      <h2>Konsultacje</h2>
+      <p>Potrzebujesz wsparcia? Umów się na konsultację prawną z jednym
+      z naszych adwokatów lub radców prawnych. Pomożemy rozwiązać
+      Twój problem!</p>
+      <p><a class="btn btn--call btn--block" href="/konsultacje/">Zobacz konsultacje i ceny</a></p>
+    </div>
   </div>
 </section>
 

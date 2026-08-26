@@ -3,6 +3,12 @@ layout: layouts/base.njk
 ---
 {% set slug = page.fileSlug %}
 {% set meta = serviceMeta.bySlug[slug] %}
+{# One service belongs to one category (nav.categories). A page whose url equals
+   its category's url is that category's hub: it lists the whole category under
+   the hero. Every other page links back up and shows its siblings instead. #}
+{% set cat = null %}
+{% if meta %}{% for c in nav.categories %}{% if c.slug == meta.category %}{% set cat = c %}{% endif %}{% endfor %}{% endif %}
+{% set isHub = cat and cat.url == page.url %}
 {# The breadcrumb parent follows the offer taxonomy, so derive it from
    serviceMeta rather than defaulting it in the front matter. /akcjonariusze/
    and /obligacje/ borrow this layout but are not services, and a null in
@@ -31,25 +37,23 @@ layout: layouts/base.njk
     </p>
   </header>
 
+  {% if isHub %}{% include "partials/category-services.njk" %}{% endif %}
+
   {% set tocItems = content | toc %}
   <div class="service-layout">
     <article class="service">
       <div class="prose">
         {{ content | safe }}
       </div>
-      {% if meta %}
-      {% set relatedCol = null %}
-      {% for col in nav.offerGrid %}{% if col.title == meta.column %}{% set relatedCol = col %}{% endif %}{% endfor %}
-      {% if relatedCol %}
+      {% if cat and not isHub %}
       <nav class="related" aria-label="Powiązane obszary praktyki">
-        <h2>Powiązane obszary praktyki</h2>
+        <h2>Więcej w kategorii <a href="{{ cat.url }}">{{ cat.label }}</a></h2>
         <ul>
-          {% for item in relatedCol.items %}
+          {% for item in cat.services %}
           {% if item.url != page.url %}<li><a href="{{ item.url }}">{{ item.label }}</a></li>{% endif %}
           {% endfor %}
         </ul>
       </nav>
-      {% endif %}
       {% endif %}
     </article>
 

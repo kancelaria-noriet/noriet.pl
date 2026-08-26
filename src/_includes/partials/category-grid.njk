@@ -1,0 +1,20 @@
+{# The service taxonomy as a card grid. Rendered from nav.categories on the
+   homepage and on /kontakt/, so those two surfaces cannot drift apart. The
+   category title is the link: it carries the keyword anchor that the old
+   "Zobacz ofertę →" call to action wasted. #}
+<div class="card-grid card-grid--areas">
+  {% for cat in nav.categories %}
+  <nav class="card cat-card" aria-labelledby="cat-{{ cat.slug }}">
+    <h3 class="cat-card__title" id="cat-{{ cat.slug }}"><a href="{{ cat.url }}">{{ cat.label }}</a></h3>
+    {% if cat.services.length %}
+    <ul class="cat-card__list">
+      {% for s in cat.services %}
+      <li><a href="{{ s.url }}">{{ s.label }}</a></li>
+      {% endfor %}
+    </ul>
+    {% elif cat.note %}
+    <p class="cat-card__note">{{ cat.note }}</p>
+    {% endif %}
+  </nav>
+  {% endfor %}
+</div>

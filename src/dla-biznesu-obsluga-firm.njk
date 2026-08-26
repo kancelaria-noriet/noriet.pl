@@ -1,129 +1,34 @@
 ---json
 {
-  "layout": "layouts/base.njk",
-  "title": "Obsługa prawna firm",
-  "titleTag": "Obsługa prawna firm i JDG — testowy miesiąc | Noriet",
-  "description": "Testowy miesiąc obsługi prawnej dla firm i jednoosobowych działalności: 2 godziny pracy prawnika, bez umowy na czas określony. Warszawa, sprawy w całej Polsce.",
+  "layout": "layouts/service.njk",
+  "title": "Obsługa firm",
+  "titleTag": "Obsługa prawna firm i JDG – Adwokat Warszawa | Noriet",
+  "description": "Obsługa prawna firm i jednoosobowych działalności: umowy, sprawy pracownicze, RODO, windykacja faktur i spory sądowe. Warszawa, sprawy w całej Polsce.",
   "permalink": "/dla-biznesu-obsluga-firm/",
-  "crumbParent": { "label": "Oferta", "url": "/oferta/" },
-  "partners": [
-    { "name": "SMEO", "slug": "smeo", "url": "https://smeo.pl/",
-      "light": { "file": "smeo.svg", "w": 191, "h": 33 },
-      "dark":  { "file": "smeo-dark.svg", "w": 191, "h": 33 } },
-    { "name": "Soldent", "slug": "soldent", "url": "https://www.soldent.pl/",
-      "light": { "file": "soldent.png", "w": 156, "h": 27 },
-      "dark":  { "file": "soldent-dark.png", "w": 188, "h": 32 } },
-    { "name": "Linktis", "slug": "linktis", "url": "https://www.linktis.com/",
-      "light": { "file": "linktis.png", "w": 480, "h": 136 },
-      "dark":  { "file": "linktis-dark.png", "w": 480, "h": 136 } },
-    { "name": "Silk Software House", "slug": "silk", "url": "https://silksoftwarehouse.com/en",
-      "light": { "file": "silk-software-house.png", "w": 259, "h": 281 },
-      "dark":  { "file": "silk-software-house-dark.png", "w": 259, "h": 281 } },
-    { "name": "BlockyDevs", "slug": "blockydevs", "url": "https://www.blockydevs.com/",
-      "light": { "file": "blockydevs.png", "w": 500, "h": 200 },
-      "dark":  { "file": "blockydevs-dark.png", "w": 500, "h": 200 } },
-    { "name": "Entropia Dev", "slug": "entropia", "url": "https://entropiadev.com/",
-      "wordmark": { "lead": "Entropia", "accent": "Dev" } }
-  ]
+  "h1": "Obsługa prawna firm i jednoosobowych działalności"
 }
 ---
-<div class="crumb-band">
-  <div class="wrap">
-    {% include "partials/breadcrumb.njk" %}
-  </div>
-</div>
+<p>Prowadzimy sprawy przedsiębiorców od strony umów, od strony pracowniczej
+i od strony sądowej. Obsługujemy spółki i jednoosobowe działalności, w
+Warszawie i w całej Polsce. Sprawę prowadzi wyznaczony adwokat lub radca
+prawny, a nie infolinia.</p>
 
-<header class="service-hero service-hero--center">
-  <div class="wrap">
-    <p class="kicker">Dla firm i jednoosobowych działalności</p>
-    <h1>Masz prawną zagwozdkę? To najlepszy moment, żeby przetestować
-    prawnika w abonamencie.</h1>
-    <p class="service-hero__lead">Jeden miesiąc obsługi prawnej dla Twojego
-    biznesu. Bez zobowiązań. Sprawdź, jak to jest mieć kogoś, kto pilnuje
-    spraw prawnych — zanim zrobią się problemem.</p>
-    <p class="hero__actions">
-      <a class="btn btn--call" href="#zamowienie">Zamów testowy miesiąc</a>
-      <a class="btn btn--ghost" href="{{ site.phoneHref }}">Zadzwoń: {{ site.phone }}</a>
-    </p>
-  </div>
-</header>
+<h2 id="biezaca-obsluga">Bieżąca obsługa, zanim pojawi się problem</h2>
+<p>Najtańszy spór to ten, który nie powstał. Opiniujemy i przygotowujemy
+umowy, sprawdzamy dokumenty pracownicze, odpowiadamy na pisma z urzędów
+i pilnujemy obowiązków z zakresu ochrony danych osobowych.</p>
+<p>Jeżeli chcesz to sprawdzić bez zobowiązań, zacznij od
+<a href="/dla-biznesu-obsluga-firm/abonament/">testowego miesiąca obsługi
+prawnej</a>.</p>
 
-<section class="band" aria-label="Możliwe scenariusze">
-  <div class="wrap">
-    <div class="card-grid card-grid--pair">
-      <article class="card">
-        <h2>W najgorszym wypadku</h2>
-        <p>Pomożemy Ci z tą jedną sprawą, która akurat spędza Ci sen z powiek.
-        I tyle — żadnych zobowiązań.</p>
-      </article>
-      <article class="card">
-        <h2>W najlepszym</h2>
-        <p>Zostaniesz z nami na dłużej. Zrobimy porządek w papierach,
-        sprawdzimy, czy działasz zgodnie z aktualnymi przepisami, podpowiemy,
-        na co uważać, i zadbamy o sferę prawną Twojego biznesu na co dzień.</p>
-      </article>
-    </div>
-    <p class="section-lead trigger-note">A gdy pojawi się kłopot — spór
-    z kontrahentem, nieopłacona faktura, wezwanie z urzędu z siedmiodniowym
-    terminem — nie będziesz szukać prawnika w panice. Od razu będziesz
-    wiedzieć, do kogo się zwrócić i kto Ci pomoże.</p>
-  </div>
-</section>
+<h2 id="odzyskiwanie-naleznosci">Odzyskiwanie należności</h2>
+<p>Nieopłacona faktura nie musi oznaczać długiego procesu. Zaczynamy od
+wezwania do zapłaty, a gdy dłużnik nie reaguje, kierujemy sprawę do sądu.
+Przy prostych, bezspornych roszczeniach zwykle szybsze jest elektroniczne
+postępowanie upominawcze.</p>
 
-<section class="price-section" aria-labelledby="produkt">
-  <div class="wrap">
-    <article class="card product-card">
-      <p class="badge">Jeden miesiąc · bez zobowiązań — dla firm i JDG</p>
-      <h2 id="produkt">Testowy miesiąc obsługi prawnej dla Twojego biznesu</h2>
-      <p>2 godziny obsługi prawnej, rozłożone w czasie na jeden miesiąc.
-      Wykorzystasz je tak, jak potrzebujesz — na pytania, pisma, analizę
-      umowy albo pilną sprawę.</p>
-      <ul class="chips product-card__points">
-        <li>Bez umowy na czas określony — testujesz przez jeden miesiąc</li>
-        <li>Godziny wykorzystujesz elastycznie, kiedy są Ci potrzebne</li>
-        <li>Realny kontakt do konkretnego prawnika, nie do infolinii</li>
-      </ul>
-      <p class="product-card__price">400 zł netto
-        <small>/ miesiąc · 2 h obsługi</small></p>
-      <a class="btn btn--call btn--block" href="#zamowienie">Zamów testowy miesiąc</a>
-    </article>
-  </div>
-</section>
-
-<section class="band" aria-labelledby="zaufali">
-  <div class="wrap">
-    <h2 id="zaufali">Zaufali nam</h2>
-    <ul class="partners">
-      {% for p in partners %}
-      <li class="partner partner--{{ p.slug }}">
-        <a href="{{ p.url }}" rel="nofollow noopener">
-          {%- if p.wordmark %}
-          <span class="partner__wordmark">{{ p.wordmark.lead }}
-            <span class="partner__wordmark-accent">{{ p.wordmark.accent }}</span></span>
-          {%- else %}
-          <img class="partner__logo partner__logo--light"
-               src="/assets/img/partners/{{ p.light.file }}" alt="{{ p.name }}"
-               width="{{ p.light.w }}" height="{{ p.light.h }}" loading="lazy">
-          <img class="partner__logo partner__logo--dark"
-               src="/assets/img/partners/{{ p.dark.file }}" alt="{{ p.name }}"
-               width="{{ p.dark.w }}" height="{{ p.dark.h }}" loading="lazy">
-          {%- endif %}
-        </a>
-      </li>
-      {% endfor %}
-    </ul>
-  </div>
-</section>
-
-<section class="form-section form-section--rule" id="zamowienie"
-         aria-labelledby="zamowienie-title">
-  <div class="wrap">
-    <h2 id="zamowienie-title">Zamów testowy miesiąc</h2>
-    <p class="section-lead">Napisz, czego potrzebujesz — odpowiadamy w ciągu
-    jednego dnia roboczego i ustalamy szczegóły. Jeśli sprawa jest pilna,
-    zadzwoń pod <a href="{{ site.phoneHref }}">{{ site.phone }}</a>.</p>
-    <div class="rail-layout">
-      {% include "partials/form-contact.njk" %}
-    </div>
-  </div>
-</section>
+<h2 id="spory-i-sad">Spory: najpierw ugoda, potem sąd</h2>
+<p>Zanim złożymy pozew, sprawdzamy, czy sprawę da się zamknąć ugodą albo
+mediacją. Dwoje naszych prawników to certyfikowani mediatorzy. Gdy
+porozumienie nie jest realne, prowadzimy spór przed sądem do prawomocnego
+zakończenia, także w sporach między wspólnikami.</p>

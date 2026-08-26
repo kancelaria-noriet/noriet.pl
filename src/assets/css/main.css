@@ -200,23 +200,22 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
 .card__more, .more { font-weight: 600; font-size: var(--t-sm); }
 .card__more { display: inline-flex; align-items: center; min-height: 44px; }
 
-.offer-col h3 {
-  font-family: var(--sans); font-size: var(--t-xs); font-weight: 700;
-  letter-spacing: .14em; text-transform: uppercase;
-  line-height: 1.65; margin-top: 0; margin-bottom: var(--s3);
-}
-.offer-col h3::before {
-  content: ""; display: inline-block; width: 8px; height: 8px;
-  background: var(--brand); margin-right: var(--s2);
-}
-.offer-col ul { list-style: none; margin: 0; padding: 0; }
-.offer-col a {
+/* Category cards. One partial (partials/category-grid.njk) renders these on the
+   homepage and on /kontakt/, so the two surfaces cannot drift. The linked title
+   is the anchor that matters; the rows below it are the spokes. */
+.cat-card { gap: var(--s4); }
+.cat-card__title { margin: 0; font-size: var(--t-lg); }
+.cat-card__title a { color: var(--ink); text-decoration: none; }
+.cat-card__title a:hover { color: var(--brand-ink); text-decoration: underline; }
+.cat-card__list { list-style: none; margin: 0; padding: 0; }
+.cat-card__list a {
   display: flex; align-items: center; min-height: 44px;
   border-top: 1px solid var(--line); padding: var(--s2) 0;
   font-size: var(--t-base); line-height: 1.35;
   text-decoration: none; color: var(--ink-2);
 }
-.offer-col a:hover { color: var(--brand-ink); text-decoration: underline; }
+.cat-card__list a:hover { color: var(--brand-ink); text-decoration: underline; }
+.cat-card__note { color: var(--ink-3); font-size: var(--t-sm); }
 
 .areas, .offer { padding-block: var(--s8); }
 
@@ -297,6 +296,16 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
   letter-spacing: .14em; text-transform: uppercase;
   color: var(--brand-ink); margin: 0 0 var(--s3);
 }
+/* Homepage hero. The brand name keeps the h1 for document structure, the claim
+   below it carries the visual weight. Heading level and type size are set apart
+   on purpose: the h1 is smaller than the h2 here, and only here. */
+.hero__brand { font-size: var(--t-lg); letter-spacing: normal; margin: 0 0 var(--s2); }
+.hero--light .hero__brand { color: var(--ink-2); }
+.hero__claim {
+  font-size: var(--t-2xl); line-height: 1.14; letter-spacing: -.015em;
+  margin: 0 0 var(--s4); max-width: 26ch;
+}
+
 .hero__grid { display: grid; gap: var(--s6); grid-template-columns: 1fr; }
 @media (min-width: 64rem) {
   .hero__grid { grid-template-columns: minmax(0, 1fr) 448px; align-items: start; }
@@ -521,6 +530,31 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
 }
 .related li a:hover { border-color: var(--brand); color: var(--brand-ink); }
 
+/* Hub page service list. Sits between the hero and the body, so the spokes come
+   before the prose for a reader and for a crawler. */
+.hub-services { margin: var(--s6) 0 var(--s7); padding-top: var(--s5); border-top: 1px solid var(--line); }
+.hub-services__title { font-size: var(--t-lg); margin: 0 0 var(--s4); }
+.hub-services__list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s2); grid-template-columns: 1fr; }
+@media (min-width: 34rem) { .hub-services__list { grid-template-columns: repeat(2, 1fr); } }
+.hub-services__list a {
+  display: flex; align-items: center; min-height: 44px;
+  padding: var(--s2) var(--s4);
+  border: 1px solid var(--line-2); border-radius: var(--radius);
+  text-decoration: none; color: var(--ink-2); font-size: var(--t-base);
+}
+.hub-services__list a:hover { border-color: var(--brand); color: var(--brand-ink); }
+
+/* /oferta/: the complete service list under each category description */
+.offer-list { list-style: none; margin: var(--s4) 0 0; padding: 0; }
+.offer-list a {
+  display: flex; align-items: center; min-height: 44px;
+  border-top: 1px solid var(--line); padding: var(--s2) 0;
+  text-decoration: none; color: var(--ink-2);
+}
+.offer-list a:hover { color: var(--brand-ink); text-decoration: underline; }
+.practice-row h2 a { color: var(--ink); text-decoration: none; }
+.practice-row h2 a:hover { color: var(--brand-ink); text-decoration: underline; }
+
 /* smooth anchor jumps from the TOC, minus the sticky header */
 html { scroll-behavior: smooth; }
 .prose h2 { scroll-margin-top: 90px; }
@@ -561,6 +595,7 @@ html { scroll-behavior: smooth; }
   border-radius: var(--radius-lg); padding: var(--s5);
 }
 @media (min-width: 64rem) { .teaser { grid-template-columns: 26fr 18fr; } }
+@media (min-width: 64rem) { .teaser--solo { grid-template-columns: minmax(0, 34rem); justify-content: center; } }
 .teaser h3 { margin-top: 0; }
 .teaser .chips li { font-size: var(--t-base); }
 .consult-card {
@@ -671,6 +706,8 @@ html { scroll-behavior: smooth; }
 .practice-row__sub { color: var(--brand-ink); font-weight: 600; font-size: var(--t-sm); margin: var(--s2) 0 var(--s4); }
 .practice-row__body { min-width: 0; }
 .practice-row__body p { color: var(--ink-2); margin-top: 0; }
+.practice-row__summary { color: var(--ink-2); margin: var(--s4) 0 0; }
+.offer-list li:first-child a { border-top: 0; }
 
 /* kontakt info band */
 .info-cols { display: grid; gap: var(--s5); grid-template-columns: 1fr; padding-block: var(--s6); }
@@ -735,7 +772,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
   html:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
 }
 
-/* B2B landing page (/dla-biznesu-obsluga-firm/) */
+/* B2B landing page (/dla-biznesu-obsluga-firm/abonament/) */
 /* .card-grid goes to 4 columns at 64rem; this page shows a pair. */
 @media (min-width: 64rem) { .card-grid--pair { grid-template-columns: repeat(2, 1fr); } }
 .card-grid--pair .card h2 { font-size: var(--t-lg); letter-spacing: normal; margin: 0; }
