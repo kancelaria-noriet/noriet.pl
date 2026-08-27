@@ -27,7 +27,7 @@
       "slug": "obsluga-firm",
       "label": "Obsługa firm",
       "url": "/dla-biznesu-obsluga-firm/",
-      "summary": "Prowadzimy bieżącą obsługę prawną firm i jednoosobowych działalności: umowy, sprawy pracownicze, RODO i pisma do urzędów. Odzyskujemy nieopłacone faktury, w e-sądzie i w zwykłym trybie. Gdy spór trafi do sądu, prowadzimy go do końca. Jeśli da się go zakończyć ugodą lub mediacją, proponujemy to najpierw.",
+      "summary": "Prowadzimy bieżącą obsługę prawną firm i jednoosobowych działalności: umowy, sprawy pracownicze, RODO i pisma do urzędów. Odzyskujemy nieopłacone faktury w e-sądzie i w zwykłym trybie. Ugodę albo mediację proponujemy najpierw. Spór sądowy prowadzimy do prawomocnego wyroku, jeśli druga strona nie chce się dogadać.",
       "services": [
         {
           "label": "Bieżąca obsługa prawna w abonamencie",
@@ -59,7 +59,7 @@
       "slug": "prawo-rodzinne",
       "label": "Prawo rodzinne",
       "url": "/prawo-rodzinne-warszawa/",
-      "summary": "Prowadzimy rozwody, separacje i sprawy o alimenty. Zajmujemy się władzą rodzicielską, kontaktami z dzieckiem i zabezpieczeniem na czas procesu. Dwoje naszych prawników to certyfikowani mediatorzy, więc ugodę proponujemy zawsze, gdy jest realna. Sprawę prowadzi jeden adwokat lub radca prawny, od pierwszej rozmowy do wyroku.",
+      "summary": "Przeprowadziliśmy setki spraw rozwodowych, o separację i o alimenty. Zajmujemy się władzą rodzicielską, kontaktami z dzieckiem i zabezpieczeniem na czas procesu. Dwoje naszych prawników to certyfikowani mediatorzy, więc ugodę proponujemy zawsze, gdy jest realna. Na spotkanie możesz przyjść z dzieckiem, w kancelarii czeka kącik z zabawkami.",
       "services": [
         {
           "label": "Sprawy rozwodowe",
@@ -91,7 +91,7 @@
       "slug": "majatek-i-spadki",
       "label": "Majątek i spadki",
       "url": "/prawo-spadkowe-warszawa/",
-      "summary": "Przeprowadzamy stwierdzenie nabycia spadku, dział spadku i sprawy o zachowek. Sporządzamy i podważamy testamenty oraz rozliczamy darowizny. Dzielimy majątek wspólny małżonków, w czasie rozwodu i po nim. Doradzamy też przy rozdzielności majątkowej.",
+      "summary": "Po śmierci bliskiej osoby przeprowadzimy stwierdzenie nabycia spadku, dział spadku i sprawę o zachowek. Sporządzamy i podważamy testamenty oraz rozliczamy darowizny. Majątek wspólny małżonków dzielimy w czasie rozwodu i po nim. Doradzamy też przy rozdzielności majątkowej.",
       "services": [
         {
           "label": "Podział majątku",
@@ -111,9 +111,9 @@
       "slug": "prawa-pracownika",
       "label": "Prawa pracownika",
       "url": "/prawa-pracownika/",
-      "summary": "Reprezentujemy pracowników w sporach z pracodawcą i z ZUS. Podważamy wypowiedzenia i dochodzimy odszkodowań. Odwołujemy się od decyzji ZUS w sprawach zasiłków i składek. Terminy są krótkie: 21 dni do sądu pracy, miesiąc na odwołanie od decyzji ZUS.",
+      "summary": "Reprezentujemy pracowników w sporach z pracodawcą i z ZUS. Podważamy wypowiedzenia i dochodzimy odszkodowań. W sprawach zasiłków i składek odwołujemy się od decyzji ZUS. Terminy są krótkie: 21 dni do sądu pracy, miesiąc na odwołanie.",
       "services": [],
-      "note": "Reprezentujemy pracowników w sporach z pracodawcą i z ZUS. Osobne strony poszczególnych usług powstają."
+      "note": "Wypowiedzenia, sprawy przed sądem pracy i odwołania od decyzji ZUS prowadzimy już teraz. Osobne strony tych usług dodamy wkrótce."
     }
   ],
   "footer": [
