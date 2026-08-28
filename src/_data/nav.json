@@ -1,5 +1,5 @@
 {
-  "_comment": "Site navigation. `categories` is THE service taxonomy: the homepage section, /oferta/, /kontakt/ and every hub page render from it, so a service moves in one place only. Each category's `url` is its hub page, and that hub never repeats itself inside its own `services` list. `serviceMeta.json` keys each service to a category by slug. `footer` is a separate, older grouping and is deliberately left alone for now. `featuredKonsultacje` is a display pick for the homepage bar: fileSlugs from src/content/konsultacje/, shown in this order. Change the list, not the template.",
+  "_comment": "Site navigation. `categories` is THE service taxonomy: the homepage section, /oferta/, /kontakt/ and every hub page render from it, so a service moves in one place only. Each category's `url` is its hub page, and that hub never repeats itself inside its own `services` list. `serviceMeta.json` keys each service to a category by slug. `footer` holds only the firm links that are not services: its Oferta column renders from `categories` like every other surface, so it cannot drift. `featuredKonsultacje` is a display pick for the homepage bar: fileSlugs from src/content/konsultacje/, shown in this order. Change the list, not the template.",
   "header": [
     {
       "label": "Oferta",
@@ -146,77 +146,27 @@
   ],
   "footer": [
     {
-      "title": "Rozwód i separacja",
-      "items": [
-        {
-          "label": "Sprawy rozwodowe",
-          "url": "/sprawy-rozwodowe-warszawa/"
-        },
-        {
-          "label": "Rozwód bez orzekania o winie",
-          "url": "/rozwod-bez-orzekania-o-winie/"
-        },
-        {
-          "label": "Rozwód z orzeczeniem o winie",
-          "url": "/rozwod-z-orzeczeniem-o-winie/"
-        },
-        {
-          "label": "Separacja",
-          "url": "/separacja/"
-        }
-      ]
-    },
-    {
-      "title": "Majątek i rodzina",
-      "items": [
-        {
-          "label": "Nieruchomości",
-          "url": "/nieruchomosci/"
-        },
-        {
-          "label": "Spadki",
-          "url": "/prawo-spadkowe-warszawa/"
-        },
-        {
-          "label": "Podział majątku",
-          "url": "/podzial-majatku-w-warszawie/"
-        },
-        {
-          "label": "Podział majątku po rozwodzie",
-          "url": "/podzial-majatku-po-rozwodzie/"
-        },
-        {
-          "label": "Małżeńskie ustroje majątkowe",
-          "url": "/malzenskie-ustroje-majatkowe/"
-        },
-        {
-          "label": "Alimenty",
-          "url": "/alimenty/"
-        },
-        {
-          "label": "Prawo rodzinne",
-          "url": "/prawo-rodzinne-warszawa/"
-        },
-        {
-          "label": "Pozbawienie władzy rodzicielskiej",
-          "url": "/pozbawienie-wladzy-rodzicielskiej-warszawa/"
-        }
-      ]
-    },
-    {
       "title": "Kancelaria",
       "items": [
-        {
-          "label": "Adwokat w sprawie sądowej",
-          "url": "/adwokat-w-sprawie-sadowej/"
-        },
         {
           "label": "Zespół",
           "url": "/zespol/"
         },
         {
+          "label": "Konsultacje",
+          "url": "/konsultacje/"
+        },
+        {
+          "label": "Blog",
+          "url": "/blog/"
+        },
+        {
           "label": "Publikacje",
           "url": "/publikacje/"
+        },
+        {
+          "label": "Kontakt",
+          "url": "/kontakt/"
         },
         {
           "label": "Akcjonariusze",

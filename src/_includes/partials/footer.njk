@@ -12,6 +12,19 @@
       <p class="footer-col__note">Adwokaci – Izba Adwokacka w Warszawie.
       Radcowie prawni – Okręgowa Izba Radców Prawnych.</p>
     </div>
+    {# The category hubs, not the 22 services. Every service is already one click
+       from the homepage, so listing them here bought no crawl reach and diluted
+       22 site-wide anchors into noise. Rendered from nav.categories, so the
+       footer can never fall behind the taxonomy again. #}
+    <nav class="footer-col" aria-label="Oferta">
+      <h2 class="footer-col__title">Oferta</h2>
+      <ul>
+        {% for cat in nav.categories %}
+        <li><a href="{{ cat.url }}">{{ cat.label }}</a></li>
+        {% endfor %}
+        <li><a href="/oferta/">Wszystkie usługi</a></li>
+      </ul>
+    </nav>
     {% for col in nav.footer %}
     <nav class="footer-col" aria-label="{{ col.title }}">
       <h2 class="footer-col__title">{{ col.title }}</h2>
