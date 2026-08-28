@@ -52,15 +52,29 @@
   </div>
 </section>
 
-<section class="section-rule" aria-label="Konsultacje">
-  <div class="wrap teaser teaser--solo">
-    <div class="consult-card">
-      <h2>Konsultacje</h2>
-      <p>Potrzebujesz wsparcia? Umów się na konsultację prawną z jednym
-      z naszych adwokatów lub radców prawnych. Pomożemy rozwiązać
-      Twój problem!</p>
-      <p><a class="btn btn--call btn--block" href="/konsultacje/">Zobacz konsultacje i ceny</a></p>
+{# Konsultacje bar. The four products come from nav.featuredKonsultacje, so the
+   pick changes in the data file and never in this template. #}
+<section class="cta-band cta-band--home consult-bar" aria-labelledby="konsultacje-title">
+  <div class="wrap">
+    <div class="consult-bar__intro">
+      <h2 id="konsultacje-title">Konsultacje</h2>
+      <p>Umów się z adwokatem lub radcą prawnym. Cenę znasz z góry.</p>
+      <p><a class="more" href="/konsultacje/">Wszystkie konsultacje i ceny →</a></p>
     </div>
+    <ul class="consult-bar__list">
+      {% for slug in nav.featuredKonsultacje %}
+      {% for k in collections.konsultacja %}
+      {% if k.fileSlug == slug %}
+      <li>
+        <a href="{{ k.url }}">
+          <span class="consult-bar__name">{{ k.data.h1 }}</span>
+          {% if k.data.price %}<span class="consult-bar__price">{{ k.data.price }}</span>{% endif %}
+        </a>
+      </li>
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+    </ul>
   </div>
 </section>
 

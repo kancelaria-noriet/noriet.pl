@@ -205,8 +205,9 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
    is the anchor that matters; the rows below it are the spokes. */
 .cat-card { gap: var(--s4); }
 .cat-card__title { margin: 0; font-size: var(--t-lg); }
-.cat-card__title a { color: var(--ink); text-decoration: none; }
-.cat-card__title a:hover { color: var(--brand-ink); text-decoration: underline; }
+.cat-card__title a { color: var(--brand-ink); text-decoration: none; }
+.cat-card__title a::after { content: " \2192"; }
+.cat-card__title a:hover { text-decoration: underline; }
 .cat-card__list { list-style: none; margin: 0; padding: 0; }
 .cat-card__list a {
   display: flex; align-items: center; min-height: 44px;
@@ -256,6 +257,23 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
 .cta-band--home h2 { margin: 0 0 var(--s2); }
 .cta-band--home p { margin: 0; }
 .cta-band--home .wrap { padding-block: var(--s2); }
+
+/* Homepage consultations bar. Reuses .cta-band--home for the full-bleed strip,
+   and swaps the single button for the products themselves. */
+.consult-bar .wrap { align-items: start; }
+.consult-bar__intro { max-width: 26rem; }
+.consult-bar__intro p { margin: 0 0 var(--s2); }
+.consult-bar__list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s3); grid-template-columns: 1fr; }
+@media (min-width: 34rem) { .consult-bar__list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.consult-bar__list a {
+  display: flex; flex-direction: column; justify-content: center; gap: 2px;
+  min-height: 44px; height: 100%; padding: var(--s3) var(--s4);
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--radius); text-decoration: none; color: var(--ink);
+}
+.consult-bar__list a:hover { border-color: var(--brand); color: var(--brand-ink); }
+.consult-bar__name { font-size: var(--t-sm); line-height: 1.3; }
+.consult-bar__price { font-size: var(--t-sm); font-weight: 700; color: var(--ink-2); }
 
 /* ---------- footer ---------- */
 .site-footer { background: var(--navy); color: var(--on-dark-2); }
@@ -552,8 +570,9 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
   text-decoration: none; color: var(--ink-2);
 }
 .offer-list a:hover { color: var(--brand-ink); text-decoration: underline; }
-.practice-row h2 a { color: var(--ink); text-decoration: none; }
-.practice-row h2 a:hover { color: var(--brand-ink); text-decoration: underline; }
+.practice-row h2 a { color: var(--brand-ink); text-decoration: none; }
+.practice-row h2 a::after { content: " \2192"; }
+.practice-row h2 a:hover { text-decoration: underline; }
 
 /* smooth anchor jumps from the TOC, minus the sticky header */
 html { scroll-behavior: smooth; }

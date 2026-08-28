@@ -1,5 +1,5 @@
 {
-  "_comment": "Site navigation. `categories` is THE service taxonomy: the homepage section, /oferta/, /kontakt/ and every hub page render from it, so a service moves in one place only. Each category's `url` is its hub page, and that hub never repeats itself inside its own `services` list. `serviceMeta.json` keys each service to a category by slug. `footer` is a separate, older grouping and is deliberately left alone for now.",
+  "_comment": "Site navigation. `categories` is THE service taxonomy: the homepage section, /oferta/, /kontakt/ and every hub page render from it, so a service moves in one place only. Each category's `url` is its hub page, and that hub never repeats itself inside its own `services` list. `serviceMeta.json` keys each service to a category by slug. `footer` is a separate, older grouping and is deliberately left alone for now. `featuredKonsultacje` is a display pick for the homepage bar: fileSlugs from src/content/konsultacje/, shown in this order. Change the list, not the template.",
   "header": [
     {
       "label": "Oferta",
@@ -202,5 +202,11 @@
       "label": "Polityka prywatności",
       "url": "/polityka-prywatnosci/"
     }
+  ],
+  "featuredKonsultacje": [
+    "kpo",
+    "konsultacja-rozszerzona-spotkanie",
+    "rozwod-bez-orzekania-o-winie-i-bez-dzieci-online",
+    "stala-obsluga-prawna-przedsiebiorcy"
   ]
 }
