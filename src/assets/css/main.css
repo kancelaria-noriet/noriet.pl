@@ -499,6 +499,9 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
 /* ---------- breadcrumb band + service hero (deck port) ---------- */
 .crumb-band { background: var(--paper-2); border-bottom: 1px solid var(--line); }
 .crumb-band .breadcrumb { margin-block: 0; padding-block: var(--s3); }
+/* Layouts whose article starts straight after the band, with no hero to
+   open the page: match the breathing room .service-hero gives elsewhere. */
+.page-top { padding-top: var(--s6); }
 
 .service-hero { padding-block: var(--s7); border-bottom: 1px solid var(--line); }
 /* index-page heroes: page container aligns with everything else;
