@@ -789,7 +789,13 @@ html { scroll-behavior: smooth; }
 /* form + aside card section (kontakt, service "Opisz swoją sprawę", homepage) */
 .form-section { padding-block: var(--s6); }
 .form-section--rule { border-top: 1px solid var(--line); }
-.form-smallprint { color: var(--ink-3); font-size: var(--t-xs); max-width: 46ch; }
+/* The RODO notice takes the tinted box the deployment placeholder used to
+   have, one step smaller. No max-width: as a box it spans the form. */
+.form-smallprint {
+  background: var(--paper-3); border-radius: var(--radius);
+  padding: var(--s3) var(--s4);
+  font-size: var(--t-xs); color: var(--ink-2);
+}
 .section-lead { font-size: var(--t-md); color: var(--ink-2); max-width: 52ch; }
 .home-sections > h2:first-child { margin-top: 0; }
 .home-sections h2 { margin-top: var(--s6); }
