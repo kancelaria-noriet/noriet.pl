@@ -112,8 +112,24 @@
       "label": "Prawa pracownika",
       "url": "/prawa-pracownika/",
       "summary": "Reprezentujemy pracowników w sporach z pracodawcą i z ZUS. Podważamy wypowiedzenia i dochodzimy odszkodowań. W sprawach zasiłków i składek odwołujemy się od decyzji ZUS. Terminy są krótkie: 21 dni do sądu pracy, miesiąc na odwołanie.",
-      "services": [],
-      "note": "Wypowiedzenia, sprawy przed sądem pracy i odwołania od decyzji ZUS prowadzimy już teraz. Osobne strony tych usług dodamy wkrótce."
+      "services": [
+        {
+          "label": "Wypowiedzenie przez pracodawcę",
+          "url": "/wypowiedzenie-umowy-o-prace-przez-pracodawce/"
+        },
+        {
+          "label": "Wypowiedzenie przez pracownika",
+          "url": "/wypowiedzenie-umowy-o-prace-przez-pracownika/"
+        },
+        {
+          "label": "Pozew do sądu pracy",
+          "url": "/pozew-do-sadu-pracy/"
+        },
+        {
+          "label": "Odwołanie od decyzji ZUS o zasiłek macierzyński",
+          "url": "/odwolanie-od-decyzji-zus-zasilek-macierzynski/"
+        }
+      ]
     }
   ],
   "footer": [

@@ -90,6 +90,26 @@
       "kicker": "Obsługa firm",
       "category": "obsluga-firm",
       "lawyerMatch": "prawo gospodarcze"
+    },
+    "wypowiedzenie-umowy-o-prace-przez-pracownika": {
+      "kicker": "Wypowiedzenie przez pracownika",
+      "category": "prawa-pracownika",
+      "lawyerMatch": "prawo pracy"
+    },
+    "wypowiedzenie-umowy-o-prace-przez-pracodawce": {
+      "kicker": "Wypowiedzenie przez pracodawcę",
+      "category": "prawa-pracownika",
+      "lawyerMatch": "prawo pracy"
+    },
+    "pozew-do-sadu-pracy": {
+      "kicker": "Pozew do sądu pracy",
+      "category": "prawa-pracownika",
+      "lawyerMatch": "prawo pracy"
+    },
+    "odwolanie-od-decyzji-zus-zasilek-macierzynski": {
+      "kicker": "Odwołanie od decyzji ZUS",
+      "category": "prawa-pracownika",
+      "lawyerMatch": "prawo pracy"
     }
   },
   "upsellTitle": "Konsultacja podstawowa ONLINE"

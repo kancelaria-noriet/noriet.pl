@@ -25,7 +25,10 @@ layout: layouts/base.njk
   <header class="service-hero">
     {% if meta %}<p class="kicker">{{ meta.kicker }}</p>{% endif %}
     <h1>{{ h1 or title }}</h1>
-    {% if description %}<p class="service-hero__lead">{{ description }}</p>{% endif %}
+    {# `lead` when the hero sentence is longer than a meta description should be;
+       `description` alone still works for the pages that share one string. #}
+    {% set heroLead = lead or description %}
+    {% if heroLead %}<p class="service-hero__lead">{{ heroLead }}</p>{% endif %}
     <ul class="chips" aria-label="Kancelaria">
       <li>Adwokaci i radcowie prawni</li>
       <li>Izba Adwokacka w Warszawie · OIRP</li>

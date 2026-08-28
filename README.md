@@ -35,7 +35,16 @@ src/_data/postCategories.json  blog taxonomy: ten categories with intro copy,
 src/_includes/           base layout, header/footer/breadcrumb partials,
                          service + stub layouts, blog-categories rail card,
                          category-grid + category-services partials
+src/_includes/generated/ ONLY what tools/migrate_all.py writes: home-sections,
+                         home-specjalizacje, oferta-intro, zespol-intro
+src/_includes/authored/  hand-written page bodies. Never regenerated. Nine of
+                         them, for the service pages that have no WordPress
+                         original
 src/oferta.njk           /oferta/ — every category, description + full list
+src/<service>.njk        authored service pages: front matter + one include
+                         from src/_includes/authored/. `lead` holds the hero
+                         sentence when it is too long to double as the meta
+                         description; the layout falls back to `description`
 src/dla-biznesu-obsluga-firm.njk  the Obsługa firm hub (authored, not migrated)
 src/dla-biznesu-abonament.njk     /dla-biznesu-obsluga-firm/abonament/ — the
                          subscription product page, with its own sales design
