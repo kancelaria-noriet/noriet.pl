@@ -489,7 +489,6 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
   border: 1px solid var(--line-2); border-radius: var(--radius);
   background: var(--paper); color: var(--ink);
 }
-.form-note { background: var(--paper-3); border-radius: var(--radius); padding: var(--s3) var(--s4); font-size: var(--t-sm); color: var(--ink-2); }
 
 /* ---------- header fix: prevent CTA clipping at ~1280px ---------- */
 @media (min-width: 64rem) {

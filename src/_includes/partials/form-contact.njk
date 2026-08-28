@@ -15,10 +15,8 @@
     <label for="f-msg">Wiadomość</label>
     <textarea id="f-msg" name="message" rows="6" required></textarea>
   </div>
-  <p class="form-note">Formularz zostanie aktywowany wraz z wdrożeniem na
-  Cloudflare (Functions + Turnstile). Do tego czasu prosimy o kontakt
-  telefoniczny lub e-mail.</p>
-  <div><button class="btn btn--call" type="submit" disabled>Wyślij wiadomość</button></div>
+  {# The consent notice sits above the button, so it is read before the act it
+     covers, not after it. #}
   <p class="form-smallprint">Wysyłając formularz wyraża Pan/Pani zgodę na
   przetwarzanie swoich danych osobowych przez {{ site.name }}, z siedzibą przy
   {{ site.address.street }}, {{ site.address.postalCode }} {{ site.address.city }}
@@ -26,4 +24,5 @@
   Pan/Pani zgodę na otrzymywanie informacji, stanowiącej odpowiedź na
   niniejsze zapytanie za pomocą środków komunikacji elektronicznej
   (art. 6 ust. 1 lit. b RODO).</p>
+  <div><button class="btn btn--call" type="submit" disabled>Wyślij wiadomość</button></div>
 </form>
