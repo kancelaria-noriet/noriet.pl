@@ -225,7 +225,11 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
 .breadcrumb ol { list-style: none; display: flex; flex-wrap: wrap; gap: var(--s2); margin: 0; padding: 0; color: var(--ink-3); }
 .breadcrumb li + li::before { content: "›"; margin-right: var(--s2); }
 .breadcrumb a { color: var(--ink-3); }
-.breadcrumb li:last-child { color: var(--ink-2); font-weight: 600; }
+.breadcrumb li:last-child {
+  color: var(--ink-2); font-weight: 600;
+  min-width: 0; max-width: 100%;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 
 .service { padding-block: var(--s4) var(--s6); }
 .prose { max-width: var(--measure); }

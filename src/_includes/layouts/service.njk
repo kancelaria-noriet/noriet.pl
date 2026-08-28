@@ -15,6 +15,9 @@ layout: layouts/base.njk
    their own front matter cannot switch a layout default off: Eleventy's
    merge treats a falsy page value as absent and the layout wins. #}
 {% set crumbParent = { label: "Oferta", url: "/oferta/" } if meta else null %}
+{# The h1 runs up to 70 characters on some service pages, which wraps a crumb
+   over three lines on a phone. serviceMeta already carries a short label. #}
+{% set crumbLabel = meta.kicker if meta else null %}
 <div class="crumb-band">
   <div class="wrap">
     {% include "partials/breadcrumb.njk" %}

@@ -2,6 +2,6 @@
   <ol>
     <li><a href="/">Strona główna</a></li>
     {% if crumbParent %}<li><a href="{{ crumbParent.url }}">{{ crumbParent.label }}</a></li>{% endif %}
-    <li aria-current="page">{{ h1 or title }}</li>
+    <li aria-current="page">{{ crumbLabel or h1 or title }}</li>
   </ol>
 </nav>
