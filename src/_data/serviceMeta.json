@@ -110,6 +110,21 @@
       "kicker": "Odwołanie od decyzji ZUS",
       "category": "prawa-pracownika",
       "lawyerMatch": "prawo pracy"
+    },
+    "nieruchomosci": {
+      "kicker": "Zakup nieruchomości",
+      "category": "majatek-i-spadki",
+      "lawyerMatch": "prawo nieruchomości"
+    },
+    "sprawy-frankowe": {
+      "kicker": "Sprawy frankowe",
+      "category": "majatek-i-spadki",
+      "lawyerMatch": "cywilne spory sądowe"
+    },
+    "sankcja-kredytu-darmowego": {
+      "kicker": "Sankcja kredytu darmowego",
+      "category": "majatek-i-spadki",
+      "lawyerMatch": "cywilne spory sądowe"
     }
   },
   "upsellTitle": "Konsultacja podstawowa ONLINE"

@@ -91,7 +91,7 @@
       "slug": "majatek-i-spadki",
       "label": "Majątek i spadki",
       "url": "/prawo-spadkowe-warszawa/",
-      "summary": "Po śmierci bliskiej osoby przeprowadzimy stwierdzenie nabycia spadku, dział spadku i sprawę o zachowek. Sporządzamy i podważamy testamenty oraz rozliczamy darowizny. Majątek wspólny małżonków dzielimy w czasie rozwodu i po nim. Doradzamy też przy rozdzielności majątkowej.",
+      "summary": "Po śmierci bliskiej osoby przeprowadzimy stwierdzenie nabycia spadku, dział spadku i sprawę o zachowek. Sporządzamy i podważamy testamenty. Majątek wspólny małżonków dzielimy w czasie rozwodu i po nim. Przy zakupie mieszkania lub działki sprawdzamy stan prawny i umowę. Prowadzimy też sprawy frankowe i postępowania o sankcję kredytu darmowego.",
       "services": [
         {
           "label": "Podział majątku",
@@ -104,6 +104,18 @@
         {
           "label": "Małżeńskie ustroje majątkowe",
           "url": "/malzenskie-ustroje-majatkowe/"
+        },
+        {
+          "label": "Zakup nieruchomości",
+          "url": "/nieruchomosci/"
+        },
+        {
+          "label": "Sprawy frankowe",
+          "url": "/sprawy-frankowe/"
+        },
+        {
+          "label": "Sankcja kredytu darmowego",
+          "url": "/sankcja-kredytu-darmowego/"
         }
       ]
     },
