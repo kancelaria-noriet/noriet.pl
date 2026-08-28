@@ -641,6 +641,36 @@ html { scroll-behavior: smooth; }
 @media (min-width: 64rem) { .rail-layout { grid-template-columns: minmax(0, var(--measure)) minmax(0, 1fr); align-items: start; } }
 .rail-layout > * { min-width: 0; }
 
+/* Below the two-column breakpoint the rail stacks under the article, which put
+   the blog's category navigation 4 000 px down the page. `display: contents`
+   lets the rail's cards become grid items in their own right, so the category
+   card can move above the list while the CTA card stays below it. The list
+   itself becomes a wrapping chip row: all ten links stay visible and nothing
+   hides behind a toggle. */
+@media (max-width: 63.99rem) {
+  .rail-layout > .rail { display: contents; }
+  .rail-layout > .rail > .cat-card { order: -1; }
+}
+
+/* The summary is the toggle only where the card can collapse. On the desktop
+   sidebar it is always open, so it renders as a plain card heading. */
+.cat-card__summary { list-style: none; cursor: default; }
+.cat-card__summary::-webkit-details-marker { display: none; }
+.cat-card__summary .rail-card__title { margin: 0; }
+@media (max-width: 63.99rem) {
+  .cat-card__summary {
+    cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+    gap: var(--s3); min-height: 44px;
+  }
+  .cat-card__summary::after {
+    content: ""; flex: none; width: 9px; height: 9px;
+    border-right: 2px solid var(--ink-3); border-bottom: 2px solid var(--ink-3);
+    transform: rotate(45deg) translate(-2px, -2px);
+  }
+  .cat-card[open] .cat-card__summary::after { transform: rotate(-135deg) translate(-2px, -2px); }
+  .cat-card[open] .cat-card__summary { margin-bottom: var(--s3); }
+}
+
 .rail-list { list-style: none; margin: 0; padding: 0; }
 .rail-list li { padding-block: var(--s4); border-top: 1px solid var(--line); font-size: var(--t-sm); }
 .rail-list a { text-decoration: none; color: var(--ink); font-weight: 600; font-size: var(--t-base); line-height: 1.4; }
