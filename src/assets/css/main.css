@@ -158,7 +158,10 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
   border-bottom: 2px solid transparent;
 }
 .site-nav__list a:hover { color: var(--brand-ink); border-bottom-color: var(--line-2); }
-.site-nav__cta .btn { font-size: var(--t-sm); }
+.site-nav__cta .btn {
+  font-size: var(--t-sm); display: block; text-align: center;
+  padding: var(--s3) var(--s5); border-bottom: 0;
+}
 .site-nav__list a[aria-current="page"] { color: var(--brand-ink); font-weight: 600; }
 .site-nav__cta { margin-top: var(--s2); }
 
@@ -175,7 +178,7 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
 }
 
 /* ---------- hero ---------- */
-.hero { background: var(--navy); color: var(--on-dark); padding-block: var(--s8); }
+.hero { background: var(--navy); color: var(--on-dark); padding-block: var(--s6) var(--s8); }
 .hero h1 { color: var(--on-dark); max-width: 26ch; }
 .hero__lead { color: var(--on-dark-2); font-size: var(--t-md); max-width: 52ch; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: var(--s3); margin-top: var(--s5); }
@@ -218,7 +221,7 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
 .cat-card__list a:hover { color: var(--brand-ink); text-decoration: underline; }
 .cat-card__note { color: var(--ink-3); font-size: var(--t-sm); }
 
-.areas, .offer { padding-block: var(--s8); }
+.areas, .offer { padding-block: var(--s6); }
 
 /* ---------- article / prose ---------- */
 .breadcrumb { font-size: var(--t-xs); margin-block: var(--s4); }
@@ -305,11 +308,15 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
 .site-footer__legal { list-style: none; display: flex; gap: var(--s4); margin: 0; padding: 0; }
 
 /* ---------- topbar ---------- */
+/* The phone leaves the topbar on small screens: it wraps to a second line
+   there, and the header's Zadzwoń button already keeps a tap-to-call one
+   tap away. */
 .topbar { background: var(--navy); color: var(--on-dark-2); font-size: var(--t-xs); }
 .topbar__row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s2); }
 .topbar p { margin: var(--s2) 0; }
 .topbar a { color: #fff; text-decoration: none; font-weight: 600; letter-spacing: .02em; }
 .topbar a:hover { color: #fff; text-decoration: underline; }
+@media (max-width: 48rem) { .topbar__phone { display: none; } }
 
 
 /* ---------- split hero + info card ---------- */
@@ -348,6 +355,7 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
 .hero__card-list dd { margin: 0; }
 .hero__card a { color: var(--brand-ink); font-weight: 600; }
 .hero__card a[href^="mailto:"] { font-weight: 400; }
+@media (max-width: 63.99rem) { .hero__card { display: none; } }
 
 /* ---------- trust strip ---------- */
 .trust { background: var(--navy); color: var(--on-dark-2); }
@@ -748,7 +756,7 @@ html { scroll-behavior: smooth; }
 .info-col li:last-child { border-bottom: 0; }
 
 /* form + aside card section (kontakt, service "Opisz swoją sprawę", homepage) */
-.form-section { padding-block: var(--s8); }
+.form-section { padding-block: var(--s6); }
 .form-section--rule { border-top: 1px solid var(--line); }
 .form-smallprint { color: var(--ink-3); font-size: var(--t-xs); max-width: 46ch; }
 .section-lead { font-size: var(--t-md); color: var(--ink-2); max-width: 52ch; }
