@@ -16,7 +16,7 @@ for (const width of widths) {
     viewport: { width, height: 1200 },
     deviceScaleFactor: 1,
   });
-  await page.goto(url, { waitUntil: "networkidle" });
+  await page.goto(url, { waitUntil: "load" });
   const out = `${prefix}-${width}.png`;
   await page.screenshot({ path: out, fullPage: fullArg === "full" });
   // report which fonts actually painted + horizontal overflow
