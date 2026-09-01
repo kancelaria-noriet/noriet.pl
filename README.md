@@ -46,8 +46,8 @@ src/<service>.njk        authored service pages: front matter + one include
                          sentence when it is too long to double as the meta
                          description; the layout falls back to `description`
 src/dla-biznesu-obsluga-firm.njk  the Obsługa firm hub (authored, not migrated)
-src/dla-biznesu-abonament.njk     /dla-biznesu-obsluga-firm/abonament/ — the
-                         subscription product page, with its own sales design
+src/stala-biezaca-obsluga-prawna-przedsiebiorcy.njk  the subscription
+                         product page, with its own sales design
 src/blog.njk             /blog/ + /blog/strona/N/ (10 per page)
 src/blog-kategoria.njk   /blog/kategoria/<slug>/ — one page per category
 src/blog-archiwum.njk    /blog/wszystkie-artykuly/ — all 139, unpaginated

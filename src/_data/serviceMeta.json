@@ -89,7 +89,8 @@
     "dla-biznesu-obsluga-firm": {
       "kicker": "Obsługa firm",
       "category": "obsluga-firm",
-      "lawyerMatch": "prawo gospodarcze"
+      "lawyerMatch": "prawo gospodarcze",
+      "upsellTitle": "Stała obsługa prawna przedsiębiorcy"
     },
     "wypowiedzenie-umowy-o-prace-przez-pracownika": {
       "kicker": "Wypowiedzenie przez pracownika",

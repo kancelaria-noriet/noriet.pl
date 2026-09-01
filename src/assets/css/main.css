@@ -843,7 +843,7 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
   html:not([data-theme="light"]) .theme-toggle .icon-moon { display: none; }
 }
 
-/* B2B landing page (/dla-biznesu-obsluga-firm/abonament/) */
+/* B2B landing page (/stala-biezaca-obsluga-prawna-przedsiebiorcy/) */
 /* .card-grid goes to 4 columns at 64rem; this page shows a pair. */
 @media (min-width: 64rem) { .card-grid--pair { grid-template-columns: repeat(2, 1fr); } }
 .card-grid--pair .card h2 { font-size: var(--t-lg); letter-spacing: normal; margin: 0; }

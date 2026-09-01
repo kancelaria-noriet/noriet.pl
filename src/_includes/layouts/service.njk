@@ -96,9 +96,12 @@ layout: layouts/base.njk
       {% endif %}
       {% endif %}
 
+      {# A service can name its own konsultacja; the site-wide default covers the rest. #}
+      {% set upsellTitle = serviceMeta.upsellTitle %}
+      {% if meta and meta.upsellTitle %}{% set upsellTitle = meta.upsellTitle %}{% endif %}
       {% set upsell = null %}
       {% for k in collections.konsultacja %}
-      {% if not upsell and k.data.h1 == serviceMeta.upsellTitle %}{% set upsell = k %}{% endif %}
+      {% if not upsell and k.data.h1 == upsellTitle %}{% set upsell = k %}{% endif %}
       {% endfor %}
       {% if upsell %}
       <div class="rail-card upsell-card">
