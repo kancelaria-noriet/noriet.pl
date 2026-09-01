@@ -91,10 +91,17 @@ tools/gallery.mjs        QA contact sheet → /qa/ (dev-only; not in the repo)
 
 ## Migrated vs authored
 
-Files under `src/content/` and `src/assets/uploads/` are **generated** by
-`tools/migrate.py` from the capture in `../export/` — edit the migrator, not
-the output (content freeze until cutover; see `../PLAN.md`). Everything else
-is authored by hand.
+Files under `src/content/` and `src/assets/uploads/` came out of
+`tools/migrate.py` and `tools/migrate_all.py`, from the capture in `../export/`.
+
+**The migration is finished and the migrators are dormant** (2026-09-01, owner
+call). The live WordPress is frozen, so there is nothing left to capture. Do not
+run either script again unless the owner asks. Those files are now ordinary
+source files: to change one, edit it in place. The content freeze still governs
+*what* you may change — see `../PLAN.md` — but the mechanism is no longer "edit
+the migrator".
+
+Everything else is authored by hand.
 
 The publication covers are the one exception to the byte-copy rule for
 migrated images. `tools/covers.mjs` reads the source path that the migrator
@@ -103,7 +110,7 @@ records, writes an optimised WebP into `src/assets/img/publikacje/`, and fills
 the migrator, or the covers disappear from the page:
 
 ```sh
-../export/.venv/bin/python tools/migrate_all.py
+../export/.venv/bin/python tools/migrate_all.py   # only when the owner asks
 eval "$($HOME/.local/share/fnm/fnm env)"
 node tools/covers.mjs            # 566 kB of 2016 PNGs -> 74 kB of WebP
 ```
