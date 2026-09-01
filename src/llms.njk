@@ -1,0 +1,44 @@
+---json
+{
+  "permalink": "/llms.txt",
+  "eleventyExcludeFromCollections": true,
+  "layout": null
+}
+---
+# Kancelaria Prawna Noriet
+
+> Kancelaria adwokacka i radcowska w Warszawie (Grochowska 217/15, Praga-Południe). Prawo rodzinne, majątek i spadki, obsługa prawna firm, prawa pracownika. Dziewięcioro prawników, dwoje certyfikowanych mediatorów. Tel. {{ site.phone }}, e-mail {{ site.email }}, pon.-pt. 9:00-16:00.
+
+Każda podstrona z treścią ma bliźniaczą wersję Markdown pod adresem `index.md`
+obok wersji HTML. Linki poniżej prowadzą do wersji Markdown.
+
+## Oferta
+
+{% for cat in nav.categories -%}
+- [{{ cat.label }}]({{ site.url }}{{ cat.url }}index.md): {{ cat.summary }}
+{% for s in cat.services -%}
+  - [{{ s.label }}]({{ site.url }}{{ s.url }}index.md)
+{% endfor -%}
+{% endfor %}
+## Konsultacje i ceny
+
+{% for k in collections.konsultacja -%}
+- [{{ k.data.h1 }}]({{ site.url }}{{ k.url }}index.md){% if k.data.subtitle %} – {{ k.data.subtitle }}{% endif %}{% if k.data.price %} – {{ k.data.price }}{% endif %}
+{% endfor %}
+## Zespół
+
+{% for p in collections.team -%}
+- [{{ p.data.h1 }}]({{ site.url }}{{ p.url }}index.md) – {{ p.data.rola }}{% if p.data.specjalizacja %} ({{ p.data.specjalizacja }}){% endif %}
+{% endfor %}
+## Blog
+
+Pełne archiwum HTML: {{ site.url }}/blog/wszystkie-artykuly/
+
+{% for post in collections.post | reverse -%}
+- [{{ post.data.h1 or post.data.title }}]({{ site.url }}{{ post.url }}index.md) ({{ post.data.isoDate }})
+{% endfor %}
+## Pozostałe
+
+- [Publikacje i komentarze prawne]({{ site.url }}/publikacje/index.md)
+- [Ogłoszenia dla akcjonariuszy]({{ site.url }}/akcjonariusze/index.md)
+- Kontakt (HTML): {{ site.url }}/kontakt/

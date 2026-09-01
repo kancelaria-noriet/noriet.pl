@@ -4,12 +4,17 @@
   "eleventyExcludeFromCollections": true
 }
 ---
+# Every response advertises the agent-facing Markdown index (AEO).
+/*
+  Link: </llms.txt>; rel="describedby"; type="text/markdown"
 {% if buildEnv != "production" -%}
 # Preview builds must never be indexed (meta noindex is also set per page).
-/*
   X-Robots-Tag: noindex
+{% endif %}
+# Cloudflare Pages serves .txt as text/plain; the agent index is Markdown.
+/llms.txt
+  Content-Type: text/markdown; charset=utf-8
 
-{% endif -%}
 # Icons change only when the brand changes.
 /favicon.ico
   Cache-Control: public, max-age=604800

@@ -1,4 +1,79 @@
-import { existsSync } from "node:fs";
+import { existsSync, writeFileSync } from "node:fs";
+import { dirname } from "node:path";
+import TurndownService from "turndown";
+import domino from "@mixmark-io/domino";
+
+// --- Markdown twins for AI crawlers (PLAN Phase 3) ---------------------------
+// Every content page gets a `.md` twin beside its `index.html`, generated
+// after the build from the rendered page itself, so the twin can never drift
+// from the HTML. Pure navigation pages, noindexed pages and the blog list
+// pages get none; /llms.txt is the agent-facing index instead.
+const MD_SKIP_EXACT = new Set([
+  "/", "/kontakt/", "/oferta/", "/zespol/",
+  "/obligacje/", "/polityka-prywatnosci/",
+]);
+const MD_SKIP_PREFIX = ["/blog/", "/qa/"];
+
+function mdTwinUrl(url) {
+  if (!url || !url.endsWith("/")) return null; // /404.html, /_headers, /llms.txt
+  if (MD_SKIP_EXACT.has(url)) return null;
+  if (MD_SKIP_PREFIX.some((p) => url.startsWith(p))) return null;
+  return url + "index.md";
+}
+
+function makeTurndown() {
+  const td = new TurndownService({
+    headingStyle: "atx",
+    bulletListMarker: "-",
+    codeBlockStyle: "fenced",
+  });
+  // The content has exactly one table shape: plain rows, first row = header.
+  td.addRule("tableCell", {
+    filter: ["td", "th"],
+    replacement: (content) => ` ${content.trim().replace(/\|/g, "\\|").replace(/\n+/g, " ")} |`,
+  });
+  td.addRule("tableRow", {
+    filter: "tr",
+    replacement: (content, node) => {
+      let row = "|" + content + "\n";
+      const table = node.closest("table");
+      if (table && table.querySelector("tr") === node) {
+        row += "|" + " --- |".repeat(node.children.length) + "\n";
+      }
+      return row;
+    },
+  });
+  td.addRule("table", {
+    filter: ["table", "tbody", "thead"],
+    replacement: (content) => "\n" + content + "\n",
+  });
+  return td;
+}
+
+const MD_STRIP = [
+  "nav", "aside", "form", "script", "style", "button",
+  ".crumb-band", ".hero__actions", ".chips", ".form-section", ".kicker",
+];
+
+function pageToMarkdown(html, url, td) {
+  const doc = domino.createDocument(html);
+  const main = doc.querySelector("main");
+  if (!main) return null;
+  for (const sel of MD_STRIP) {
+    for (const el of Array.from(main.querySelectorAll(sel))) el.remove();
+  }
+  const title = (doc.querySelector("title") || {}).textContent || "";
+  const desc = doc.querySelector('meta[name="description"]');
+  const canonical = doc.querySelector('link[rel="canonical"]');
+  const q = (s) => '"' + String(s).replace(/\\/g, "\\\\").replace(/"/g, '\\"') + '"';
+  const head = ["---", "title: " + q(title.trim())];
+  if (desc) head.push("description: " + q(desc.getAttribute("content")));
+  if (canonical) head.push("source: " + canonical.getAttribute("href"));
+  head.push("---", "");
+  const body = td.turndown(main.innerHTML).replace(/\n{3,}/g, "\n\n").trim();
+  return head.join("\n") + body + "\n";
+}
+
 
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
@@ -24,6 +99,22 @@ export default function (eleventyConfig) {
   });
 
   eleventyConfig.addGlobalData("buildEnv", process.env.NORIET_ENV || "dev");
+  eleventyConfig.addFilter("mdTwin", mdTwinUrl);
+
+  eleventyConfig.on("eleventy.after", ({ results }) => {
+    const td = makeTurndown();
+    let n = 0;
+    for (const r of results) {
+      if (!r.outputPath || !r.outputPath.endsWith("index.html")) continue;
+      if (!mdTwinUrl(r.url)) continue;
+      const md = pageToMarkdown(r.content, r.url, td);
+      if (md) {
+        writeFileSync(dirname(r.outputPath) + "/index.md", md);
+        n += 1;
+      }
+    }
+    console.log(`[twins] wrote ${n} markdown twins`);
+  });
   eleventyConfig.addShortcode("year", () => String(new Date().getFullYear()));
 
   // The old site ordered lawyers by menu_order; keep that order on /zespol/.

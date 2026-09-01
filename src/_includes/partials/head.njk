@@ -6,6 +6,8 @@
   {% if robots %}<meta name="robots" content="{{ robots }}">
   {% elif buildEnv != "production" %}<meta name="robots" content="noindex, nofollow">{% endif %}
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  {% set _mdTwin = page.url | mdTwin %}
+  {% if _mdTwin %}<link rel="alternate" type="text/markdown" href="{{ _mdTwin }}">{% endif %}
   <meta property="og:site_name" content="{{ site.shortName }}">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:type" content="{{ "article" if tags and "post" in tags else "website" }}">
