@@ -1,0 +1,36 @@
+{# The firm as one LegalService entity, on every page under a stable @id so
+   Person and Service blocks can reference it. Values mirror site.json; the
+   name, hours and geo mirror the Google Business Profile (PLAN §1). #}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "@id": site.url + "/#kancelaria",
+  "name": site.gbp.name,
+  "url": site.url + "/",
+  "telephone": site.phone,
+  "email": site.email,
+  "image": site.url + "/icon-512.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": site.address.street,
+    "postalCode": site.address.postalCode,
+    "addressLocality": site.address.city,
+    "addressCountry": "PL"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": site.gbp.geo.latitude,
+    "longitude": site.gbp.geo.longitude
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": site.gbp.openingHours.days,
+    "opens": site.gbp.openingHours.opens,
+    "closes": site.gbp.openingHours.closes
+  }],
+  "identifier": [
+    { "@type": "PropertyValue", "propertyID": "KRS", "value": site.registry.krs },
+    { "@type": "PropertyValue", "propertyID": "NIP", "value": site.registry.nip },
+    { "@type": "PropertyValue", "propertyID": "REGON", "value": site.registry.regon }
+  ]
+} | dump | safe }}</script>

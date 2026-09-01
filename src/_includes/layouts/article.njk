@@ -1,15 +1,27 @@
 ---
 layout: layouts/base.njk
-crumbParent:
-  label: Blog
-  url: /blog/
 ---
+{% set cat = postCategories.categories | categoryOf(postCategories.bySlug, page.fileSlug) %}
+{% set crumbs = [{ label: "Blog", url: "/blog/" }] %}
+{% if cat %}{% set crumbs = [{ label: "Blog", url: "/blog/" }, { label: cat.label, url: "/blog/kategoria/" + cat.slug + "/" }] %}{% endif %}
 <div class="crumb-band">
   <div class="wrap">
     {% include "partials/breadcrumb.njk" %}
   </div>
 </div>
-{% set cat = postCategories.categories | categoryOf(postCategories.bySlug, page.fileSlug) %}
+{# datePublished comes from the migrated front matter. dateModified is absent
+   on purpose: no real modification date exists, and an invented one is spam
+   (PLAN Phase 6, the freshness programme). #}
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": h1 or title,
+  "datePublished": isoDate,
+  "inLanguage": "pl",
+  "mainEntityOfPage": site.url + page.url,
+  "author": { "@id": site.url + "/#kancelaria" },
+  "publisher": { "@id": site.url + "/#kancelaria" }
+} | dump | safe }}</script>
 <div class="wrap">
   <div class="rail-layout">
     <article class="service">

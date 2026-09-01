@@ -73,6 +73,38 @@ export default function (eleventyConfig) {
   });
 
   // "400 zł" / "738 PLN brutto" → number + unit (deck sets the unit small).
+  // Immutable single-key set, for building JSON-LD objects in templates.
+  eleventyConfig.addFilter("setAttribute", (obj, key, value) => ({ ...obj, [key]: value }));
+
+  // JSON-LD emitters live in filters: JSON.stringify handles the escaping
+  // that hand-built template JSON would get wrong (quotes in post titles).
+  eleventyConfig.addFilter("jsonldBreadcrumbs", (crumbs, leaf, siteUrl) => {
+    const items = [{ label: "Strona główna", url: "/" }, ...(crumbs || [])];
+    const list = items.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: c.label,
+      item: siteUrl + c.url,
+    }));
+    list.push({ "@type": "ListItem", position: list.length + 1, name: leaf });
+    return JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: list,
+    });
+  });
+
+  eleventyConfig.addFilter("jsonldFaq", (faq) =>
+    JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: (faq || []).map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    }));
+
   eleventyConfig.addFilter("priceParts", (s) => {
     const m = String(s || "").match(/^([\d\s.,]+)\s*(.*)$/);
     return m ? { num: m[1].trim(), unit: m[2] } : { num: s, unit: "" };

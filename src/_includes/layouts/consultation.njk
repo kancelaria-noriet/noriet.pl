@@ -9,6 +9,24 @@ crumbParent:
     {% include "partials/breadcrumb.njk" %}
   </div>
 </div>
+{# The old site earned "product snippet" impressions in GSC; Service + Offer
+   keeps that appearance. Prices are gross PLN, parsed from the price field. #}
+{% set pp = price | priceParts %}
+{% set svcLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": h1 or title,
+  "url": site.url + page.url,
+  "provider": { "@id": site.url + "/#kancelaria" }
+} %}
+{% if subtitle %}{% set svcLd = svcLd | setAttribute("description", subtitle) %}{% endif %}
+{% if pp.num %}{% set svcLd = svcLd | setAttribute("offers", {
+  "@type": "Offer",
+  "price": pp.num | replace(" ", ""),
+  "priceCurrency": "PLN",
+  "url": site.url + page.url
+}) %}{% endif %}
+<script type="application/ld+json">{{ svcLd | dump | safe }}</script>
 <div class="wrap page-top">
   <article class="service">
     <header class="service__header">

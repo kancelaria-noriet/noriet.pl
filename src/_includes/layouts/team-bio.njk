@@ -9,6 +9,23 @@ crumbParent:
     {% include "partials/breadcrumb.njk" %}
   </div>
 </div>
+{# memberOf follows the professional title: adwokaci and their trainees belong
+   to the bar of advocates, radcowie to the bar of attorneys-at-law. No bar
+   registration numbers exist in the data, so none are invented. #}
+{% set izba = null %}
+{% if "adwokat" in rola or "adwokack" in rola %}{% set izba = "Izba Adwokacka w Warszawie" %}
+{% elif "radca" in rola or "radcowsk" in rola %}{% set izba = "Okręgowa Izba Radców Prawnych w Warszawie" %}{% endif %}
+{% set personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": h1,
+  "jobTitle": rola,
+  "url": site.url + page.url,
+  "worksFor": { "@id": site.url + "/#kancelaria" }
+} %}
+{% if photo %}{% set personLd = personLd | setAttribute("image", site.url + photo) %}{% endif %}
+{% if izba %}{% set personLd = personLd | setAttribute("memberOf", { "@type": "Organization", "name": izba }) %}{% endif %}
+<script type="application/ld+json">{{ personLd | dump | safe }}</script>
 {% set bits = kontakt | contactBits %}
 <header class="bio-hero">
   <div class="wrap bio-hero__grid">

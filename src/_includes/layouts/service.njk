@@ -9,12 +9,16 @@ layout: layouts/base.njk
 {% set cat = null %}
 {% if meta %}{% for c in nav.categories %}{% if c.slug == meta.category %}{% set cat = c %}{% endif %}{% endfor %}{% endif %}
 {% set isHub = cat and cat.url == page.url %}
-{# The breadcrumb parent follows the offer taxonomy, so derive it from
-   serviceMeta rather than defaulting it in the front matter. /akcjonariusze/
-   and /obligacje/ borrow this layout but are not services, and a null in
-   their own front matter cannot switch a layout default off: Eleventy's
-   merge treats a falsy page value as absent and the layout wins. #}
-{% set crumbParent = { label: "Oferta", url: "/oferta/" } if meta else null %}
+{# The crumb follows the offer taxonomy: Oferta, then the category, then the
+   service. A hub drops the category level (it IS the category, and must not
+   link to itself). /akcjonariusze/ and /obligacje/ borrow this layout but are
+   not services (no meta), so they keep a bare two-level crumb. #}
+{% set crumbs = null %}
+{% if meta and cat and not isHub %}
+  {% set crumbs = [{ label: "Oferta", url: "/oferta/" }, { label: cat.label, url: cat.url }] %}
+{% elif meta %}
+  {% set crumbs = [{ label: "Oferta", url: "/oferta/" }] %}
+{% endif %}
 {# The h1 runs up to 70 characters on some service pages, which wraps a crumb
    over three lines on a phone. serviceMeta already carries a short label. #}
 {% set crumbLabel = meta.kicker if meta else null %}
@@ -23,6 +27,7 @@ layout: layouts/base.njk
     {% include "partials/breadcrumb.njk" %}
   </div>
 </div>
+{% if faq %}<script type="application/ld+json">{{ faq | jsonldFaq | safe }}</script>{% endif %}
 
 <div class="wrap">
   <header class="service-hero">

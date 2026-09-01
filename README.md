@@ -219,8 +219,9 @@ migrate.
 
 ## Still ahead
 
-JSON-LD (the site has none), `og:image`, sitemap and `robots.txt`, Umami, the
-form backend plus Turnstile, the breadcrumb hierarchy, image conversion to
-WebP or AVIF, and the redirect map. Full list and order: `../PLAN.md` Phases 2
-to 4. Visual pass done 2026-08-07 — verify at /qa/ (a gallery of all templates,
+`og:image`, sitemap and `robots.txt`, Umami, the form backend plus Turnstile,
+image conversion to WebP or AVIF, the Markdown twins and `/llms.txt`. Full
+list and order: `../PLAN.md` Phases 2 to 4. Pre-deploy checks that exist
+today: `tools/check_jsonld.py` (validates every JSON-LD block against pinned
+counts) and `../export/redirects.py check` (simulates the redirect map). Visual pass done 2026-08-07 — verify at /qa/ (a gallery of all templates,
 desktop and mobile; served from ../qa on the dev box only).

@@ -13,13 +13,51 @@
     "city": "Warszawa"
   },
   "kontaktPhones": [
-    { "label": "+48 22 870 66 46", "href": "tel:+48228706646" }
+    {
+      "label": "+48 22 870 66 46",
+      "href": "tel:+48228706646"
+    }
   ],
-  "registry": { "krs": "0000344890", "nip": "1132785145", "regon": "142186428" },
+  "registry": {
+    "krs": "0000344890",
+    "nip": "1132785145",
+    "regon": "142186428"
+  },
   "trust": [
-    { "value": "9", "label": "prawników w zespole" },
-    { "value": "2", "label": "mediatorów certyfikowanych od 2017 r." },
-    { "value": "", "label": "Izba Adwokacka w Warszawie" },
-    { "value": "", "label": "Okręgowa Izba Radców Prawnych" }
-  ]
+    {
+      "value": "9",
+      "label": "prawników w zespole"
+    },
+    {
+      "value": "2",
+      "label": "mediatorów certyfikowanych od 2017 r."
+    },
+    {
+      "value": "",
+      "label": "Izba Adwokacka w Warszawie"
+    },
+    {
+      "value": "",
+      "label": "Okręgowa Izba Radców Prawnych"
+    }
+  ],
+  "gbp": {
+    "_comment": "Values copied from the Google Business Profile 2026-09-01. LocalBusiness/LegalService JSON-LD must match these exactly (PLAN §1). Geo from the GBP place pin.",
+    "name": "Kancelaria Prawna Noriet - Zagajewska i Wspólnicy S.K.A.",
+    "openingHours": {
+      "days": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "16:00"
+    },
+    "geo": {
+      "latitude": 52.2452082,
+      "longitude": 21.0820833
+    }
+  }
 }

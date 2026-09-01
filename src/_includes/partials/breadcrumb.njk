@@ -1,7 +1,15 @@
+{# Accepts `crumbs` (an array of {label, url} between the homepage and the
+   leaf) or the older single `crumbParent`. The BreadcrumbList JSON-LD is
+   emitted from the same data, so the schema and the visible crumb cannot
+   diverge. #}
+{% set _crumbs = crumbs %}
+{% if not _crumbs %}{% set _crumbs = [crumbParent] if crumbParent else [] %}{% endif %}
+{% set _leaf = crumbLabel or h1 or title %}
 <nav class="breadcrumb" aria-label="Ścieżka nawigacji">
   <ol>
     <li><a href="/">Strona główna</a></li>
-    {% if crumbParent %}<li><a href="{{ crumbParent.url }}">{{ crumbParent.label }}</a></li>{% endif %}
-    <li aria-current="page">{{ crumbLabel or h1 or title }}</li>
+    {% for c in _crumbs %}<li><a href="{{ c.url }}">{{ c.label }}</a></li>{% endfor %}
+    <li aria-current="page">{{ _leaf }}</li>
   </ol>
 </nav>
+<script type="application/ld+json">{{ _crumbs | jsonldBreadcrumbs(_leaf, site.url) | safe }}</script>
