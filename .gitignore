@@ -4,3 +4,7 @@ _site/
 
 # QA artifacts live outside the repo (../qa); guard against re-creation here
 qa/
+
+# Local secrets for `wrangler pages dev` — never commit
+.dev.vars
+.wrangler/

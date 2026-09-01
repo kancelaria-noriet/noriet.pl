@@ -59,5 +59,7 @@
       "latitude": 52.2452082,
       "longitude": 21.0820833
     }
-  }
+  },
+  "turnstileSiteKey": "",
+  "turnstileNote": "Public site key of the Cloudflare Turnstile widget. Empty = the contact form stays disabled and no Turnstile script loads. The secret key lives only in the Pages env (TURNSTILE_SECRET_KEY)."
 }

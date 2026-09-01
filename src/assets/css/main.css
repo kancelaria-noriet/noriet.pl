@@ -9,7 +9,7 @@
   --btn-bg: #0a6f8e; --btn-bg-hover: #08556e; --btn-fg: #ffffff;
   --navy: #081830; --navy-2: #12294a;
   --paper: #ffffff; --paper-2: #f5f7f9; --paper-3: #eceff3;
-  --ink: #0d1c30; --ink-2: #42536a; --ink-3: #5d6f86;
+  --ink: #0d1c30; --ink-2: #42536a; --ink-3: #5d6f86; --danger: #b3261e;
   --line: #dde3ea; --line-2: #c3ccd7;
   --on-dark: #eaf0f6; --on-dark-2: #a9bcd0;
   --focus: #0090b8;
@@ -34,7 +34,7 @@
     --btn-bg: #2aa8cc; --btn-bg-hover: #67c7e4; --btn-fg: #04121f;
     --navy: #040e1c; --navy-2: #0b1e37;
     --paper: #0a1727; --paper-2: #101f33; --paper-3: #16293f;
-    --ink: #e9eff6; --ink-2: #b3c3d4; --ink-3: #8fa2b7;
+    --ink: #e9eff6; --ink-2: #b3c3d4; --ink-3: #8fa2b7; --danger: #ff8a80;
     --line: #1e3450; --line-2: #2b4869;
     --on-dark: #e9eff6; --on-dark-2: #a4b8cd;
     color-scheme: dark;
@@ -45,7 +45,7 @@
     --btn-bg: #2aa8cc; --btn-bg-hover: #67c7e4; --btn-fg: #04121f;
     --navy: #040e1c; --navy-2: #0b1e37;
     --paper: #0a1727; --paper-2: #101f33; --paper-3: #16293f;
-    --ink: #e9eff6; --ink-2: #b3c3d4; --ink-3: #8fa2b7;
+    --ink: #e9eff6; --ink-2: #b3c3d4; --ink-3: #8fa2b7; --danger: #ff8a80;
     --line: #1e3450; --line-2: #2b4869;
     --on-dark: #e9eff6; --on-dark-2: #a4b8cd;
     color-scheme: dark;
@@ -909,3 +909,9 @@ html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
 /* 404 page */
 .error-help { margin-top: var(--s6); }
+
+/* Contact form: spam trap and submit states (form.js + functions/api/kontakt.js) */
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.form-error { display: none; color: var(--danger); font-size: var(--t-sm); margin: 0; }
+.form-error.show { display: block; }
+.form-success { background: var(--brand-wash); border-radius: var(--radius); padding: var(--s4); color: var(--ink); }

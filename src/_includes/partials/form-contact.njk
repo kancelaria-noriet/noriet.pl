@@ -1,4 +1,7 @@
 <form class="form-grid" method="post" action="/api/kontakt">
+  {# Honeypot: hidden by CSS, never by type=hidden — a bot fills it, a person
+     never sees it. The bland name is part of the trick. #}
+  <input type="text" name="contact_time" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
   <div>
     <label for="f-name">Imię i nazwisko</label>
     <input id="f-name" name="name" type="text" autocomplete="name" required>
@@ -24,5 +27,14 @@
   Pan/Pani zgodę na otrzymywanie informacji, stanowiącej odpowiedź na
   niniejsze zapytanie za pomocą środków komunikacji elektronicznej
   (art. 6 ust. 1 lit. b RODO).</p>
+  {% if site.turnstileSiteKey %}
+  <div class="cf-turnstile" data-sitekey="{{ site.turnstileSiteKey }}" data-theme="auto" data-appearance="interaction-only"></div>
+  {% endif %}
+  <p class="form-error" role="alert"></p>
+  {# Disabled in the markup; form.js enables it only when the Turnstile site
+     key is configured, because a submit cannot succeed without it. #}
   <div><button class="btn btn--call" type="submit" disabled>Wyślij wiadomość</button></div>
+  <p class="form-success" hidden><strong>Wiadomość wysłana.</strong>
+  Odpowiadamy w ciągu jednego dnia roboczego. W pilnej sprawie prosimy
+  zadzwonić: <a href="{{ site.phoneHref }}">{{ site.phone }}</a>.</p>
 </form>
