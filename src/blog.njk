@@ -2,8 +2,6 @@
 {
   "layout": "layouts/base.njk",
   "title": "Blog",
-  "titleTag": "Blog | Noriet",
-  "description": "Artykuły prawników Kancelarii Noriet: prawo rodzinne, rozwody, spadki, prawo gospodarcze.",
   "pagination": {
     "data": "collections.post",
     "size": 10,
@@ -11,7 +9,9 @@
   },
   "permalink": "/blog/{% if pagination.pageNumber > 0 %}strona/{{ pagination.pageNumber + 1 }}/{% endif %}",
   "eleventyComputed": {
-    "h1": "Artykuły"
+    "h1": "Artykuły",
+    "titleTag": "{% if pagination.pageNumber > 0 %}Blog – strona {{ pagination.pageNumber + 1 }} | Noriet{% else %}Blog prawniczy – porady i wyroki | Noriet{% endif %}",
+    "description": "{% if pagination.pageNumber > 0 %}Blog kancelarii Noriet, strona {{ pagination.pageNumber + 1 }} z {{ pagination.pages.length }}. Artykuły o prawie rodzinnym, spadkach i prawie gospodarczym.{% else %}Artykuły prawników Kancelarii Noriet: prawo rodzinne, rozwody, spadki, prawo gospodarcze.{% endif %}"
   }
 }
 ---
