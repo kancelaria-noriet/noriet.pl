@@ -43,7 +43,7 @@ layout: layouts/base.njk
       <li>Dwoje mediatorów certyfikowanych</li>
     </ul>
     <p class="hero__actions">
-      <a class="btn btn--call" href="{{ site.phoneHref }}">Zadzwoń: {{ site.phone }}</a>
+      <a class="btn btn--call" href="{{ site.phoneHref }}" data-umami-event="telefon">Zadzwoń: {{ site.phone }}</a>
       <a class="btn btn--ghost" href="/kontakt/">Opisz sprawę</a>
     </p>
   </header>
@@ -146,7 +146,7 @@ layout: layouts/base.njk
   <div class="wrap">
     <h2 id="sprawa-title">Opisz swoją sprawę</h2>
     <p class="section-lead">Odpowiadamy w ciągu jednego dnia roboczego. Jeśli
-    sprawa jest pilna — zadzwoń pod <a href="{{ site.phoneHref }}">{{ site.phone }}</a>.</p>
+    sprawa jest pilna — zadzwoń pod <a href="{{ site.phoneHref }}" data-umami-event="telefon">{{ site.phone }}</a>.</p>
     <div class="rail-layout">
       {% include "partials/form-contact.njk" %}
       {% include "partials/kancelaria-card.njk" %}

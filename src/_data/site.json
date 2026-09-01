@@ -61,5 +61,7 @@
     }
   },
   "turnstileSiteKey": "0x4AAAAAAEjw7bG-kqjsDjPg",
-  "turnstileNote": "Public site key of the Cloudflare Turnstile widget. Empty = the contact form stays disabled and no Turnstile script loads. The secret key lives only in the Pages env (TURNSTILE_SECRET_KEY)."
+  "turnstileNote": "Public site key of the Cloudflare Turnstile widget. Empty = the contact form stays disabled and no Turnstile script loads. The secret key lives only in the Pages env (TURNSTILE_SECRET_KEY).",
+  "umamiWebsiteId": "e52198f5-557b-4970-a1e4-1725c7d350c9",
+  "umamiNote": "Public website id of the self-hosted Umami (collector c.entropiadev.com, proxied first-party through /v and /e/api/info — see functions/). Empty = no tracker tag. data-domains=\"noriet.pl\" is added at launch; until then the dev preview sends test data that the owner erases."
 }

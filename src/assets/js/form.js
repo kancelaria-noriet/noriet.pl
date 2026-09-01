@@ -40,6 +40,7 @@
             el.hidden = true;
           });
           okEl.hidden = false;
+          if (window.umami) window.umami.track("formularz");
         });
       })
       .catch(function (err) {

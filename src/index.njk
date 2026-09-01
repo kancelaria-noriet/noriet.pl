@@ -15,7 +15,7 @@
       <h2 class="hero__claim">Mądrze rozwiązujemy spory</h2>
       <p class="hero__lead">Pomagamy firmom i klientom indywidualnym osiągnąć to, na czym naprawdę im zależy – nie mnożyć pisma, koszty i lata procesu. Jeśli można znaleźć dobre rozwiązanie pozasądowe, znajdziemy je i dowieziemy. Kiedy jednak trzeba walczyć – zrobimy to skutecznie.</p>
       <p class="hero__actions">
-        <a class="btn btn--call" href="{{ site.phoneHref }}">Zadzwoń: {{ site.phone }}</a>
+        <a class="btn btn--call" href="{{ site.phoneHref }}" data-umami-event="telefon">Zadzwoń: {{ site.phone }}</a>
         <a class="btn btn--ghost" href="/konsultacje/">Umów konsultację</a>
       </p>
     </div>
@@ -26,7 +26,7 @@
         {{ site.address.postalCode }} {{ site.address.city }}
       </address>
       <dl class="hero__card-list">
-        <dt>tel.</dt><dd><a href="{{ site.phoneHref }}">{{ site.phone }}</a></dd>
+        <dt>tel.</dt><dd><a href="{{ site.phoneHref }}" data-umami-event="telefon">{{ site.phone }}</a></dd>
         <dt>e-mail</dt><dd><a href="mailto:{{ site.email }}">{{ site.email }}</a></dd>
       </dl>
     </aside>

@@ -13,7 +13,7 @@
         {% for item in nav.header %}
         <li><a{% if page.url == item.url %} aria-current="page"{% endif %} href="{{ item.url }}">{{ item.label }}</a></li>
         {% endfor %}
-        <li class="site-nav__cta"><a class="btn btn--call" href="{{ site.phoneHref }}">Zadzwoń</a></li>
+        <li class="site-nav__cta"><a class="btn btn--call" href="{{ site.phoneHref }}" data-umami-event="telefon">Zadzwoń</a></li>
       </ul>
     </nav>
     <button class="theme-toggle" type="button" aria-label="Przełącz motyw jasny/ciemny">

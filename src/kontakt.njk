@@ -19,7 +19,7 @@
     <p class="service-hero__lead">Skontaktuj się z nami! Wspólnie znajdziemy
     rozwiązanie Twojego problemu prawnego.</p>
     <p class="hero__actions">
-      <a class="btn btn--call" href="{{ site.phoneHref }}">Zadzwoń: {{ site.phone }}</a>
+      <a class="btn btn--call" href="{{ site.phoneHref }}" data-umami-event="telefon">Zadzwoń: {{ site.phone }}</a>
       <a class="btn btn--ghost" href="mailto:{{ site.email }}">{{ site.email }}</a>
     </p>
   </div>
@@ -38,7 +38,7 @@
     <h2 class="rail-card__title">Telefon</h2>
     <ul>
       {% for p in site.kontaktPhones %}
-      <li><a href="{{ p.href }}">{{ p.label }}</a></li>
+      <li><a href="{{ p.href }}" data-umami-event="telefon">{{ p.label }}</a></li>
       {% endfor %}
     </ul>
   </div>

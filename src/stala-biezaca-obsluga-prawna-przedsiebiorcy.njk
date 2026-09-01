@@ -46,7 +46,7 @@
     spraw prawnych — zanim zrobią się problemem.</p>
     <p class="hero__actions">
       <a class="btn btn--call" href="#zamowienie">Zamów testowy miesiąc</a>
-      <a class="btn btn--ghost" href="{{ site.phoneHref }}">Zadzwoń: {{ site.phone }}</a>
+      <a class="btn btn--ghost" href="{{ site.phoneHref }}" data-umami-event="telefon">Zadzwoń: {{ site.phone }}</a>
     </p>
   </div>
 </header>
@@ -124,7 +124,7 @@
     <h2 id="zamowienie-title">Zamów testowy miesiąc</h2>
     <p class="section-lead">Napisz, czego potrzebujesz — odpowiadamy w ciągu
     jednego dnia roboczego i ustalamy szczegóły. Jeśli sprawa jest pilna,
-    zadzwoń pod <a href="{{ site.phoneHref }}">{{ site.phone }}</a>.</p>
+    zadzwoń pod <a href="{{ site.phoneHref }}" data-umami-event="telefon">{{ site.phone }}</a>.</p>
     <div class="rail-layout">
       {% include "partials/form-contact.njk" %}
     </div>
