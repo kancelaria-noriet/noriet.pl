@@ -219,9 +219,10 @@ migrate.
 
 ## Still ahead
 
-Sitemap and `robots.txt`, Umami, the form backend plus Turnstile, and image
-conversion to WebP or AVIF. Full list and order: `../PLAN.md` Phases 2 to 4.
-Pre-deploy checks that exist today: `tools/check_jsonld.py` (every JSON-LD
-block against pinned counts), `tools/check_twins.py` (the Markdown twins and
-`/llms.txt`) and `../export/redirects.py check` (the redirect map). Visual pass done 2026-08-07 — verify at /qa/ (a gallery of all templates,
+Umami, the form backend plus Turnstile, and image conversion to WebP or AVIF.
+Full list and order: `../PLAN.md` Phases 2 to 4. Pre-deploy checks that exist
+today: `tools/check_jsonld.py` (every JSON-LD block against pinned counts),
+`tools/check_twins.py` (the Markdown twins and `/llms.txt`),
+`tools/check_sitemap.py` (sitemap ↔ built pages) and
+`../export/redirects.py check` (the redirect map). Visual pass done 2026-08-07 — verify at /qa/ (a gallery of all templates,
 desktop and mobile; served from ../qa on the dev box only).

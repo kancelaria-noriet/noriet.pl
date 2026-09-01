@@ -1,0 +1,33 @@
+---json
+{
+  "permalink": "/sitemap.xml",
+  "eleventyExcludeFromCollections": true,
+  "layout": null
+}
+---
+<?xml version="1.0" encoding="UTF-8"?>
+{#- One sitemap for the whole site. In: every canonical, indexable page.
+    Out: anything with a noindex in `robots` front matter (404, /obligacje/,
+    the stubs), non-page outputs, and the /blog/strona/N/ pagination, which
+    is reachable by links and adds nothing to discovery.
+    lastmod only where a real date exists (posts): the content freeze makes
+    the publish date the honest last-modification date. Never invent one. -#}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for item in collections.all | sort(false, false, "url") %}
+{%- set noindex = item.data.robots and ("noindex" in item.data.robots) %}
+{%- set paginated = r/^\/blog\/strona\//.test(item.url) %}
+{%- if item.url and item.url.endsWith("/") and not noindex and not paginated %}
+  <url>
+    <loc>{{ site.url }}{{ item.url }}</loc>
+    {%- if item.data.isoDate %}
+    <lastmod>{{ item.data.isoDate }}</lastmod>
+    {%- endif %}
+  </url>
+{%- endif %}
+{%- endfor %}
+  {#- /akcjonariusze/ sets eleventyExcludeFromCollections (it must stay out of
+      the content collections), so it is listed by hand. -#}
+  <url>
+    <loc>{{ site.url }}/akcjonariusze/</loc>
+  </url>
+</urlset>

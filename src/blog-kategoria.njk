@@ -1,7 +1,7 @@
 ---json
 {
   "layout": "layouts/base.njk",
-  "pagination": { "data": "postCategories.categories", "size": 1, "alias": "cat" },
+  "pagination": { "data": "postCategories.categories", "size": 1, "alias": "cat", "addAllPagesToCollections": true },
   "permalink": "/blog/kategoria/{{ cat.slug }}/",
   "crumbParent": { "label": "Blog", "url": "/blog/" },
   "eleventyComputed": {
