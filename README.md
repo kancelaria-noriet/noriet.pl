@@ -202,16 +202,18 @@ App icons carry the unsnapped mark on the navy tile, because iOS paints
 transparency black and cyan on navy measures 5.1:1 against 3.3:1 on white.
 `tools/favicons.mjs` fails if a maskable icon leaves the 80% safe circle.
 
-## State (2026-08-07): content-complete skeleton
+## State (2026-09-01): content-complete
 
-211 pages build: every content type migrated, chrome (topbar/header/logo/
-hero+info card/trust strip/footer) ported from the decks, fonts self-hosted.
-Remaining stubs (`src/_data/stubs.json`): the six D13 pages + privacy policy —
-all need lawyer-written copy, not migration.
+221 pages build. Every content type is migrated, the chrome (topbar, header,
+logo, hero and info card, trust strip, footer) is ported from the decks, and the
+fonts are self-hosted. **One stub is left** (`src/_data/stubs.json`):
+`/polityka-prywatnosci/`, which needs lawyer-written copy and has nothing to
+migrate.
 
 ## Still ahead
 
-JSON-LD, Umami, sitemap/robots at launch prep, redirect map (Phase 3),
-the six D13 pages + privacy copy (lawyers), form backend + Turnstile (arrives
-with Cloudflare). Visual pass done 2026-08-07 — verify at /qa/ (gallery of all
-templates, desktop + mobile; served from ../qa on the dev box only).
+JSON-LD (the site has none), `og:image`, sitemap and `robots.txt`, Umami, the
+form backend plus Turnstile, the breadcrumb hierarchy, image conversion to
+WebP or AVIF, and the redirect map. Full list and order: `../PLAN.md` Phases 2
+to 4. Visual pass done 2026-08-07 — verify at /qa/ (a gallery of all templates,
+desktop and mobile; served from ../qa on the dev box only).
