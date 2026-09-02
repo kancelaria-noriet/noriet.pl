@@ -14,6 +14,21 @@
 # Cloudflare Pages serves .txt as text/plain; the agent index is Markdown.
 /llms.txt
   Content-Type: text/markdown; charset=utf-8
+{% if buildEnv == "production" %}
+# Asset caching, production only — dev previews keep the Pages default
+# (max-age=0, must-revalidate). Filenames are unhashed, so code gets a
+# short TTL with revalidation; fonts and media change rarely and get more.
+/assets/css/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/assets/js/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+/assets/fonts/*
+  Cache-Control: public, max-age=2592000
+/assets/img/*
+  Cache-Control: public, max-age=604800
+/assets/uploads/*
+  Cache-Control: public, max-age=604800
+{% endif %}
 
 # Icons change only when the brand changes.
 /favicon.ico

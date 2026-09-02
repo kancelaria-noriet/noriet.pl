@@ -12,6 +12,11 @@
     "postalCode": "04-077",
     "city": "Warszawa"
   },
+  "social": {
+    "linkedin": "https://www.linkedin.com/company/noriet/",
+    "facebook": "https://www.facebook.com/NorietSKA/"
+  },
+  "socialNote": "The firm's own profiles (also linked on /publikacje/) — feed sameAs in the org JSON-LD. The Instagram there is a lawyer's personal account, so it stays out.",
   "kontaktPhones": [
     {
       "label": "+48 22 870 66 46",

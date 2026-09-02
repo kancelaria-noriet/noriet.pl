@@ -9,19 +9,28 @@
 
 > Kancelaria adwokacka i radcowska w Warszawie (Grochowska 217/15, Praga-Południe). Prawo rodzinne, majątek i spadki, obsługa prawna firm, prawa pracownika. Dziewięcioro prawników, dwoje certyfikowanych mediatorów. Tel. {{ site.phone }}, e-mail {{ site.email }}, pon.-pt. 9:00-16:00.
 
-Każda podstrona z treścią ma bliźniaczą wersję Markdown pod adresem `index.md`
-obok wersji HTML. Linki poniżej prowadzą do wersji Markdown.
+Podstrony z treścią mają bliźniaczą wersję Markdown pod adresem `index.md`
+obok wersji HTML; strona HTML wskazuje ją w `link rel="alternate"`. Linki
+poniżej prowadzą do wersji Markdown.
+
+## Kancelaria
+
+- [Strona główna]({{ site.url }}/index.md)
+- [Pełna oferta]({{ site.url }}/oferta/index.md)
+- [Zespół]({{ site.url }}/zespol/index.md)
+- [Kontakt]({{ site.url }}/kontakt/index.md)
 
 ## Oferta
-
-{% for cat in nav.categories -%}
+{% for cat in nav.categories %}
 - [{{ cat.label }}]({{ site.url }}{{ cat.url }}index.md): {{ cat.summary }}
-{% for s in cat.services -%}
+{%- for s in cat.services %}
   - [{{ s.label }}]({{ site.url }}{{ s.url }}index.md)
-{% endfor -%}
-{% endfor %}
+{%- endfor %}
+{%- endfor %}
+
 ## Konsultacje i ceny
 
+- [Wszystkie konsultacje i cennik]({{ site.url }}/konsultacje/index.md)
 {% for k in collections.konsultacja -%}
 - [{{ k.data.h1 }}]({{ site.url }}{{ k.url }}index.md){% if k.data.subtitle %} – {{ k.data.subtitle }}{% endif %}{% if k.data.price %} – {{ k.data.price }}{% endif %}
 {% endfor %}
@@ -32,6 +41,11 @@ obok wersji HTML. Linki poniżej prowadzą do wersji Markdown.
 {% endfor %}
 ## Blog
 
+Kategorie:
+{% for c in postCategories.categories %}
+- [{{ c.label }}]({{ site.url }}/blog/kategoria/{{ c.slug }}/index.md)
+{%- endfor %}
+
 Pełne archiwum HTML: {{ site.url }}/blog/wszystkie-artykuly/
 
 {% for post in collections.post | reverse -%}
@@ -41,4 +55,3 @@ Pełne archiwum HTML: {{ site.url }}/blog/wszystkie-artykuly/
 
 - [Publikacje i komentarze prawne]({{ site.url }}/publikacje/index.md)
 - [Ogłoszenia dla akcjonariuszy]({{ site.url }}/akcjonariusze/index.md)
-- Kontakt (HTML): {{ site.url }}/kontakt/

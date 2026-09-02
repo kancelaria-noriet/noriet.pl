@@ -6,18 +6,19 @@ import domino from "@mixmark-io/domino";
 // --- Markdown twins for AI crawlers (PLAN Phase 3) ---------------------------
 // Every content page gets a `.md` twin beside its `index.html`, generated
 // after the build from the rendered page itself, so the twin can never drift
-// from the HTML. Pure navigation pages, noindexed pages and the blog list
-// pages get none; /llms.txt is the agent-facing index instead.
+// from the HTML. Noindexed pages and the blog pagination/archive lists get
+// none; /llms.txt is the agent-facing index instead. Keep this skip logic,
+// src/llms.njk and tools/check_twins.py in sync (AGENTS.md).
 const MD_SKIP_EXACT = new Set([
-  "/", "/kontakt/", "/oferta/", "/zespol/",
   "/obligacje/", "/polityka-prywatnosci/",
 ]);
-const MD_SKIP_PREFIX = ["/blog/", "/qa/"];
 
 function mdTwinUrl(url) {
   if (!url || !url.endsWith("/")) return null; // /404.html, /_headers, /llms.txt
   if (MD_SKIP_EXACT.has(url)) return null;
-  if (MD_SKIP_PREFIX.some((p) => url.startsWith(p))) return null;
+  if (url.startsWith("/qa/")) return null;
+  // Blog category hubs get twins; the paginated lists and the archive do not.
+  if (url.startsWith("/blog/") && !url.startsWith("/blog/kategoria/")) return null;
   return url + "index.md";
 }
 
@@ -50,9 +51,12 @@ function makeTurndown() {
   return td;
 }
 
+// Strip chrome and upsell, keep content: the summary boxes ("W skrócie"),
+// the specialization chip lists and the product selling points stay in.
 const MD_STRIP = [
-  "nav", "aside", "form", "script", "style", "button",
-  ".crumb-band", ".hero__actions", ".chips", ".form-section", ".kicker",
+  "nav", "aside.rail", ".cta-card", "form", "script", "style", "button",
+  ".crumb-band", ".hero__actions", ".service-hero .chips", ".form-section",
+  ".kicker",
 ];
 
 function pageToMarkdown(html, url, td) {
@@ -61,6 +65,11 @@ function pageToMarkdown(html, url, td) {
   if (!main) return null;
   for (const sel of MD_STRIP) {
     for (const el of Array.from(main.querySelectorAll(sel))) el.remove();
+  }
+  // CSS-only label spans ("e-mail", "tel.") would glue to the link text in
+  // Markdown ("e-maila.zagajewska@..."); give them a real separator.
+  for (const el of Array.from(main.querySelectorAll(".bio-hero__contacts a > span"))) {
+    el.textContent = el.textContent.trim().replace(/\.$/, "") + ": ";
   }
   const title = (doc.querySelector("title") || {}).textContent || "";
   const desc = doc.querySelector('meta[name="description"]');
@@ -100,6 +109,12 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addGlobalData("buildEnv", process.env.NORIET_ENV || "dev");
   eleventyConfig.addFilter("mdTwin", mdTwinUrl);
+
+  // First site-relative image in rendered content — the Article JSON-LD image.
+  eleventyConfig.addFilter("firstImg", (html) => {
+    const m = /<img\s[^>]*src="(\/[^"]+)"/i.exec(html || "");
+    return m ? m[1] : null;
+  });
 
   eleventyConfig.on("eleventy.after", ({ results }) => {
     const td = makeTurndown();

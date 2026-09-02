@@ -18,9 +18,14 @@
      Team bios pass their portrait. #}
   {% set _og = ogImage or photo or "/assets/img/og-default.png" %}
   <meta property="og:image" content="{{ site.url }}{{ _og }}">
-  {% if not ogImage %}<meta property="og:image:width" content="1200">
+  {# Dimensions must describe the image actually sent: the portrait's own
+     size on team bios, 1200x630 for the default card, none for an ogImage
+     override (unknown). Square portraits get the small twitter card. #}
+  {% if ogImage %}{% elif photo and photoW %}<meta property="og:image:width" content="{{ photoW }}">
+  <meta property="og:image:height" content="{{ photoH }}">
+  {% elif not photo %}<meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">{% endif %}
-  <meta name="twitter:card" content="{{ "summary" if (ogImage or photo) else "summary_large_image" }}">
+  <meta name="twitter:card" content="{{ "summary" if (photo and not ogImage) else "summary_large_image" }}">
   <link rel="icon" href="/favicon.ico" sizes="32x32">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">

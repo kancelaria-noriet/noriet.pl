@@ -12,7 +12,7 @@ layout: layouts/base.njk
 {# datePublished comes from the migrated front matter. dateModified is absent
    on purpose: no real modification date exists, and an invented one is spam
    (PLAN Phase 6, the freshness programme). #}
-<script type="application/ld+json">{{ {
+{% set articleLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": h1 or title,
@@ -21,7 +21,11 @@ layout: layouts/base.njk
   "mainEntityOfPage": site.url + page.url,
   "author": { "@id": site.url + "/#kancelaria" },
   "publisher": { "@id": site.url + "/#kancelaria" }
-} | dump | safe }}</script>
+} %}
+{% if description %}{% set articleLd = articleLd | setAttribute("description", description) %}{% endif %}
+{% set _ldImg = content | firstImg %}
+{% if _ldImg %}{% set articleLd = articleLd | setAttribute("image", site.url + _ldImg) %}{% endif %}
+<script type="application/ld+json">{{ articleLd | dump | safe }}</script>
 <div class="wrap">
   <div class="rail-layout">
     <article class="service">
