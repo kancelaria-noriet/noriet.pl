@@ -3,7 +3,7 @@
 import { chromium } from "playwright";
 import { writeFileSync, mkdirSync } from "node:fs";
 
-const base = process.argv[2] || "http://100.110.56.115:8085";
+const base = process.argv[2] || process.env.NORIET_SITE || "http://127.0.0.1:8085";
 const pages = [
   ["home", "/"],
   ["service", "/prawo-spadkowe-warszawa/"],

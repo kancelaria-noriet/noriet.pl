@@ -1,4 +1,6 @@
 import { chromium } from "playwright";
+const SITE = process.env.NORIET_SITE || "http://127.0.0.1:8085";
+const DECKS = process.env.NORIET_DECKS || "http://127.0.0.1:8086";
 const pairs = [
   ["homepage", "/"],
   ["service-page", "/prawo-spadkowe-warszawa/"],
@@ -37,7 +39,7 @@ const collect = (xMin, xMax) => {
 const browser = await chromium.launch({ args: ["--no-sandbox"] });
 for (const [deckName, sitePath] of pairs) {
   const d = await browser.newPage({ viewport: { width: 1600, height: 900 } });
-  await d.goto(`http://100.110.56.115:8086/${deckName}.html`, { waitUntil: "networkidle" });
+  await d.goto(`${DECKS}/${deckName}.html`, { waitUntil: "networkidle" });
   const frame = await d.evaluate(() => {
     let best = null;
     for (const el of document.querySelectorAll("body *")) {
@@ -50,7 +52,7 @@ for (const [deckName, sitePath] of pairs) {
   const deckMap = await d.evaluate(`(${collect.toString()})(${frame.x}, ${frame.right})`);
   await d.close();
   const s = await browser.newPage({ viewport: { width: 1280, height: 900 } });
-  await s.goto(`http://100.110.56.115:8085${sitePath}`, { waitUntil: "networkidle" });
+  await s.goto(`${SITE}${sitePath}`, { waitUntil: "networkidle" });
   const siteMap = await s.evaluate(`(${collect.toString()})()`);
   await s.close();
   const diffs = [];

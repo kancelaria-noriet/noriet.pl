@@ -1,7 +1,7 @@
 # noriet-lp — the Eleventy rebuild of noriet.pl
 
 Static site (Eleventy 3) for the noriet.pl migration. Dev phase: built and
-served from wormhole over tailnet only. The repo is PUBLIC on GitHub
+served from the dev host on a private interface. The repo is PUBLIC on GitHub
 (`kancelaria-noriet/noriet.pl`). A push to `dev` deploys to
 https://dev.noriet-lp.pages.dev (noindexed). Production deployments are
 disabled until the owner calls the cutover (see `../PLAN.md`).
@@ -10,7 +10,7 @@ disabled until the owner calls the cutover (see `../PLAN.md`).
 
 ```
 ./build.sh     # one-off build to _site/
-./serve.sh     # dev server on http://<tailscale-ip>:8085/ (watch + reload)
+./serve.sh     # dev server on http://127.0.0.1:8085/ (watch + reload)
 ```
 
 Node comes from fnm (user-local, `~/.local/share/fnm`); the scripts set it up
@@ -29,7 +29,8 @@ writes a Markdown twin next to almost every HTML page (for AI crawlers).
 ```
 eleventy.config.js   the build: passthroughs, collections, filters
                      (JSON-LD helpers), Markdown-twin generation (turndown)
-build.sh / serve.sh  fnm-aware wrappers; serve.sh binds to the tailnet IP
+build.sh / serve.sh  fnm-aware wrappers; serve.sh binds to 127.0.0.1
+                     (NORIET_HOST / NORIET_PORT override)
 functions/           Pages Functions: api/kontakt.js (contact form ->
                      Gmail API + Turnstile), v.js and e/api/info.js
                      (first-party Umami proxies)
@@ -63,8 +64,9 @@ tools/               pre-deploy checkers (check_jsonld.py, check_twins.py,
                      migrate_all.py), one-time passes (webp.mjs,
                      imgdims.mjs, covers.mjs, favicons*.mjs), authoring
                      (md2page.mjs), visual QA (shot.mjs, gallery.mjs,
-                     ogshot.mjs, the *diff.mjs parity tools)
-../qa/               QA artifacts — OUTSIDE the repo, wormhole-only; the
+                     ogshot.mjs, the *diff.mjs parity tools — these read
+                     NORIET_SITE / NORIET_DECKS, default 127.0.0.1)
+../qa/               QA artifacts — OUTSIDE the repo, dev-host only; the
                      /qa/ passthrough is a no-op when ../qa is absent
 ```
 
@@ -179,7 +181,6 @@ and cannot regenerate them. Regenerate after any logo change:
 
 ```sh
 eval "$($HOME/.local/share/fnm/fnm env)"
-export PLAYWRIGHT_BROWSERS_PATH=/opt/ms-playwright   # shared browsers
 node tools/favicons.mjs          # writes src/static/, asserts the safe zone
 node tools/favicons-review.mjs   # writes ../qa/favicons.html — look at it
 ```

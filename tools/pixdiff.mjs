@@ -2,6 +2,8 @@
 // bottom: footer) of the deck desktop frame vs the site and runs pixelmatch.
 // Content-divergent middles are skipped by design. Output: ../qa/shots/pixel/.
 import { chromium } from "playwright";
+const SITE = process.env.NORIET_SITE || "http://127.0.0.1:8085";
+const DECKS = process.env.NORIET_DECKS || "http://127.0.0.1:8086";
 import pixelmatch from "pixelmatch";
 import { PNG } from "pngjs";
 import { writeFileSync, mkdirSync } from "node:fs";
@@ -20,7 +22,7 @@ mkdirSync("../qa/shots/pixel", { recursive: true });
 const browser = await chromium.launch({ args: ["--no-sandbox"] });
 
 async function shotDeck(page, name) {
-  await page.goto(`http://100.110.56.115:8086/${name}.html`, { waitUntil: "networkidle" });
+  await page.goto(`${DECKS}/${name}.html`, { waitUntil: "networkidle" });
   return page.evaluate(() => {
     let best = null;
     for (const el of document.querySelectorAll("body *")) {
@@ -41,7 +43,7 @@ for (const [deckName, sitePath, topH] of pairs) {
   await d.close();
 
   const s = await browser.newPage({ viewport: { width: 1280, height: 1000 } });
-  await s.goto(`http://100.110.56.115:8085${sitePath}`, { waitUntil: "networkidle" });
+  await s.goto(`${SITE}${sitePath}`, { waitUntil: "networkidle" });
   const siteH = await s.evaluate(() => document.documentElement.scrollHeight);
   const sTop = await s.screenshot({ clip: { x: 0, y: 0, width: 1280, height: topH }, fullPage: true });
   const sBot = await s.screenshot({ clip: { x: 0, y: siteH - FOOTER_H, width: 1280, height: FOOTER_H }, fullPage: true });
