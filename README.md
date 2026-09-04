@@ -213,6 +213,6 @@ Phase 4 QA and the cutover work — full list and order in `../PLAN.md`.
 Before every push, run the pre-deploy checks: `tools/check_jsonld.py`
 (every JSON-LD block against pinned counts), `tools/check_twins.py` (the
 Markdown twins and `/llms.txt`), `tools/check_sitemap.py` (sitemap ↔ built
-pages) and `../export/redirects.py check` (the redirect map). Visual pass
+pages), `tools/check_markup.py` (link rot in migrated content) and `../export/redirects.py check` (the redirect map). Visual pass
 done 2026-08-07 — verify at /qa/ (a gallery of all templates, desktop and
 mobile; served from ../qa on the dev box only).
