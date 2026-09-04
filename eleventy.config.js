@@ -111,8 +111,17 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("mdTwin", mdTwinUrl);
 
   // First site-relative image in rendered content — the Article JSON-LD image.
+  // Prefer the largest srcset candidate: Google wants large images there.
   eleventyConfig.addFilter("firstImg", (html) => {
-    const m = /<img\s[^>]*src="(\/[^"]+)"/i.exec(html || "");
+    const tag = /<img\s[^>]*>/i.exec(html || "");
+    if (!tag) return null;
+    const set = /srcset="([^"]+)"/i.exec(tag[0]);
+    if (set) {
+      const urls = set[1].split(",").map((s) => s.trim().split(/\s+/));
+      const best = urls.sort((a, b) => parseInt(a[1]) - parseInt(b[1])).pop();
+      if (best && best[0].startsWith("/")) return best[0];
+    }
+    const m = /src="(\/[^"]+)"/.exec(tag[0]);
     return m ? m[1] : null;
   });
 
