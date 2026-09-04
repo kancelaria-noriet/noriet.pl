@@ -131,7 +131,6 @@ layout: layouts/base.njk
       {% if rel.url != page.url %}
       <article class="list-card">
         <h3><a href="{{ rel.url }}">{{ rel.title }}</a></h3>
-        {% if rel.date %}<time>{{ rel.date }}</time>{% endif %}
         {% if rel.excerpt %}<p>{{ rel.excerpt }}</p>{% endif %}
         <p><a class="more" href="{{ rel.url }}">czytaj więcej →</a></p>
       </article>
