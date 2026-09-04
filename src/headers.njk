@@ -11,9 +11,16 @@
 # Preview builds must never be indexed (meta noindex is also set per page).
   X-Robots-Tag: noindex
 {% endif %}
+# The Markdown twins and the agent index are for AI crawlers, never for
+# search results: without this, they are indexable duplicates of the HTML
+# in production (review02 #12; Google endorses noindex for llms.txt).
+# Unconditional on purpose — it must not depend on NORIET_ENV.
+/*.md
+  X-Robots-Tag: noindex
 # Cloudflare Pages serves .txt as text/plain; the agent index is Markdown.
 /llms.txt
   Content-Type: text/markdown; charset=utf-8
+  X-Robots-Tag: noindex
 {% if buildEnv == "production" %}
 # Asset caching, production only — dev previews keep the Pages default
 # (max-age=0, must-revalidate). Filenames are unhashed, so code gets a
