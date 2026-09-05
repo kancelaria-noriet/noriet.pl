@@ -28,7 +28,10 @@
   niniejsze zapytanie za pomocą środków komunikacji elektronicznej
   (art. 6 ust. 1 lit. b RODO).</p>
   {% if site.turnstileSiteKey %}
-  <div class="cf-turnstile" data-sitekey="{{ site.turnstileSiteKey }}" data-theme="auto" data-appearance="interaction-only"></div>
+  {# The callbacks live in the markup, not in form.js: the Turnstile script is
+     async and reads these attributes whenever it happens to load — setting
+     them from JS would race it. Defined in form.js. #}
+  <div class="cf-turnstile" data-sitekey="{{ site.turnstileSiteKey }}" data-theme="auto" data-appearance="interaction-only" data-callback="norietTsReady" data-expired-callback="norietTsStale" data-error-callback="norietTsStale"></div>
   {% endif %}
   <p class="form-error" role="alert"></p>
   {# Disabled in the markup; form.js enables it only when the Turnstile site
