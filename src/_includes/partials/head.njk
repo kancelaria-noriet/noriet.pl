@@ -39,15 +39,10 @@
      both served by functions/ on this origin. Cookieless (D2), so no consent
      banner. The website id is public. #}
   {% if site.umamiWebsiteId %}<script defer src="/v" data-website-id="{{ site.umamiWebsiteId }}"></script>{% endif %}
-  {# Preload the four above-the-fold faces (regular Petrona + Source Sans 3,
-     latin and latin-ext for Polish): without it they start only after both
-     stylesheets parse, land after first paint, and the swap shifts the whole
-     page (mobile CLS 0.38 in the PSI lab, traced 2026-09-07). No extra bytes:
-     every page loads all four anyway. #}
-  <link rel="preload" href="/assets/fonts/petrona-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/petrona-normal-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/source-sans-3-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="/assets/fonts/source-sans-3-normal-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  {# No font preloads, on purpose (owner call 2026-09-07): preloading the four
+     woff2 made Lighthouse's simulated LCP jump to 5.2 s (bandwidth competition
+     in the simulator; real throttled LCP stayed at FCP). The CLS fix is the
+     metric-matched fallback faces in fonts.css instead. #}
   <link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/main.css">
   <meta name="theme-color" content="#081830">
