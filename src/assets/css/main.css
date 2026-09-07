@@ -714,8 +714,8 @@ html { scroll-behavior: smooth; }
   margin: auto 0 var(--s4); padding-top: var(--s4); border-top: 1px solid var(--line);
 }
 .price-card__price small, .upsell-card__price small { font-size: var(--t-base); font-family: var(--sans); font-weight: 400; color: var(--ink); }
-.price-card .price-card__link { text-align: center; font-size: var(--t-sm); margin: var(--s3) 0 0; }
-.price-card__link a { color: var(--brand-ink); font-weight: 600; }
+.price-card h3 a { text-decoration: none; color: var(--ink); }
+.price-card h3 a:hover { color: var(--brand-ink); text-decoration: underline; }
 .price-grid { display: grid; gap: var(--s4); grid-template-columns: 1fr; }
 @media (min-width: 40rem) { .price-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 64rem) { .price-grid { grid-template-columns: repeat(3, 1fr); } }
