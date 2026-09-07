@@ -9,7 +9,10 @@
   </main>
   {% include "partials/footer.njk" %}
   <script src="/assets/js/nav.js" defer></script>
-  <script src="/assets/js/form.js" defer></script>
-  {% if site.turnstileSiteKey %}<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>{% endif %}
+  {# The contact form ships on four templates only (contactForm front matter).
+     Everywhere else the form script and the one third-party load (Turnstile)
+     would be dead weight — ~140 blog pages included. #}
+  {% if contactForm %}<script src="/assets/js/form.js" defer></script>
+  {% if site.turnstileSiteKey %}<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>{% endif %}{% endif %}
 </body>
 </html>
