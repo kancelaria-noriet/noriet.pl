@@ -39,6 +39,15 @@
      both served by functions/ on this origin. Cookieless (D2), so no consent
      banner. The website id is public. #}
   {% if site.umamiWebsiteId %}<script defer src="/v" data-website-id="{{ site.umamiWebsiteId }}"></script>{% endif %}
+  {# Preload the four above-the-fold faces (regular Petrona + Source Sans 3,
+     latin and latin-ext for Polish): without it they start only after both
+     stylesheets parse, land after first paint, and the swap shifts the whole
+     page (mobile CLS 0.38 in the PSI lab, traced 2026-09-07). No extra bytes:
+     every page loads all four anyway. #}
+  <link rel="preload" href="/assets/fonts/petrona-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/petrona-normal-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/source-sans-3-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/source-sans-3-normal-latin-ext.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/fonts.css">
   <link rel="stylesheet" href="/assets/css/main.css">
   <meta name="theme-color" content="#081830">

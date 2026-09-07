@@ -20,8 +20,8 @@
   --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px;
   --s6: 32px; --s7: 48px; --s8: 64px; --s9: 88px;
   --measure: 68ch; --radius: 6px; --radius-lg: 10px;
-  --serif: 'Petrona', Georgia, 'Times New Roman', serif;
-  --sans: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --serif: 'Petrona', 'Petrona Fallback Georgia', 'Petrona Fallback Noto', Georgia, 'Times New Roman', serif;
+  --sans: 'Source Sans 3', 'Source Sans 3 Fallback Arial', 'Source Sans 3 Fallback Roboto', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --shadow: 0 1px 2px rgba(13, 28, 48, .05), 0 10px 28px -14px rgba(13, 28, 48, .22);
   color-scheme: light;
 }
