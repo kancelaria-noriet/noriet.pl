@@ -9,8 +9,13 @@ crumbParent:
     {% include "partials/breadcrumb.njk" %}
   </div>
 </div>
-{# The old site earned "product snippet" impressions in GSC; Service + Offer
-   keeps that appearance. Prices are gross PLN, parsed from the price field. #}
+{# Service + Offer: correct semantics for a paid legal service, feeds the AEO
+   surfaces (twins, llms.txt). It earns NO Google rich result — only @type
+   Product does, and the old site never emitted Product markup (capture
+   verified 2026-09-07, review02 #18; an earlier comment here claimed GSC
+   product-snippet impressions that cannot have existed). Converting to
+   Product to chase price snippets is a recorded future option: PLAN Phase 6.
+   Prices are gross PLN, parsed from the price field. #}
 {% set pp = price | priceParts %}
 {% set svcLd = {
   "@context": "https://schema.org",
@@ -20,12 +25,21 @@ crumbParent:
   "provider": { "@id": site.url + "/#kancelaria" }
 } %}
 {% if subtitle %}{% set svcLd = svcLd | setAttribute("description", subtitle) %}{% endif %}
-{% if pp.num %}{% set svcLd = svcLd | setAttribute("offers", {
+{% if pp.num %}{% set _offer = {
   "@type": "Offer",
   "price": pp.num | replace(" ", ""),
   "priceCurrency": "PLN",
   "url": site.url + page.url
+} %}
+{# A periodic price (the trial month) must not read as the total engagement
+   price: priceUnit (UN/ECE code, e.g. MON) turns it into a per-unit spec. #}
+{% if priceUnit %}{% set _offer = _offer | setAttribute("priceSpecification", {
+  "@type": "UnitPriceSpecification",
+  "price": pp.num | replace(" ", ""),
+  "priceCurrency": "PLN",
+  "unitCode": priceUnit
 }) %}{% endif %}
+{% set svcLd = svcLd | setAttribute("offers", _offer) %}{% endif %}
 <script type="application/ld+json">{{ svcLd | dump | safe }}</script>
 <div class="wrap page-top">
   <article class="service">
