@@ -60,7 +60,7 @@ src/assets/          css/ (main.css = the whole design system, tokens,
 src/static/          copied to the site root: _redirects (emitted by
                      ../export/redirects.py), favicons, web manifest
 tools/               pre-deploy checkers (check_jsonld.py, check_twins.py,
-                     check_sitemap.py), dormant migrators (migrate.py,
+                     check_sitemap.py, check_links.py), dormant migrators (migrate.py,
                      migrate_all.py), one-time passes (webp.mjs,
                      imgdims.mjs, covers.mjs, favicons*.mjs), authoring
                      (md2page.mjs), visual QA (shot.mjs, gallery.mjs,
@@ -213,6 +213,6 @@ Phase 4 QA and the cutover work — full list and order in `../PLAN.md`.
 Before every push, run the pre-deploy checks: `tools/check_jsonld.py`
 (every JSON-LD block against pinned counts), `tools/check_twins.py` (the
 Markdown twins and `/llms.txt`), `tools/check_sitemap.py` (sitemap ↔ built
-pages), `tools/check_markup.py` (link rot in migrated content) and `../export/redirects.py check` (the redirect map). Visual pass
+pages), `tools/check_markup.py` (link rot in migrated content), `tools/check_links.py` (internal links, orphans, breadcrumb targets) and `../export/redirects.py check` (the redirect map). Visual pass
 done 2026-08-07 — verify at /qa/ (a gallery of all templates, desktop and
 mobile; served from ../qa on the dev box only).
