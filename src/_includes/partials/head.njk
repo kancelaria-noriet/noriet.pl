@@ -31,7 +31,10 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0c1e37">
   <link rel="manifest" href="/site.webmanifest">
-  <script src="/assets/js/theme-init.js"></script>
+  {# Inlined theme script (owner call, 2026-09-07) — the one deliberate
+     exception to "no inline JS": deferred would flash the wrong theme, and a
+     separate blocking request cost ~500 ms of mobile first paint (PSI lab). #}
+  <script>{% include "js/theme-init.js" %}</script>
   {# Self-hosted Umami, proxied first-party: the script at /v posts to /e/api/info,
      both served by functions/ on this origin. Cookieless (D2), so no consent
      banner. The website id is public. #}

@@ -27,7 +27,7 @@
 }
 
 /* Dark theme: system preference by default, user override via data-theme
-   (set by assets/js/theme-init.js + the header toggle; persisted in localStorage). */
+   (set by the inline head script _includes/js/theme-init.js + the header toggle; persisted in localStorage). */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --brand: #2aa8cc; --brand-ink: #67c7e4; --brand-wash: #0e2740; --brand-line: #1d4767;
