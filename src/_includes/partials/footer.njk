@@ -8,7 +8,8 @@
         {{ site.address.postalCode }} {{ site.address.city }}
       </address>
       <a href="{{ site.phoneHref }}" data-umami-event="telefon">{{ site.phone }}</a><br>
-      <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a><br>
+      {{ site.gbp.openingHours.display }}
       <p class="footer-col__note">Adwokaci – Izba Adwokacka w Warszawie.
       Radcowie prawni – Okręgowa Izba Radców Prawnych.</p>
     </div>
