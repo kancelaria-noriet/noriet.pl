@@ -4,7 +4,7 @@
   <title>{% if titleTag %}{{ titleTag }}{% else %}{{ title }} | {{ site.shortName }}{% endif %}</title>
   {% if description %}<meta name="description" content="{{ description }}">{% endif %}
   {% if robots %}<meta name="robots" content="{{ robots }}">
-  {% elif buildEnv != "production" %}<meta name="robots" content="noindex, nofollow">{% endif %}
+  {% elif buildEnv == "development" %}<meta name="robots" content="noindex, nofollow">{% endif %}
   <link rel="canonical" href="{{ site.url }}{{ page.url }}">
   {% set _mdTwin = page.url | mdTwin %}
   {% if _mdTwin %}<link rel="alternate" type="text/markdown" href="{{ _mdTwin }}">{% endif %}

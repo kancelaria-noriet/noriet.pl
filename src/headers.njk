@@ -7,7 +7,7 @@
 # Every response advertises the agent-facing Markdown index (AEO).
 /*
   Link: </llms.txt>; rel="describedby"; type="text/markdown"
-{% if buildEnv != "production" -%}
+{% if buildEnv == "development" -%}
 # Preview builds must never be indexed (meta noindex is also set per page).
   X-Robots-Tag: noindex
 {% endif %}
@@ -21,7 +21,7 @@
 /llms.txt
   Content-Type: text/markdown; charset=utf-8
   X-Robots-Tag: noindex
-{% if buildEnv == "production" %}
+{% if buildEnv != "development" %}
 # Asset caching, production only — dev previews keep the Pages default
 # (max-age=0, must-revalidate). Filenames are unhashed, so code gets a
 # short TTL with revalidation; fonts and media change rarely and get more.

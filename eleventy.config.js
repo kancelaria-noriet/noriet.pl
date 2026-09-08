@@ -107,7 +107,12 @@ export default function (eleventyConfig) {
     port: Number(process.env.NORIET_PORT || 8085),
   });
 
-  eleventyConfig.addGlobalData("buildEnv", process.env.NORIET_ENV || "dev");
+  // Reversed gate (owner call 2026-09-08): the DEFAULT build is production
+  // (indexable, cache headers). Only the explicit value "development" turns
+  // the sitewide noindex on — set in the Pages Preview environment and by
+  // serve.sh. A missing or mistyped variable now fails toward indexable, so
+  // the Phase 4/5 checklist verifies the deployed preview still sends noindex.
+  eleventyConfig.addGlobalData("buildEnv", process.env.NORIET_ENV || "production");
   eleventyConfig.addFilter("mdTwin", mdTwinUrl);
 
   // First site-relative image in rendered content — the Article JSON-LD image.

@@ -15,7 +15,8 @@ disabled until the owner calls the cutover (see `../PLAN.md`).
 
 Node comes from fnm (user-local, `~/.local/share/fnm`); the scripts set it up
 themselves. Override binding with `NORIET_HOST`/`NORIET_PORT`. Set
-`NORIET_ENV=production` to drop the dev-only `noindex` meta.
+`NORIET_ENV=development` adds a sitewide `noindex` (set in the Pages Preview
+environment and by `serve.sh`); the default build is production (indexable).
 
 ## Structure
 
