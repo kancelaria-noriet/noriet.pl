@@ -163,6 +163,17 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("limit", (arr, n) => (arr || []).slice(0, n));
 
+  // Polish count + noun: 1 artykuł, 2-4 artykuły, 5+ / 12-14 artykułów.
+  eleventyConfig.addFilter("plCount", (n, one, few, many) => {
+    n = Number(n);
+    const mod10 = n % 10;
+    const mod100 = n % 100;
+    let form = many;
+    if (n === 1) form = one;
+    else if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) form = few;
+    return `${n} ${form}`;
+  });
+
   // Blog taxonomy (src/_data/postCategories.json). The map is keyed by post
   // fileSlug, so these filters take it as an argument rather than reaching for
   // global data, which a filter cannot see.

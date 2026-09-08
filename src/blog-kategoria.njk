@@ -30,7 +30,7 @@
 <div class="wrap rail-layout">
   <div>
     <h2 class="sr-only">Artykuły w kategorii {{ cat.label }}</h2>
-    <p class="list-count">{{ posts | length }} artykułów, od najnowszego</p>
+    <p class="list-count">{{ posts | length | plCount("artykuł", "artykuły", "artykułów") }}, od najnowszego</p>
     <ul class="post-list">
       {% for post in posts %}
       <li>
