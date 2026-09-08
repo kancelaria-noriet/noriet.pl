@@ -105,7 +105,7 @@ contactForm: true
             <p class="lawyer-card__spec">{{ lawyer.data.specjalizacja }}</p>
           </div>
         </div>
-        <p><a class="more" href="{{ lawyer.url }}">Pełny profil i doświadczenie →</a></p>
+        <p><a class="more" href="{{ lawyer.url }}">Pełny profil i doświadczenie</a></p>
       </div>
       {% endif %}
 
@@ -123,7 +123,7 @@ contactForm: true
         {% set pp = upsell.data.price | priceParts %}
         <p class="upsell-card__price">{{ pp.num }}{% if pp.unit %} <small>{{ pp.unit }}</small>{% endif %}</p>
         <p><a class="btn btn--call btn--block" href="{{ upsell.url }}">Kup usługę</a></p>
-        <p><a class="more" href="/konsultacje/">Wszystkie konsultacje i ceny →</a></p>
+        <p><a class="more" href="/konsultacje/">Wszystkie konsultacje i ceny</a></p>
       </div>
       {% endif %}
     </aside>
@@ -140,7 +140,7 @@ contactForm: true
       <article class="list-card">
         <h3><a href="{{ rel.url }}">{{ rel.title }}</a></h3>
         {% if rel.excerpt %}<p>{{ rel.excerpt }}</p>{% endif %}
-        <p><a class="more" href="{{ rel.url }}">czytaj więcej →</a></p>
+        <p><a class="more" href="{{ rel.url }}">czytaj więcej</a></p>
       </article>
       {% endif %}
       {% endfor %}

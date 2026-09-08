@@ -48,6 +48,11 @@ function makeTurndown() {
     filter: ["table", "tbody", "thead"],
     replacement: (content) => "\n" + content + "\n",
   });
+  // Portraits and stock photos are chrome for an agent; keep the link text.
+  td.addRule("dropImages", {
+    filter: "img",
+    replacement: () => "",
+  });
   return td;
 }
 
@@ -79,7 +84,10 @@ function pageToMarkdown(html, url, td) {
   if (desc) head.push("description: " + q(desc.getAttribute("content")));
   if (canonical) head.push("source: " + canonical.getAttribute("href"));
   head.push("---", "");
-  const body = td.turndown(main.innerHTML).replace(/\n{3,}/g, "\n\n").trim();
+  const body = td.turndown(main.innerHTML)
+    .replace(/\[ +/g, "[")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
   return head.join("\n") + body + "\n";
 }
 
