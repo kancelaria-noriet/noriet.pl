@@ -20,13 +20,10 @@
   </div>
   {# The consent notice sits above the button, so it is read before the act it
      covers, not after it. #}
-  <p class="form-smallprint">Wysyłając formularz wyraża Pan/Pani zgodę na
-  przetwarzanie swoich danych osobowych przez {{ site.name }}, z siedzibą przy
-  {{ site.address.street }}, {{ site.address.postalCode }} {{ site.address.city }}
-  w zakresie niezbędnym do realizacji niniejszego zapytania oraz wyraża
-  Pan/Pani zgodę na otrzymywanie informacji, stanowiącej odpowiedź na
-  niniejsze zapytanie za pomocą środków komunikacji elektronicznej
-  (art. 6 ust. 1 lit. b RODO).</p>
+  <p class="form-smallprint">Wysyłając formularz, zlecasz nam odpowiedź na
+  to zapytanie. Przetwarzamy imię, e-mail, telefon (jeśli go podasz) i treść
+  wiadomości na podstawie art. 6 ust. 1 lit. b RODO. Szczegóły:
+  <a href="/polityka-prywatnosci/">polityka prywatności</a>.</p>
   {% if site.turnstileSiteKey %}
   {# The callbacks live in the markup, not in form.js: the Turnstile script is
      async and reads these attributes whenever it happens to load — setting

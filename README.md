@@ -204,9 +204,9 @@ transparency black and cyan on navy measures 5.1:1 against 3.3:1 on white.
 221 pages build. In place and verified on the dev deployment: redirect map,
 breadcrumbs and full JSON-LD, titles and meta for every page, Markdown twins
 plus `/llms.txt`, sitemap and robots.txt, the contact form (Gmail API +
-Turnstile), first-party Umami, and WebP images. **One stub is left**
-(`src/_data/stubs.json`): `/polityka-prywatnosci/`, which needs
-lawyer-written copy.
+Turnstile), first-party Umami, and WebP images. `/polityka-prywatnosci/`
+ships as authored copy (`src/polityka-prywatnosci.njk`) and stays
+`noindex` until the lawyer signs off. `src/_data/stubs.json` is empty.
 
 ## Still ahead
 
