@@ -12,20 +12,15 @@ layout: layouts/base.njk
 {# datePublished comes from the migrated front matter. dateModified is absent
    on purpose: no real modification date exists, and an invented one is spam
    (PLAN Phase 6, the freshness programme). #}
-{% set articleLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
+{% set _ldImg = content | firstImg %}
+<script type="application/ld+json">{{ {
   "headline": h1 or title,
   "datePublished": isoDate,
-  "inLanguage": "pl",
-  "mainEntityOfPage": site.url + page.url,
-  "author": { "@id": site.url + "/#kancelaria" },
-  "publisher": { "@id": site.url + "/#kancelaria" }
-} %}
-{% if description %}{% set articleLd = articleLd | setAttribute("description", description) %}{% endif %}
-{% set _ldImg = content | firstImg %}
-{% if _ldImg %}{% set articleLd = articleLd | setAttribute("image", site.url + _ldImg) %}{% endif %}
-<script type="application/ld+json">{{ articleLd | dump | safe }}</script>
+  "description": description,
+  "url": page.url,
+  "section": cat.label if cat else none,
+  "image": _ldImg
+} | jsonldArticle(site) | safe }}</script>
 <div class="wrap">
   <div class="rail-layout">
     <article class="service">

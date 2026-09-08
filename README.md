@@ -29,7 +29,7 @@ writes a Markdown twin next to almost every HTML page (for AI crawlers).
 
 ```
 eleventy.config.js   the build: passthroughs, collections, filters
-                     (JSON-LD helpers), Markdown-twin generation (turndown)
+                     (JSON-LD helpers rebuilt each run), Markdown twins
 build.sh / serve.sh  fnm-aware wrappers; serve.sh binds to 127.0.0.1
                      (NORIET_HOST / NORIET_PORT override)
 functions/           Pages Functions: api/kontakt.js (contact form ->
@@ -70,6 +70,33 @@ tools/               pre-deploy checkers (check_jsonld.py, check_twins.py,
 ../qa/               QA artifacts — OUTSIDE the repo, dev-host only; the
                      /qa/ passthrough is a no-op when ../qa is absent
 ```
+
+## JSON-LD
+
+Every HTML page gets a firm node from `partials/jsonld-org.njk`. The object
+is built by filters in `eleventy.config.js` (`jsonldOrg`, `jsonldPerson`,
+`jsonldArticle`, `jsonldPracticeService`) with `JSON.stringify`, so a quote
+in a title cannot break the script. `jsonldAreaServed` returns the shared
+Warszawa + Polska object for the konsultacje template. Sources are
+`site.json`, `nav.json`, team front matter and the page's own fields.
+There is no stored JSON-LD file. Every Eleventy run rebuilds the graph:
+local `./build.sh`, `./serve.sh`, and the Cloudflare Pages build
+(`npm run build` → `eleventy`). Adding a service, a lawyer or a post
+updates the graph on the next build. Do not hand-edit `_site`. Twins
+strip `<script>`, so schema lives only on the HTML.
+
+| Type | Where | Built from |
+|---|---|---|
+| `LegalService` + `Organization` (`@id` `/#kancelaria`) | every page | NAP, GBP hours/geo, `nav.categories` as `hasOfferCatalog`, nine `employee` `@id`s, Zagajewska as `founder` (`founder: true` in her front matter) |
+| `Person` (`@id` `…/team/<slug>/#osoba`) | 9 bios | `h1`, `rola`, `specjalizacja`, parsed `kontakt`, photo; izba from `rola` |
+| `Article` | 139 posts | `h1`, `isoDate`, description, category label as `articleSection`; `author`/`publisher` are the firm Organization; no `dateModified` |
+| `Service` | 25 practice pages + the abonament sales page + 13 konsultacje | kicker/h1, existing description, category as `serviceType`, `areaServed` Warszawa + Polska; practice pages add the matched lawyer `@id` when `lawyerMatch` hits |
+| `FAQPage` | B2B hub only | `faq` front matter |
+| `BreadcrumbList` | every page with a crumb | the same `crumbs` array as the visible trail |
+
+`tools/check_jsonld.py` parses every block, checks required fields, and pins
+the counts (including the dual `@type` on the firm node). Run it before
+every push.
 
 ## Rules that bind this code (CODING-STANDARDS.md)
 

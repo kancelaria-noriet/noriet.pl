@@ -23,12 +23,25 @@ contactForm: true
 {# The h1 runs up to 70 characters on some service pages, which wraps a crumb
    over three lines on a phone. serviceMeta already carries a short label. #}
 {% set crumbLabel = meta.kicker if meta else null %}
+{% set lawyer = null %}
+{% if meta %}
+{% for person in collections.team %}
+{% if not lawyer and meta.lawyerMatch in (person.data.specjalizacja | lower) %}{% set lawyer = person %}{% endif %}
+{% endfor %}
+{% endif %}
 <div class="crumb-band">
   <div class="wrap">
     {% include "partials/breadcrumb.njk" %}
   </div>
 </div>
 {% if faq %}<script type="application/ld+json">{{ faq | jsonldFaq | safe }}</script>{% endif %}
+{% if meta %}<script type="application/ld+json">{{ {
+  "name": meta.kicker or h1 or title,
+  "description": lead or description,
+  "url": page.url,
+  "serviceType": cat.label if cat else none,
+  "lawyerUrl": lawyer.url if lawyer else none
+} | jsonldPracticeService(site) | safe }}</script>{% endif %}
 
 <div class="wrap">
   <header class="service-hero">
@@ -81,11 +94,6 @@ contactForm: true
       </nav>
       {% endif %}
 
-      {% if meta %}
-      {% set lawyer = null %}
-      {% for person in collections.team %}
-      {% if not lawyer and meta.lawyerMatch in (person.data.specjalizacja | lower) %}{% set lawyer = person %}{% endif %}
-      {% endfor %}
       {% if lawyer %}
       <div class="rail-card lawyer-card">
         <h2 class="rail-card__title">Prowadzi te sprawy</h2>
@@ -99,7 +107,6 @@ contactForm: true
         </div>
         <p><a class="more" href="{{ lawyer.url }}">Pełny profil i doświadczenie →</a></p>
       </div>
-      {% endif %}
       {% endif %}
 
       {# A service can name its own konsultacja; the site-wide default covers the rest. #}

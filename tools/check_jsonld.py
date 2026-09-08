@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
-"""Validate every JSON-LD block in _site. Run before each deploy.
+"""Validate every JSON-LD block in _site. Run before every deploy.
 
 Asserts that each block parses, that required per-type fields are present,
 and that per-type counts match the expected page counts. Exits non-zero on
 any problem.
+
+@type may be a string or a list (the firm node is LegalService + Organization).
+Nested types (Offer inside Service, ImageObject inside publisher) are not
+counted as top-level blocks.
 """
 import json
 import re
@@ -15,14 +19,26 @@ BLOCK = re.compile(r'<script type="application/ld\+json">(.*?)</script>', re.S)
 
 REQUIRED = {
     "LegalService": ["name", "url", "telephone", "email", "address", "geo",
-                     "openingHoursSpecification", "identifier"],
+                     "openingHoursSpecification", "identifier", "areaServed",
+                     "hasOfferCatalog", "employee", "logo"],
+    "Organization": ["name", "url", "logo", "employee", "hasOfferCatalog"],
     "BreadcrumbList": ["itemListElement"],
-    "Person": ["name", "jobTitle", "url", "worksFor"],
+    "Person": ["name", "jobTitle", "url", "worksFor", "@id", "telephone",
+               "email", "knowsAbout"],
     "Article": ["headline", "datePublished", "author", "publisher",
-                "mainEntityOfPage"],
-    "Service": ["name", "url", "provider"],
+                "mainEntityOfPage", "articleSection"],
+    "Service": ["name", "url", "provider", "areaServed"],
     "FAQPage": ["mainEntity"],
 }
+
+# Practice pages (layouts/service.njk with serviceMeta) + the abonament
+# sales page + 13 konsultacje.
+SERVICE_PAGES = 25 + 1 + 13
+
+
+def types_of(data):
+    t = data.get("@type", "?")
+    return t if isinstance(t, list) else [t]
 
 
 def main():
@@ -38,12 +54,13 @@ def main():
             except json.JSONDecodeError as e:
                 bad.append(f"{rel}: unparseable JSON-LD ({e})")
                 continue
-            t = data.get("@type", "?")
-            counts[t] = counts.get(t, 0) + 1
-            for field in REQUIRED.get(t, []):
-                if not data.get(field):
-                    bad.append(f"{rel}: {t} misses {field}")
-            if t == "BreadcrumbList":
+            types = types_of(data)
+            for t in types:
+                counts[t] = counts.get(t, 0) + 1
+                for field in REQUIRED.get(t, []):
+                    if not data.get(field):
+                        bad.append(f"{rel}: {t} misses {field}")
+            if "BreadcrumbList" in types:
                 items = data["itemListElement"]
                 if items[0]["name"] != "Strona główna":
                     bad.append(f"{rel}: crumb does not start at home")
@@ -51,19 +68,46 @@ def main():
                     bad.append(f"{rel}: intermediate crumb without item URL")
                 if "item" in items[-1]:
                     bad.append(f"{rel}: leaf crumb carries an item URL")
-            if t == "Article" and data.get("dateModified"):
-                bad.append(f"{rel}: Article has dateModified — no real "
-                           "modification dates exist yet")
+            if "Article" in types:
+                if data.get("dateModified"):
+                    bad.append(f"{rel}: Article has dateModified — no real "
+                               "modification dates exist yet")
+                author = data.get("author") or {}
+                if author.get("@type") != "Organization" or not author.get("name"):
+                    bad.append(f"{rel}: Article author is not an Organization with name")
+                pub = data.get("publisher") or {}
+                logo = pub.get("logo") or {}
+                if logo.get("@type") != "ImageObject" or not logo.get("url"):
+                    bad.append(f"{rel}: Article publisher.logo is not an ImageObject")
+            if "Person" in types:
+                pid = data.get("@id") or ""
+                if not pid.endswith("#osoba"):
+                    bad.append(f"{rel}: Person @id does not end with #osoba")
+            if "LegalService" in types:
+                lid = data.get("@id") or ""
+                if not lid.endswith("/#kancelaria"):
+                    bad.append(f"{rel}: LegalService @id is not /#kancelaria")
+                if "Organization" not in types:
+                    bad.append(f"{rel}: firm node is not also Organization")
+                if not data.get("founder"):
+                    bad.append(f"{rel}: firm node misses founder")
 
     n = len(pages)
     print(f"{n} pages;", ", ".join(f"{t}: {c}" for t, c in sorted(counts.items())))
-    expect = {"LegalService": n}  # one per page, from the base head
+    expect = {
+        "LegalService": n,
+        "Organization": n,
+        "Article": 139,
+        "Person": 9,
+        "Service": SERVICE_PAGES,
+        "FAQPage": 1,
+    }
     for t, want in expect.items():
         if counts.get(t, 0) != want:
             bad.append(f"count {t}: {counts.get(t, 0)}, expected {want}")
     if bad:
         print(f"FAIL: {len(bad)}")
-        for b in bad[:20]:
+        for b in bad[:30]:
             print(" ", b)
         sys.exit(1)
     print("OK")

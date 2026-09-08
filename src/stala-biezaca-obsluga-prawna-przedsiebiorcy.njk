@@ -37,6 +37,12 @@
   </div>
 </div>
 
+<script type="application/ld+json">{{ {
+  "name": title,
+  "description": description,
+  "url": page.url,
+  "serviceType": "Obsługa firm"
+} | jsonldPracticeService(site) | safe }}</script>
 <header class="service-hero service-hero--center">
   <div class="wrap">
     <p class="kicker">Dla firm i jednoosobowych działalności</p>

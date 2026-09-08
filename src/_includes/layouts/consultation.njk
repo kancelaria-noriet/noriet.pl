@@ -40,6 +40,8 @@ crumbParent:
   "unitCode": priceUnit
 }) %}{% endif %}
 {% set svcLd = svcLd | setAttribute("offers", _offer) %}{% endif %}
+{% set svcLd = svcLd | setAttribute("areaServed", none | jsonldAreaServed) %}
+{% set svcLd = svcLd | setAttribute("serviceType", "Konsultacja prawna") %}
 <script type="application/ld+json">{{ svcLd | dump | safe }}</script>
 <div class="wrap page-top">
   <article class="service">

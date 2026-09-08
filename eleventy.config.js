@@ -83,6 +83,160 @@ function pageToMarkdown(html, url, td) {
   return head.join("\n") + body + "\n";
 }
 
+// --- JSON-LD (rebuilt every Eleventy run from site/nav/team/page data) ------
+// Templates call these filters with JSON.stringify. Do not assemble schema
+// with template strings: a quote in a title would break the block.
+function orgId(site) {
+  return site.url + "/#kancelaria";
+}
+function personId(site, url) {
+  return site.url + url + "#osoba";
+}
+function areaServedPl() {
+  return [
+    { "@type": "City", name: "Warszawa" },
+    { "@type": "Country", name: "Polska" },
+  ];
+}
+function parseKontakt(s) {
+  const email = ((s || "").match(/[\w.+-]+@[\w.-]+\.\w+/) || [""])[0];
+  const tel = ((s || "").match(/\+?[\d][\d ()-]{7,}/) || [""])[0].trim();
+  return { email, tel, telHref: tel ? "tel:" + tel.replace(/[^+\d]/g, "") : "" };
+}
+function buildJsonldOrg(site, nav, team) {
+  const employees = (team || []).map((p) => ({ "@id": personId(site, p.url) }));
+  const founder = (team || []).find((p) => p.data && p.data.founder);
+  const catalogs = (nav.categories || []).map((cat) => ({
+    "@type": "OfferCatalog",
+    name: cat.label,
+    url: site.url + cat.url,
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: cat.label, url: site.url + cat.url },
+      },
+      ...(cat.services || []).map((s) => ({
+        "@type": "Offer",
+        itemOffered: { "@type": "Service", name: s.label, url: site.url + s.url },
+      })),
+    ],
+  }));
+  const out = {
+    "@context": "https://schema.org",
+    "@type": ["LegalService", "Organization"],
+    "@id": orgId(site),
+    name: site.gbp.name,
+    url: site.url + "/",
+    telephone: site.phone,
+    email: site.email,
+    image: site.url + "/assets/img/og-default.png",
+    logo: site.url + "/icon-512.png",
+    sameAs: [site.social.linkedin, site.social.facebook],
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: site.address.street,
+      postalCode: site.address.postalCode,
+      addressLocality: site.address.city,
+      addressRegion: "mazowieckie",
+      addressCountry: "PL",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: site.gbp.geo.latitude,
+      longitude: site.gbp.geo.longitude,
+    },
+    openingHoursSpecification: [{
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: site.gbp.openingHours.days,
+      opens: site.gbp.openingHours.opens,
+      closes: site.gbp.openingHours.closes,
+    }],
+    identifier: [
+      { "@type": "PropertyValue", propertyID: "KRS", value: site.registry.krs },
+      { "@type": "PropertyValue", propertyID: "NIP", value: site.registry.nip },
+      { "@type": "PropertyValue", propertyID: "REGON", value: site.registry.regon },
+    ],
+    areaServed: areaServedPl(),
+    employee: employees,
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Oferta",
+      url: site.url + "/oferta/",
+      itemListElement: catalogs,
+    },
+  };
+  if (founder) out.founder = { "@id": personId(site, founder.url) };
+  return out;
+}
+function buildJsonldPerson(d, site) {
+  const url = site.url + d.url;
+  const bits = parseKontakt(d.kontakt);
+  const knows = (d.specjalizacja || "").split(",").map((x) => x.trim()).filter(Boolean);
+  const out = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": url + "#osoba",
+    name: d.name,
+    jobTitle: d.jobTitle,
+    url,
+    worksFor: { "@id": orgId(site) },
+  };
+  if (d.photo) out.image = site.url + d.photo;
+  if (bits.tel) out.telephone = bits.tel;
+  if (bits.email) out.email = bits.email;
+  if (knows.length) out.knowsAbout = knows;
+  const rola = d.jobTitle || "";
+  let izba = null;
+  if (rola.includes("adwokat") || rola.includes("adwokack")) {
+    izba = "Izba Adwokacka w Warszawie";
+  } else if (rola.includes("radca") || rola.includes("radcowsk")) {
+    izba = "Okręgowa Izba Radców Prawnych w Warszawie";
+  }
+  if (izba) out.memberOf = { "@type": "Organization", name: izba };
+  return out;
+}
+function buildJsonldArticle(d, site) {
+  const id = orgId(site);
+  const name = site.gbp.name;
+  const out = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: d.headline,
+    datePublished: d.datePublished,
+    inLanguage: "pl",
+    mainEntityOfPage: site.url + d.url,
+    author: { "@type": "Organization", "@id": id, name },
+    publisher: {
+      "@type": "Organization",
+      "@id": id,
+      name,
+      logo: {
+        "@type": "ImageObject",
+        url: site.url + "/icon-512.png",
+        width: 512,
+        height: 512,
+      },
+    },
+  };
+  if (d.description) out.description = d.description;
+  if (d.section) out.articleSection = d.section;
+  if (d.image) out.image = site.url + d.image;
+  return out;
+}
+function buildJsonldService(d, site) {
+  const out = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: d.name,
+    url: site.url + d.url,
+    provider: { "@id": orgId(site) },
+    areaServed: areaServedPl(),
+  };
+  if (d.description) out.description = d.description;
+  if (d.serviceType) out.serviceType = d.serviceType;
+  if (d.lawyerUrl) out.employee = { "@id": personId(site, d.lawyerUrl) };
+  return out;
+}
 
 export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
@@ -236,6 +390,18 @@ export default function (eleventyConfig) {
       })),
     }));
 
+  // Firm, person, article and practice-service graphs. Rebuilt each run from
+  // site.json, nav.json, team front matter and the page's own fields.
+  eleventyConfig.addFilter("jsonldOrg", (site, nav, team) =>
+    JSON.stringify(buildJsonldOrg(site, nav, team)));
+  eleventyConfig.addFilter("jsonldPerson", (d, site) =>
+    JSON.stringify(buildJsonldPerson(d, site)));
+  eleventyConfig.addFilter("jsonldArticle", (d, site) =>
+    JSON.stringify(buildJsonldArticle(d, site)));
+  eleventyConfig.addFilter("jsonldPracticeService", (d, site) =>
+    JSON.stringify(buildJsonldService(d, site)));
+  eleventyConfig.addFilter("jsonldAreaServed", () => areaServedPl());
+
   eleventyConfig.addFilter("priceParts", (s) => {
     const m = String(s || "").match(/^([\d\s.,]+)\s*(.*)$/);
     return m ? { num: m[1].trim(), unit: m[2] } : { num: s, unit: "" };
@@ -246,11 +412,7 @@ export default function (eleventyConfig) {
 
   // The migrated team "kontakt" field is free text:
   // "e-mail: a.zagajewska@noriet.pl    tel: +48 606650485"
-  eleventyConfig.addFilter("contactBits", (s) => {
-    const email = ((s || "").match(/[\w.+-]+@[\w.-]+\.\w+/) || [""])[0];
-    const tel = ((s || "").match(/\+?[\d][\d ()-]{7,}/) || [""])[0].trim();
-    return { email, tel, telHref: tel ? "tel:" + tel.replace(/[^+\d]/g, "") : "" };
-  });
+  eleventyConfig.addFilter("contactBits", (s) => parseKontakt(s));
 
   // Migrated articles typically open with a takeaway <ul>; the deck styles it
   // as a "W skrócie" summary box. Split it off when present.
