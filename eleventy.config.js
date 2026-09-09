@@ -6,11 +6,11 @@ import domino from "@mixmark-io/domino";
 // --- Markdown twins for AI crawlers (PLAN Phase 3) ---------------------------
 // Every content page gets a `.md` twin beside its `index.html`, generated
 // after the build from the rendered page itself, so the twin can never drift
-// from the HTML. Noindexed pages and the blog pagination/archive lists get
-// none; /llms.txt is the agent-facing index instead. Keep this skip logic,
+// from the HTML. The noindexed bond archive and the blog pagination/archive
+// lists get none; /llms.txt is the agent-facing index instead. Keep this skip logic,
 // src/llms.njk and tools/check_twins.py in sync (AGENTS.md).
 const MD_SKIP_EXACT = new Set([
-  "/obligacje/", "/polityka-prywatnosci/",
+  "/obligacje/",
 ]);
 
 function mdTwinUrl(url) {

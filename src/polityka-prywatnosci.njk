@@ -5,8 +5,7 @@
   "title": "Polityka prywatności",
   "titleTag": "Polityka prywatności | Noriet",
   "description": "Kto jest administratorem danych na noriet.pl, co zbieramy w formularzu, jak działa Umami i Turnstile, Twoje prawa RODO i skarga do UODO.",
-  "h1": "Polityka prywatności",
-  "robots": "noindex, nofollow"
+  "h1": "Polityka prywatności"
 }
 ---
 <div class="crumb-band">
@@ -25,13 +24,14 @@
       KRS {{ site.registry.krs }}, NIP {{ site.registry.nip }}, REGON {{ site.registry.regon }}.</p>
       <p>Kontakt: <a href="mailto:{{ site.email }}">{{ site.email }}</a>,
       tel. <a href="{{ site.phoneHref }}" data-umami-event="telefon">{{ site.phone }}</a>.</p>
-      <p>Kancelaria nie wyznaczyła inspektora ochrony danych. W sprawach Twoich
+      <p>Kancelaria nie wyznaczyła inspektora ochrony danych. W sprawach swoich
       danych pisz na adres e-mail powyżej.</p>
       <p>Ta polityka dotyczy strony <a href="{{ site.url }}/">noriet.pl</a>
-      i zapytania wysłanego przez formularz, telefon albo e-mail. Dane
-      w prowadzonej sprawie (akta, korespondencja procesowa) opisujemy też
-      w umowie o świadczenie pomocy prawnej. Jeśli umowa mówi inaczej,
-      w sprawie, której dotyczy, pierwszeństwo ma umowa.</p>
+      i zapytania wysłanego przez formularz, telefon albo e-mail. Jeśli
+      powierzysz nam prowadzenie sprawy, zasady przetwarzania danych z tej
+      sprawy (akta, korespondencja procesowa) możemy opisać dodatkowo
+      w umowie o świadczenie usług prawnych. W razie rozbieżności, dla danej
+      sprawy, pierwszeństwo ma umowa.</p>
 
       <h2 id="jakie-dane">Jakie dane zbieramy i po co</h2>
 
@@ -39,35 +39,42 @@
       <p>Z formularza biorą się: imię i nazwisko, adres e-mail, numer telefonu
       (jeśli go podasz) i treść wiadomości. To samo dotyczy wiadomości, które
       napiszesz albo zostawisz na poczcie głosowej.</p>
-      <p>Cel: odpowiedzieć na zapytanie i, jeśli o to chcesz, umówić
-      konsultację albo otworzyć sprawę.</p>
+      <p>Cel: odpowiedzieć na zapytanie i, jeśli tego chcesz, umówić
+      konsultację albo zlecić prowadzenie swojej sprawy.</p>
       <p>Podstawa: art. 6 ust. 1 lit. b RODO (czynności na Twoje żądanie przed
       zawarciem umowy o pomoc prawną).</p>
       <p>Nie pisz w formularzu więcej, niż trzeba do pierwszego kontaktu. Jeśli
       opiszesz zdrowie, sytuację dziecka, orzeczenie albo inne dane szczególnych
       kategorii, przetworzymy je tylko po to, żeby odpowiedzieć, na podstawie
       art. 9 ust. 2 lit. f RODO (ustalenie, dochodzenie lub obrona roszczeń).</p>
-      <p>Wiadomość z formularza idzie na skrzynkę {{ site.email }} przez Google
-      Workspace.</p>
+      <p>Wiadomość z formularza przekazywana jest na skrzynkę
+      {{ site.email }} przez Google Workspace.</p>
 
       <h3 id="statystyki">Wejście na stronę i statystyki</h3>
       <p>Przy wejściu na stronę serwer (Cloudflare) widzi adres IP, typ
-      przeglądarki i stronę, której żądasz. To jest potrzebne, żeby stronę
-      pokazać i żeby jej nie zalały ataki. Podstawa: art. 6 ust. 1 lit. f RODO
-      (nasz prawnie uzasadniony interes: działanie i bezpieczeństwo serwisu).</p>
+      przeglądarki i stronę, której żądasz. Potrzebujemy tych danych, żeby
+      poprawnie wyświetlić Ci stronę i chronić ją przed atakami (np. próbami
+      przeciążenia serwera). Podstawa: art. 6 ust. 1 lit. f RODO (nasz prawnie
+      uzasadniony interes: działanie i bezpieczeństwo serwisu).</p>
       <p>Osobno zliczamy odsłony, wysłanie formularza i kliknięcie numeru
-      telefonu. Robi to Umami, bez plików cookie i bez profilu reklamowego.
-      Serwer Umami stoi w Niemczech. Proxy przekazuje mu adres IP, żeby
-      w panelu było widać kraj i miasto. Tych danych nie łączymy z imieniem,
-      e-mailem ani treścią wiadomości. Podstawa: art. 6 ust. 1 lit. f RODO
-      (nasz prawnie uzasadniony interes: wiedzieć, które strony są czytane,
-      i czy formularz działa).</p>
+      telefonu. Robi to Umami, narzędzie do statystyk odwiedzin, dbające
+      o prywatność: bez plików cookie i bez profilu reklamowego. Serwer Umami
+      stoi w Niemczech. Proxy przekazuje mu adres IP, żeby w panelu było widać
+      kraj i miasto. Pomiar jest zanonimizowany i zagregowany: patrzymy na
+      zbiorcze liczby, a nie na pojedyncze osoby, i nie używamy go do śledzenia
+      Cię między naszymi stronami ani w innych serwisach. Adres IP służy
+      wyłącznie do pokazania kraju i miasta w panelu, po czym jest skracany
+      i nie zapisujemy go w powiązaniu z odsłonami. Tych danych nie łączymy
+      z imieniem, e-mailem ani treścią wiadomości. Podstawa: art. 6 ust. 1
+      lit. f RODO (nasz prawnie uzasadniony interes: wiedzieć, które strony
+      są czytane, i czy formularz działa).</p>
 
       <h3 id="turnstile">Ochrona formularza przed botami</h3>
-      <p>Przed wysłaniem wiadomości Cloudflare Turnstile sprawdza, czy nie
-      jesteś botem. Cloudflare może przy tym przetworzyć adres IP i dane
-      przeglądarki. Podstawa: art. 6 ust. 1 lit. f RODO (bezpieczeństwo
-      formularza).</p>
+      <p>Przed wysłaniem wiadomości korzystamy z Cloudflare Turnstile,
+      nowoczesnej alternatywy dla CAPTCHA, która w tle sprawdza, czy formularz
+      wypełnia człowiek, a nie automat rozsyłający spam. Zwykle nie musisz nic
+      klikać. Cloudflare może przy tym przetworzyć adres IP i dane przeglądarki.
+      Podstawa: art. 6 ust. 1 lit. f RODO (bezpieczeństwo formularza).</p>
 
       <h3 id="stripe">Zakup konsultacji (Stripe)</h3>
       <p>Przycisk „Kup usługę” otwiera stronę płatności Stripe
@@ -75,24 +82,30 @@
       Stripe. Stripe jest odrębnym administratorem tych danych. Zasady Stripe:
       <a href="https://stripe.com/privacy" rel="noopener">stripe.com/privacy</a>.</p>
       <p>Po płatności Stripe przekazuje nam informację, że zamówienie zostało
-      opłacone (imię, e-mail, wybrana usługa, kwota). Tych danych używamy,
-      żeby zrealizować konsultację. Podstawa: art. 6 ust. 1 lit. b RODO.</p>
+      opłacone (imię, e-mail, numer telefonu, wybrana usługa, kwota). Tych
+      danych używamy, żeby zrealizować konsultację. Podstawa: art. 6 ust. 1
+      lit. b RODO.</p>
 
       <h3 id="sprawa">Prowadzenie sprawy</h3>
-      <p>Gdy zostajesz klientem, przetwarzamy dane potrzebne do pomocy prawnej:
-      dane identyfikacyjne, kontakt, opis sprawy, dokumenty, które nam
-      przekażesz, oraz dane, które musimy poznać, żeby Cię reprezentować
-      (sąd, druga strona, świadkowie, urzędy).</p>
+      <p>Gdy zostajesz klientem, przetwarzamy dane potrzebne do udzielenia
+      pomocy prawnej: dane identyfikacyjne, kontakt, opis sprawy, dokumenty,
+      które nam przekażesz, oraz dane, które musimy poznać, żeby Cię
+      reprezentować (sąd, druga strona, świadkowie, urzędy).</p>
       <p>Podstawa: art. 6 ust. 1 lit. b RODO (umowa) oraz art. 6 ust. 1 lit. c
       RODO (obowiązki z przepisów, w tym rachunkowe i zawodowe). Dane
       szczególnych kategorii, jeśli sprawa tego wymaga: art. 9 ust. 2 lit. f
       RODO.</p>
-      <p>Adwokaci i radcowie prawni są związani tajemnicą zawodową.</p>
+      <p>Dodatkowo musisz wiedzieć, że wszystko, co powierzasz nam w sprawie,
+      jest objęte tajemnicą zawodową adwokacką i radcowską. Z racji wykonywania
+      zawodów adwokata i radcy prawnego przez członków naszego zespołu, mamy
+      ustawowy obowiązek to chronić. Z tego też jednak względu danych
+      z prowadzonej sprawy nie zawsze możemy usunąć na żądanie (więcej
+      w sekcji <a href="#prawa">Twoje prawa</a>).</p>
 
       <h3 id="motyw">Motyw jasny i ciemny</h3>
       <p>Wybór motywu zapisuje się w pamięci Twojej przeglądarki
-      (<code>localStorage</code>). To zostaje na Twoim urządzeniu. Nie
-      wysyłamy tego na serwer.</p>
+      (<code>localStorage</code>). Ta informacja zostaje na Twoim urządzeniu.
+      Nie wysyłamy tego na serwer.</p>
 
       <h2 id="odbiorcy">Komu przekazujemy dane</h2>
       <p>Dane zostają w kancelarii, z wyjątkiem sytuacji poniżej.</p>
@@ -101,10 +114,13 @@
         <li>Google Ireland Limited / Google LLC (Google Workspace: poczta).</li>
         <li>Dostawca hostingu Umami w Niemczech (pomiar odwiedzin; bez imienia
         i treści wiadomości).</li>
-        <li>Stripe, Inc. (tylko gdy kupujesz konsultację na ich stronie;
-        Stripe jest wtedy odrębnym administratorem danych płatności).</li>
+        <li>Stripe, Inc., obecnie Stripe, LLC (tylko gdy kupujesz konsultację
+        na ich stronie; Stripe jest wtedy odrębnym administratorem danych
+        płatności).</li>
         <li>Sądy, urzędy, druga strona i pełnomocnicy, gdy sprawa tego wymaga.</li>
-        <li>Podmioty, którym musimy przekazać dane z przepisu prawa.</li>
+        <li>Podmioty, którym zobowiązani jesteśmy przekazać dane na podstawie
+        obowiązujących przepisów prawa, z zastrzeżeniem przepisów o tajemnicy
+        adwokackiej, radcowskiej i obrończej.</li>
       </ul>
       <p>Nie sprzedajemy danych. Nie wysyłamy ich do reklamodawców.</p>
 
@@ -144,16 +160,18 @@
       cofnęto.</p>
       <p>Tajemnica zawodowa i przepisy o aktach sprawy mogą ograniczyć usunięcie
       albo przeniesienie danych z prowadzonej sprawy.</p>
-      <p>Żądanie: <a href="mailto:{{ site.email }}">{{ site.email }}</a>.
+      <p>Żądanie wyślij e-mailem na adres:
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a>.
       Odpowiadamy w ciągu miesiąca.</p>
       <p>Masz prawo wnieść skargę do Prezesa Urzędu Ochrony Danych Osobowych,
       ul. Stawki 2, 00-193 Warszawa,
-      <a href="https://uodo.gov.pl" rel="noopener">uodo.gov.pl</a>.</p>
+      <a href="https://uodo.gov.pl/" rel="noopener">uodo.gov.pl</a>.</p>
+      <p>Sprzeciw wobec statystyk możesz zrealizować blokadą skryptów.</p>
 
       <h2 id="obowiazek">Czy musisz podać dane</h2>
       <p>Formularz: imię, e-mail i treść wiadomości są potrzebne, żebyśmy mogli
-      odpowiedzieć. Telefon jest dobrowolny. Bez tych trzech pól wiadomość nie
-      wyjdzie.</p>
+      odpowiedzieć. Bez tych trzech pól wiadomość nie wyjdzie. Telefon jest
+      dobrowolny.</p>
       <p>Umowa o pomoc prawną: bez danych potrzebnych do sprawy nie podejmiemy
       się reprezentacji.</p>
       <p>Wejście na stronę: możesz użyć przeglądarki z blokadą skryptów. Wtedy
@@ -165,7 +183,7 @@
 
       <h2 id="dzieci">Dzieci</h2>
       <p>Strona nie jest kierowana do dzieci. Nie zbieramy świadomie danych osób
-      poniżej 18. roku życia przez formularz. W sprawach rodzinnych dane dziecka
+      niepełnoletnich przez formularz. W sprawach rodzinnych dane dziecka
       pojawiają się, gdy rodzic albo opiekun zleca sprawę. Przetwarzamy je tylko
       w zakresie tej sprawy.</p>
 

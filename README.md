@@ -232,8 +232,8 @@ transparency black and cyan on navy measures 5.1:1 against 3.3:1 on white.
 breadcrumbs and full JSON-LD, titles and meta for every page, Markdown twins
 plus `/llms.txt`, sitemap and robots.txt, the contact form (Gmail API +
 Turnstile), first-party Umami, and WebP images. `/polityka-prywatnosci/`
-ships as authored copy (`src/polityka-prywatnosci.njk`) and stays
-`noindex` until the lawyer signs off. `src/_data/stubs.json` is empty.
+ships as authored copy (`src/polityka-prywatnosci.njk`), lawyer-signed
+2026-09-09. `src/_data/stubs.json` is empty.
 
 ## Still ahead
 

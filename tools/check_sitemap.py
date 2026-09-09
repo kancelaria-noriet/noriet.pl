@@ -11,7 +11,7 @@ import sys
 from pathlib import Path
 
 SITE = Path(__file__).resolve().parent.parent / "_site"
-EXCLUDED = re.compile(r"^/(blog/strona/\d+/|obligacje/|polityka-prywatnosci/|qa/)")
+EXCLUDED = re.compile(r"^/(blog/strona/\d+/|obligacje/|qa/)")
 
 
 def main():
