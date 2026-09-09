@@ -48,8 +48,8 @@ src/_data/           global JSON: site.json (NAP, registry, GBP data,
 src/_includes/       layouts/ (base + one per content type), partials/
                      (head, chrome, breadcrumb + JSON-LD, contact form,
                      category grids), authored/ (hand-written page bodies,
-                     never regenerated), generated/ (migrator output:
-                     home + intro sections)
+                     never regenerated, including the homepage band),
+                     generated/ (migrator leftover: team intro)
 src/content/         ALL migrated WordPress content, now ordinary frozen
                      source: posts/ (140), services/ (12), konsultacje/
                      (13), team/ (9), obligacje.html, akcjonariusze.html
