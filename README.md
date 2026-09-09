@@ -94,8 +94,8 @@ strip `<script>`, so schema lives only on the HTML.
 | `LegalService` + `Organization` (`@id` `/#kancelaria`) | every page | NAP, GBP hours/geo, `nav.categories` as `hasOfferCatalog`, nine `employee` `@id`s, Zagajewska as `founder` (`founder: true` in her front matter) |
 | `Person` (`@id` `…/team/<slug>/#osoba`) | 9 bios | `h1`, `rola`, `specjalizacja`, parsed `kontakt`, photo; izba from `rola` |
 | `Article` | 139 posts | `h1`, `isoDate`, description, category label as `articleSection`; `author`/`publisher` are the firm Organization; no `dateModified` |
-| `Service` | 25 practice pages + the abonament sales page + 13 konsultacje | kicker/h1, existing description, category as `serviceType`, `areaServed` Warszawa + Polska; practice pages add the matched lawyer `@id` when `lawyerMatch` hits |
-| `FAQPage` | B2B hub only | `faq` front matter |
+| `Service` | 26 practice pages + the abonament sales page + 13 konsultacje | kicker/h1, existing description, category as `serviceType`, `areaServed` Warszawa + Polska; practice pages add the matched lawyer `@id` when `lawyerMatch` hits |
+| `FAQPage` | B2B hub and the Prawo karne hub | `faq` front matter |
 | `BreadcrumbList` | every page with a crumb | the same `crumbs` array as the visible trail |
 
 `tools/check_jsonld.py` parses every block, checks required fields, and pins
@@ -140,13 +140,16 @@ node tools/covers.mjs            # 566 kB of 2016 PNGs -> 74 kB of WebP
 ### Service taxonomy
 
 `src/_data/nav.json` -> `categories` is the **only** place a service belongs to
-a category. Four surfaces render from that one array, so they cannot drift:
+a category. Five surfaces render from that one array, so they cannot drift.
+A category with `onHome: false` (Prawo karne) is skipped only on the homepage
+grid; every other surface still lists it.
 
 | surface | what it renders |
 |---|---|
-| homepage `Oferta` section | `partials/category-grid.njk` — linked title + full list |
-| `/kontakt/` | the same partial, so the two are identical by construction |
+| homepage `Oferta` section | `partials/category-grid.njk` with `categoryGridHome` — linked title + full list; skips `onHome: false` |
+| `/kontakt/` | the same partial without the flag, so secondary categories appear |
 | `/oferta/` | every category, `summary` + full list |
+| footer Oferta column | every category hub |
 | each hub page | `partials/category-services.njk`, under the hero |
 
 A category's `url` is its hub page. A hub never lists itself among its own
@@ -232,7 +235,7 @@ transparency black and cyan on navy measures 5.1:1 against 3.3:1 on white.
 
 ## State (2026-09-02): pre-launch stack complete
 
-221 pages build. In place and verified on the dev deployment: redirect map,
+222 pages build. In place and verified on the dev deployment: redirect map,
 breadcrumbs and full JSON-LD, titles and meta for every page, Markdown twins
 plus `/llms.txt`, sitemap and robots.txt, the contact form (Gmail API +
 Turnstile), first-party Umami, and WebP images. `/polityka-prywatnosci/`

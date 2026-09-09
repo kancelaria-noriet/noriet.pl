@@ -3,7 +3,7 @@
   "layout": "layouts/base.njk",
   "title": "Oferta",
   "titleTag": "Oferta – usługi prawne kancelarii | Noriet",
-  "description": "Zakres usług Kancelarii Prawnej Noriet: obsługa firm, prawo rodzinne i rozwody, majątek i spadki, prawa pracownika.",
+  "description": "Zakres usług Kancelarii Prawnej Noriet: obsługa firm, prawo rodzinne i rozwody, majątek i spadki, prawa pracownika, prawo karne.",
   "permalink": "/oferta/",
   "h1": "Oferta"
 }
@@ -30,8 +30,8 @@
   </div>
 </header>
 <div class="wrap">
-  {# Every category from nav.categories, with its complete service list. The
-     homepage renders the same array; only this page carries the descriptions. #}
+  {# Every category from nav.categories, with its complete service list.
+     The homepage hides onHome: false; this page shows every category. #}
   {% for cat in nav.categories %}
   <section class="practice-row" aria-labelledby="cat-{{ cat.slug }}">
     <div>

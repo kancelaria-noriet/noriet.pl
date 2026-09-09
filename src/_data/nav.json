@@ -1,5 +1,5 @@
 {
-  "_comment": "Site navigation. `categories` is THE service taxonomy: the homepage section, /oferta/, /kontakt/ and every hub page render from it, so a service moves in one place only. Each category's `url` is its hub page, and that hub never repeats itself inside its own `services` list. `serviceMeta.json` keys each service to a category by slug. `footer` holds only the firm links that are not services: its Oferta column renders from `categories` like every other surface, so it cannot drift. `featuredKonsultacje` is a display pick for the homepage bar: fileSlugs from src/content/konsultacje/, shown in this order. Change the list, not the template.",
+  "_comment": "Site navigation. `categories` is THE service taxonomy: /oferta/, /kontakt/, the footer, /llms.txt, JSON-LD hasOfferCatalog and every hub page render from it, so a service moves in one place only. The homepage Oferta grid uses the same array but skips any category with onHome: false (Prawo karne). Each category's `url` is its hub page, and that hub never repeats itself inside its own `services` list. `serviceMeta.json` keys each service to a category by slug. `footer` holds only the firm links that are not services: its Oferta column renders from `categories` like every other surface, so it cannot drift. `featuredKonsultacje` is a display pick for the homepage bar: fileSlugs from src/content/konsultacje/, shown in this order. Change the list, not the template.",
   "header": [
     {
       "label": "Oferta",
@@ -142,6 +142,15 @@
           "url": "/odwolanie-od-decyzji-zus-zasilek-macierzynski/"
         }
       ]
+    },
+    {
+      "slug": "prawo-karne",
+      "label": "Prawo karne",
+      "url": "/prawo-karne-warszawa/",
+      "onHome": false,
+      "summary": "Składamy zawiadomienia o przestępstwie i reprezentujemy pokrzywdzonych. Bronimy oskarżonych od pierwszego przesłuchania po apelację i kasację. Przy zatrzymaniu działamy od razu. Spraw karnych nie prowadzimy masowo: bierzemy je przede wszystkim dla naszych klientów oraz wtedy, gdy sprawa cywilna, rodzinna albo gospodarcza nabiera wątku karnego.",
+      "note": "Zawiadomienie o przestępstwie, reprezentacja pokrzywdzonego, obrona i prawa zatrzymanego.",
+      "services": []
     }
   ],
   "footer": [

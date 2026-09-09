@@ -126,6 +126,11 @@
       "kicker": "Sankcja kredytu darmowego",
       "category": "majatek-i-spadki",
       "lawyerMatch": "cywilne spory sądowe"
+    },
+    "prawo-karne-warszawa": {
+      "kicker": "Prawo karne",
+      "category": "prawo-karne",
+      "lawyerMatch": "obrońca w sprawach karnych"
     }
   },
   "upsellTitle": "Konsultacja podstawowa ONLINE"

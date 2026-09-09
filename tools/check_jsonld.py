@@ -31,9 +31,9 @@ REQUIRED = {
     "FAQPage": ["mainEntity"],
 }
 
-# Practice pages (layouts/service.njk with serviceMeta) + the abonament
-# sales page + 13 konsultacje.
-SERVICE_PAGES = 25 + 1 + 13
+# Practice pages (layouts/service.njk with serviceMeta, including the
+# Prawo karne hub) + the abonament sales page + 13 konsultacje.
+SERVICE_PAGES = 26 + 1 + 13
 
 
 def types_of(data):
@@ -100,7 +100,7 @@ def main():
         "Article": 139,
         "Person": 9,
         "Service": SERVICE_PAGES,
-        "FAQPage": 1,
+        "FAQPage": 2,
     }
     for t, want in expect.items():
         if counts.get(t, 0) != want:
