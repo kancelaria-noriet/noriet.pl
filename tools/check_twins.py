@@ -30,6 +30,8 @@ def main():
             bad.append(f"{rel}: no h1")
         if re.search(r"<(div|section|span|nav|aside|table)\b", s):
             bad.append(f"{rel}: HTML leaked into the twin")
+        if "](/" in s:
+            bad.append(f"{rel}: root-relative markdown link")
     for miss in sorted(declared - on_disk):
         bad.append(f"declared but missing: {miss}")
     for orphan in sorted(on_disk - declared):

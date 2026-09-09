@@ -38,8 +38,12 @@ def main():
     robots = (SITE / "robots.txt")
     if not robots.exists():
         bad.append("robots.txt missing")
-    elif "Sitemap: https://noriet.pl/sitemap.xml" not in robots.read_text(encoding="utf-8"):
-        bad.append("robots.txt does not point at the sitemap")
+    else:
+        rtxt = robots.read_text(encoding="utf-8")
+        if "Sitemap: https://noriet.pl/sitemap.xml" not in rtxt:
+            bad.append("robots.txt does not point at the sitemap")
+        if "https://noriet.pl/llms.txt" not in rtxt:
+            bad.append("robots.txt does not mention /llms.txt")
 
     print(f"sitemap: {len(sm)} URLs, {len(live)} built pages")
     if bad:

@@ -79,6 +79,18 @@ function pageToMarkdown(html, url, td) {
   const title = (doc.querySelector("title") || {}).textContent || "";
   const desc = doc.querySelector('meta[name="description"]');
   const canonical = doc.querySelector('link[rel="canonical"]');
+  // Root-relative hrefs become absolute so a detached twin still resolves.
+  // tel: / mailto: / https: are left alone. HTML on the page stays relative.
+  let origin = "https://noriet.pl";
+  if (canonical) {
+    try { origin = new URL(canonical.getAttribute("href")).origin; } catch {}
+  }
+  for (const a of Array.from(main.querySelectorAll("a[href]"))) {
+    const href = a.getAttribute("href") || "";
+    if (href.startsWith("/") && !href.startsWith("//")) {
+      a.setAttribute("href", origin + href);
+    }
+  }
   const q = (s) => '"' + String(s).replace(/\\/g, "\\\\").replace(/"/g, '\\"') + '"';
   const head = ["---", "title: " + q(title.trim())];
   if (desc) head.push("description: " + q(desc.getAttribute("content")));
