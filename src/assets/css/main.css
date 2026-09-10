@@ -709,6 +709,9 @@ html { scroll-behavior: smooth; }
 .price-card { display: flex; flex-direction: column; }
 .price-card h3 { font-size: var(--t-lg); letter-spacing: normal; margin: 0; }
 .price-card .price-card__sub { color: var(--ink-2); font-size: var(--t-base); margin: var(--s2) 0 var(--s4); }
+.price-card .price-card__desc { color: var(--ink-2); font-size: var(--t-base); margin: 0 0 var(--s4); }
+.price-card .price-card__desc a { color: var(--brand-ink); }
+.price-card .btn + .btn { margin-top: var(--s2); }
 .price-card .price-card__price {
   font-family: var(--serif); font-size: var(--t-2xl); font-weight: 600;
   font-variant-numeric: tabular-nums; line-height: 1; color: var(--ink);

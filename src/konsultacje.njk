@@ -35,7 +35,14 @@
         <h3><a href="{{ k.url }}">{{ k.data.h1 or k.data.title }}</a></h3>
         {% if k.data.subtitle %}<p class="price-card__sub">{{ k.data.subtitle }}</p>{% endif %}
         {% if k.data.price %}{% set pp = k.data.price | priceParts %}<p class="price-card__price">{{ pp.num }}{% if pp.unit %} <small>{{ pp.unit }}</small>{% endif %}</p>{% endif %}
-        {% if k.data.paymentLink %}
+        {# Visible summary + the more-info annotation (legal team, 2026-09-10). #}
+        {% if k.data.cardText %}
+        <p class="price-card__desc">{{ k.data.cardText }}
+        <a href="{{ k.url }}">Więcej informacji o usłudze</a></p>
+        {% endif %}
+        {% if k.data.paymentLinks %}{% for pl in k.data.paymentLinks %}
+        <a class="btn btn--call btn--block" href="{{ pl.href }}" rel="nofollow">{{ pl.label }}</a>
+        {% endfor %}{% elif k.data.paymentLink %}
         <a class="btn btn--call btn--block" href="{{ k.data.paymentLink }}" rel="nofollow">Kup usługę</a>
         {% endif %}
       </article>

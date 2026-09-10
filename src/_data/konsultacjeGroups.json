@@ -5,12 +5,8 @@
       "title": "Konsultacje prawne",
       "band": false,
       "slugs": [
-        "konsultacja-2",
-        "rozszerzona-porada-prawna",
-        "kpo",
-        "konsultacja-rozszerzona-spotkanie",
-        "konsultacja-kredytowa-online",
-        "konsultacja-kredytowa-spotkanie"
+        "konsultacja-podstawowa",
+        "konsultacja-rozszerzona"
       ]
     },
     {

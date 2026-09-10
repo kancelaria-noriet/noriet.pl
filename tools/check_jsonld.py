@@ -32,8 +32,10 @@ REQUIRED = {
 }
 
 # Practice pages (layouts/service.njk with serviceMeta, including the
-# Prawo karne hub) + the abonament sales page + 13 konsultacje.
-SERVICE_PAGES = 26 + 1 + 13
+# Prawo karne hub) + the abonament sales page + 9 konsultacje products
+# (two merged consultations, three divorce packages, three audits, the
+# trial month; legal team call 2026-09-10).
+SERVICE_PAGES = 26 + 1 + 9
 
 
 def types_of(data):
