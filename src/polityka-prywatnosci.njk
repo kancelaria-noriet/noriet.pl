@@ -19,98 +19,116 @@
       <h1>{{ h1 }}</h1>
     </header>
     <div class="prose">
-      <p>Administrator danych: <strong>{{ site.name }}</strong>,
-      {{ site.address.street }}, {{ site.address.postalCode }} {{ site.address.city }},
-      KRS {{ site.registry.krs }}, NIP {{ site.registry.nip }}, REGON {{ site.registry.regon }}.</p>
-      <p>Kontakt: <a href="mailto:{{ site.email }}">{{ site.email }}</a>,
-      tel. <a href="{{ site.phoneHref }}" data-umami-event="telefon">{{ site.phone }}</a>.</p>
-      <p>Kancelaria nie wyznaczyła inspektora ochrony danych. W sprawach swoich
-      danych pisz na adres e-mail powyżej.</p>
-      <p>Ta polityka dotyczy strony <a href="{{ site.url }}/">noriet.pl</a>
-      i zapytania wysłanego przez formularz, telefon albo e-mail. Jeśli
-      powierzysz nam prowadzenie sprawy, zasady przetwarzania danych z tej
-      sprawy (akta, korespondencja procesowa) możemy opisać dodatkowo
-      w umowie o świadczenie usług prawnych. W razie rozbieżności, dla danej
-      sprawy, pierwszeństwo ma umowa.</p>
+      <ol>
+        <li>Administrator danych: <strong>{{ site.name }}</strong>,
+        {{ site.address.street }}, {{ site.address.postalCode }} {{ site.address.city }},
+        KRS {{ site.registry.krs }}, NIP {{ site.registry.nip }}, REGON {{ site.registry.regon }}.</li>
+        <li>Kontakt: <a href="mailto:{{ site.email }}">{{ site.email }}</a>,
+        tel. <a href="{{ site.phoneHref }}" data-umami-event="telefon">{{ site.phone }}</a>.</li>
+        <li>Kancelaria nie wyznaczyła inspektora ochrony danych. W sprawach
+        swoich danych pisz na adres e-mail powyżej.</li>
+        <li>Ta polityka dotyczy strony <a href="{{ site.url }}/">noriet.pl</a>
+        i zapytania wysłanego przez formularz, telefon albo e-mail. Jeśli
+        powierzysz nam prowadzenie sprawy, zasady przetwarzania danych z tej
+        sprawy (akta, korespondencja procesowa) możemy opisać dodatkowo
+        w umowie o świadczenie usług prawnych. W razie rozbieżności, dla danej
+        sprawy, pierwszeństwo ma umowa.</li>
+      </ol>
 
-      <h2 id="jakie-dane">Jakie dane zbieramy i po co</h2>
+      <h2 id="jakie-dane">1. Jakie dane zbieramy i po co</h2>
 
-      <h3 id="formularz">Formularz, telefon, e-mail</h3>
-      <p>Z formularza biorą się: imię i nazwisko, adres e-mail, numer telefonu
-      (jeśli go podasz) i treść wiadomości. To samo dotyczy wiadomości, które
-      napiszesz albo zostawisz na poczcie głosowej.</p>
-      <p>Cel: odpowiedzieć na zapytanie i, jeśli tego chcesz, umówić
-      konsultację albo zlecić prowadzenie swojej sprawy.</p>
-      <p>Podstawa: art. 6 ust. 1 lit. b RODO (czynności na Twoje żądanie przed
-      zawarciem umowy o pomoc prawną).</p>
-      <p>Nie pisz w formularzu więcej, niż trzeba do pierwszego kontaktu. Jeśli
-      opiszesz zdrowie, sytuację dziecka, orzeczenie albo inne dane szczególnych
-      kategorii, przetworzymy je tylko po to, żeby odpowiedzieć, na podstawie
-      art. 9 ust. 2 lit. f RODO (ustalenie, dochodzenie lub obrona roszczeń).</p>
-      <p>Wiadomość z formularza przekazywana jest na skrzynkę
-      {{ site.email }} przez Google Workspace.</p>
+      <h3 id="formularz">1.1. Formularz, telefon, e-mail</h3>
+      <ol>
+        <li>Z formularza biorą się: imię i nazwisko, adres e-mail, numer
+        telefonu (jeśli go podasz) i treść wiadomości. To samo dotyczy
+        wiadomości, które napiszesz albo zostawisz na poczcie głosowej.</li>
+        <li>Cel: odpowiedzieć na zapytanie i, jeśli tego chcesz, umówić
+        konsultację albo zlecić prowadzenie swojej sprawy.</li>
+        <li>Podstawa: art. 6 ust. 1 lit. b RODO (czynności na Twoje żądanie
+        przed zawarciem umowy o pomoc prawną).</li>
+        <li>Nie pisz w formularzu więcej, niż trzeba do pierwszego kontaktu.
+        Jeśli opiszesz zdrowie, sytuację dziecka, orzeczenie albo inne dane
+        szczególnych kategorii, przetworzymy je tylko po to, żeby odpowiedzieć,
+        na podstawie art. 9 ust. 2 lit. f RODO (ustalenie, dochodzenie lub
+        obrona roszczeń).</li>
+        <li>Wiadomość z formularza przekazywana jest na skrzynkę
+        {{ site.email }} przez Google Workspace.</li>
+      </ol>
 
-      <h3 id="statystyki">Wejście na stronę i statystyki</h3>
-      <p>Przy wejściu na stronę serwer (Cloudflare) widzi adres IP, typ
-      przeglądarki i stronę, której żądasz. Potrzebujemy tych danych, żeby
-      poprawnie wyświetlić Ci stronę i chronić ją przed atakami (np. próbami
-      przeciążenia serwera). Podstawa: art. 6 ust. 1 lit. f RODO (nasz prawnie
-      uzasadniony interes: działanie i bezpieczeństwo serwisu).</p>
-      <p>Osobno zliczamy odsłony, wysłanie formularza i kliknięcie numeru
-      telefonu. Robi to Umami, narzędzie do statystyk odwiedzin, dbające
-      o prywatność: bez plików cookie i bez profilu reklamowego. Serwer Umami
-      stoi w Niemczech. Proxy przekazuje mu adres IP, żeby w panelu było widać
-      kraj i miasto. Pomiar jest zanonimizowany i zagregowany: patrzymy na
-      zbiorcze liczby, a nie na pojedyncze osoby, i nie używamy go do śledzenia
-      Cię między naszymi stronami ani w innych serwisach. Adres IP służy
-      wyłącznie do pokazania kraju i miasta w panelu, po czym jest skracany
-      i nie zapisujemy go w powiązaniu z odsłonami. Tych danych nie łączymy
-      z imieniem, e-mailem ani treścią wiadomości. Podstawa: art. 6 ust. 1
-      lit. f RODO (nasz prawnie uzasadniony interes: wiedzieć, które strony
-      są czytane, i czy formularz działa).</p>
+      <h3 id="statystyki">1.2. Wejście na stronę i statystyki</h3>
+      <ol>
+        <li>Przy wejściu na stronę serwer (Cloudflare) widzi adres IP, typ
+        przeglądarki i stronę, której żądasz. Potrzebujemy tych danych, żeby
+        poprawnie wyświetlić Ci stronę i chronić ją przed atakami (np. próbami
+        przeciążenia serwera). Podstawa: art. 6 ust. 1 lit. f RODO (nasz
+        prawnie uzasadniony interes: działanie i bezpieczeństwo serwisu).</li>
+        <li>Osobno zliczamy odsłony, wysłanie formularza i kliknięcie numeru
+        telefonu. Robi to Umami, narzędzie do statystyk odwiedzin, dbające
+        o prywatność: bez plików cookie i bez profilu reklamowego.</li>
+        <li>Serwer Umami stoi w Niemczech. Proxy przekazuje mu adres IP, żeby
+        w panelu było widać kraj i miasto. Pomiar jest zanonimizowany
+        i zagregowany: patrzymy na zbiorcze liczby, a nie na pojedyncze osoby,
+        i nie używamy go do śledzenia Cię między naszymi stronami ani w innych
+        serwisach. Adres IP służy wyłącznie do pokazania kraju i miasta
+        w panelu, po czym jest skracany i nie zapisujemy go w powiązaniu
+        z odsłonami. Tych danych nie łączymy z imieniem, e-mailem ani treścią
+        wiadomości. Podstawa: art. 6 ust. 1 lit. f RODO (nasz prawnie
+        uzasadniony interes: wiedzieć, które strony są czytane, i czy
+        formularz działa).</li>
+      </ol>
 
-      <h3 id="turnstile">Ochrona formularza przed botami</h3>
-      <p>Przed wysłaniem wiadomości korzystamy z Cloudflare Turnstile,
-      nowoczesnej alternatywy dla CAPTCHA, która w tle sprawdza, czy formularz
-      wypełnia człowiek, a nie automat rozsyłający spam. Zwykle nie musisz nic
-      klikać. Cloudflare może przy tym przetworzyć adres IP i dane przeglądarki.
-      Podstawa: art. 6 ust. 1 lit. f RODO (bezpieczeństwo formularza).</p>
+      <h3 id="turnstile">1.3. Ochrona formularza przed botami</h3>
+      <ol>
+        <li>Przed wysłaniem wiadomości korzystamy z Cloudflare Turnstile,
+        nowoczesnej alternatywy dla CAPTCHA, która w tle sprawdza, czy
+        formularz wypełnia człowiek, a nie automat rozsyłający spam. Zwykle
+        nie musisz nic klikać.</li>
+        <li>Cloudflare może przy tym przetworzyć adres IP i dane przeglądarki.
+        Podstawa: art. 6 ust. 1 lit. f RODO (bezpieczeństwo formularza).</li>
+      </ol>
 
-      <h3 id="stripe">Zakup konsultacji (Stripe)</h3>
-      <p>Przycisk „Kup usługę” otwiera stronę płatności Stripe
-      (<code>buy.stripe.com</code>). Danych karty nie zbieramy. Podajesz je
-      Stripe. Stripe jest odrębnym administratorem tych danych. Zasady Stripe:
-      <a href="https://stripe.com/privacy" rel="noopener">stripe.com/privacy</a>.</p>
-      <p>Po płatności Stripe przekazuje nam informację, że zamówienie zostało
-      opłacone (imię, e-mail, numer telefonu, wybrana usługa, kwota). Tych
-      danych używamy, żeby zrealizować konsultację. Podstawa: art. 6 ust. 1
-      lit. b RODO.</p>
+      <h3 id="stripe">1.4. Zakup konsultacji (Stripe)</h3>
+      <ol>
+        <li>Przycisk „Kup usługę” otwiera stronę płatności Stripe
+        (<code>buy.stripe.com</code>). Danych karty nie zbieramy. Podajesz je
+        Stripe. Stripe jest odrębnym administratorem tych danych. Zasady Stripe:
+        <a href="https://stripe.com/privacy" rel="noopener">stripe.com/privacy</a>.</li>
+        <li>Po płatności Stripe przekazuje nam informację, że zamówienie zostało
+        opłacone (imię, e-mail, numer telefonu, wybrana usługa, kwota). Tych
+        danych używamy, żeby zrealizować konsultację. Podstawa: art. 6 ust. 1
+        lit. b RODO.</li>
+      </ol>
 
-      <h3 id="sprawa">Prowadzenie sprawy</h3>
-      <p>Gdy zostajesz klientem, przetwarzamy dane potrzebne do udzielenia
-      pomocy prawnej: dane identyfikacyjne, kontakt, opis sprawy, dokumenty,
-      które nam przekażesz, oraz dane, które musimy poznać, żeby Cię
-      reprezentować (sąd, druga strona, świadkowie, urzędy).</p>
-      <p>Podstawa: art. 6 ust. 1 lit. b RODO (umowa) oraz art. 6 ust. 1 lit. c
-      RODO (obowiązki z przepisów, w tym rachunkowe i zawodowe). Dane
-      szczególnych kategorii, jeśli sprawa tego wymaga: art. 9 ust. 2 lit. f
-      RODO.</p>
-      <p>Dodatkowo musisz wiedzieć, że wszystko, co powierzasz nam w sprawie,
-      jest objęte tajemnicą zawodową adwokacką i radcowską. Z racji wykonywania
-      zawodów adwokata i radcy prawnego przez członków naszego zespołu, mamy
-      ustawowy obowiązek to chronić. Z tego też jednak względu danych
-      z prowadzonej sprawy nie zawsze możemy usunąć na żądanie (więcej
-      w sekcji <a href="#prawa">Twoje prawa</a>).</p>
+      <h3 id="sprawa">1.5. Prowadzenie sprawy</h3>
+      <ol>
+        <li>Gdy zostajesz klientem, przetwarzamy dane potrzebne do udzielenia
+        pomocy prawnej: dane identyfikacyjne, kontakt, opis sprawy, dokumenty,
+        które nam przekażesz, oraz dane, które musimy poznać, żeby Cię
+        reprezentować (sąd, druga strona, świadkowie, urzędy).</li>
+        <li>Podstawa: art. 6 ust. 1 lit. b RODO (umowa) oraz art. 6 ust. 1
+        lit. c RODO (obowiązki z przepisów, w tym rachunkowe i zawodowe). Dane
+        szczególnych kategorii, jeśli sprawa tego wymaga: art. 9 ust. 2 lit. f
+        RODO.</li>
+        <li>Wszystko, co powierzasz nam w sprawie, jest objęte tajemnicą
+        zawodową adwokacką i radcowską. Z racji wykonywania zawodów adwokata
+        i radcy prawnego przez członków naszego zespołu, mamy ustawowy obowiązek
+        to chronić. Z tego też jednak względu danych z prowadzonej sprawy nie
+        zawsze możemy usunąć na żądanie (więcej w sekcji
+        <a href="#prawa">6. Twoje prawa</a>).</li>
+      </ol>
 
-      <h3 id="motyw">Motyw jasny i ciemny</h3>
-      <p>Wybór motywu zapisuje się w pamięci Twojej przeglądarki
-      (<code>localStorage</code>). Ta informacja zostaje na Twoim urządzeniu.
-      Nie wysyłamy tego na serwer.</p>
+      <h3 id="motyw">1.6. Motyw jasny i ciemny</h3>
+      <ol>
+        <li>Wybór motywu zapisuje się w pamięci Twojej przeglądarki
+        (<code>localStorage</code>). Ta informacja zostaje na Twoim urządzeniu.
+        Nie wysyłamy tego na serwer.</li>
+      </ol>
 
-      <h2 id="odbiorcy">Komu przekazujemy dane</h2>
-      <p>Dane zostają w kancelarii, z wyjątkiem sytuacji poniżej.</p>
-      <ul>
-        <li>Cloudflare, Inc. (hosting strony, sieć dostarczania treści, Turnstile).</li>
+      <h2 id="odbiorcy">2. Komu przekazujemy dane</h2>
+      <ol>
+        <li>Dane zostają w kancelarii, z wyjątkiem sytuacji poniżej.</li>
+        <li>Cloudflare, Inc. (hosting strony, sieć dostarczania treści,
+        Turnstile).</li>
         <li>Google Ireland Limited / Google LLC (Google Workspace: poczta).</li>
         <li>Dostawca hostingu Umami w Niemczech (pomiar odwiedzin; bez imienia
         i treści wiadomości).</li>
@@ -121,17 +139,19 @@
         <li>Podmioty, którym zobowiązani jesteśmy przekazać dane na podstawie
         obowiązujących przepisów prawa, z zastrzeżeniem przepisów o tajemnicy
         adwokackiej, radcowskiej i obrończej.</li>
-      </ul>
-      <p>Nie sprzedajemy danych. Nie wysyłamy ich do reklamodawców.</p>
+        <li>Nie sprzedajemy danych. Nie wysyłamy ich do reklamodawców.</li>
+      </ol>
 
-      <h2 id="transfery">Przekazanie poza Europejski Obszar Gospodarczy</h2>
-      <p>Pomiar odwiedzin (Umami) zostaje w Niemczech, czyli w EOG.</p>
-      <p>Cloudflare, Google i Stripe mają siedziby w USA. Stosują standardowe
-      klauzule umowne Komisji Europejskiej albo decyzję o odpowiednim stopniu
-      ochrony (w tym EU-US Data Privacy Framework), zależnie od usługi.</p>
+      <h2 id="transfery">3. Przekazanie poza Europejski Obszar Gospodarczy</h2>
+      <ol>
+        <li>Pomiar odwiedzin (Umami) zostaje w Niemczech, czyli w EOG.</li>
+        <li>Cloudflare, Google i Stripe mają siedziby w USA. Stosują standardowe
+        klauzule umowne Komisji Europejskiej albo decyzję o odpowiednim stopniu
+        ochrony (w tym EU-US Data Privacy Framework), zależnie od usługi.</li>
+      </ol>
 
-      <h2 id="okresy">Jak długo trzymamy dane</h2>
-      <ul>
+      <h2 id="okresy">4. Jak długo trzymamy dane</h2>
+      <ol>
         <li>Zapytanie, po którym nie ma zlecenia: 12 miesięcy od ostatniego
         kontaktu, potem usuwamy albo anonimizujemy korespondencję, o ile
         przepis nie każe trzymać dłużej.</li>
@@ -142,56 +162,77 @@
         o pomocy prawnej i o rachunkowości, zwykle 10 lat od końca roku,
         w którym sprawa się zamknęła.</li>
         <li>Dane płatności po stronie Stripe: według polityki Stripe.</li>
-      </ul>
+      </ol>
 
-      <h2 id="cookie">Pliki cookie</h2>
-      <p>Nie ustawiamy własnych plików cookie do analityki ani reklamy. Nie ma
-      banera zgody, bo nie ma cookie śledzącego.</p>
-      <p>Cloudflare może ustawić techniczne cookie związane z bezpieczeństwem
-      (Turnstile, ochrona przed botami). Bez nich formularz albo strona mogą
-      nie działać. To nie jest pomiar marketingowy.</p>
+      <h2 id="cookie">5. Pliki cookie</h2>
+      <ol>
+        <li>Nie ustawiamy własnych plików cookie do analityki ani reklamy. Nie
+        ma banera zgody, bo nie ma cookie śledzącego.</li>
+        <li>Cloudflare może ustawić techniczne cookie związane
+        z bezpieczeństwem (Turnstile, ochrona przed botami). Bez nich formularz
+        albo strona mogą nie działać. To nie jest pomiar marketingowy.</li>
+      </ol>
 
-      <h2 id="prawa">Twoje prawa</h2>
-      <p>Przysługuje Ci: dostęp do danych, sprostowanie, usunięcie, ograniczenie
-      przetwarzania, przeniesienie (gdy podstawa to umowa albo zgoda
-      i przetwarzamy dane automatycznie), sprzeciw wobec przetwarzania opartego
-      na art. 6 ust. 1 lit. f RODO, oraz cofnięcie zgody tam, gdzie zgoda jest
-      podstawą. Cofnięcie zgody nie wpływa na to, co zrobiliśmy, zanim ją
-      cofnęto.</p>
-      <p>Tajemnica zawodowa i przepisy o aktach sprawy mogą ograniczyć usunięcie
-      albo przeniesienie danych z prowadzonej sprawy.</p>
-      <p>Żądanie wyślij e-mailem na adres:
-      <a href="mailto:{{ site.email }}">{{ site.email }}</a>.
-      Odpowiadamy w ciągu miesiąca.</p>
-      <p>Masz prawo wnieść skargę do Prezesa Urzędu Ochrony Danych Osobowych,
-      ul. Stawki 2, 00-193 Warszawa,
-      <a href="https://uodo.gov.pl/" rel="noopener">uodo.gov.pl</a>.</p>
-      <p>Sprzeciw wobec statystyk możesz zrealizować blokadą skryptów.</p>
+      <h2 id="prawa">6. Twoje prawa</h2>
+      <ol>
+        <li>Przysługuje Ci:
+          <ol>
+            <li>dostęp do danych,</li>
+            <li>sprostowanie,</li>
+            <li>usunięcie,</li>
+            <li>ograniczenie przetwarzania,</li>
+            <li>przeniesienie (gdy podstawa to umowa albo zgoda i przetwarzamy
+            dane automatycznie),</li>
+            <li>sprzeciw wobec przetwarzania opartego na art. 6 ust. 1 lit. f
+            RODO,</li>
+            <li>cofnięcie zgody tam, gdzie zgoda jest podstawą. Cofnięcie zgody
+            nie wpływa na to, co zrobiliśmy, zanim ją cofnęto.</li>
+          </ol>
+        </li>
+        <li>Tajemnica zawodowa i przepisy o aktach sprawy mogą ograniczyć
+        usunięcie albo przeniesienie danych z prowadzonej sprawy.</li>
+        <li>Żądanie wyślij e-mailem na adres:
+        <a href="mailto:{{ site.email }}">{{ site.email }}</a>. Odpowiadamy
+        w ciągu miesiąca.</li>
+        <li>Masz prawo wnieść skargę do Prezesa Urzędu Ochrony Danych Osobowych,
+        ul. Stawki 2, 00-193 Warszawa,
+        <a href="https://uodo.gov.pl/" rel="noopener">uodo.gov.pl</a>.</li>
+        <li>Sprzeciw wobec statystyk możesz zrealizować blokadą skryptów.</li>
+      </ol>
 
-      <h2 id="obowiazek">Czy musisz podać dane</h2>
-      <p>Formularz: imię, e-mail i treść wiadomości są potrzebne, żebyśmy mogli
-      odpowiedzieć. Bez tych trzech pól wiadomość nie wyjdzie. Telefon jest
-      dobrowolny.</p>
-      <p>Umowa o pomoc prawną: bez danych potrzebnych do sprawy nie podejmiemy
-      się reprezentacji.</p>
-      <p>Wejście na stronę: możesz użyć przeglądarki z blokadą skryptów. Wtedy
-      formularz i pomiar mogą nie działać. Treść strony zostaje.</p>
+      <h2 id="obowiazek">7. Czy musisz podać dane</h2>
+      <ol>
+        <li>Formularz: imię, e-mail i treść wiadomości są potrzebne, żebyśmy
+        mogli odpowiedzieć. Bez tych trzech pól wiadomość nie wyjdzie. Telefon
+        jest dobrowolny.</li>
+        <li>Umowa o pomoc prawną: bez danych potrzebnych do sprawy nie
+        podejmiemy się reprezentacji.</li>
+        <li>Wejście na stronę: możesz użyć przeglądarki z blokadą skryptów.
+        Wtedy formularz i pomiar mogą nie działać. Treść strony zostaje.</li>
+      </ol>
 
-      <h2 id="art-22">Zautomatyzowane decyzje</h2>
-      <p>Nie profilujemy Cię w rozumieniu art. 22 RODO. Nie podejmujemy wobec
-      Ciebie zautomatyzowanych decyzji, które wywołują skutki prawne.</p>
+      <h2 id="art-22">8. Zautomatyzowane decyzje</h2>
+      <ol>
+        <li>Nie profilujemy Cię w rozumieniu art. 22 RODO. Nie podejmujemy
+        wobec Ciebie zautomatyzowanych decyzji, które wywołują skutki prawne.</li>
+      </ol>
 
-      <h2 id="dzieci">Dzieci</h2>
-      <p>Strona nie jest kierowana do dzieci. Nie zbieramy świadomie danych osób
-      niepełnoletnich przez formularz. W sprawach rodzinnych dane dziecka
-      pojawiają się, gdy rodzic albo opiekun zleca sprawę. Przetwarzamy je tylko
-      w zakresie tej sprawy.</p>
+      <h2 id="dzieci">9. Dzieci</h2>
+      <ol>
+        <li>Strona nie jest kierowana do dzieci. Nie zbieramy świadomie danych
+        osób niepełnoletnich przez formularz.</li>
+        <li>W sprawach rodzinnych dane dziecka pojawiają się, gdy rodzic albo
+        opiekun zleca sprawę. Przetwarzamy je tylko w zakresie tej sprawy.</li>
+      </ol>
 
-      <h2 id="zmiany">Zmiany</h2>
-      <p>Jeśli zmieni się sposób przetwarzania, zaktualizujemy ten tekst i datę
-      na dole strony. Do spraw już otwartych stosujemy zasady z chwili zebrania
-      danych albo nowsze, jeśli są dla Ciebie korzystniejsze.</p>
-      <p>Ostatnia zmiana: 8 września 2026 r.</p>
+      <h2 id="zmiany">10. Zmiany</h2>
+      <ol>
+        <li>Jeśli zmieni się sposób przetwarzania, zaktualizujemy ten tekst
+        i datę na dole strony.</li>
+        <li>Do spraw już otwartych stosujemy zasady z chwili zebrania danych
+        albo nowsze, jeśli są dla Ciebie korzystniejsze.</li>
+        <li>Ostatnia zmiana: 8 września 2026 r.</li>
+      </ol>
     </div>
   </article>
 </div>

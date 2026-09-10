@@ -10,22 +10,22 @@
       ]
     },
     {
-      "title": "Prowadzenie sprawy rozwodowej",
-      "band": true,
-      "slugs": [
-        "rozwod-bez-orzekania-o-winie-i-bez-dzieci-online",
-        "rozwod-bez-orzekania-o-winie-zgodny-co-do-sytuacji-maloletnich-dzieci",
-        "rozwod-zza-granicy"
-      ]
-    },
-    {
       "title": "Usługi dla firm",
-      "band": false,
+      "band": true,
       "slugs": [
         "stala-obsluga-prawna-przedsiebiorcy",
         "audyt-prawny-sklepu-internetowego",
         "audyt-rodo",
         "audyt-zgodnosci-z-prawem-pracy"
+      ]
+    },
+    {
+      "title": "Prowadzenie sprawy rozwodowej",
+      "band": false,
+      "slugs": [
+        "rozwod-bez-orzekania-o-winie-i-bez-dzieci-online",
+        "rozwod-bez-orzekania-o-winie-zgodny-co-do-sytuacji-maloletnich-dzieci",
+        "rozwod-zza-granicy"
       ]
     }
   ]
