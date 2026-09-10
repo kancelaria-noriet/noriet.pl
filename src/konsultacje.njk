@@ -18,7 +18,8 @@
     <p class="kicker">Płatność online · termin potwierdzamy mailem</p>
     <h1>Konsultacje</h1>
     <p class="service-hero__lead">Wybierz formę i zakres rozmowy z adwokatem
-    lub radcą prawnym. Po opłaceniu skontaktujemy się, aby ustalić termin.</p>
+    lub radcą prawnym. Po opłaceniu skontaktujemy się, aby ustalić termin.
+    Zakup podlega <a href="/regulamin/">regulaminowi</a>.</p>
   </div>
 </header>
 {% for group in konsultacjeGroups.groups %}
@@ -44,6 +45,9 @@
         <a class="btn btn--call btn--block" href="{{ pl.href }}" rel="nofollow">{{ pl.label }}</a>
         {% endfor %}{% elif k.data.paymentLink %}
         <a class="btn btn--call btn--block" href="{{ k.data.paymentLink }}" rel="nofollow">Kup usługę</a>
+        {% endif %}
+        {% if k.data.paymentLinks or k.data.paymentLink %}
+        {% include "partials/buy-terms.njk" %}
         {% endif %}
       </article>
       {% endif %}

@@ -720,6 +720,8 @@ html { scroll-behavior: smooth; }
 .price-card__price small, .upsell-card__price small { font-size: var(--t-base); font-family: var(--sans); font-weight: 400; color: var(--ink); }
 .price-card h3 a { color: var(--brand-ink); text-decoration: underline; }
 .price-card h3 a:hover { color: var(--ink); text-decoration-thickness: 2px; }
+.buy-terms { font-size: var(--t-xs); color: var(--ink-2); margin: var(--s3) 0 0; }
+.buy-terms a { color: var(--brand-ink); }
 .price-grid { display: grid; gap: var(--s4); grid-template-columns: 1fr; }
 @media (min-width: 40rem) { .price-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 64rem) { .price-grid { grid-template-columns: repeat(3, 1fr); } }

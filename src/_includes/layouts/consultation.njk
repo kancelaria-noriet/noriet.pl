@@ -59,5 +59,8 @@ crumbParent:
       {% endfor %}{% elif paymentLink %}<a class="btn btn--call" href="{{ paymentLink }}" rel="nofollow">{{ paymentLabel or "Kup usługę" }}</a>{% endif %}
       <a class="btn btn--ghost" href="{{ site.phoneHref }}" data-umami-event="telefon">Zadzwoń: {{ site.phone }}</a>
     </p>
+    {% if paymentLinks or paymentLink %}
+    {% include "partials/buy-terms.njk" %}
+    {% endif %}
   </article>
 </div>

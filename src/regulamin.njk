@@ -1,0 +1,139 @@
+---json
+{
+  "layout": "layouts/base.njk",
+  "permalink": "/regulamin/",
+  "title": "Regulamin",
+  "titleTag": "Regulamin zakupu konsultacji | Noriet",
+  "description": "Zasady zakupu konsultacji, rozwodów i audytów na noriet.pl: płatność Stripe, terminy, odstąpienie w 14 dni, reklamacja i tajemnica zawodowa.",
+  "h1": "Regulamin zakupu usług",
+  "crumbParent": {
+    "label": "Konsultacje",
+    "url": "/konsultacje/"
+  }
+}
+---
+<div class="crumb-band">
+  <div class="wrap">
+    {% include "partials/breadcrumb.njk" %}
+  </div>
+</div>
+<div class="wrap page-top">
+  <article class="service">
+    <header class="service__header">
+      <h1>{{ h1 }}</h1>
+    </header>
+    <div class="prose">
+      <p>Sprzedawca: <strong>{{ site.name }}</strong>,
+      {{ site.address.street }}, {{ site.address.postalCode }} {{ site.address.city }},
+      KRS {{ site.registry.krs }}, NIP {{ site.registry.nip }}, REGON {{ site.registry.regon }}.</p>
+      <p>Kontakt: <a href="mailto:{{ site.email }}">{{ site.email }}</a>,
+      tel. <a href="{{ site.phoneHref }}" data-umami-event="telefon">{{ site.phone }}</a>.</p>
+      <p>Ten regulamin dotyczy usług z cennika na stronie
+      <a href="/konsultacje/">konsultacje</a>, kupowanych przyciskiem
+      „Kup usługę” przez Stripe. Opis konkretnej usługi, czas pracy prawnika
+      i cena są na stronie tej usługi. Jeśli ten regulamin i strona usługi
+      mówią coś innego, dla danej usługi pierwszeństwo ma strona usługi.</p>
+      <p>Polityka prywatności:
+      <a href="/polityka-prywatnosci/">noriet.pl/polityka-prywatnosci/</a>.</p>
+      <p>Kupno usługi oznacza, że przeczytałeś ten regulamin i go przyjmujesz.</p>
+
+      <h2 id="co-kupujesz">Co kupujesz</h2>
+      <p>Na stronie konsultacji są trzy rodzaje usług:</p>
+      <ol>
+        <li><strong>Konsultacja podstawowa i konsultacja rozszerzona.</strong>
+        Porada prawna z adwokatem albo radcą prawnym, w kancelarii w Warszawie
+        albo online. Przy konsultacji rozszerzonej, jeśli sprawa tego wymaga,
+        sporządzamy też pismo. Czas pracy prawnika: do jednej godziny
+        (podstawowa) albo do dwóch godzin (rozszerzona), zgodnie ze stroną
+        usługi.</li>
+        <li><strong>Prowadzenie sprawy rozwodowej</strong> (trzy warianty
+        z cennika). Zastępstwo procesowe w sprawie o rozwód bez orzekania
+        o winie, w zakresie opisanym na stronie wybranej usługi. Cena nie
+        obejmuje opłaty sądowej, opłaty skarbowej od pełnomocnictwa ani
+        sytuacji, w której małżonek nie wyrazi zgody albo wycofa się
+        z uzgodnień co do winy lub sytuacji dzieci. Wtedy trzeba zawrzeć
+        osobną umowę o dalsze wynagrodzenie.</li>
+        <li><strong>Usługi dla firm:</strong> miesiąc próbny stałej obsługi
+        oraz audyty (RODO, sklep internetowy, prawo pracy). Zakres, miejsce
+        i limit godzin są na stronie wybranej usługi.</li>
+      </ol>
+      <p>Usługę wykonuje adwokat albo radca prawny z zespołu kancelarii.
+      Nie obiecuje Ci z góry konkretnej osoby.</p>
+      <p>Konsultacja i audyt to porada i, tam gdzie strona usługi to przewiduje,
+      pismo albo raport. To nie jest jeszcze umowa o prowadzenie całej sprawy
+      w sądzie. Jeśli po konsultacji chcesz, żebyśmy Cię reprezentowali dalej,
+      zawieramy osobną umowę.</p>
+      <p>Nie gwarantujemy wyniku sprawy. W rozwodzie decyzja, czy rozprawa
+      będzie zdalna albo czy w ogóle się odbędzie, należy do sądu.</p>
+
+      <h2 id="zakup">Jak wygląda zakup</h2>
+      <p>Cena na stronie usługi to kwota, którą płacisz (z podatkiem). Płatność
+      idzie przez Stripe (<code>buy.stripe.com</code>). Danych karty nie
+      zbieramy.</p>
+      <p>Po opłaceniu Stripe przekazuje nam informację o zamówieniu. W ciągu
+      <strong>trzech dni roboczych</strong> piszemy na e-mail z zamówienia.
+      Przy konsultacji podstawowej i rozszerzonej proponujemy trzy najbliższe
+      terminy. Przy pozostałych usługach umawiamy pierwszy krok tak, jak
+      opisuje strona tej usługi.</p>
+      <p>Żebyśmy mogli wykonać usługę, potrzebujemy od Ciebie prawdziwych
+      danych i dokumentów, o które poprosimy. Jeśli ich nie dostarczysz,
+      usługa może się opóźnić albo okaże się niemożliwa w opisanym zakresie.</p>
+
+      <h2 id="termin">Termin, zmiana daty, nieobecność</h2>
+      <p>Termin ustalamy razem, mailem albo telefonem.</p>
+      <p>Datę konsultacji możesz zmienić <strong>raz</strong>, jeśli dasz znać
+      najpóźniej <strong>24 godziny</strong> przed umówioną godziną. Późniejsza
+      zmiana albo niestawienie się bez odwołania oznacza, że konsultację
+      uważamy za wykonaną. Nie zwracamy wtedy ceny. W ważnej sytuacji losowej
+      (choroba, nagły wyjazd) napisz do nas. Rozpatrzymy to indywidualnie.</p>
+      <p>Jeśli to my musimy odwołać termin, proponujemy nowy. Jeśli nowy termin
+      Ci nie pasuje, zwracamy całą zapłaconą kwotę.</p>
+
+      <h2 id="odstapienie">Odstąpienie i zwrot (konsument)</h2>
+      <p>Jeśli kupujesz jako konsument, masz <strong>14 dni</strong> na
+      odstąpienie od umowy zawartej na odległość, bez podawania przyczyny.
+      Termin liczy się od dnia zawarcia umowy, czyli od płatności.</p>
+      <p>Żeby odstąpić, wystarczy e-mail na
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a>. Napisz, od jakiej
+      umowy odstępujesz (data, nazwa usługi, e-mail z zamówienia). Nie
+      potrzebujesz formularza.</p>
+      <p>Zwracamy zapłaconą kwotę tym samym kanałem co Stripe, niezwłocznie,
+      nie później niż w 14 dni od dnia, w którym dostaniemy oświadczenie.</p>
+      <p><strong>Kiedy prawo odstąpienia wygasa wcześniej.</strong> Jeśli
+      poprosisz, żebyśmy zaczęli usługę zanim minie 14 dni (na przykład umówisz
+      konsultację w tym terminie), a usługa zostanie w pełni wykonana, prawo
+      odstąpienia gaśnie. Przy usłudze dopiero rozpoczętej możemy odliczyć to,
+      co już zrobiliśmy.</p>
+      <p>Przy <strong>prowadzeniu sprawy rozwodowej</strong> i przy
+      <strong>audycie</strong> zaczynamy pracę, gdy piszemy do Ciebie po
+      płatności i umawiamy pierwsze spotkanie albo prosimy o dokumenty. Jeśli
+      odstąpisz zanim zaczniemy, zwracamy całość. Jeśli już zaczęliśmy,
+      rozliczamy wykonaną część.</p>
+      <p>Przedsiębiorca, który kupuje usługę w zakresie swojej działalności,
+      nie ma tego 14-dniowego prawa. Chyba że przepis każe inaczej.</p>
+
+      <h2 id="reklamacja">Reklamacja</h2>
+      <p>Reklamację wyślij na
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a>. Opisz, o co
+      chodzi, i podaj e-mail z zamówienia. Odpowiadamy w ciągu 14 dni.</p>
+      <p>Konsument może też skorzystać z pomocy miejskiego albo powiatowego
+      rzecznika konsumentów oraz z unijnej platformy ODR:
+      <a href="https://ec.europa.eu/consumers/odr" rel="noopener">ec.europa.eu/consumers/odr</a>.</p>
+
+      <h2 id="tajemnica">Tajemnica zawodowa</h2>
+      <p>To, co powiesz i przekażesz w ramach usługi, jest objęte tajemnicą
+      adwokacką albo radcowską.</p>
+
+      <h2 id="prawo">Prawo i spory</h2>
+      <p>Umowa i ten regulamin podlegają prawu polskiemu. Spory z konsumentem
+      rozstrzyga sąd właściwy według przepisów. Spory z przedsiębiorcą,
+      w zakresie jego działalności: sąd właściwy dla siedziby kancelarii.</p>
+
+      <h2 id="zmiany">Zmiany</h2>
+      <p>Jeśli zmienimy sposób sprzedaży usług, zaktualizujemy ten tekst
+      i datę na dole. Do już opłaconego zamówienia stosujemy regulamin
+      z chwili zakupu.</p>
+      <p>Ostatnia zmiana: 10 września 2026 r.</p>
+    </div>
+  </article>
+</div>

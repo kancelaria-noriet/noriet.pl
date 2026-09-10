@@ -240,7 +240,9 @@ breadcrumbs and full JSON-LD, titles and meta for every page, Markdown twins
 plus `/llms.txt`, sitemap and robots.txt, the contact form (Gmail API +
 Turnstile), first-party Umami, and WebP images. `/polityka-prywatnosci/`
 ships as authored copy (`src/polityka-prywatnosci.njk`), lawyer-signed
-2026-09-09. `src/_data/stubs.json` is empty.
+2026-09-09. `/regulamin/` is the purchase terms for `/konsultacje/`
+(`src/regulamin.njk`), linked from the cennik, each product page and the
+footer. `src/_data/stubs.json` is empty.
 
 ## Still ahead
 

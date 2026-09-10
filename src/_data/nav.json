@@ -186,6 +186,10 @@
   ],
   "bottomBar": [
     {
+      "label": "Regulamin",
+      "url": "/regulamin/"
+    },
+    {
       "label": "Polityka prywatności",
       "url": "/polityka-prywatnosci/"
     }

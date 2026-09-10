@@ -33,6 +33,7 @@ poniżej prowadzą do wersji Markdown.
 ## Konsultacje i ceny
 
 - [Wszystkie konsultacje i cennik]({{ site.url }}/konsultacje/index.md)
+- [Regulamin zakupu]({{ site.url }}/regulamin/index.md)
 {% for k in collections.konsultacja -%}
 - [{{ k.data.h1 | safe }}]({{ site.url }}{{ k.url }}index.md){% if k.data.subtitle %} – {{ k.data.subtitle | safe }}{% endif %}{% if k.data.price %} – {{ k.data.price | safe }}{% endif %}
 {% endfor %}
@@ -60,4 +61,5 @@ Pełne archiwum HTML: {{ site.url }}/blog/wszystkie-artykuly/
 
 - [Publikacje i komentarze prawne]({{ site.url }}/publikacje/index.md)
 - [Ogłoszenia dla akcjonariuszy]({{ site.url }}/akcjonariusze/index.md)
+- [Regulamin zakupu]({{ site.url }}/regulamin/index.md)
 - [Polityka prywatności]({{ site.url }}/polityka-prywatnosci/index.md)
