@@ -65,7 +65,9 @@ src/assets/          css/ (main.css = the whole design system, tokens,
 src/static/          copied to the site root: _redirects (emitted by
                      ../export/redirects.py), favicons, web manifest
 tools/               pre-deploy checkers (check_jsonld.py, check_twins.py,
-                     check_sitemap.py, check_links.py, check_markup.py),
+                     check_sitemap.py, check_links.py, check_markup.py,
+                     check_assets.py), the deployed-host smoke test
+                     (check_live.py BASE_URL),
                      dormant migrators (migrate.py, migrate_all.py), one-time
                      passes (webp.mjs, imgdims.mjs, imgpass2.mjs, covers.mjs,
                      favicons*.mjs), authoring (md2page.mjs), visual QA
@@ -252,6 +254,14 @@ Phase 4 QA and the cutover work — full list and order in `../PLAN.md`.
 Before every push, run the pre-deploy checks: `tools/check_jsonld.py`
 (every JSON-LD block against pinned counts), `tools/check_twins.py` (the
 Markdown twins and `/llms.txt`), `tools/check_sitemap.py` (sitemap ↔ built
-pages), `tools/check_markup.py` (link rot in migrated content), `tools/check_links.py` (internal links, orphans, breadcrumb targets) and `../export/redirects.py check` (the redirect map). Visual pass
+pages), `tools/check_markup.py` (link rot in migrated content; unique titles
+and descriptions, one `h1`, no heading skips in the build),
+`tools/check_links.py` (internal links, orphans, breadcrumb targets),
+`tools/check_assets.py` (every image, stylesheet, script, icon, `og:image`
+and JSON-LD image a page references exists in `_site`) and
+`../export/redirects.py check` (the redirect map). After the push, smoke-test
+the deployment: `tools/check_live.py https://dev.noriet-lp.pages.dev` walks
+every sitemap URL and twin on the host and asserts the noindex gate direction
+(the same command against `https://noriet.pl` is the cutover check). Visual pass
 done 2026-08-07 — verify at /qa/ (a gallery of all templates, desktop and
 mobile; served from ../qa on the dev box only).
