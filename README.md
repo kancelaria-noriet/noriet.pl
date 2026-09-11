@@ -55,8 +55,8 @@ src/_includes/       layouts/ (base + one per content type), partials/
                      never regenerated, including the homepage band),
                      generated/ (migrator leftover: team intro)
 src/content/         ALL migrated WordPress content, now ordinary frozen
-                     source: posts/ (140), services/ (12), konsultacje/
-                     (13), team/ (9), obligacje.html, akcjonariusze.html
+                     source: posts/ (139 + posts.11tydata.js), services/ (12),
+                     konsultacje/ (9), team/ (9), obligacje.html, akcjonariusze.html
 src/assets/          css/ (main.css = the whole design system, tokens,
                      mobile-first; fonts.css), js/ (nav, theme-init, form
                      — vanilla, no inline JS), fonts/ (self-hosted woff2),
@@ -65,11 +65,13 @@ src/assets/          css/ (main.css = the whole design system, tokens,
 src/static/          copied to the site root: _redirects (emitted by
                      ../export/redirects.py), favicons, web manifest
 tools/               pre-deploy checkers (check_jsonld.py, check_twins.py,
-                     check_sitemap.py, check_links.py), dormant migrators (migrate.py,
-                     migrate_all.py), one-time passes (webp.mjs,
-                     imgdims.mjs, covers.mjs, favicons*.mjs), authoring
-                     (md2page.mjs), visual QA (shot.mjs, gallery.mjs,
-                     ogshot.mjs, the *diff.mjs parity tools — these read
+                     check_sitemap.py, check_links.py, check_markup.py),
+                     dormant migrators (migrate.py, migrate_all.py), one-time
+                     passes (webp.mjs, imgdims.mjs, imgpass2.mjs, covers.mjs,
+                     favicons*.mjs), authoring (md2page.mjs), visual QA
+                     (shot.mjs, gallery.mjs, ogshot.mjs, ref-sections.mjs,
+                     cls-trace.mjs for throttled layout-shift traces, the
+                     *diff.mjs parity tools incl. stylediff.mjs — these read
                      NORIET_SITE / NORIET_DECKS, default 127.0.0.1)
 ../qa/               QA artifacts — OUTSIDE the repo, dev-host only; the
                      /qa/ passthrough is a no-op when ../qa is absent
@@ -94,7 +96,7 @@ strip `<script>`, so schema lives only on the HTML.
 | `LegalService` + `Organization` (`@id` `/#kancelaria`) | every page | NAP, GBP hours/geo, `nav.categories` as `hasOfferCatalog`, nine `employee` `@id`s, Zagajewska as `founder` (`founder: true` in her front matter) |
 | `Person` (`@id` `…/team/<slug>/#osoba`) | 9 bios | `h1`, `rola`, `specjalizacja`, parsed `kontakt`, photo; izba from `rola` |
 | `Article` | 139 posts | `h1`, `isoDate`, description, category label as `articleSection`; `author`/`publisher` are the firm Organization; no `dateModified` |
-| `Service` | 26 practice pages + the abonament sales page + 13 konsultacje | kicker/h1, existing description, category as `serviceType`, `areaServed` Warszawa + Polska; practice pages add the matched lawyer `@id` when `lawyerMatch` hits |
+| `Service` | 26 practice pages + the abonament sales page + the 9 konsultacje products | kicker/h1, existing description, category as `serviceType`, `areaServed` Warszawa + Polska; practice pages add the matched lawyer `@id` when `lawyerMatch` hits |
 | `FAQPage` | B2B hub and the Prawo karne hub | `faq` front matter |
 | `BreadcrumbList` | every page with a crumb | the same `crumbs` array as the visible trail |
 
@@ -235,7 +237,7 @@ transparency black and cyan on navy measures 5.1:1 against 3.3:1 on white.
 
 ## State (2026-09-02): pre-launch stack complete
 
-222 pages build. In place and verified on the dev deployment: redirect map,
+219 pages build (plus `404.html`). In place and verified on the dev deployment: redirect map,
 breadcrumbs and full JSON-LD, titles and meta for every page, Markdown twins
 plus `/llms.txt`, sitemap and robots.txt, the contact form (Gmail API +
 Turnstile), first-party Umami, and WebP images. `/polityka-prywatnosci/`
