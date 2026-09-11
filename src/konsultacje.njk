@@ -35,7 +35,11 @@
            carry the product name, not "szczegóły" (review02 #20). #}
         <h3><a href="{{ k.url }}">{{ k.data.h1 or k.data.title }}</a></h3>
         {% if k.data.subtitle %}<p class="price-card__sub">{{ k.data.subtitle }}</p>{% endif %}
-        {% if k.data.price %}{% set pp = k.data.price | priceParts %}<p class="price-card__price">{{ pp.num }}{% if pp.unit %} <small>{{ pp.unit }}</small>{% endif %}</p>{% endif %}
+        {% if k.data.price %}
+        {% set price = k.data.price %}
+        {% set oldPrice = k.data.oldPrice %}
+        {% include "partials/price.njk" %}
+        {% endif %}
         {# Visible summary + the more-info annotation (legal team, 2026-09-10). #}
         {% if k.data.cardText %}
         <p class="price-card__desc">{{ k.data.cardText }}

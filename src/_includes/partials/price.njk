@@ -1,0 +1,10 @@
+{# `price` is the amount payable. Optional `oldPrice` is shown struck through.
+   `priceClass` defaults to the cennik card. Set `priceInline` for a <span>. #}
+{% set pp = price | priceParts %}
+{% set _cls = priceClass or "price-card__price" %}
+{% if oldPrice %}{% set op = oldPrice | priceParts %}{% endif %}
+{% if priceInline %}
+<span class="{{ _cls }}">{% if oldPrice %}<span class="price-was"><span class="sr-only">Poprzednia cena: </span><del>{{ op.num }}{% if op.unit %} {{ op.unit }}{% endif %}</del></span> {% endif %}<span class="price-now">{% if oldPrice %}<span class="sr-only">Aktualna cena: </span>{% endif %}{{ pp.num }}{% if pp.unit %} <small>{{ pp.unit }}</small>{% endif %}</span></span>
+{% else %}
+<p class="{{ _cls }}">{% if oldPrice %}<span class="price-was"><span class="sr-only">Poprzednia cena: </span><del>{{ op.num }}{% if op.unit %} {{ op.unit }}{% endif %}</del></span> {% endif %}<span class="price-now">{% if oldPrice %}<span class="sr-only">Aktualna cena: </span>{% endif %}{{ pp.num }}{% if pp.unit %} <small>{{ pp.unit }}</small>{% endif %}</span>{% if priceNote %} <small>{{ priceNote }}</small>{% endif %}</p>
+{% endif %}

@@ -93,8 +93,11 @@
         <li>Godziny wykorzystujesz elastycznie, kiedy są Ci potrzebne</li>
         <li>Realny kontakt do konkretnego prawnika, nie do infolinii</li>
       </ul>
-      <p class="product-card__price">400 zł netto
-        <small>/ miesiąc · 2 h obsługi</small></p>
+      {% set price = "400 zł" %}
+      {% set oldPrice = "738 zł" %}
+      {% set priceClass = "product-card__price" %}
+      {% set priceNote = "/ miesiąc · 2 h obsługi" %}
+      {% include "partials/price.njk" %}
       <a class="btn btn--call btn--block" href="#zamowienie">Zamów testowy miesiąc</a>
     </article>
   </div>

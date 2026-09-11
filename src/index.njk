@@ -71,7 +71,13 @@
       <li>
         <a href="{{ k.url }}">
           <span class="consult-bar__name">{{ k.data.h1 }}</span>
-          {% if k.data.price %}<span class="consult-bar__price">{{ k.data.price }}</span>{% endif %}
+          {% if k.data.price %}
+          {% set price = k.data.price %}
+          {% set oldPrice = k.data.oldPrice %}
+          {% set priceClass = "consult-bar__price" %}
+          {% set priceInline = true %}
+          {% include "partials/price.njk" %}
+          {% endif %}
         </a>
       </li>
       {% endif %}

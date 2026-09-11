@@ -48,7 +48,10 @@ crumbParent:
     <header class="service__header">
       <h1>{{ h1 or title }}</h1>
       {% if subtitle %}<p class="product__subtitle">{{ subtitle }}</p>{% endif %}
-      {% if price %}<p class="product__price">{{ price }}</p>{% endif %}
+      {% if price %}
+      {% set priceClass = "product__price" %}
+      {% include "partials/price.njk" %}
+      {% endif %}
     </header>
     <div class="prose">
       {{ content | safe }}

@@ -120,8 +120,10 @@ contactForm: true
       <div class="rail-card upsell-card">
         <h2 class="upsell-card__title">{{ upsell.data.h1 }}</h2>
         {% if upsell.data.subtitle %}<p class="product__subtitle">{{ upsell.data.subtitle }}</p>{% endif %}
-        {% set pp = upsell.data.price | priceParts %}
-        <p class="upsell-card__price">{{ pp.num }}{% if pp.unit %} <small>{{ pp.unit }}</small>{% endif %}</p>
+        {% set price = upsell.data.price %}
+        {% set oldPrice = upsell.data.oldPrice %}
+        {% set priceClass = "upsell-card__price" %}
+        {% include "partials/price.njk" %}
         <p><a class="btn btn--call btn--block" href="{{ upsell.url }}">Kup usługę</a></p>
         <p><a class="more" href="/konsultacje/">Wszystkie konsultacje i ceny</a></p>
       </div>

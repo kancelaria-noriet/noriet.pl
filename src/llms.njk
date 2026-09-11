@@ -35,7 +35,7 @@ poniżej prowadzą do wersji Markdown.
 - [Wszystkie konsultacje i cennik]({{ site.url }}/konsultacje/index.md)
 - [Regulamin zakupu]({{ site.url }}/regulamin/index.md)
 {% for k in collections.konsultacja -%}
-- [{{ k.data.h1 | safe }}]({{ site.url }}{{ k.url }}index.md){% if k.data.subtitle %} – {{ k.data.subtitle | safe }}{% endif %}{% if k.data.price %} – {{ k.data.price | safe }}{% endif %}
+- [{{ k.data.h1 | safe }}]({{ site.url }}{{ k.url }}index.md){% if k.data.subtitle %} – {{ k.data.subtitle | safe }}{% endif %}{% if k.data.price %} – {{ k.data.price | safe }}{% if k.data.oldPrice %} (było {{ k.data.oldPrice | safe }}){% endif %}{% endif %}
 {% endfor %}
 ## Zespół
 
