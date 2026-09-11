@@ -1,6 +1,6 @@
 // Progressive enhancement only: without JS the menu stays fully visible.
-document.documentElement.classList.remove("no-js");
-document.documentElement.classList.add("js");
+// The `js` class is set by the inline _includes/js/theme-init.js before the
+// first paint, not here (this file is deferred; review03 #23).
 
 var toggle = document.querySelector(".nav-toggle");
 var nav = document.getElementById("site-nav");
@@ -41,5 +41,8 @@ if (catCard) {
   var narrow = window.matchMedia("(max-width: 63.99rem)");
   var syncCatCard = function (mq) { catCard.open = !mq.matches; };
   syncCatCard(narrow);
+  // Until this line runs, CSS hides the card body on narrow screens so the
+  // close above is not a layout shift (main.css, review03 #23).
+  catCard.classList.add("cat-card--ready");
   narrow.addEventListener("change", syncCatCard);
 }

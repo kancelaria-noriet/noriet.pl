@@ -236,7 +236,9 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
 }
 
 .service { padding-block: var(--s4) var(--s6); }
-.prose { max-width: var(--measure); }
+/* overflow-wrap: migrated bodies contain bare URLs that cannot wrap and made
+   /obligacje/ scroll sideways at 390 px (review03 #30). */
+.prose { max-width: var(--measure); overflow-wrap: anywhere; }
 .prose h2 { font-size: var(--t-xl); }
 .prose h3 { font-size: var(--t-lg); }
 .prose p, .prose li { color: var(--ink-2); }
@@ -666,6 +668,11 @@ html { scroll-behavior: smooth; }
 @media (max-width: 63.99rem) {
   .rail-layout > .rail { display: contents; }
   .rail-layout > .rail > .cat-card { order: -1; }
+  /* The card ships open (no-JS and crawlers). Here the deferred nav.js
+     closes it, which was a 0.56 layout shift after first paint (review03
+     #23). With JS, hide the body until nav.js has synced the open state and
+     added .cat-card--ready; the close then changes nothing that is painted. */
+  .js .cat-card:not(.cat-card--ready) > :not(summary) { display: none; }
 }
 
 /* The summary is the toggle only where the card can collapse. On the desktop
