@@ -35,12 +35,12 @@ poniżej prowadzą do wersji Markdown.
 - [Wszystkie konsultacje i cennik]({{ site.url }}/konsultacje/index.md){{ "/konsultacje/" | llmsDesc(collections) | safe }}
 - [Regulamin zakupu]({{ site.url }}/regulamin/index.md){{ "/regulamin/" | llmsDesc(collections) | safe }}
 {% for k in collections.konsultacja -%}
-- [{{ k.data.h1 | safe }}]({{ site.url }}{{ k.url }}index.md){% if k.data.subtitle %} – {{ k.data.subtitle | safe }}{% endif %}{% if k.data.price %} – {{ k.data.price | safe }}{% if k.data.oldPrice %} (było {{ k.data.oldPrice | safe }}){% endif %}{% endif %}
+- [{{ k.data.h1 | safe }}]({{ site.url }}{{ k.url }}index.md){% if k.data.subtitle or k.data.price %}: {% endif %}{% if k.data.subtitle %}{{ k.data.subtitle | safe }}{% endif %}{% if k.data.price %}{% if k.data.subtitle %} – {% endif %}{{ k.data.price | safe }}{% if k.data.oldPrice %} (było {{ k.data.oldPrice | safe }}){% endif %}{% endif %}
 {% endfor %}
 ## Zespół
 
 {% for p in collections.team -%}
-- [{{ p.data.h1 | safe }}]({{ site.url }}{{ p.url }}index.md) – {{ p.data.rola | safe }}{% if p.data.specjalizacja %} ({{ p.data.specjalizacja | safe }}){% endif %}
+- [{{ p.data.h1 | safe }}]({{ site.url }}{{ p.url }}index.md): {{ p.data.rola | safe }}{% if p.data.specjalizacja %} ({{ p.data.specjalizacja | safe }}){% endif %}
 {% endfor %}
 ## Blog
 
@@ -54,7 +54,7 @@ Pełne archiwum HTML: {{ site.url }}/blog/wszystkie-artykuly/
 {% for c in postCategories.categories %}
 ### {{ c.label | safe }}
 {% for post in collections.post | inCategory(postCategories.bySlug, c.slug) | reverse -%}
-- [{{ (post.data.h1 or post.data.title) | safe }}]({{ site.url }}{{ post.url }}index.md) ({{ post.data.isoDate }})
+- [{{ (post.data.h1 or post.data.title) | safe }}]({{ site.url }}{{ post.url }}index.md){{ post.url | llmsDesc(collections) | safe }} ({{ post.data.isoDate }})
 {% endfor %}
 {%- endfor %}
 ## Pozostałe
