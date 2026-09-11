@@ -23,9 +23,10 @@ environment and by `serve.sh`); the default build is production (indexable).
 The mental model: `src/` in, `_site/` out. Eleventy renders the templates
 through the layouts, with `_data/` as the shared facts. An after-build hook
 writes a Markdown twin next to almost every HTML page (for AI crawlers).
-Twin body links are absolute (`https://noriet.pl/…`). `robots.txt` comments
-the `/llms.txt` URL; the `Link` header still advertises it on every HTML
-response.
+The twin keeps lawyer cards, hub service lists and sibling lists; it drops
+TOC, upsell, forms and crumbs. Twin body links are absolute
+(`https://noriet.pl/…`). `robots.txt` comments the `/llms.txt` URL; the
+`Link` header still advertises it on every HTML response.
 
 `functions/` rides along to Cloudflare Pages as the dynamic edge layer.
 `tools/` is dev-only and never deploys. Generated or local state

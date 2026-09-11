@@ -17,23 +17,23 @@ poniżej prowadzą do wersji Markdown.
 
 ## Kancelaria
 
-- [Strona główna]({{ site.url }}/index.md)
-- [Pełna oferta]({{ site.url }}/oferta/index.md)
-- [Zespół]({{ site.url }}/zespol/index.md)
-- [Kontakt]({{ site.url }}/kontakt/index.md)
+- [Strona główna]({{ site.url }}/index.md){{ "/" | llmsDesc(collections) | safe }}
+- [Pełna oferta]({{ site.url }}/oferta/index.md){{ "/oferta/" | llmsDesc(collections) | safe }}
+- [Zespół]({{ site.url }}/zespol/index.md){{ "/zespol/" | llmsDesc(collections) | safe }}
+- [Kontakt]({{ site.url }}/kontakt/index.md){{ "/kontakt/" | llmsDesc(collections) | safe }}
 
 ## Oferta
 {% for cat in nav.categories %}
 - [{{ cat.label | safe }}]({{ site.url }}{{ cat.url }}index.md): {{ cat.summary | safe }}
 {%- for s in cat.services %}
-  - [{{ s.label | safe }}]({{ site.url }}{{ s.url }}index.md)
+  - [{{ s.label | safe }}]({{ site.url }}{{ s.url }}index.md){{ s.url | llmsDesc(collections) | safe }}
 {%- endfor %}
 {%- endfor %}
 
 ## Konsultacje i ceny
 
-- [Wszystkie konsultacje i cennik]({{ site.url }}/konsultacje/index.md)
-- [Regulamin zakupu]({{ site.url }}/regulamin/index.md)
+- [Wszystkie konsultacje i cennik]({{ site.url }}/konsultacje/index.md){{ "/konsultacje/" | llmsDesc(collections) | safe }}
+- [Regulamin zakupu]({{ site.url }}/regulamin/index.md){{ "/regulamin/" | llmsDesc(collections) | safe }}
 {% for k in collections.konsultacja -%}
 - [{{ k.data.h1 | safe }}]({{ site.url }}{{ k.url }}index.md){% if k.data.subtitle %} – {{ k.data.subtitle | safe }}{% endif %}{% if k.data.price %} – {{ k.data.price | safe }}{% if k.data.oldPrice %} (było {{ k.data.oldPrice | safe }}){% endif %}{% endif %}
 {% endfor %}
@@ -46,7 +46,7 @@ poniżej prowadzą do wersji Markdown.
 
 Kategorie:
 {% for c in postCategories.categories %}
-- [{{ c.label | safe }}]({{ site.url }}/blog/kategoria/{{ c.slug }}/index.md)
+- [{{ c.label | safe }}]({{ site.url }}/blog/kategoria/{{ c.slug }}/index.md){{ ("/blog/kategoria/" + c.slug + "/") | llmsDesc(collections) | safe }}
 {%- endfor %}
 
 Pełne archiwum HTML: {{ site.url }}/blog/wszystkie-artykuly/
@@ -59,7 +59,8 @@ Pełne archiwum HTML: {{ site.url }}/blog/wszystkie-artykuly/
 {%- endfor %}
 ## Pozostałe
 
-- [Publikacje i komentarze prawne]({{ site.url }}/publikacje/index.md)
-- [Ogłoszenia dla akcjonariuszy]({{ site.url }}/akcjonariusze/index.md)
-- [Regulamin zakupu]({{ site.url }}/regulamin/index.md)
-- [Polityka prywatności]({{ site.url }}/polityka-prywatnosci/index.md)
+- [Publikacje i komentarze prawne]({{ site.url }}/publikacje/index.md){{ "/publikacje/" | llmsDesc(collections) | safe }}
+{# /akcjonariusze/ is excluded from collections, so llmsDesc cannot see it. #}
+- [Ogłoszenia dla akcjonariuszy]({{ site.url }}/akcjonariusze/index.md): Ogłoszenia Kancelarii Prawnej Noriet – Zagajewska i Wspólnicy S.K.A. wymagane przepisami Kodeksu spółek handlowych.
+- [Regulamin zakupu]({{ site.url }}/regulamin/index.md){{ "/regulamin/" | llmsDesc(collections) | safe }}
+- [Polityka prywatności]({{ site.url }}/polityka-prywatnosci/index.md){{ "/polityka-prywatnosci/" | llmsDesc(collections) | safe }}

@@ -56,13 +56,71 @@ function makeTurndown() {
   return td;
 }
 
-// Strip chrome and upsell, keep content: the summary boxes ("W skrócie"),
-// the specialization chip lists and the product selling points stay in.
+// Strip chrome and upsell, keep content: lawyer cards, hub service lists,
+// sibling lists, category grids, and the summary boxes stay in. Footer is
+// outside <main>, so it never reaches the twin.
 const MD_STRIP = [
-  "nav", "aside.rail", ".cta-card", "form", "script", "style", "button",
+  ".toc-card", ".upsell-card", ".cta-card", "form", "script", "style", "button",
   ".crumb-band", ".hero__actions", ".service-hero .chips", ".form-section",
   ".kicker",
 ];
+
+function isIgnorableNode(node) {
+  return node.nodeType === 3 && !String(node.textContent || "").trim();
+}
+
+function isImageOnlyLink(a) {
+  let hasImg = false;
+  for (const n of Array.from(a.childNodes)) {
+    if (isIgnorableNode(n)) continue;
+    if (n.nodeType === 1 && n.tagName === "IMG") {
+      hasImg = true;
+      continue;
+    }
+    return false;
+  }
+  return hasImg;
+}
+
+function nextElement(el) {
+  let n = el.nextSibling;
+  while (n && n.nodeType !== 1) n = n.nextSibling;
+  return n;
+}
+
+// Image-only <a><img alt></a> becomes [alt](href). If the next heading already
+// links to the same URL (team cards), drop the empty portrait link instead.
+function fillOrDropImageLinks(main) {
+  for (const a of Array.from(main.querySelectorAll("a[href]"))) {
+    if (!isImageOnlyLink(a)) continue;
+    const href = a.getAttribute("href") || "";
+    const next = nextElement(a);
+    if (next && /^H[1-6]$/.test(next.tagName)) {
+      const inner = next.querySelector("a[href]") || (next.tagName === "A" ? next : null);
+      if (inner && (inner.getAttribute("href") || "") === href) {
+        a.parentNode.removeChild(a);
+        continue;
+      }
+    }
+    const alts = [...new Set(Array.from(a.querySelectorAll("img"))
+      .map((img) => (img.getAttribute("alt") || "").trim())
+      .filter(Boolean))];
+    if (alts.length) a.textContent = alts.join(", ");
+    else a.parentNode.removeChild(a);
+  }
+}
+
+// Screen-reader price labels ("Poprzednia cena:") must not leak into Markdown.
+// Struck-through amounts become " (było 738 zł)", matching /llms.txt.
+function flattenPromoPrices(main, doc) {
+  for (const el of Array.from(main.querySelectorAll(".price-was .sr-only, .price-now .sr-only"))) {
+    el.parentNode.removeChild(el);
+  }
+  for (const el of Array.from(main.querySelectorAll(".price-was"))) {
+    const text = el.textContent.replace(/\s+/g, " ").trim();
+    el.parentNode.replaceChild(doc.createTextNode(text ? ` (było ${text})` : ""), el);
+  }
+}
 
 function pageToMarkdown(html, url, td) {
   const doc = domino.createDocument(html);
@@ -76,6 +134,8 @@ function pageToMarkdown(html, url, td) {
   for (const el of Array.from(main.querySelectorAll(".bio-hero__contacts a > span"))) {
     el.textContent = el.textContent.trim().replace(/\.$/, "") + ": ";
   }
+  fillOrDropImageLinks(main);
+  flattenPromoPrices(main, doc);
   const title = (doc.querySelector("title") || {}).textContent || "";
   const desc = doc.querySelector('meta[name="description"]');
   const canonical = doc.querySelector('link[rel="canonical"]');
@@ -288,6 +348,14 @@ export default function (eleventyConfig) {
   // the Phase 4/5 checklist verifies the deployed preview still sends noindex.
   eleventyConfig.addGlobalData("buildEnv", process.env.NORIET_ENV || "production");
   eleventyConfig.addFilter("mdTwin", mdTwinUrl);
+  // Trailing ": description" for /llms.txt. Empty string when the page has none.
+  eleventyConfig.addFilter("llmsDesc", (url, collections) => {
+    const all = (collections && collections.all) || [];
+    const page = all.find((p) => p.url === url);
+    const d = page && page.data && (page.data.description || page.data.lead);
+    const text = String(d || "").replace(/\s+/g, " ").trim();
+    return text ? ": " + text : "";
+  });
 
   // First site-relative image in rendered content — the Article JSON-LD image.
   // Prefer the largest srcset candidate: Google wants large images there.

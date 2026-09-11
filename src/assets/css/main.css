@@ -804,6 +804,7 @@ html { scroll-behavior: smooth; }
 @media (min-width: 64rem) { .info-cols { grid-template-columns: repeat(4, 1fr); } }
 .info-col address { font-style: normal; }
 .info-col p, .info-col address, .info-col dl { font-size: var(--t-base); color: var(--ink-2); margin: 0; }
+.info-col dl + p { margin-top: var(--s4); }
 .info-col a { color: var(--ink); font-weight: 600; }
 .info-col a:hover { color: var(--brand-ink); }
 .info-col dl { display: grid; grid-template-columns: auto 1fr; gap: var(--s2) var(--s4); }
