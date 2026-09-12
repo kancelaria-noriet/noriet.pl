@@ -10,7 +10,7 @@ disabled until the owner calls the cutover (see `../PLAN.md`).
 
 ```
 ./build.sh     # one-off build to _site/
-./serve.sh     # dev server on http://127.0.0.1:8085/ (watch + reload)
+./serve.sh     # dev server on http://127.0.0.1:8085/ (watch, refresh by hand)
 ```
 
 Node comes from fnm (user-local, `~/.local/share/fnm`); the scripts set it up
