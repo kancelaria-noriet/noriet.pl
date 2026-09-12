@@ -61,7 +61,11 @@ function makeTurndown() {
 // outside <main>, so it never reaches the twin.
 const MD_STRIP = [
   ".toc-card", ".upsell-card", ".cta-card", "form", "script", "style", "button",
-  ".crumb-band", ".hero__actions", ".service-hero .chips", ".form-section",
+  ".crumb-band", ".hero__actions", ".service-hero .chips",
+  // Form sections drop whole (heading, form, kancelaria card), except the one
+  // on /kontakt/ whose rail card holds the directions; there the form and
+  // its heading go, the "Dojazd" card stays (review04 #48).
+  ".form-section:not(.form-section--twin)", "#form-title",
   ".kicker",
 ];
 
