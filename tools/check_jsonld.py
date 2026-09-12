@@ -74,9 +74,13 @@ def main():
                 if data.get("dateModified"):
                     bad.append(f"{rel}: Article has dateModified — no real "
                                "modification dates exist yet")
-                author = data.get("author") or {}
-                if author.get("@type") != "Organization" or not author.get("name"):
-                    bad.append(f"{rel}: Article author is not an Organization with name")
+                # The firm Organization, or one or more named Persons parsed
+                # from the migrated bylines (review04 #39).
+                authors = data.get("author") or {}
+                authors = authors if isinstance(authors, list) else [authors]
+                for author in authors:
+                    if author.get("@type") not in ("Organization", "Person") or not author.get("name"):
+                        bad.append(f"{rel}: Article author is not an Organization or Person with name")
                 pub = data.get("publisher") or {}
                 logo = pub.get("logo") or {}
                 if logo.get("@type") != "ImageObject" or not logo.get("url"):

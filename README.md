@@ -98,7 +98,7 @@ strip `<script>`, so schema lives only on the HTML.
 |---|---|---|
 | `LegalService` + `Organization` (`@id` `/#kancelaria`) | every page | NAP, GBP hours/geo, `nav.categories` as `hasOfferCatalog`, nine `employee` `@id`s, Zagajewska as `founder` (`founder: true` in her front matter) |
 | `Person` (`@id` `…/team/<slug>/#osoba`) | 9 bios | `h1`, `rola`, `specjalizacja`, parsed `kontakt`, photo; izba from `rola` |
-| `Article` | 139 posts | `h1`, `isoDate`, description, category label as `articleSection`; `author`/`publisher` are the firm Organization; no `dateModified` |
+| `Article` | 139 posts | `h1`, `isoDate`, description, category label as `articleSection`; `publisher` is the firm Organization; `author` is the Person parsed from the migrated byline (`posts.11tydata.js` — 97 posts, team members linked by `@id`, former colleagues plain), the Organization where no byline exists; no `dateModified` |
 | `Service` | 26 practice pages + the abonament sales page + the 9 konsultacje products | kicker/h1, existing description, category as `serviceType`, `areaServed` Warszawa + Polska; practice pages add the matched lawyer `@id` when `lawyerMatch` hits |
 | `FAQPage` | B2B hub and the Prawo karne hub | `faq` front matter |
 | `BreadcrumbList` | every page with a crumb | the same `crumbs` array as the visible trail |

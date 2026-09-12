@@ -19,7 +19,8 @@ layout: layouts/base.njk
   "description": description,
   "url": page.url,
   "section": cat.label if cat else none,
-  "image": _ldImg
+  "image": _ldImg,
+  "authors": authors
 } | jsonldArticle(site) | safe }}</script>
 <div class="wrap">
   <div class="rail-layout">

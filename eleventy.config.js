@@ -158,6 +158,8 @@ function pageToMarkdown(html, url, td) {
   const q = (s) => '"' + String(s).replace(/\\/g, "\\\\").replace(/"/g, '\\"') + '"';
   const head = ["---", "title: " + q(title.trim())];
   if (desc) head.push("description: " + q(desc.getAttribute("content")));
+  const authorMeta = doc.querySelector('meta[name="author"]');
+  if (authorMeta) head.push("author: " + q(authorMeta.getAttribute("content")));
   if (canonical) head.push("source: " + canonical.getAttribute("href"));
   head.push("---", "");
   const body = td.turndown(main.innerHTML)
@@ -305,6 +307,16 @@ function buildJsonldArticle(d, site) {
   if (d.description) out.description = d.description;
   if (d.section) out.articleSection = d.section;
   if (d.image) out.image = site.url + d.image;
+  // Named authors from the migrated bylines (posts.11tydata.js). A team
+  // member links to her Person node; a former colleague is a plain Person.
+  if (Array.isArray(d.authors) && d.authors.length) {
+    const people = d.authors.map((a) =>
+      a.url
+        ? { "@type": "Person", "@id": personId(site, a.url), name: a.name, url: site.url + a.url }
+        : { "@type": "Person", name: a.name },
+    );
+    out.author = people.length === 1 ? people[0] : people;
+  }
   return out;
 }
 function buildJsonldService(d, site) {
@@ -493,6 +505,13 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("jsonldPracticeService", (d, site) =>
     JSON.stringify(buildJsonldService(d, site)));
   eleventyConfig.addFilter("jsonldAreaServed", () => areaServedPl());
+
+  // "Name, Name" for the author meta (posts with a parsed byline).
+  eleventyConfig.addFilter("authorNames", (list) =>
+    (Array.isArray(list) ? list : []).map((a) => a.name).join(", "));
+  // RSS 2.0 wants RFC 822 dates; publish dates are day-precise, noon UTC
+  // keeps the calendar day in every zone.
+  eleventyConfig.addFilter("rfc822", (iso) => new Date(iso + "T12:00:00Z").toUTCString());
 
   eleventyConfig.addFilter("priceParts", (s) => {
     const m = String(s || "").match(/^([\d\s.,]+)\s*(.*)$/);
