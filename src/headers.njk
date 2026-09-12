@@ -5,8 +5,14 @@
 }
 ---
 # Every response advertises the agent-facing Markdown index (AEO).
+# Security headers (review03 #29): no other site may frame these pages
+# (Turnstile is embedded inside our page, so it is unaffected), and neither
+# the page nor any frame in it may ask for camera, microphone or location.
+# HSTS is zone-level (PLAN Phase 1, step A6); CSP is Phase 2.
 /*
   Link: </llms.txt>; rel="describedby"; type="text/markdown"
+  X-Frame-Options: DENY
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
 {% if buildEnv == "development" -%}
 # Preview builds must never be indexed (meta noindex is also set per page).
   X-Robots-Tag: noindex
