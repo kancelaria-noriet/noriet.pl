@@ -21,6 +21,11 @@
 /llms.txt
   Content-Type: text/markdown; charset=utf-8
   X-Robots-Tag: noindex
+# The RSS feed that replaces the WordPress /feed/ (review04 #40). Pages would
+# serve .xml as application/xml; readers want the RSS type.
+/feed.xml
+  Content-Type: application/rss+xml; charset=utf-8
+  X-Robots-Tag: noindex
 {% if buildEnv != "development" %}
 # Asset caching, production only — dev previews keep the Pages default
 # (max-age=0, must-revalidate). Filenames are unhashed, so code gets a

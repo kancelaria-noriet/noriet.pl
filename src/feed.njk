@@ -1,0 +1,35 @@
+---json
+{
+  "permalink": "/feed.xml",
+  "eleventyExcludeFromCollections": true,
+  "layout": null
+}
+---
+<?xml version="1.0" encoding="UTF-8"?>
+{#- RSS 2.0 of the blog, newest first. The archive is frozen (2016 to
+    2023-12-02), so this is a one-off output like sitemap.xml. It replaces the
+    WordPress /feed/ and /blog/feed/ that readers, Bing and some AI crawlers
+    still poll (review04 #40); _redirects points them here. -#}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>{{ site.gbp.name }} – blog</title>
+  <link>{{ site.url }}/blog/</link>
+  <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Artykuły prawników Kancelarii Prawnej Noriet o prawie rodzinnym, spadkowym, nieruchomościach, odszkodowaniach i sprawach firm.</description>
+  <language>pl</language>
+{%- for post in collections.post | reverse %}
+  <item>
+    <title>{{ post.data.h1 or post.data.title }}</title>
+    <link>{{ site.url }}{{ post.url }}</link>
+    <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
+    <pubDate>{{ post.data.isoDate | rfc822 }}</pubDate>
+    {%- if post.data.description %}
+    <description>{{ post.data.description }}</description>
+    {%- endif %}
+    {%- if post.data.authors and post.data.authors.length %}
+    <dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">{{ post.data.authors | authorNames }}</dc:creator>
+    {%- endif %}
+  </item>
+{%- endfor %}
+</channel>
+</rss>
