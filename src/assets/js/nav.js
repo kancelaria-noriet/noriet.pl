@@ -36,7 +36,9 @@ if (themeBtn) {
 // Blog categories: shipped open so no-JS visitors and crawlers get the links.
 // Below the two-column breakpoint the rail stacks above the article list, where
 // an expanded 600px card would bury the articles, so collapse it there.
-var catCard = document.querySelector(".cat-card");
+// details.cat-card: the blog rail card. The category grid cards share the
+// class name and are plain <nav>, never collapsed.
+var catCard = document.querySelector("details.cat-card");
 if (catCard) {
   var narrow = window.matchMedia("(max-width: 63.99rem)");
   var syncCatCard = function (mq) { catCard.open = !mq.matches; };
