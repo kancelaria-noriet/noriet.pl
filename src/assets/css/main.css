@@ -189,6 +189,10 @@ h3 { font-size: var(--t-lg); line-height: 1.3; margin: var(--s5) 0 var(--s3); }
 .js .nav-toggle { display: inline-flex; }
 .js .site-nav { display: none; width: 100%; }
 .js .site-nav--open { display: block; }
+/* The opened menu takes its own full-width row. Order it last so the theme
+   toggle stays in the top row instead of wrapping below the menu (owner
+   report 2026-09-12). Tab order stays DOM order: Menu, links, toggle. */
+@media (max-width: 63.99rem) { .site-nav { order: 10; } }
 
 @media (min-width: 64rem) {
   .nav-toggle, .js .nav-toggle { display: none; }
