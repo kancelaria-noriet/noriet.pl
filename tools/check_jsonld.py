@@ -16,6 +16,7 @@ from pathlib import Path
 
 SITE = Path(__file__).resolve().parent.parent / "_site"
 BLOCK = re.compile(r'<script type="application/ld\+json">(.*?)</script>', re.S)
+ISO_DAY = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 REQUIRED = {
     "LegalService": ["name", "url", "telephone", "email", "address", "geo",
@@ -25,8 +26,8 @@ REQUIRED = {
     "BreadcrumbList": ["itemListElement"],
     "Person": ["name", "jobTitle", "url", "worksFor", "@id", "telephone",
                "email", "knowsAbout"],
-    "Article": ["headline", "datePublished", "author", "publisher",
-                "mainEntityOfPage", "articleSection"],
+    "Article": ["headline", "datePublished", "dateModified", "author",
+                "publisher", "mainEntityOfPage", "articleSection"],
     "Service": ["name", "url", "provider", "areaServed"],
     "FAQPage": ["mainEntity"],
 }
@@ -71,9 +72,14 @@ def main():
                 if "item" in items[-1]:
                     bad.append(f"{rel}: leaf crumb carries an item URL")
             if "Article" in types:
-                if data.get("dateModified"):
-                    bad.append(f"{rel}: Article has dateModified — no real "
-                               "modification dates exist yet")
+                pub = data.get("datePublished") or ""
+                mod = data.get("dateModified") or ""
+                if not ISO_DAY.match(pub):
+                    bad.append(f"{rel}: Article datePublished is not YYYY-MM-DD")
+                if not ISO_DAY.match(mod):
+                    bad.append(f"{rel}: Article dateModified is not YYYY-MM-DD")
+                if ISO_DAY.match(pub) and ISO_DAY.match(mod) and mod < pub:
+                    bad.append(f"{rel}: Article dateModified is before datePublished")
                 # The firm Organization, or one or more named Persons parsed
                 # from the migrated bylines (review04 #39).
                 authors = data.get("author") or {}

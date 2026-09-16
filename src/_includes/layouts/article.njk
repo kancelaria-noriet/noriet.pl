@@ -9,13 +9,13 @@ layout: layouts/base.njk
     {% include "partials/breadcrumb.njk" %}
   </div>
 </div>
-{# datePublished comes from the migrated front matter. dateModified is absent
-   on purpose: no real modification date exists, and an invented one is spam
-   (PLAN Phase 6, the freshness programme). #}
+{# datePublished stays the original day. dateModified is the last real
+   update, or the publish day when the post has not been rewritten. #}
 {% set _ldImg = content | firstImg %}
 <script type="application/ld+json">{{ {
   "headline": h1 or title,
   "datePublished": isoDate,
+  "dateModified": isoModified or isoDate,
   "description": description,
   "url": page.url,
   "section": cat.label if cat else none,
@@ -29,9 +29,9 @@ layout: layouts/base.njk
         {% set kicker = (h1 or title) | series %}
         {% if kicker %}<p class="kicker">{{ kicker }}</p>{% endif %}
         <h1>{{ h1 or title }}</h1>
-        {% if displayDate %}
+        {% if freshDisplay or displayDate %}
         <p class="article-meta">
-          <time datetime="{{ isoDate }}">{{ displayDate }}</time>
+          <time datetime="{{ freshIso or isoDate }}">Ostatnia aktualizacja: {{ freshDisplay or displayDate }}</time>
           · {{ content | readingTime }}
           {% if cat %}· <a href="/blog/kategoria/{{ cat.slug }}/">{{ cat.label }}</a>{% endif %}
         </p>
@@ -45,7 +45,10 @@ layout: layouts/base.njk
       </aside>
       {% endif %}
       <div class="prose">
-        {{ split.rest | safe }}
+        {{ split.rest | stripByline | safe }}
+        {% if authors and authors.length %}
+        <p class="article-byline">{{ authors | authorBylineHtml | safe }}</p>
+        {% endif %}
       </div>
       <aside class="cta-card" aria-label="Kontakt w sprawie">
         <h2>Masz podobną sprawę?</h2>
@@ -53,6 +56,7 @@ layout: layouts/base.njk
         <p class="cta-band__actions">
           <a class="btn btn--call" href="{{ site.phoneHref }}" data-umami-event="telefon">{{ site.phone }}</a>
           <a class="btn btn--ghost" href="/konsultacje/">Konsultacje</a>
+          <a class="btn btn--ghost" href="/kontakt/">Napisz do nas</a>
         </p>
       </aside>
     </article>
@@ -64,10 +68,10 @@ layout: layouts/base.njk
         <h2 class="rail-card__title">Więcej w kategorii</h2>
         <p class="rail-card__lead">{{ cat.label }}</p>
         <ul class="rail-list">
-          {% for post in collections.post | inCategory(postCategories.bySlug, cat.slug) | reverse | excludeUrl(page.url) | limit(4) %}
+          {% for post in collections.post | inCategory(postCategories.bySlug, cat.slug) | byFreshness | reverse | excludeUrl(page.url) | limit(4) %}
           <li>
             <a href="{{ post.url }}">{{ post.data.h1 or post.data.title }}</a>
-            <span class="rail-list__meta">{{ post.data.displayDate }}</span>
+            <span class="rail-list__meta">{{ post.data.freshDisplay }}</span>
           </li>
           {% endfor %}
         </ul>
@@ -77,10 +81,10 @@ layout: layouts/base.njk
       <div class="rail-card">
         <h2 class="rail-card__title">Ostatnie artykuły</h2>
         <ul class="rail-list">
-          {% for post in collections.post | reverse | excludeUrl(page.url) | limit(3) %}
+          {% for post in collections.post | byFreshness | reverse | excludeUrl(page.url) | limit(3) %}
           <li>
             <a href="{{ post.url }}">{{ post.data.h1 or post.data.title }}</a>
-            <span class="rail-list__meta">{{ post.data.displayDate }}</span>
+            <span class="rail-list__meta">{{ post.data.freshDisplay }}</span>
           </li>
           {% endfor %}
         </ul>

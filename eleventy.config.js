@@ -317,8 +317,48 @@ function buildJsonldArticle(d, site) {
     );
     out.author = people.length === 1 ? people[0] : people;
   }
+  if (d.dateModified) out.dateModified = d.dateModified;
   return out;
 }
+
+function freshIsoOf(data) {
+  return (data && (data.isoModified || data.isoDate)) || "";
+}
+
+function compareFresh(a, b) {
+  const fa = freshIsoOf(a.data);
+  const fb = freshIsoOf(b.data);
+  if (fa !== fb) return fa.localeCompare(fb);
+  const oa = a.data.isoDate || "";
+  const ob = b.data.isoDate || "";
+  if (oa !== ob) return oa.localeCompare(ob);
+  return String(a.data.h1 || "").localeCompare(String(b.data.h1 || ""), "pl");
+}
+
+function maxFreshIso(posts) {
+  let latest = "";
+  for (const p of posts || []) {
+    const iso = freshIsoOf(p.data);
+    if (iso > latest) latest = iso;
+  }
+  return latest || null;
+}
+
+function stripByline(html) {
+  return String(html || "").replace(
+    /<p>\s*(?:<em>\s*)?autor(?:ka)?\s*:[\s\S]*?<\/p>/gi,
+    "",
+  );
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 function buildJsonldService(d, site) {
   const out = {
     "@context": "https://schema.org",
@@ -408,6 +448,11 @@ export default function (eleventyConfig) {
   eleventyConfig.addCollection("team", (api) =>
     api.getFilteredByTag("team").sort((a, b) => (a.data.order || 0) - (b.data.order || 0)));
 
+  // Posts ordered by last real update, then original publish day.
+  // blog.njk paginates this (reverse: true = newest first).
+  eleventyConfig.addCollection("postByFreshness", (api) =>
+    api.getFilteredByTag("post").sort(compareFresh));
+
   // Table of contents from the h2 anchors the migrator embeds in content.
   eleventyConfig.addFilter("toc", (content) => {
     const out = [];
@@ -443,6 +488,42 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("excludeUrl", (arr, url) =>
     (arr || []).filter((p) => p.url !== url));
+
+  eleventyConfig.addFilter("byFreshness", (arr) =>
+    [...(arr || [])].sort(compareFresh));
+
+  eleventyConfig.addFilter("stripByline", stripByline);
+
+  eleventyConfig.addFilter("authorBylineHtml", (list) => {
+    const items = (Array.isArray(list) ? list : []).map((a) =>
+      a.url
+        ? `<a href="${a.url}">${escapeHtml(a.name)}</a>`
+        : escapeHtml(a.name),
+    );
+    if (!items.length) return "";
+    let names = items[0];
+    if (items.length === 2) names = `${items[0]} i ${items[1]}`;
+    else if (items.length > 2) {
+      names = `${items.slice(0, -1).join(", ")} i ${items[items.length - 1]}`;
+    }
+    return `autor: ${names}`;
+  });
+
+  eleventyConfig.addFilter("sitemapLastmod", (item, posts, bySlug) => {
+    const url = item.url || "";
+    const d = item.data || {};
+    if (d.isoModified || d.isoDate) return d.isoModified || d.isoDate;
+    if (url === "/" || url === "/blog/" || url === "/blog/wszystkie-artykuly/") {
+      return maxFreshIso(posts);
+    }
+    const cat = /^\/blog\/kategoria\/([^/]+)\//.exec(url);
+    if (cat) {
+      return maxFreshIso(
+        (posts || []).filter((p) => (bySlug || {})[p.fileSlug] === cat[1]),
+      );
+    }
+    return null;
+  });
 
   // Resolve a front-matter URL list to pages, preserving order.
   eleventyConfig.addFilter("byUrls", (arr, urls) =>

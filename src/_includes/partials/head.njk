@@ -13,6 +13,10 @@
   {% if _mdTwin %}<link rel="alternate" type="text/markdown" href="{{ _mdTwin }}">{% endif %}
   <link rel="alternate" type="application/rss+xml" title="{{ site.shortName }} – blog" href="/feed.xml">
   {% if authors and authors.length %}<meta name="author" content="{{ authors | authorNames }}">{% endif %}
+  {% if tags and "post" in tags and isoDate %}
+  <meta property="article:published_time" content="{{ isoDate }}">
+  <meta property="article:modified_time" content="{{ isoModified or isoDate }}">
+  {% endif %}
   <meta property="og:site_name" content="{{ site.shortName }}">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:type" content="{{ "article" if tags and "post" in tags else "website" }}">

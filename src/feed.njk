@@ -17,12 +17,13 @@
   <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Artykuły prawników Kancelarii Prawnej Noriet o prawie rodzinnym, spadkowym, nieruchomościach, odszkodowaniach i sprawach firm.</description>
   <language>pl</language>
-{%- for post in collections.post | reverse %}
+{%- for post in collections.post | byFreshness | reverse %}
   <item>
     <title>{{ post.data.h1 or post.data.title }}</title>
     <link>{{ site.url }}{{ post.url }}</link>
     <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
     <pubDate>{{ post.data.isoDate | rfc822 }}</pubDate>
+    <atom:updated>{{ (post.data.freshIso or post.data.isoDate) | rfc822 }}</atom:updated>
     {%- if post.data.description %}
     <description>{{ post.data.description }}</description>
     {%- endif %}

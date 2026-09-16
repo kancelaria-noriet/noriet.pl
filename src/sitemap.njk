@@ -11,17 +11,19 @@
     non-page outputs,
     and the /blog/strona/N/ pagination, which
     is reachable by links and adds nothing to discovery.
-    lastmod only where a real date exists (posts): the content freeze makes
-    the publish date the honest last-modification date. Never invent one. -#}
+    lastmod: posts use isoModified or isoDate. The homepage and the blog
+    indexes use the newest post in that listing. Do not stamp every article
+    because a rail of "latest posts" changed. -#}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {%- for item in collections.all | sort(false, false, "url") %}
 {%- set noindex = item.data.robots and ("noindex" in item.data.robots) %}
 {%- set paginated = r/^\/blog\/strona\//.test(item.url) %}
 {%- if item.url and item.url.endsWith("/") and not noindex and not paginated %}
+  {%- set lm = item | sitemapLastmod(collections.post, postCategories.bySlug) %}
   <url>
     <loc>{{ site.url }}{{ item.url }}</loc>
-    {%- if item.data.isoDate %}
-    <lastmod>{{ item.data.isoDate }}</lastmod>
+    {%- if lm %}
+    <lastmod>{{ lm }}</lastmod>
     {%- endif %}
   </url>
 {%- endif %}

@@ -25,10 +25,12 @@ const CANONICAL_NAME = {
 };
 
 function parseByline(raw) {
-  const m = /autor(?:ka)?:\s*([^<\n]+)/i.exec(raw || "");
+  const m = /autor(?:ka)?:\s*([\s\S]*?)(?:<\/p>|$)/i.exec(raw || "");
   if (!m) return [];
+  const plain = m[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  if (!plain) return [];
   // Co-authors are joined with a comma or with " i " ("X i adw. Y").
-  return m[1]
+  return plain
     .split(/,|\s+i\s+/)
     .map((part) =>
       part
@@ -44,10 +46,26 @@ function parseByline(raw) {
     });
 }
 
+const PL_MONTHS = [
+  "stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca",
+  "lipca", "sierpnia", "września", "października", "listopada", "grudnia",
+];
+
+function plDate(iso) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || "");
+  if (!m) return "";
+  return `${Number(m[3])} ${PL_MONTHS[Number(m[2]) - 1]} ${m[1]}`;
+}
+
 export default {
   eleventyComputed: {
     titleTag: (data) => meta[data.page.fileSlug]?.titleTag || data.titleTag,
     description: (data) => meta[data.page.fileSlug]?.description || data.description,
     authors: (data) => parseByline(data.page.rawInput),
+    // Visible dates and list sort use the last real update when present.
+    // datePublished / isoDate stay the original day.
+    freshIso: (data) => data.isoModified || data.isoDate,
+    freshDisplay: (data) =>
+      (data.isoModified && plDate(data.isoModified)) || data.displayDate,
   },
 };

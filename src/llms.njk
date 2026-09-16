@@ -53,8 +53,8 @@ Pełne archiwum HTML: {{ site.url }}/blog/wszystkie-artykuly/
 
 {% for c in postCategories.categories %}
 ### {{ c.label | safe }}
-{% for post in collections.post | inCategory(postCategories.bySlug, c.slug) | reverse -%}
-- [{{ (post.data.h1 or post.data.title) | safe }}]({{ site.url }}{{ post.url }}index.md){{ post.url | llmsDesc(collections) | safe }} ({{ post.data.isoDate }})
+{% for post in collections.post | inCategory(postCategories.bySlug, c.slug) | byFreshness | reverse -%}
+- [{{ (post.data.h1 or post.data.title) | safe }}]({{ site.url }}{{ post.url }}index.md){{ post.url | llmsDesc(collections) | safe }} ({{ post.data.freshIso }})
 {% endfor %}
 {%- endfor %}
 ## Pozostałe
