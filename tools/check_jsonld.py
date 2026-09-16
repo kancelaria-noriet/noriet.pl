@@ -103,7 +103,7 @@ def main():
     expect = {
         "LegalService": n,
         "Organization": n,
-        "Article": 139,
+        "Article": 140,
         "Person": 9,
         "Service": SERVICE_PAGES,
         "FAQPage": 2,
