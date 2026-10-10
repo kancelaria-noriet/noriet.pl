@@ -1,10 +1,9 @@
 # noriet-lp — the Eleventy rebuild of noriet.pl
 
-Static site (Eleventy 3) for the noriet.pl migration. Dev phase: built and
-served from the dev host on a private interface. The repo is PUBLIC on GitHub
-(`kancelaria-noriet/noriet.pl`). A push to `dev` deploys to
-https://dev.noriet-lp.pages.dev (noindexed). Production deployments are
-disabled until the owner calls the cutover (see `../PLAN.md`).
+Static site (Eleventy 3) for noriet.pl, live since 2026-09-12. The repo is
+PUBLIC on GitHub (`kancelaria-noriet/noriet.pl`). A push to `dev` deploys to
+https://dev.noriet-lp.pages.dev (noindexed). A push to `main` deploys to
+production at https://noriet.pl/.
 
 ## Run
 
@@ -56,7 +55,8 @@ src/_includes/       layouts/ (base + one per content type), partials/
                      never regenerated, including the homepage band),
                      generated/ (migrator leftover: team intro)
 src/content/         ALL migrated WordPress content, now ordinary frozen
-                     source: posts/ (139 + posts.11tydata.js), services/ (12),
+                     source: posts/ (139 migrated + 2 new since
+                     2026-09-16, + posts.11tydata.js), services/ (12),
                      konsultacje/ (9), team/ (9), obligacje.html, akcjonariusze.html
 src/assets/          css/ (main.css = the whole design system, tokens,
                      mobile-first; fonts.css), js/ (nav, theme-init, form
@@ -124,9 +124,8 @@ Files under `src/content/` and `src/assets/uploads/` came out of
 **The migration is finished and the migrators are dormant** (2026-09-01, owner
 call). The live WordPress is frozen, so there is nothing left to capture. Do not
 run either script again unless the owner asks. Those files are now ordinary
-source files: to change one, edit it in place. The content freeze still governs
-*what* you may change — see `../PLAN.md` — but the mechanism is no longer "edit
-the migrator".
+source files: to change one, edit it in place. The content freeze ended at the
+cutover (2026-09-12); content work follows `../PLAN.md`.
 
 Everything else is authored by hand.
 
@@ -238,9 +237,9 @@ App icons carry the unsnapped mark on the navy tile, because iOS paints
 transparency black and cyan on navy measures 5.1:1 against 3.3:1 on white.
 `tools/favicons.mjs` fails if a maskable icon leaves the 80% safe circle.
 
-## State (2026-09-02): pre-launch stack complete
+## State (2026-10-10): live in production
 
-219 pages build (plus `404.html`). In place and verified on the dev deployment: redirect map,
+222 pages build (plus `404.html`). Live on https://noriet.pl/ since 2026-09-12: redirect map,
 breadcrumbs and full JSON-LD, titles and meta for every page, Markdown twins
 plus `/llms.txt`, sitemap and robots.txt, the contact form (Gmail API +
 Turnstile), first-party Umami, and WebP images. `/polityka-prywatnosci/`
@@ -251,7 +250,7 @@ footer. `src/_data/stubs.json` is empty.
 
 ## Still ahead
 
-Phase 4 QA and the cutover work — full list and order in `../PLAN.md`.
+The work after the cutover — full list and order in `../PLAN.md`.
 Before every push, run the pre-deploy checks: `tools/check_jsonld.py`
 (every JSON-LD block against pinned counts), `tools/check_twins.py` (the
 Markdown twins and `/llms.txt`), `tools/check_sitemap.py` (sitemap ↔ built
